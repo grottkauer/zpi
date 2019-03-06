@@ -1,0 +1,8 @@
+﻿- Jest to zdecentralizowana i rozproszona baza danych (open source) o architekturze P2P
+- Służy do księgowania poszczególnych transakcji, płatności, zapisów księgowych
+- Zakodowana za pomocą algorytmów kryptograficznych
+- Blockchain świetnie nadaje się do rozliczania transakcji kupna-sprzedaży energii pomiędzy jej małymi producentami,
+	 np. gospodarstwami domowymi, a ich klientami, odbiorcami energii, również rozproszonymi np. samochodami elektrycznymi.
+- Jak implementować?
+	https://hackernoon.com/how-to-implement-a-blockchain-project-in-5-steps-9c78353666f7
+	
