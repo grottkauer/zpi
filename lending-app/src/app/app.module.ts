@@ -4,11 +4,13 @@ import { NgModule } from '@angular/core';
 import {CustomMaterialModule} from './core/material.module';
 import {FormsModule } from '@angular/forms';
 import { FlexLayoutModule} from '@angular/flex-layout';
+import { AppRoutingModule } from './core/app.routing.module';
 import {SocialLoginModule, AuthServiceConfig, LoginOpt} from 'angularx-social-login';
 import { GoogleLoginProvider, FacebookLoginProvider} from 'angularx-social-login';
 
 import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
+import { LoginComponent } from './login/login.component';
 
 const fbLoginOptions: LoginOpt = {
   scope: 'pages_messaging,pages_messaging_subscriptions,email,pages_show_list,manage_pages',
@@ -38,7 +40,8 @@ export function provideConfig() {
 @NgModule({
   declarations: [
     AppComponent,
-    UserComponent
+    UserComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,8 @@ export function provideConfig() {
     CustomMaterialModule,
     FormsModule,
     FlexLayoutModule,
-    SocialLoginModule
+    SocialLoginModule,
+    AppRoutingModule
   ],
   providers: [
     {

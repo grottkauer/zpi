@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService, SocialUser} from 'angularx-social-login';
-import {FacebookLoginProvider, GoogleLoginProvider} from 'angularx-social-login';
+
 
 @Component({
   selector: 'app-root',
@@ -8,37 +7,10 @@ import {FacebookLoginProvider, GoogleLoginProvider} from 'angularx-social-login'
   styleUrls: ['./app.component.css']
 })
 
-export class AppComponent implements OnInit {
-  title = 'lending-app';
-  username: string;
-  password: string;
-  showSpinner: boolean;
+export class AppComponent {
 
-  user: SocialUser;
-  loggedIn: boolean;
 
-  constructor(private authService: AuthService) {  }
+  constructor() {  }
 
-  signInWithGoogle(): void {
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
-  }
 
-  signInWithFB(): void {
-    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID);
-  }
-
-  signOut(): void {
-    this.authService.signOut();
-  }
-
-  login() {
-    // place for login method
-  }
-
-  ngOnInit(): void {
-    this.authService.authState.subscribe((user) => {
-      this.user = user;
-      this.loggedIn = user != null;
-    });
-  }
 }
