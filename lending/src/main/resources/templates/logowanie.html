@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Borrow Me!</title>
+    <link rel="stylesheet" href="/css/master.css">
+    <link rel="stylesheet" href="/css/signin.css">
+  <link rel="stylesheet" href="/bootstrap-4.3.1/css/bootstrap.min.css">
+  <script src="/jquery-3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="/bootstrap-4.3.1/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top clearfix">
+      <!-- Brand/logo -->
+      <a class="navbar-brand" href="/">Borrow Me!</a>
+
+      <!-- Links -->
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Strona główna</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="kontakt">Kontakt</a>
+        </li>
+      </ul>
+
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="logowanie">Logowanie</a>
+        </li>
+      </ul>
+    </nav><br><br>
+
+
+    <form class="form-signin text-center">
+          <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+          <h1 class="h3 mb-3 font-weight-normal">Zaloguj się</h1>
+          <label for="inputEmail" class="sr-only">Login</label>
+          <input type="email" id="inputEmail" class="form-control" placeholder="Login" required autofocus>
+          <label for="inputPassword" class="sr-only">Hasło</label>
+          <input type="password" id="inputPassword" class="form-control" placeholder="Hasło" required>
+          <div class="checkbox mb-3">
+            <label>
+              <input type="checkbox" value="remember-me"> Zapamiętaj mnie
+            </label>
+          </div>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Zaloguj się</button>
+          <p class="mt-5 mb-3 text-muted">&copy; 2019</p>
+        </form>
+
+  </body>
+</html>
