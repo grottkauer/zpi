@@ -9,6 +9,18 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $(".moje-towary-pod").hide();
+        $(".wypozyczone-towary-pod").hide();
+        $(".moje-towary").click(function(){
+          $(".moje-towary-pod").slideToggle();
+        });
+        $(".wypozyczone-towary").click(function(){
+          $(".wypozyczone-towary-pod").slideToggle();
+        });
+      });
+    </script>
   </head>
   <body>
     <!-- NAVBAR -->
@@ -51,10 +63,12 @@
           <div class="col-md-12 bg-dark">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <button class="tablinks btn" onclick="openCity(event, 'London')" id="defaultOpen">
-                  <a class="nav-link active text-light font-weight-bold" href="#">Moje towary</a>
-                </button>
-                <ul class="nav flex-column">
+                <a class="nav-link active moje-towary" href="#">
+                  <button class="tablinks btn text-light font-weight-bold" onclick="openCity(event, 'London')" id="defaultOpen">
+                    Moje towary
+                  </button>
+                </a>
+                <ul class="nav flex-column moje-towary-pod">
                   <li class="nav-item">
                     <a class="nav-link active text-light" href="#">Pokaż towary</a>
                   </li>
@@ -70,10 +84,12 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <button class="tablinks btn" onclick="openCity(event, 'Paris')">
-                  <a class="nav-link text-light font-weight-bold" href="#">Wypożyczone towary</a>
-                </button>
-                <ul class="nav flex-column">
+                <a class="nav-link" href="#">
+                  <button class="tablinks btn wypozyczone-towary text-light font-weight-bold" onclick="openCity(event, 'Paris')">
+                    Wypożyczone towary
+                  </button>
+                </a>
+                <ul class="nav flex-column wypozyczone-towary-pod">
                   <li class="nav-item">
                     <a class="nav-link active text-light" href="#">Pokaż towary</a>
                   </li>
@@ -86,9 +102,11 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <button class="tablinks btn" onclick="openCity(event, 'Tokyo')">
-                  <a class="nav-link text-light font-weight-bold" href="#">Moje punkty</a>
-                </button>
+                <a class="nav-link" href="#">
+                  <button class="tablinks btn text-light font-weight-bold" onclick="openCity(event, 'Tokyo')">
+                    Moje punkty
+                  </button>
+                </a>
               </li>
             </ul>
           </div>

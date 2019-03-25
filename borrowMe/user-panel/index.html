@@ -5,10 +5,39 @@
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../css/master.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $(".filmy-toggle-sub").hide();
+        $(".ksiazki-toggle-sub").hide();
+        $(".muzyka-toggle-sub").hide();
+        $(".zabawki-toggle-sub").hide();
+        $(".gry-toggle-sub").hide();
+        $(".kolekcje-toggle-sub").hide();
+        $(".ksiazki-toggle").click(function(){
+          $(".ksiazki-toggle-sub").slideToggle();
+        });
+        $(".filmy-toggle").click(function(){
+          $(".filmy-toggle-sub").slideToggle();
+        });
+        $(".muzyka-toggle").click(function(){
+          $(".muzyka-toggle-sub").slideToggle();
+        });
+        $(".zabawki-toggle").click(function(){
+          $(".zabawki-toggle-sub").slideToggle();
+        });
+        $(".gry-toggle").click(function(){
+          $(".gry-toggle-sub").slideToggle();
+        });
+        $(".kolekcje-toggle").click(function(){
+          $(".kolekcje-toggle-sub").slideToggle();
+        });
+      });
+    </script>
   </head>
   <body>
 
@@ -74,10 +103,20 @@
           <div class="col-md-12 bg-dark">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <button class="tablinks btn" onclick="openCity(event, 'London')" id="defaultOpen">
-                  <a class="nav-link active text-light" href="#">Książki</a>
-                </button>
-                <ul class="nav flex-column">
+                <a class="nav-link ksiazki-toggle" href="#">
+                  <div class="row align-items-center">
+                    <div class="mr-auto col-sm-10">
+                      <button class="tablinks btn text-light font-weight-bold" onclick="openCity(event, 'London')" id="defaultOpen">
+                        Książki
+                      </button>
+                    </div>
+                    <div class="mr-auto text-light">
+                      <i class='fas fa-angle-down'></i>
+                    </div>
+                  </div>
+
+                </a>
+                <ul class="nav flex-column ksiazki-toggle-sub">
                   <li class="nav-item">
                     <a class="nav-link active text-light" href="#">K1</a>
                   </li>
@@ -99,29 +138,174 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <button class="tablinks btn" onclick="openCity(event, 'Paris')">
-                  <a class="nav-link text-light" href="#">Muzyka</a>
-                </button>
+                <a class="nav-link muzyka-toggle" href="#">
+                  <div class="row align-items-center">
+                    <div class="mr-auto col-sm-10">
+                      <button class="tablinks btn text-light font-weight-bold" onclick="openCity(event, 'London')" id="defaultOpen">
+                        Muzyka
+                      </button>
+                    </div>
+                    <div class="mr-auto text-light">
+                      <i class='fas fa-angle-down'></i>
+                    </div>
+                  </div>
+                </a>
+                <ul class="nav flex-column muzyka-toggle-sub">
+                  <li class="nav-item">
+                    <a class="nav-link active text-light" href="#">M1</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active text-light" href="#">M2</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active text-light" href="#">M3</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active text-light" href="#">M4</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active text-light" href="#">M5</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active text-light" href="#">M6</a>
+                  </li>
+                </ul>
               </li>
               <li class="nav-item">
-                <button class="tablinks btn" onclick="openCity(event, 'Tokyo')">
-                  <a class="nav-link text-light" href="#">Filmy</a>
-                </button>
+                <a class="nav-link filmy-toggle" href="#">
+                  <div class="row align-items-center">
+                    <div class="mr-auto col-sm-10">
+                      <button class="tablinks btn text-light font-weight-bold" onclick="openCity(event, 'London')" id="defaultOpen">
+                        Filmy
+                      </button>
+                    </div>
+                    <div class="mr-auto text-light">
+                      <i class='fas fa-angle-down'></i>
+                    </div>
+                  </div>
+                </a>
+                <ul class="nav flex-column filmy-toggle-sub">
+                  <li class="nav-item">
+                    <a class="nav-link active text-light" href="#">K1</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active text-light" href="#">K2</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active text-light" href="#">K3</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active text-light" href="#">K4</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active text-light" href="#">K5</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active text-light" href="#">K6</a>
+                  </li>
+                </ul>
               </li>
               <li class="nav-item">
-                <button class="tablinks btn" onclick="openCity(event, 'Tokyo')">
-                  <a class="nav-link text-light" href="#">Zabawki</a>
-                </button>
+                <a class="nav-link zabawki-toggle" href="#">
+                  <div class="row align-items-center">
+                    <div class="mr-auto col-sm-10">
+                      <button class="tablinks btn text-light font-weight-bold" onclick="openCity(event, 'London')" id="defaultOpen">
+                        Zabawki
+                      </button>
+                    </div>
+                    <div class="mr-auto text-light">
+                      <i class='fas fa-angle-down'></i>
+                    </div>
+                  </div>
+                </a>
+                <ul class="nav flex-column zabawki-toggle-sub">
+                  <li class="nav-item">
+                    <a class="nav-link active text-light" href="#">K1</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active text-light" href="#">K2</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active text-light" href="#">K3</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active text-light" href="#">K4</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active text-light" href="#">K5</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active text-light" href="#">K6</a>
+                  </li>
+                </ul>
               </li>
               <li class="nav-item">
-                <button class="tablinks btn" onclick="openCity(event, 'Tokyo')">
-                  <a class="nav-link text-light" href="#">Gry i programy</a>
-                </button>
+                <a class="nav-link gry-toggle" href="#">
+                  <div class="row align-items-center">
+                    <div class="mr-auto col-sm-10">
+                      <button class="tablinks btn text-light font-weight-bold" onclick="openCity(event, 'London')" id="defaultOpen">
+                        Gry i programy
+                      </button>
+                    </div>
+                    <div class="mr-auto text-light">
+                      <i class='fas fa-angle-down'></i>
+                    </div>
+                  </div>
+                </a>
+                <ul class="nav flex-column gry-toggle-sub">
+                  <li class="nav-item">
+                    <a class="nav-link active text-light" href="#">K1</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active text-light" href="#">K2</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active text-light" href="#">K3</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active text-light" href="#">K4</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active text-light" href="#">K5</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active text-light" href="#">K6</a>
+                  </li>
+                </ul>
               </li>
               <li class="nav-item">
-                <button class="tablinks btn" onclick="openCity(event, 'Tokyo')">
-                  <a class="nav-link text-light" href="#">Artykuły kolekcjonerskie</a>
-                </button>
+                <a class="nav-link kolekcje-toggle" href="#">
+                  <div class="row align-items-center">
+                    <div class="mr-auto col-sm-10">
+                      <button class="tablinks btn text-light font-weight-bold" onclick="openCity(event, 'London')" id="defaultOpen">
+                        Artykuły kolekcjonerskie
+                      </button>
+                    </div>
+                    <div class="mr-auto text-light">
+                      <i class='fas fa-angle-down'></i>
+                    </div>
+                  </div>
+                </a>
+                <ul class="nav flex-column kolekcje-toggle-sub">
+                  <li class="nav-item">
+                    <a class="nav-link active text-light" href="#">K1</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active text-light" href="#">K2</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active text-light" href="#">K3</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active text-light" href="#">K4</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active text-light" href="#">K5</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active text-light" href="#">K6</a>
+                  </li>
+                </ul>
               </li>
             </ul>
 
@@ -154,7 +338,7 @@
 
 
     <!-- Footer -->
-<footer class="page-footer font-small indigo text-white">
+<footer class="page-footer font-small text-white bg-dark">
     <!-- Footer Links -->
     <div class="container text-center text-md-left">
       <!-- Grid row -->
