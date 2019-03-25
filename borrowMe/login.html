@@ -8,11 +8,15 @@
     <meta charset="utf-8" />
     <link rel="stylesheet" href="./css/master.css">
     <link rel="stylesheet" href="./css/signin.css">
-    <link rel="stylesheet" href="css/bootstrap-social.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!--<link rel="stylesheet" href="css/bootstrap-social.css">-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/4.12.0/bootstrap-social.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
+    <script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
   </head>
   <body>
 	<script>
@@ -54,7 +58,7 @@
 	
 
 
-    <form class="form-signin text-center" action="./user-panel/index.html">
+    <!--<form class="form-signin text-center" action="./user-panel/index.html">
           <img class="mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
           <h1 class="h3 mb-3 font-weight-normal">Zaloguj się</h1>
           <label for="inputEmail" class="sr-only">Login</label>
@@ -68,12 +72,34 @@
           </div>
           <button class="btn btn-lg btn-primary btn-block" type="submit">Zaloguj się</button>
           <div class="fb-login-button mt-3" data-size="large" data-button-type="login_with" data-auto-logout-link="false" data-use-continue-as="false"></div>
-          <a class="btn btn-block btn-social btn-google mt-3">
-              <span class="fa fa-google"></span> Logowanie z Google
-          </a>
           <p class="mt-5 mb-3 text-muted">&copy; 2019</p>
 		
-        </form>
-
+        </form>-->
+    <div class="flex-column mt-7">
+    <div class="shadow p-3 mb-3 bg-white rounded">
+      <div class="card text-center">
+        <div class="card-body text-center">
+          <h2 class="card-title mb-5">Logowanie</h2>
+          <form>
+            <div class="form-group text-left mb-4">
+              <input id="email" type="email" class="form-control" required placeholder="Adres email" >
+            </div>
+            <div class="form-group text-left mb-4">
+              <input id="password" type="password" class="form-control" required placeholder="Hasło">
+            </div>
+            <div class="checkbox mb-3">
+              <label>
+                <input type="checkbox" value="remember-me"> Zapamiętaj mnie
+              </label>
+            </div>
+            <button type="submit" class="btn btn-raised btn-primary btn-block mb-3">Zaloguj</button>
+            <hr/>
+            <button class="btn-block loginBtn loginBtn--facebook mb-3">Kontynuuj przez Facebooka</button>
+            <button class="btn-block loginBtn loginBtn--google">Kontynuuj przez Google</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    </div>
   </body>
 </html>
