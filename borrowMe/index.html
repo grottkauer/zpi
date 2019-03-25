@@ -9,6 +9,24 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  /* Every time the window is scrolled ... */
+  $(window).scroll( function(){
+      /* Check the location of each desired element */
+      $('.hideme').each( function(i){
+          var bottom_of_object = $(this).position().top + $(this).outerHeight();
+          var bottom_of_window = $(window).scrollTop() + $(window).height();
+          /* If the object is completely visible in the window, fade it it */
+          if( bottom_of_window > bottom_of_object ){
+              $(this).animate({'opacity':'1'},1100);
+          }
+      });
+  });
+});
+</script>
+
   </head>
   <body>
 
@@ -80,7 +98,7 @@
 
     <div class="container">
 
-      <div class="row display-flex">
+      <div class="row display-flex hideme">
         <div class="col-md-6 text-center">
           <div class="col-md-12 jumbotron">
             <ul class="list-unstyled mb-0">
@@ -102,7 +120,7 @@
         </div>
       </div><br>
 
-      <div class="row display-flex">
+      <div class="row display-flex hideme">
         <div class="col-md-6 text-center">
           <div class="col-md-12 jumbotron">
             <ul class="list-unstyled mb-0">
@@ -125,7 +143,7 @@
         </div>
       </div><br>
 
-      <div class="row display-flex">
+      <div class="row display-flex hideme">
         <div class="col-md-6 text-center">
           <div class="col-md-12 jumbotron">
             <ul class="list-unstyled mb-0">
@@ -152,7 +170,7 @@
 
 
         <!-- TWÓRCY STRONY -->
-    <div class="container">
+    <div class="container hideme">
       <h2 class="text-center">Twórcy aplikacji: </h2>
       <div class="row">
         <div class="col-md-3">
