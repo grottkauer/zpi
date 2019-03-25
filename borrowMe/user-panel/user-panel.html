@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../css/master.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -45,6 +46,10 @@
               Witaj
             </button>
             <div class="dropdown-menu dropdown-menu-right">
+              <a class="dropdown-item" href="#">
+                Powiadomienia
+                <span class="badge badge-primary align-items-center">12</span>
+              </a>
               <a class="dropdown-item" href="user-panel.html">Panel użytkownika</a>
               <a class="dropdown-item" href="#">Moje dane</a>
               <a class="dropdown-item" href="../index.html">Wyloguj</a>
@@ -64,9 +69,16 @@
             <ul class="nav flex-column">
               <li class="nav-item">
                 <a class="nav-link active moje-towary" href="#">
-                  <button class="tablinks btn text-light font-weight-bold" onclick="openCity(event, 'London')" id="defaultOpen">
-                    Moje towary
-                  </button>
+                  <div class="d-flex align-items-center">
+                    <div class="p-1">
+                      <button class="tablinks btn text-light font-weight-bold" onclick="openCity(event, 'Category')" id="defaultOpen">
+                        Moje towary
+                      </button>
+                    </div>
+                    <div class="ml-auto text-light">
+                      <i class='fas fa-angle-down'></i>
+                    </div>
+                  </div>
                 </a>
                 <ul class="nav flex-column moje-towary-pod">
                   <li class="nav-item">
@@ -85,9 +97,16 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">
-                  <button class="tablinks btn wypozyczone-towary text-light font-weight-bold" onclick="openCity(event, 'Paris')">
-                    Wypożyczone towary
-                  </button>
+                  <div class="d-flex align-items-center">
+                    <div class="p-1">
+                      <button class="tablinks btn text-light font-weight-bold" onclick="openCity(event, 'Category')" id="defaultOpen">
+                        Wypożyczone towary
+                      </button>
+                    </div>
+                    <div class="ml-auto text-light">
+                      <i class='fas fa-angle-down'></i>
+                    </div>
+                  </div>
                 </a>
                 <ul class="nav flex-column wypozyczone-towary-pod">
                   <li class="nav-item">
@@ -103,9 +122,16 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">
-                  <button class="tablinks btn text-light font-weight-bold" onclick="openCity(event, 'Tokyo')">
-                    Moje punkty
-                  </button>
+                  <div class="d-flex align-items-center">
+                    <div class="p-1">
+                      <button class="tablinks btn text-light font-weight-bold" onclick="openCity(event, 'Category')" id="defaultOpen">
+                        Moje punkty
+                      </button>
+                    </div>
+                    <!-- <div class="ml-auto text-light">
+                      <i class='fas fa-angle-down'></i>
+                    </div> -->
+                  </div>
                 </a>
               </li>
             </ul>
