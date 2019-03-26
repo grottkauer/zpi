@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Views\Home\login.cshtml" />
+    <None Include="Views\Home\Login.cshtml" />
     <None Include="wwwroot\css\bootstrap-social.css" />
     <None Include="wwwroot\css\font-awesome\css\font-awesome.css" />
     <None Include="wwwroot\css\font-awesome\css\font-awesome.min.css" />
