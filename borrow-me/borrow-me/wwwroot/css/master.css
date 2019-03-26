@@ -1,0 +1,17 @@
+.indigo{background-color: indigo;}
+
+.text-indigo{color: indigo;}
+
+.row.display-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+.row.display-flex > [class*='col-'] {
+  display: flex;
+  flex-direction: column;
+}
+
+.hideme
+{
+    opacity:0;
+}
