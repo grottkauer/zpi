@@ -15,25 +15,13 @@ namespace borrow_me.Controllers
             return View();
         }
 
-        public IActionResult About()
-        {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
-
+        [Route("kontakt", Name ="contact")]
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Your contact page.";
-
             return View();
         }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
+        [Route("logowanie", Name ="login")]
         public IActionResult Login()
         {
             return View();
