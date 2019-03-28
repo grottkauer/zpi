@@ -16,14 +16,14 @@ public class HomeController {
 
     }
 
-    @GetMapping(value="/contact-us")
+    @GetMapping(value="/kontakt")
     public ModelAndView contact(){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("contact-us");
         return modelAndView;
     }
 
-    @GetMapping(value="/login")
+    @GetMapping(value="/logowanie")
     public ModelAndView login() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("login");
