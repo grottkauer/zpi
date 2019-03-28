@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org/">
   <head>
 	<meta charset="utf-8" />
     <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
@@ -35,26 +35,7 @@
 	<script async defer crossorigin="anonymous" src="https://connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v3.2&appId=707739519623447&autoLogAppEvents=1"></script>
 
     <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top clearfix">
-      <!-- Brand/logo -->
-      <a class="navbar-brand" href="index.html">Borrow Me!</a>
-
-      <!-- Links -->
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="index.html">Strona główna</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="contact-us.html">Kontakt</a>
-        </li>
-      </ul>
-
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Logowanie</a>
-        </li>
-      </ul>
-    </nav><br><br>
+    <nav th:replace="layout :: navigation"></nav><br><br>
 	
 
 
