@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org/">
   <head>
     <title>Borrow Me!</title>
     <meta charset="utf-8" />
@@ -42,41 +42,8 @@
   </head>
   <body>
 
-    <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top clearfix">
-      <!-- Brand/logo -->
-      <a class="navbar-brand" href="#">Borrow Me!</a>
-
-      <!-- Links -->
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Strona główna</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="contact-us.html">Kontakt</a>
-        </li>
-      </ul>
-
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <div class="dropdown">
-            <button type="button" class="btn dropdown-toggle text-light font-weight-bold" data-toggle="dropdown">
-              Witaj
-            </button>
-            <div class="dropdown-menu dropdown-menu-right">
-              <a class="dropdown-item" href="#">
-                Powiadomienia
-                <span class="badge badge-primary align-items-center">12</span>
-              </a>
-              <a class="dropdown-item" href="user-panel.html">Panel użytkownika</a>
-              <a class="dropdown-item" href="#">Moje dane</a>
-              <a class="dropdown-item" href="../index.html">Wyloguj</a>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </nav><br><br>
-
+  <!-- NAVBAR -->
+  <nav th:replace="user-panel/user_layout :: navigation"></nav><br><br>
 
     <!-- PRODUCTS NAVBAR -->
 

@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping(value = {"/user"})
+@RequestMapping(value = {"/moje-konto"})
 public class UserPanelController {
     @GetMapping(value="")
     public ModelAndView index() {
@@ -16,7 +16,7 @@ public class UserPanelController {
 
     }
 
-    @GetMapping(value="/contact-us")
+    @GetMapping(value="/kontakt")
     public ModelAndView contact(){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("user-panel/contact-us");

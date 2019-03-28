@@ -23,7 +23,7 @@ public class HomeController {
         return modelAndView;
     }
 
-    @GetMapping(value="/logowanie")
+    @GetMapping(value="/zaloguj")
     public ModelAndView login() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("login");
