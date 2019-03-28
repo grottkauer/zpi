@@ -33,11 +33,13 @@ public class HomeController {
     }
 
     @RequestMapping(value = "zaloguj", method = RequestMethod.POST)
-    public String processAddCHeeseForm(@RequestParam String email,@RequestParam String password)
+    public String processLogiIn(@RequestParam String email,@RequestParam String password)
     {
         String simple_email = "natalia@wp.pl";
         String simple_passw = "kotelki";
 
+        // TODO
+        // connect with server and check if user is there if true -> return user if false -> communicate
         boolean is_account = simple_email.equals(email) && simple_passw.equals(password);
 
         if (is_account)
