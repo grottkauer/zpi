@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org/">
   <head>
     <title>Borrow Me!</title>
     <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="Description" content="Pożyczaj przedmioty ludziom">
     <link rel="stylesheet" href="./css/master.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -13,26 +15,7 @@
   <body>
 
     <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top clearfix">
-      <!-- Brand/logo -->
-      <a class="navbar-brand" href="index.html">Borrow Me!</a>
-
-      <!-- Links -->
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="index.html">Strona główna</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Kontakt</a>
-        </li>
-      </ul>
-
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="login.html">Logowanie</a>
-        </li>
-      </ul>
-    </nav><br><br><br>
+    <nav th:replace="user-panel/user_layout :: navigation"></nav><br><br><br>
     <!-- KONTAKT Z FIRMĄ -->
 <div class="container">
     <!--Section: Contact v.2-->

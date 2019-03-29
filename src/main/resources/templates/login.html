@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org/">
   <head>
 	<meta charset="utf-8" />
     <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="Description" content="Pożyczaj przedmioty ludziom">
     <title>Borrow Me!</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="./css/master.css">
@@ -35,26 +36,7 @@
 	<script async defer crossorigin="anonymous" src="https://connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v3.2&appId=707739519623447&autoLogAppEvents=1"></script>
 
     <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top clearfix">
-      <!-- Brand/logo -->
-      <a class="navbar-brand" href="index.html">Borrow Me!</a>
-
-      <!-- Links -->
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="index.html">Strona główna</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="contact-us.html">Kontakt</a>
-        </li>
-      </ul>
-
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="#">Logowanie</a>
-        </li>
-      </ul>
-    </nav><br><br>
+    <nav th:replace="layout :: navigation"></nav><br><br>
 	
 
 
@@ -80,12 +62,12 @@
       <div class="card text-center">
         <div class="card-body text-center">
           <h2 class="card-title mb-5">Logowanie</h2>
-          <form action="./user-panel/index.html">
+          <form method="post">
             <div class="form-group text-left mb-4">
-              <input id="email" type="email" class="form-control" required placeholder="Adres email" >
+              <input name="email" type="email" class="form-control" required placeholder="Adres email" >
             </div>
             <div class="form-group text-left mb-4">
-              <input id="password" type="password" class="form-control" required placeholder="Hasło">
+              <input name="password" type="password" class="form-control" required placeholder="Hasło">
             </div>
             <div class="checkbox mb-3">
               <label>
