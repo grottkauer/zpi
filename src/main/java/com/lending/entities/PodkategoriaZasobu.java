@@ -15,6 +15,9 @@ public class PodkategoriaZasobu {
     @Column
     private String dataDodania;
 
+    @Column
+    private int stopienWyzejID;
+
     @ManyToOne
     @JoinColumn(name = "rodzajZasobuID")
     private RodzajZasobu rodzajZasobu;
@@ -23,11 +26,20 @@ public class PodkategoriaZasobu {
 
     }
 
-    public PodkategoriaZasobu(int podkategoriaZasobuID, String nazwa, String dataDodania, RodzajZasobu rodzajZasobu) {
+    public PodkategoriaZasobu(int podkategoriaZasobuID, String nazwa, String dataDodania, int stopienWyzejID, RodzajZasobu rodzajZasobu) {
         this.podkategoriaZasobuID = podkategoriaZasobuID;
         this.nazwa = nazwa;
         this.dataDodania = dataDodania;
+        this.stopienWyzejID = stopienWyzejID;
         this.rodzajZasobu = rodzajZasobu;
+    }
+
+    public int getStopienWyzejID() {
+        return stopienWyzejID;
+    }
+
+    public void setStopienWyzejID(int stopienWyzejID) {
+        this.stopienWyzejID = stopienWyzejID;
     }
 
     public int getPodkategoriaZasobuID() {

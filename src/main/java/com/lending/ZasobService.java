@@ -13,7 +13,7 @@ import java.util.List;
 
 @Service
 @Transactional
-public class ZasobService {
+public class ZasobService{
     private final ZasobRepository zasobRepository;
 
     @Autowired
@@ -31,9 +31,9 @@ public class ZasobService {
         return zasoby;
     }
 
-//    public Zasob getZasob(int id){
-//        return zasobRepository.findOne(id);
-//    }
+    public Zasob getZasob(int id){
+        return zasobRepository.findById(id).get();
+    }
 
     public void addZasob(Zasob zasob){
 
