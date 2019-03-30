@@ -29,4 +29,11 @@ public class UserPanelController {
         modelAndView.setViewName("user-panel/user-panel");
         return modelAndView;
     }
+
+    @GetMapping(value="/moje-dane")
+    public ModelAndView mojeDane() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("user-panel/my-account");
+        return modelAndView;
+    }
 }

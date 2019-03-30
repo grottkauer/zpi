@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org/">
+  <head>
+    <title>Borrow Me!</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="Description" content="Pożyczaj przedmioty ludziom">
+    <link rel="stylesheet" href="../css/master.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $(".moje-towary-pod").hide();
+        $(".wypozyczone-towary-pod").hide();
+        $(".moje-towary").click(function(){
+          $(".moje-towary-pod").slideToggle();
+        });
+        $(".wypozyczone-towary").click(function(){
+          $(".wypozyczone-towary-pod").slideToggle();
+        });
+      });
+    </script>
+      <script>
+          jQuery(document).ready(function($) {
+                $(".clickable-title").click(function() {
+                    window.location = $(this).data("href");
+                });
+            });
+      </script>
+      <script>
+          <!--$(document).ready(function(){-->
+              <!--$("#btn-append-photo").click(function(){-->
+                <!--$("#photos-1").append("<br>");-->
+                <!--$("#photos-1").append($( "#photos-1" ) );-->
+              <!--});-->
+            <!--});-->
+            $(document).ready(function(){
+                  $('#screens-duplicate-button').click(function () {
+                    $('.screens-duplicate:first').clone().appendTo('.another');
+                  });
+                  $('#screens-remove-button').click(function () {
+                    $('.screens-duplicate:first').detach();
+                  });
+                });
+      </script>
+  </head>
+  <body>
+  <!-- NAVBAR -->
+  <nav th:replace="user-panel/user_layout :: navigation"></nav><br><br><br>
+
+    <div class="container bg-light">
+      <h1 class="text-center">PANEL UŻYTKOWNIKA</h1>
+
+      <div class="row">
+        <div class="col-md-4">
+          <!-- Kategorie -->
+          <div class="col-md-12 bg-dark">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link active moje-towary" href="#">
+                  <div class="d-flex align-items-center">
+                    <div class="p-1">
+                      <button class="tablinks btn text-light font-weight-bold" onclick="openCity(event, 'showData')" id="defaultOpen">
+                        Dane konta
+                      </button>
+                    </div>
+                    <div class="ml-auto text-light">
+                      <i class='fas fa-angle-down'></i>
+                    </div>
+                  </div>
+                </a>
+                  <div class="moje-towary-pod">
+                      <ul class="nav flex-column">
+                          <li class="nav-item">
+                              <a class="nav-link active text-light" href="#">
+                                  <button class="tablinks btn text-light" onclick="openCity(event, 'editData')">
+                                      Edytuj swoje dane
+                                  </button>
+                              </a>
+                          </li>
+                          <li class="nav-item">
+                              <a class="nav-link active text-light" href="#">
+                                  <button class="tablinks btn text-light" onclick="openCity(event, 'changePassword')">
+                                      Zmień hasło
+                                  </button>
+                              </a>
+                          </li>
+                      </ul>
+                  </div>
+
+              </li>
+              <li class="nav-item">
+                <a class="nav-link wypozyczone-towary" href="#">
+                  <div class="d-flex align-items-center">
+                    <div class="p-1">
+                      <button class="tablinks btn text-light font-weight-bold" onclick="openCity(event, 'accountStats')">
+                        Statystyki konta
+                      </button>
+                    </div>
+                    <div class="ml-auto text-light">
+                      <i class='fas fa-angle-down'></i>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="col-md-8 jumbotron">
+            <!-- SZCZEGÓŁY -->
+            <div id="showData" class="tabcontent">
+              <h3>Moje dane:</h3>
+                <!-- TODO Moje dane -->
+                <div class="card text-center">
+                    <div class="card-header">
+                        <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Obecne produkty</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Archiwum produktów</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="editData" class="tabcontent">
+              <h3>Zmień dane</h3>
+                <!-- TODO Formularz zmiany danych -->
+            </div>
+
+            <div id="changePassword" class="tabcontent">
+              <h3>Zmień hasło</h3>
+                Podaj poprzednie hasło:
+                Podaj nowe hało:
+                Powtórz nowe hasło:
+                <!-- TODO Recaptcha-->
+            </div>
+
+            <div id="accountStats" class="tabcontent">
+              <h3>Statystyki konta</h3>
+                <!-- TODO Statystyki konta -->
+            </div>
+        </div>
+      </div>
+
+    </div>
+
+  </body>
+</html>
+<script>
+  function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+
+  // Get the element with id="defaultOpen" and click on it
+  document.getElementById("defaultOpen").click();
+</script>
