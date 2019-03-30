@@ -15,26 +15,26 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping(value = {"/moje-konto"})
 public class UserPanelController {
-    @Autowired
-    public ZasobRepository zasobRepository;
-
-    @Autowired
-    public RodzajZasobuRepository rodzajZasobuRepository;
-
-    @RequestMapping("/db")
-    @ResponseBody
-    public String testMethod() {
-        StringBuilder response = new StringBuilder();
-
-        for(RodzajZasobu rodzajZasobu: rodzajZasobuRepository.findAll()) {
-            response.append(rodzajZasobu).append("\n");
-            for(Zasob task: rodzajZasobu.getZasoby()) {      // 1
-                response.append("- ").append(task).append("\n");
-            }
-        }
-
-        return response.toString();
-    }
+//    @Autowired
+//    public ZasobRepository zasobRepository;
+//
+//    @Autowired
+//    public RodzajZasobuRepository rodzajZasobuRepository;
+//
+//    @RequestMapping("/db")
+//    @ResponseBody
+//    public String testMethod() {
+//        StringBuilder response = new StringBuilder();
+//
+//        for(RodzajZasobu rodzajZasobu: rodzajZasobuRepository.findAll()) {
+//            response.append(rodzajZasobu).append("\n");
+//            for(Zasob task: rodzajZasobu.getZasoby()) {      // 1
+//                response.append("- ").append(task).append("\n");
+//            }
+//        }
+//
+//        return response.toString();
+//    }
 
     @GetMapping(value="")
     public ModelAndView index() {
