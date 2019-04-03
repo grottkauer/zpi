@@ -1,9 +1,9 @@
 package com.lending.repositories;
 
-import com.lending.entities.RodzajZasobu;
+import com.lending.entities.PosiadanieZasobu;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface RodzajZasobuRepository extends CrudRepository<RodzajZasobu, Integer> {
+public interface PosiadanieZasobuRepository extends CrudRepository<PosiadanieZasobu, Integer> {
 }

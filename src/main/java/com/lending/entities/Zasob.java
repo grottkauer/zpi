@@ -1,11 +1,12 @@
 package com.lending.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-public class Zasob {
-    @Id
-    private int zasobID;
+@Table(name = "zasoby")
+public class Zasob extends EncjaBazowa{
 
     @Column
     private int punkty;
@@ -23,12 +24,17 @@ public class Zasob {
     @JoinColumn(name = "rodzajZasobuID")
     private RodzajZasobu rodzajZasobu;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "zasob")
+    private List<PosiadanieZasobu> posiadaniaZasobu = new ArrayList<>();
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "zasob")
+    private List<Zdjecie> zdjecia = new ArrayList<>();
+
     public Zasob(){
 
     }
 
-    public Zasob(int zasobID, int punkty, String nazwa, String kolor, double waga, RodzajZasobu rodzajZasobu) {
-        this.zasobID = zasobID;
+    public Zasob(int punkty, String nazwa, String kolor, double waga, RodzajZasobu rodzajZasobu) {
         this.punkty = punkty;
         this.nazwa = nazwa;
         this.kolor = kolor;
@@ -42,14 +48,6 @@ public class Zasob {
 
     public void setRodzajZasobuID(RodzajZasobu rodzajZasobu) {
         this.rodzajZasobu = rodzajZasobu;
-    }
-
-    public int getZasobID() {
-        return zasobID;
-    }
-
-    public void setZasobID(int zasobID) {
-        this.zasobID = zasobID;
     }
 
     public int getPunkty() {
@@ -85,6 +83,6 @@ public class Zasob {
     }
 
     public String toString(){
-        return zasobID + ", " + nazwa + "\n";
+        return super.getId() + ", " + nazwa + "\n";
     }
 }
