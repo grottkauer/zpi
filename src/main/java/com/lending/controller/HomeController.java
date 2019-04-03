@@ -18,6 +18,15 @@ public class HomeController {
 
     }
 
+    @GetMapping(value="in")
+    public ModelAndView indexSnd() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("index_snd");
+        return modelAndView;
+
+    }
+
+
     @GetMapping(value="kontakt")
     public ModelAndView contact(){
         ModelAndView modelAndView = new ModelAndView();
