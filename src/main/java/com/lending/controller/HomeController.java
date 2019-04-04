@@ -23,7 +23,13 @@ public class HomeController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("index_snd");
         return modelAndView;
+    }
 
+    @GetMapping(value="login")
+    public ModelAndView loginSnd() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("log");
+        return modelAndView;
     }
 
 

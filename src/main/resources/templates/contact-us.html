@@ -1,208 +1,83 @@
 <!DOCTYPE html>
 <html lang="pl" xmlns:th="http://www.thymeleaf.org/">
   <head>
-    <title>Borrow Me!</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta name="Description" content="Pożyczaj przedmioty ludziom">
-    <link rel="stylesheet" href="/css/master.css">
-    <link rel="stylesheet" href="/css/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="/bootstrap-4.3.1/css/bootstrap.min.css">
-  <script src="/jquery-3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="/bootstrap-4.3.1/js/bootstrap.min.js"></script>
+      <head th:replace="layout :: template_header"></head>
   </head>
   <body>
-
-    <!-- NAVBAR -->
-    <nav th:replace="layout :: navigation"></nav><br><br><br>
-    <!-- KONTAKT Z FIRMĄ -->
-<div class="container">
-    <!--Section: Contact v.2-->
-  <section class="mb-4">
-
-    <!--Section heading-->
-    <h2 class="h1-responsive font-weight-bold text-center my-4">Skontaktuj się z nami</h2>
-    <!--Section description-->
-    <p class="text-center w-responsive mx-auto mb-5">Masz do nas jakieś pytania?
-        Nie zastanawiaj się i napisz do nas z problemami. Nasi pracownicy odezwą się do Ciebie z pełnym szacunkiem.</p>
-
-    <div class="row">
-
-        <!--Grid column-->
-        <div class="col-md-9 mb-md-0 mb-5">
-            <form id="contact-form" name="contact-form" action="mail.php" method="POST">
-
-                <!--Grid row-->
-                <div class="row">
-
-                    <!--Grid column-->
-                    <div class="col-md-6">
-                        <div class="md-form mb-0">
-                            <input type="text" id="name" name="name" class="form-control">
-                            <label for="name" class="">Twoje imię</label>
-                        </div>
-                    </div>
-                    <!--Grid column-->
-
-                    <!--Grid column-->
-                    <div class="col-md-6">
-                        <div class="md-form mb-0">
-                            <input type="text" id="email" name="email" class="form-control">
-                            <label for="email" class="">Twój email</label>
-                        </div>
-                    </div>
-                    <!--Grid column-->
-
-                </div>
-                <!--Grid row-->
-
-                <!--Grid row-->
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="md-form mb-0">
-                            <input type="text" id="subject" name="subject" class="form-control">
-                            <label for="subject" class="">Temat wiadomości</label>
-                        </div>
-                    </div>
-                </div>
-                <!--Grid row-->
-
-                <!--Grid row-->
-                <div class="row">
-
-                    <!--Grid column-->
-                    <div class="col-md-12">
-
-                        <div class="md-form">
-                            <textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea"></textarea>
-                            <label for="message">Twoja wiadomość</label>
-                        </div>
-
-                    </div>
-                </div>
-                <!--Grid row-->
-
-            </form>
-
-            <div class="text-center text-md-left">
-                <a class="btn btn-primary" onclick="calidateForm()">Send</a>
-            </div>
-            <div class="status"></div>
-        </div>
-        <!--Grid column-->
-
-        <!--Grid column-->
-        <div class="col-md-3 text-center">
-            <ul class="list-unstyled mb-0">
-                <li><i class="fa fa-map-marker fa-2x"></i>
-                    <p>Wrocław, Politechnika Wrocławska, Polska</p>
-                </li>
-
-                <li><i class="fa fa-phone mt-4 fa-2x"></i>
-                    <p>+ 01 234 567 89</p>
-                </li>
-
-                <li><i class="fa fa-envelope mt-4 fa-2x"></i>
-                    <p>contact@borrowme.pl</p>
-                </li>
-            </ul>
-        </div>
-        <!--Grid column-->
-
-    </div>
-
-  </section>
-  <!--Section: Contact v.2-->
-</div>
-
-
-
-        <!-- TWÓRCY STRONY -->
-    <div class="container">
-      <h2 class="text-center">Twórcy aplikacji: </h2>
-      <div class="row">
-        <div class="col-md-3">
-          <div class="card">
-            <img class="card-img-top" src="https://placehold.it/350x180" alt="Card image">
-            <div class="card-body">
-              <h4 class="card-title">Aleksandra Druciak</h4>
-              <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-              <a href="#" class="btn btn-primary">See Profile</a>
-            </div>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+      <div class="container">
+          <a class="navbar-brand js-scroll-trigger" href="#page-top">BorrowMe!</a>
+          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                  data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                  aria-label="Toggle navigation">
+              Menu
+              <i class="fas fa-bars"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+              <ul class="navbar-nav text-uppercase ml-auto">
+                  <li class="nav-item">
+                      <a class="nav-link js-scroll-trigger" href="/in">Strona Główna</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link js-scroll-trigger" href="/login">Logowanie</a>
+                  </li>
+              </ul>
           </div>
-        </div>
-        <div class="col-md-3">
-          <div class="card">
-            <div class="card-body">
-              <h4 class="card-title">Natalia Gąsiorowska</h4>
-              <p class="card-text">Some example text some example text. Jane Doe is an architect and engineer</p>
-              <a href="#" class="btn btn-primary">See Profile</a>
-            </div>
-            <img class="card-img-bottom" src="https://placehold.it/350x180" alt="Card image">
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="card">
-            <img class="card-img-top" src="https://placehold.it/350x180" alt="Card image">
-            <div class="card-body">
-              <h4 class="card-title">Michał Krause</h4>
-              <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-              <a href="#" class="btn btn-primary">See Profile</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3">
-          <div class="card">
-            <div class="card-body">
-              <h4 class="card-title">Jan Żyrek</h4>
-              <p class="card-text">Some example text some example text. Jane Doe is an architect and engineer</p>
-              <a href="#" class="btn btn-primary">See Profile</a>
-            </div>
-            <img class="card-img-bottom" src="https://placehold.it/350x180" alt="Card image">
-          </div>
-        </div>
-
       </div>
+  </nav>
 
-    </div><br>
-
-    <!-- Footer -->
-    <footer th:replace="layout :: foot"></footer>
-
+  <!-- Contact -->
+  <section id="contact">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-12 text-center">
+                  <h2 class="section-heading text-uppercase">Skontaktuj się z nami</h2>
+                  <h3 class="section-subheading text-muted">Postaramy się odpowiedzieć na każde pytanie w jak najszybszym czasie :)</h3>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-lg-12">
+                  <form id="contactForm" name="sentMessage" novalidate="novalidate">
+                      <div class="row">
+                          <div class="col-md-6">
+                              <div class="form-group">
+                                  <input class="form-control" id="name" type="text" placeholder="Twoje imię *"
+                                         required="required" data-validation-required-message="Proszę podać swoje imię.">
+                                  <p class="help-block text-danger"></p>
+                              </div>
+                              <div class="form-group">
+                                  <input class="form-control" id="email" type="email" placeholder="Twój e-mail *"
+                                         required="required"
+                                         data-validation-required-message="Proszę podać swój adres e-mail.">
+                                  <p class="help-block text-danger"></p>
+                              </div>
+                              <div class="form-group">
+                                  <input class="form-control" id="phone" type="tel" placeholder="Twój numer telefonu *"
+                                         required="required"
+                                         data-validation-required-message="Proszę podać swój numer telefonu.">
+                                  <p class="help-block text-danger"></p>
+                              </div>
+                          </div>
+                          <div class="col-md-6">
+                              <div class="form-group">
+                                <textarea class="form-control" id="message" placeholder="Twoja wiadomość *"
+                                          required="required"
+                                          data-validation-required-message="Proszę podać swoją wiadomość."></textarea>
+                                  <p class="help-block text-danger"></p>
+                              </div>
+                          </div>
+                          <div class="clearfix"></div>
+                          <div class="col-lg-12 text-center">
+                              <div id="success"></div>
+                              <button id="sendMessageButton" class="btn btn-primary btn-xl text-uppercase" type="submit">
+                                  Wyślij
+                              </button>
+                          </div>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </section>
   </body>
-</html>
-
-<script>
-  function validateForm() {
-  var name =  document.getElementById('name').value;
-  if (name == "") {
-      document.getElementById('status').innerHTML = "Name cannot be empty";
-      return false;
-  }
-  var email =  document.getElementById('email').value;
-  if (email == "") {
-      document.getElementById('status').innerHTML = "Email cannot be empty";
-      return false;
-  } else {
-      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      if(!re.test(email)){
-          document.getElementById('status').innerHTML = "Email format invalid";
-          return false;
-      }
-  }
-  var subject =  document.getElementById('subject').value;
-  if (subject == "") {
-      document.getElementById('status').innerHTML = "Subject cannot be empty";
-      return false;
-  }
-  var message =  document.getElementById('message').value;
-  if (message == "") {
-      document.getElementById('status').innerHTML = "Message cannot be empty";
-      return false;
-  }
-  document.getElementById('status').innerHTML = "Sending...";
-  document.getElementById('contact-form').submit();
-
-  }
-</script>
