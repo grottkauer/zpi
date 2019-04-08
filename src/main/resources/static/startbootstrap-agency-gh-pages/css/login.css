@@ -1,0 +1,5 @@
+section#login{
+ background-image: url(‘./img/login-bg.png’);
+ background-size: cover;
+ background-repeat: no-repeat;
+}
