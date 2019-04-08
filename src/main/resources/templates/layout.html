@@ -25,6 +25,13 @@
 	
     <!-- Custom styles for this template -->
     <link href="../startbootstrap-agency-gh-pages/css/agency.min.css" rel="stylesheet">
+
+    <!-- Added css files -->
+    <link href="../css/master.css" rel="stylesheet">
+
+    <!-- Added jquery files -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 </head>
 <body id="page-top">
 
@@ -61,113 +68,43 @@
 </nav>
 
 <!-- Footer -->
-<footer class="page-footer font-small indigo text-white" th:fragment="foot">
-    <!-- Footer Links -->
-    <div class="container text-center text-md-left">
-        <!-- Grid row -->
+<footer th:fragment="foot">
+    <div class="container">
         <div class="row">
-            <!-- Grid column -->
-            <div class="col-md-3 mx-auto">
-                <!-- Links -->
-                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
-                <ul class="list-unstyled">
-                    <li>
-                        <a class="text-white" href="#!">Very long link 1</a>
+            <div class="col-md-4">
+                <span class="copyright">Copyright &copy; Your Website 2019</span>
+            </div>
+            <div class="col-md-4">
+                <ul class="list-inline social-buttons">
+                    <li class="list-inline-item">
+                        <a href="#">
+                            <i class="fab fa-twitter"></i>
+                        </a>
                     </li>
-                    <li>
-                        <a class="text-white" href="#!">Very long link 2</a>
+                    <li class="list-inline-item">
+                        <a href="#">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
                     </li>
-                    <li>
-                        <a class="text-white" href="#!">Very long link 3</a>
-                    </li>
-                    <li>
-                        <a class="text-white" href="#!">Very long link 4</a>
+                    <li class="list-inline-item">
+                        <a href="#">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
                     </li>
                 </ul>
             </div>
-            <!-- Grid column -->
-            <hr class="clearfix w-100 d-md-none">
-            <!-- Grid column -->
-            <div class="col-md-3 mx-auto">
-                <!-- Links -->
-                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
-                <ul class="list-unstyled">
-                    <li>
-                        <a class="text-white" href="#!">Link 1</a>
+            <div class="col-md-4">
+                <ul class="list-inline quicklinks">
+                    <li class="list-inline-item">
+                        <a href="#">Privacy Policy</a>
                     </li>
-                    <li>
-                        <a class="text-white" href="#!">Link 2</a>
-                    </li>
-                    <li>
-                        <a class="text-white" href="#!">Link 3</a>
-                    </li>
-                    <li>
-                        <a class="text-white" href="#!">Link 4</a>
+                    <li class="list-inline-item">
+                        <a href="#">Terms of Use</a>
                     </li>
                 </ul>
             </div>
-            <!-- Grid column -->
-            <hr class="clearfix w-100 d-md-none">
-            <!-- Grid column -->
-            <div class="col-md-3 mx-auto">
-                <!-- Links -->
-                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
-
-                <ul class="list-unstyled">
-                    <li>
-                        <a class="text-white" href="#!">Link 1</a>
-                    </li>
-                    <li>
-                        <a class="text-white" href="#!">Link 2</a>
-                    </li>
-                    <li>
-                        <a class="text-white" href="#!">Link 3</a>
-                    </li>
-                    <li>
-                        <a class="text-white" href="#!">Link 4</a>
-                    </li>
-                </ul>
-
-            </div>
-            <!-- Grid column -->
-
-            <hr class="clearfix w-100 d-md-none">
-
-            <!-- Grid column -->
-            <div class="col-md-3 mx-auto">
-
-                <!-- Links -->
-                <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
-
-                <ul class="list-unstyled">
-                    <li>
-                        <a class="text-white" href="#!">Link 1</a>
-                    </li>
-                    <li>
-                        <a class="text-white" href="#!">Link 2</a>
-                    </li>
-                    <li>
-                        <a class="text-white" href="#!">Link 3</a>
-                    </li>
-                    <li>
-                        <a class="text-white" href="#!">Link 4</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- Grid column -->
         </div>
-        <!-- Grid row -->
     </div>
-    <!-- Footer Links -->
-
-    <!-- Copyright -->
-    <div class="footer-copyright text-center py-3 text-secondary">© 2018 Copyright:
-        <a class="text-white" href="https://mdbootstrap.com/education/bootstrap/"> MDBootstrap.com</a>
-    </div>
-    <!-- Copyright -->
-
 </footer>
-<!-- Footer -->
-
 </body>
 </html>
