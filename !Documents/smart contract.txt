@@ -3,8 +3,8 @@ Nie są stosem papieru wypełnionym prawnym i trudnym do zrozumienia językiem. 
 weryfikacja umów pod kątem prawnym. Inteligentne umowy to cyfrowe wersje tych tradycyjnych. Są to najzwyczajniej programy, 
 które działają na platformie Ethereum w ramach technologii blockchain i mają to samo znaczenie: prawnie związać każdą osobę, 
 która ma zamiar uczestniczyć w zawarciu umowy. To nic innego jak linie kodu napisanego w języku Solidity porównywalnym do języka Java Script.
- Kod ten jest następnie przekształcany w kod bajotowy i wydany do blokady jako inteligentny kontrakt. Każda umowa ma własny adres blokowy.
- Oznacza to, że jeśli zaczynasz porozumiewanie się z kimś, umowa zostanie utworzona w ramach blokady, a jej adres będzie dostępny dla 
+ Kod ten jest następnie przekształcany w kod bajotowy i wydany do blokady jako inteligentny kontrakt. Każda umowa ma własny address blokowy.
+ Oznacza to, że jeśli zaczynasz porozumiewanie się z kimś, umowa zostanie utworzona w ramach blokady, a jej address będzie dostępny dla
 wszystkich zainteresowanych stron. Następnie można użyć go do interakcji z inteligentną umową i wypełnić zobowiązania do rozpoczęcia jej 
 realizacji. Warto zwrócić uwagę, że inteligentne umowy mogą również łączyć się i współpracować z innymi inteligentnymi umowami. 
 Cały proces odbywa się na zasadzie blokady, a zatem realizacja inteligentnej umowy jest przejrzysta, pewna, niezmienna, niedroga i zdecentralizowana.

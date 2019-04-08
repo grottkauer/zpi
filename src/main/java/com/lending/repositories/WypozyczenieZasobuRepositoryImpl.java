@@ -2,18 +2,11 @@ package com.lending.repositories;
 
 import com.lending.contracts.BorrowMeContract;
 import com.lending.contracts.BorrowMeContractConnector;
-import com.lending.entities.WypozyczenieZasobu;
+import com.lending.entities.ResourceRenting;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
-import org.web3j.crypto.Credentials;
-import org.web3j.protocol.Web3j;
 import org.web3j.protocol.core.methods.response.TransactionReceipt;
-import org.web3j.protocol.http.HttpService;
 import org.web3j.tuples.generated.Tuple8;
-import org.web3j.tx.RawTransactionManager;
-import org.web3j.tx.TransactionManager;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -54,13 +47,13 @@ public class WypozyczenieZasobuRepositoryImpl implements WypozyczenieZasobuRepos
     }
 
     @Override
-    public <S extends WypozyczenieZasobu> S save(S entity) {
+    public <S extends ResourceRenting> S save(S entity) {
         TransactionReceipt receipt = null;
         try {
             receipt = contract.createBorrowing(
-                    entity.getDawca().getKluczEthereum(),
-                    entity.getBiorca().getKluczEthereum(),
-                    BigInteger.valueOf(entity.getZasob().getId())
+                    entity.getGiver().getEthereumKey(),
+                    entity.getGetter().getEthereumKey(),
+                    BigInteger.valueOf(entity.getResource().getId())
             ).sendAsync().get();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -71,14 +64,14 @@ public class WypozyczenieZasobuRepositoryImpl implements WypozyczenieZasobuRepos
     }
 
     @Override
-    public <S extends WypozyczenieZasobu> Iterable<S> saveAll(Iterable<S> entities) {
+    public <S extends ResourceRenting> Iterable<S> saveAll(Iterable<S> entities) {
         entities.forEach((entity) -> save(entity));
         return entities;
     }
 
 
     @Override
-    public Optional<WypozyczenieZasobu> findById(Integer id) {
+    public Optional<ResourceRenting> findById(Integer id) {
         Tuple8<BigInteger, String, String, BigInteger, BigInteger, BigInteger, BigInteger, BigInteger> wypozyczenieTuple = null;
         try {
             wypozyczenieTuple = contract
@@ -91,7 +84,7 @@ public class WypozyczenieZasobuRepositoryImpl implements WypozyczenieZasobuRepos
             e.printStackTrace();
         }
 
-        WypozyczenieZasobu wypozyczenieZasobu = new WypozyczenieZasobu(
+        ResourceRenting resourceRenting = new ResourceRenting(
                 wypozyczenieTuple.getValue1().intValue(),
                 uzytkownikRepository.getUzytkownikByKluczEthereum(wypozyczenieTuple.getValue2()),
                 uzytkownikRepository.getUzytkownikByKluczEthereum(wypozyczenieTuple.getValue3()),
@@ -99,10 +92,10 @@ public class WypozyczenieZasobuRepositoryImpl implements WypozyczenieZasobuRepos
                 new Date(wypozyczenieTuple.getValue5().longValue()),
                 new Date(wypozyczenieTuple.getValue6().longValue()),
                 new Date(wypozyczenieTuple.getValue7().longValue()),
-                WypozyczenieZasobu.StatusWypozyczenia.fromInteger(wypozyczenieTuple.getValue8().intValue())
+                ResourceRenting.RentingStatus.fromInteger(wypozyczenieTuple.getValue8().intValue())
         );
 
-        return Optional.of(wypozyczenieZasobu);
+        return Optional.of(resourceRenting);
     }
 
     @Override
@@ -111,9 +104,9 @@ public class WypozyczenieZasobuRepositoryImpl implements WypozyczenieZasobuRepos
     }
 
     @Override
-    public Iterable<WypozyczenieZasobu> findAll() {
+    public Iterable<ResourceRenting> findAll() {
         int count = (int) count();
-        List<WypozyczenieZasobu> wypozyczenia = new ArrayList<WypozyczenieZasobu>(count);
+        List<ResourceRenting> wypozyczenia = new ArrayList<ResourceRenting>(count);
         for(int i = 0; i<count;i++){
             wypozyczenia.add(findById(i).get());
         }
@@ -121,11 +114,11 @@ public class WypozyczenieZasobuRepositoryImpl implements WypozyczenieZasobuRepos
     }
 
     @Override
-    public Iterable<WypozyczenieZasobu> findAllById(Iterable<Integer> ids) {
+    public Iterable<ResourceRenting> findAllById(Iterable<Integer> ids) {
         int count = (int) count();
-        List<WypozyczenieZasobu> wypozyczenia = new ArrayList<WypozyczenieZasobu>(count);
+        List<ResourceRenting> wypozyczenia = new ArrayList<ResourceRenting>(count);
         for(int i = 0; i<count;i++){
-            WypozyczenieZasobu wypozyczenie = findById(i).get();
+            ResourceRenting wypozyczenie = findById(i).get();
             if(containsHelper(ids, wypozyczenie.getId()))
                 wypozyczenia.add(wypozyczenie);
         }
@@ -157,13 +150,13 @@ public class WypozyczenieZasobuRepositoryImpl implements WypozyczenieZasobuRepos
     }
 
     @Override
-    public void delete(WypozyczenieZasobu entity) {
+    public void delete(ResourceRenting entity) {
 
     }
 
 
     @Override
-    public void deleteAll(Iterable<? extends WypozyczenieZasobu> entities) {
+    public void deleteAll(Iterable<? extends ResourceRenting> entities) {
 
     }
 

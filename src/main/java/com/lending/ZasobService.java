@@ -1,7 +1,6 @@
 package com.lending;
 
-import com.lending.entities.RodzajZasobu;
-import com.lending.entities.Zasob;
+import com.lending.entities.Resource;
 import com.lending.repositories.RodzajZasobuRepository;
 import com.lending.repositories.ZasobRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,25 +22,25 @@ public class ZasobService{
         this.zasobRepository = zasobRepository;
     }
 
-    public List<Zasob> findAll(){
-        List<Zasob> zasoby = new ArrayList<>();
-        for (Zasob zasob: zasobRepository.findAll()){
-            zasoby.add(zasob);
+    public List<Resource> findAll(){
+        List<Resource> zasoby = new ArrayList<>();
+        for (Resource resource : zasobRepository.findAll()){
+            zasoby.add(resource);
         }
         return zasoby;
     }
 
-    public Zasob getZasob(int id){
+    public Resource getZasob(int id){
         return zasobRepository.findById(id).get();
     }
 
-    public void addZasob(Zasob zasob){
+    public void addZasob(Resource resource){
 
-        zasobRepository.save(zasob);
+        zasobRepository.save(resource);
     }
 
-    public void updateZasob(Zasob zasob){
-        zasobRepository.save(zasob);
+    public void updateZasob(Resource resource){
+        zasobRepository.save(resource);
     }
 
     public void deleteZasob(int id){

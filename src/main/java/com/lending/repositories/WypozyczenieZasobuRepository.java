@@ -1,9 +1,6 @@
 package com.lending.repositories;
 
-import com.lending.entities.WypozyczenieZasobu;
-import org.springframework.context.annotation.Bean;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
+import com.lending.entities.ResourceRenting;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
@@ -11,25 +8,25 @@ import java.util.Optional;
 @Repository
 public interface WypozyczenieZasobuRepository {
 
-    <S extends WypozyczenieZasobu> S save(S entity);
+    <S extends ResourceRenting> S save(S entity);
 
-    <S extends WypozyczenieZasobu> Iterable<S> saveAll(Iterable<S> entities);
+    <S extends ResourceRenting> Iterable<S> saveAll(Iterable<S> entities);
 
-    Optional<WypozyczenieZasobu> findById(Integer id);
+    Optional<ResourceRenting> findById(Integer id);
 
     boolean existsById(Integer integer);
 
-    Iterable<WypozyczenieZasobu> findAll();
+    Iterable<ResourceRenting> findAll();
 
-    Iterable<WypozyczenieZasobu> findAllById(Iterable<Integer> ids);
+    Iterable<ResourceRenting> findAllById(Iterable<Integer> ids);
 
     long count();
 
     void deleteById(Integer integer);
 
-    void delete(WypozyczenieZasobu entity);
+    void delete(ResourceRenting entity);
 
-    void deleteAll(Iterable<? extends WypozyczenieZasobu> entities);
+    void deleteAll(Iterable<? extends ResourceRenting> entities);
 
     void deleteAll();
 }

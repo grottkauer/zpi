@@ -1,9 +1,9 @@
 package com.lending.repositories;
 
-import com.lending.entities.Powiadomienie;
+import com.lending.entities.Notification;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PowiadomienieRepository extends CrudRepository<Powiadomienie, Integer> {
+public interface PowiadomienieRepository extends CrudRepository<Notification, Integer> {
 }

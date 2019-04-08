@@ -1,11 +1,9 @@
 package com.lending.services;
 
-import com.lending.entities.Uzytkownik;
-import com.lending.entities.WypozyczenieZasobu;
-import com.lending.entities.Zasob;
-import com.lending.repositories.UzytkownikRepository;
+import com.lending.entities.User;
+import com.lending.entities.ResourceRenting;
+import com.lending.entities.Resource;
 import com.lending.repositories.WypozyczenieZasobuRepository;
-import com.lending.repositories.ZasobRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,15 +17,15 @@ public class WypozyczenieZasobuService {
         this.wypozyczenieZasobuRepository = wypozyczenieZasobuRepository;
     }
 
-    public WypozyczenieZasobu getWypozyczenie(int id){
+    public ResourceRenting getWypozyczenie(int id){
         return wypozyczenieZasobuRepository.findById(id).get();
     }
 
-    public WypozyczenieZasobu createWypozyczenie(Uzytkownik dawca, Uzytkownik biorca, Zasob zasob){
-        WypozyczenieZasobu wypozyczenieZasobu = new WypozyczenieZasobu();
-        wypozyczenieZasobu.setDawca(dawca);
-        wypozyczenieZasobu.setBiorca(biorca);
-        wypozyczenieZasobu.setZasob(zasob);
-        return wypozyczenieZasobuRepository.save(wypozyczenieZasobu);
+    public ResourceRenting createWypozyczenie(User dawca, User biorca, Resource resource){
+        ResourceRenting resourceRenting = new ResourceRenting();
+        resourceRenting.setGiver(dawca);
+        resourceRenting.setGetter(biorca);
+        resourceRenting.setResource(resource);
+        return wypozyczenieZasobuRepository.save(resourceRenting);
     }
 }

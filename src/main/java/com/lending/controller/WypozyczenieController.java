@@ -1,6 +1,6 @@
 package com.lending.controller;
 
-import com.lending.entities.WypozyczenieZasobu;
+import com.lending.entities.ResourceRenting;
 import com.lending.repositories.UzytkownikRepository;
 import com.lending.repositories.ZasobRepository;
 import com.lending.services.WypozyczenieZasobuService;
@@ -35,8 +35,8 @@ public class WypozyczenieController {
     @RequestMapping(value = "/wypozyczenieGet", method = GET)
     @ResponseBody
     public String wypozyczenieGet(){
-        WypozyczenieZasobu wypozyczenieZasobu = wypozyczenieZasobuService.getWypozyczenie(0);
-        return wypozyczenieZasobu.toString();
+        ResourceRenting resourceRenting = wypozyczenieZasobuService.getWypozyczenie(0);
+        return resourceRenting.toString();
     }
 
 }
