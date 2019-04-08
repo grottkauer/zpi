@@ -9,17 +9,17 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping(value = {"/moje-konto"})
 public class UserPanelController {
 //    @Autowired
-//    public ZasobRepository zasobRepository;
+//    public ResourceRepository resourceRepository;
 //
 //    @Autowired
-//    public RodzajZasobuRepository rodzajZasobuRepository;
+//    public ResourceTypeRepository resourceTypeRepository;
 //
 //    @RequestMapping("/db")
 //    @ResponseBody
 //    public String testMethod() {
 //        StringBuilder response = new StringBuilder();
 //
-//        for(ResourceType rodzajZasobu: rodzajZasobuRepository.findAll()) {
+//        for(ResourceType rodzajZasobu: resourceTypeRepository.findAll()) {
 //            response.append(rodzajZasobu).append("\n");
 //            for(Resource task: rodzajZasobu.getResources()) {      // 1
 //                response.append("- ").append(task).append("\n");

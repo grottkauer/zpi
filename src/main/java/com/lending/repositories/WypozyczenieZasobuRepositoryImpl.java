@@ -30,12 +30,12 @@ public class WypozyczenieZasobuRepositoryImpl implements WypozyczenieZasobuRepos
     private UzytkownikRepository uzytkownikRepository;
 
     @Autowired
-    private ZasobRepository zasobRepository;
+    private ResourceRepository resourceRepository;
 
     public WypozyczenieZasobuRepositoryImpl(UzytkownikRepository uzytkownikRepository,
-                                            ZasobRepository zasobRepository) {
+                                            ResourceRepository resourceRepository) {
         this.uzytkownikRepository = uzytkownikRepository;
-        this.zasobRepository = zasobRepository;
+        this.resourceRepository = resourceRepository;
         try {
             contractConnector = new BorrowMeContractConnector(privateKey, contractAddres);
             contract = contractConnector.getBorrowMeContract();
@@ -88,7 +88,7 @@ public class WypozyczenieZasobuRepositoryImpl implements WypozyczenieZasobuRepos
                 wypozyczenieTuple.getValue1().intValue(),
                 uzytkownikRepository.getUzytkownikByKluczEthereum(wypozyczenieTuple.getValue2()),
                 uzytkownikRepository.getUzytkownikByKluczEthereum(wypozyczenieTuple.getValue3()),
-                zasobRepository.findById(wypozyczenieTuple.getValue4().intValue()).get(),
+                resourceRepository.findById(wypozyczenieTuple.getValue4().intValue()).get(),
                 new Date(wypozyczenieTuple.getValue5().longValue()),
                 new Date(wypozyczenieTuple.getValue6().longValue()),
                 new Date(wypozyczenieTuple.getValue7().longValue()),

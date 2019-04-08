@@ -6,7 +6,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "resources")
-public class Resource extends EncjaBazowa{
+public class Resource extends BaseEntity {
 
     @Column
     private int points;

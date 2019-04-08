@@ -1,10 +1,9 @@
 package com.lending.repositories;
 
-import com.lending.entities.Resource;
+import com.lending.entities.Image;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ZasobRepository extends CrudRepository<Resource, Integer> {
-
+public interface ImageRepository extends CrudRepository<Image, Integer> {
 }

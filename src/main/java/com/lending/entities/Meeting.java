@@ -5,7 +5,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "spotkania")
-public class Meeting extends EncjaBazowa{
+public class Meeting extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "adres_id")

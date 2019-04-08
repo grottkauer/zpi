@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "adresy")
-public class Address extends EncjaBazowa{
+public class Address extends BaseEntity {
 
 
     @Column(nullable = false)

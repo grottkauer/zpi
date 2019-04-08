@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 
 @Component
-public class ResourceRenting extends EncjaBazowa{
+public class ResourceRenting extends BaseEntity {
 
     public enum RentingStatus {
         Utworzone, Zrealizowane, Oddane;

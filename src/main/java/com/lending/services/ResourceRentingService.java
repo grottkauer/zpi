@@ -8,12 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class WypozyczenieZasobuService {
+public class ResourceRentingService {
 
     private WypozyczenieZasobuRepository wypozyczenieZasobuRepository;
 
     @Autowired
-    public WypozyczenieZasobuService(WypozyczenieZasobuRepository wypozyczenieZasobuRepository) {
+    public ResourceRentingService(WypozyczenieZasobuRepository wypozyczenieZasobuRepository) {
         this.wypozyczenieZasobuRepository = wypozyczenieZasobuRepository;
     }
 
@@ -21,10 +21,10 @@ public class WypozyczenieZasobuService {
         return wypozyczenieZasobuRepository.findById(id).get();
     }
 
-    public ResourceRenting createWypozyczenie(User dawca, User biorca, Resource resource){
+    public ResourceRenting createWypozyczenie(User giver, User getter, Resource resource){
         ResourceRenting resourceRenting = new ResourceRenting();
-        resourceRenting.setGiver(dawca);
-        resourceRenting.setGetter(biorca);
+        resourceRenting.setGiver(giver);
+        resourceRenting.setGetter(getter);
         resourceRenting.setResource(resource);
         return wypozyczenieZasobuRepository.save(resourceRenting);
     }

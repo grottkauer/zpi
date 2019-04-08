@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "zdjecia")
-public class Image extends EncjaBazowa{
+public class Image extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "zasob_id")

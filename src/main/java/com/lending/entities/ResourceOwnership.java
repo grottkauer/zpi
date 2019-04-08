@@ -5,7 +5,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "resourcesOwnerships")
-public class ResourceOwnership extends EncjaBazowa{
+public class ResourceOwnership extends BaseEntity {
 
     @Column(nullable = false)
     private Date addDate;

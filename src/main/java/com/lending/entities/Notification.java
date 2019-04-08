@@ -5,7 +5,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "powiadomienia")
-public class Notification extends EncjaBazowa{
+public class Notification extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "nadawcaID")
