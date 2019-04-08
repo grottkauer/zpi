@@ -21,8 +21,12 @@ public class RodzajZasobu {
     @OneToMany(mappedBy = "rodzajZasobu", cascade = CascadeType.ALL)
     private List<Zasob> zasoby;
 
-    @OneToMany(mappedBy = "rodzajZasobu", cascade = CascadeType.ALL)
-    private List<PodkategoriaZasobu> podkategorieZasobu;
+    @OneToMany(mappedBy = "stopienWyzej", cascade = CascadeType.ALL)
+    private List<RodzajZasobu> stopnieWyzej;
+
+    @ManyToOne
+    @JoinColumn(name = "stopienWyzejID")
+    private RodzajZasobu stopienWyzej;
 
     public RodzajZasobu(){
 
@@ -34,12 +38,27 @@ public class RodzajZasobu {
         this.dataDodania = dataDodania;
     }
 
-    public List<PodkategoriaZasobu> getPodkategorieZasobu() {
-        return podkategorieZasobu;
+    public RodzajZasobu(int rodzajZasobuID, String nazwa, String dataDodania, RodzajZasobu stopienWyzej) {
+        this.rodzajZasobuID = rodzajZasobuID;
+        this.nazwa = nazwa;
+        this.dataDodania = dataDodania;
+        this.stopienWyzej = stopienWyzej;
     }
 
-    public void setPodkategorieZasobu(List<PodkategoriaZasobu> podkategorieZasobu) {
-        this.podkategorieZasobu = podkategorieZasobu;
+    public RodzajZasobu getStopienWyzej() {
+        return stopienWyzej;
+    }
+
+    public void setStopienWyzej(RodzajZasobu stopienWyzej) {
+        this.stopienWyzej = stopienWyzej;
+    }
+
+    public List<RodzajZasobu> getStopnieWyzej() {
+        return stopnieWyzej;
+    }
+
+    public void setStopnieWyzej(List<RodzajZasobu> stopnieWyzej) {
+        this.stopnieWyzej = stopnieWyzej;
     }
 
     public List<Zasob> getZasoby() {
