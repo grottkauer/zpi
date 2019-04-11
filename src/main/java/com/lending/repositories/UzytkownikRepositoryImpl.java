@@ -21,4 +21,14 @@ public class UzytkownikRepositoryImpl implements UzytkownikRepositoryCustom {
         }
         return null;
     }
+
+    public User getUzytkownikByEthereumAddress(String ethereumAddress) {
+
+        for (User u: uzytkownikRepository.findAll()) {
+            if(u.getEthereumAddress().toLowerCase().equals(ethereumAddress.toLowerCase()))
+                return u;
+        }
+        return null;
+    }
+
 }

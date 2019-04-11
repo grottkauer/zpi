@@ -106,4 +106,17 @@ public class ResourceRenting extends BaseEntity {
     public void setRentingStatus(RentingStatus rentingStatus) {
         this.rentingStatus = rentingStatus;
     }
+
+    @Override
+    public String toString() {
+        return "ResourceRenting{" +
+                "giver=" + giver +
+                ", getter=" + getter +
+                ", resource=" + resource +
+                ", addDate=" + addDate +
+                ", realisationDate=" + realisationDate +
+                ", giveBackDate=" + giveBackDate +
+                ", rentingStatus=" + rentingStatus +
+                '}';
+    }
 }

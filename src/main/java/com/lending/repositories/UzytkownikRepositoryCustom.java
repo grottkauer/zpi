@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UzytkownikRepositoryCustom {
     User getUzytkownikByKluczEthereum(String kluczEthereum);
+    User getUzytkownikByEthereumAddress(String ethereumAddress);
 }

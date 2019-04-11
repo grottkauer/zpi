@@ -20,7 +20,7 @@ import java.util.stream.StreamSupport;
 public class WypozyczenieZasobuRepositoryImpl implements WypozyczenieZasobuRepository {
 
     static String privateKey = "704f7159d16f05e611306d71c61b98722c9e8ade2395e9bbfcf8dfa92caa27b1";
-    static String contractAddres = "0xE60903Efd7dB59BA673669bB15D3464676F272C7";
+    static String contractAddres = "0x6F3b46efbFC0E57F3f27d8a4c6aCF92DE72a42cc";
 
 
     private BorrowMeContractConnector contractConnector;
@@ -36,25 +36,24 @@ public class WypozyczenieZasobuRepositoryImpl implements WypozyczenieZasobuRepos
                                             ResourceRepository resourceRepository) {
         this.uzytkownikRepository = uzytkownikRepository;
         this.resourceRepository = resourceRepository;
-        try {
-            contractConnector = new BorrowMeContractConnector(privateKey, contractAddres);
+
+            contractConnector = new BorrowMeContractConnector(privateKey);
+            contractConnector.connectBorrowMeContract();
             contract = contractConnector.getBorrowMeContract();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
     }
 
     @Override
     public <S extends ResourceRenting> S save(S entity) {
         TransactionReceipt receipt = null;
+        BigInteger resourceID = BigInteger.valueOf(entity.getResource().getId());
         try {
             receipt = contract.createBorrowing(
-                    entity.getGiver().getEthereumKey(),
-                    entity.getGetter().getEthereumKey(),
-                    BigInteger.valueOf(entity.getResource().getId())
+                    entity.getGiver().getEthereumAddress(),
+                    entity.getGetter().getEthereumAddress(),
+                    resourceID
             ).sendAsync().get();
+
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
@@ -86,8 +85,8 @@ public class WypozyczenieZasobuRepositoryImpl implements WypozyczenieZasobuRepos
 
         ResourceRenting resourceRenting = new ResourceRenting(
                 wypozyczenieTuple.getValue1().intValue(),
-                uzytkownikRepository.getUzytkownikByKluczEthereum(wypozyczenieTuple.getValue2()),
-                uzytkownikRepository.getUzytkownikByKluczEthereum(wypozyczenieTuple.getValue3()),
+                uzytkownikRepository.getUzytkownikByEthereumAddress(wypozyczenieTuple.getValue2()),
+                uzytkownikRepository.getUzytkownikByEthereumAddress(wypozyczenieTuple.getValue3()),
                 resourceRepository.findById(wypozyczenieTuple.getValue4().intValue()).get(),
                 new Date(wypozyczenieTuple.getValue5().longValue()),
                 new Date(wypozyczenieTuple.getValue6().longValue()),

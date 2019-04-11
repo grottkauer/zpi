@@ -215,6 +215,6 @@ INSERT INTO resources(id, points, weight, name, resource_typeid)
 INSERT INTO resources(id, points, weight, name, resource_typeid) VALUES (2, 3, 0.5, 'drugi resource', 1);
 INSERT INTO resources(id, points, weight, name, resource_typeid) VALUES (3, 3, 0.5, 'trzeci resource', 1);
 
-INSERT INTO users(id, login, password, ethereum_key, email, last_name, first_name, join_date, birth_date, recall_date, adres_id)
-VALUES  (1, 'jan', 'kowalski','704f7159d16f05e611306d71c61b98722c9e8ade2395e9bbfcf8dfa92caa27b1','jan@kowalski.com','kowalski','jan', '2019-03-15','1980-06-29','2020-03-15',NULL ),
-        (2, 'zbigniew', 'nowak','af2b6729ab77cddfd86ee4f39231353bd142e2a5ab561098ae892269d24d1624','znigniew@nowak.com','nowak','zbigniew', '2019-03-15','1980-06-29','2020-03-15',NULL );
+INSERT INTO users(id, login, password, ethereum_address ,ethereum_key, email, last_name, first_name, join_date, birth_date, recall_date, adres_id)
+VALUES  (1, 'jan', 'kowalski','0xb058ce0a76c7F87a08d75E2699C53AE62B0817C4','af2b6729ab77cddfd86ee4f39231353bd142e2a5ab561098ae892269d24d1624','jan@kowalski.com','kowalski','jan', '2019-03-15','1980-06-29','2020-03-15',NULL ),
+        (2, 'zbigniew', 'nowak','0x3e673F7F53e2B04e77aE7E6C3b995A536ACa7Bf6','dc5ac2f7f3a70f00bec0b02e6d98930c3aad5539c7b36d1857b4ccfcf42653ba','znigniew@nowak.com','nowak','zbigniew', '2019-03-15','1980-06-29','2020-03-15',NULL );

@@ -16,6 +16,9 @@ public class User extends BaseEntity {
     private String password;
 
     @Column(nullable = false)
+    private String ethereumAddress;
+
+    @Column(nullable = false)
     private String ethereumKey;
 
     @Column(nullable = false)
@@ -52,9 +55,10 @@ public class User extends BaseEntity {
     public User() {
     }
 
-    public User(String login, String password, String ethereumKey, String email, String lastName, String firstName, Date joinDate, Date birthDate, Date recallDate, Address address) {
+    public User(String login, String password, String ethereumAddress, String ethereumKey, String email, String lastName, String firstName, Date joinDate, Date birthDate, Date recallDate, Address address) {
         this.login = login;
         this.password = password;
+        this.ethereumAddress = ethereumAddress;
         this.ethereumKey = ethereumKey;
         this.email = email;
         this.lastName = lastName;
@@ -151,5 +155,13 @@ public class User extends BaseEntity {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public String getEthereumAddress() {
+        return ethereumAddress;
+    }
+
+    public void setEthereumAddress(String ethereumAddress) {
+        this.ethereumAddress = ethereumAddress;
     }
 }
