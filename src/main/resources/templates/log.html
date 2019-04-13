@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Pożyczaj przedmioty ludziom">
+    <meta name="author" content="">
+    <meta name="theme-color" content="#fed136">
+
+    <title>BorrowMe!</title>
+
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Bootstrap core CSS -->
+    <link href="../startbootstrap-agency-gh-pages/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="../startbootstrap-agency-gh-pages/vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
+          type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet'
+          type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- FavIcon -->
+    <link rel="shortcut icon" type="image/png" href="https://raw.githubusercontent.com/grottkauer/zpi/master/!Documents/icons/32.png">
+
+    <!-- Custom styles for this template -->
+    <link href="../startbootstrap-agency-gh-pages/css/agency.min.css" rel="stylesheet">
+
+    <!-- Added css files -->
+    <link rel="stylesheet" href="./css/master.css">
+    <link rel="stylesheet" href="./css/signin.css">
+    <link href="../startbootstrap-agency-gh-pages/css/login.css" rel="stylesheet">
+    <!--<link rel="stylesheet" href="css/bootstrap-social.css">-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/4.12.0/bootstrap-social.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
+    <script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
+</head>
+<body>
+<script>
+		window.fbAsyncInit = function() {
+		FB.init({
+			appId            : '707739519623447',
+			autoLogAppEvents : true,
+			xfbml            : true,
+			version          : 'v3.2'
+		});
+		};
+
+
+
+</script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script async defer src="https://connect.facebook.net/pl_PL/sdk.js"></script>
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v3.2&appId=707739519623447&autoLogAppEvents=1"></script>
+<nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="/">BorrowMe!</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+                aria-label="Toggle navigation">
+            Menu
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav text-uppercase ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link js-scroll-trigger" href="/">Strona Główna</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<section id="login">
+    <div class="container">
+            <div class="card text-center">
+                <div class="card-body text-center">
+                    <h2 class="card-title mb-5">Logowanie</h2>
+                    <form method="post">
+                        <div class="form-group text-left mb-4">
+                            <input name="email" type="email" class="form-control" required placeholder="Adres email" >
+                        </div>
+                        <div class="form-group text-left mb-4">
+                            <input name="password" type="password" class="form-control" required placeholder="Hasło">
+                        </div>
+                        <div class="checkbox mb-3">
+                            <label>
+                                <input type="checkbox" value="remember-me"> Zapamiętaj mnie
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-raised btn-primary btn-block mb-3">Zaloguj</button>
+                        <hr/>
+                        <button class="btn-block loginBtn loginBtn--facebook mb-3">Kontynuuj przez Facebooka</button>
+                        <button class="btn-block loginBtn loginBtn--google">Kontynuuj przez Google</button>
+                    </form>
+                </div>
+            </div>
+    </div>
+</section>
+<!-- Bootstrap core JavaScript -->
+<script src="../startbootstrap-agency-gh-pages/vendor/jquery/jquery.min.js"></script>
+<script src="../startbootstrap-agency-gh-pages/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="../startbootstrap-agency-gh-pages/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Contact form JavaScript -->
+<script src="../startbootstrap-agency-gh-pages/js/jqBootstrapValidation.js"></script>
+<script src="../startbootstrap-agency-gh-pages/js/contact_me.js"></script>
+
+<!-- Custom scripts for this template -->
+<script src="../startbootstrap-agency-gh-pages/js/agency.min.js"></script>
+</body>
+</html>

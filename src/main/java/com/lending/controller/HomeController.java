@@ -18,6 +18,14 @@ public class HomeController {
 
     }
 
+    @GetMapping(value="login")
+    public ModelAndView loginSnd() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("log");
+        return modelAndView;
+    }
+
+
     @GetMapping(value="kontakt")
     public ModelAndView contact(){
         ModelAndView modelAndView = new ModelAndView();
