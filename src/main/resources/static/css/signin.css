@@ -2,17 +2,11 @@ body#login-body {
   background-image: url("../images/login-bg.png");
   background-repeat: no-repeat;
   background-size: cover;
-  height:100vh;
+  height:100%;
 }
 
 .full-height{
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    width: 100%;
-    min-height: 100%;
-    padding: 20px;
+  height: 100%;
 }
 
 .card {
