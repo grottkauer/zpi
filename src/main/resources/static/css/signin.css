@@ -11,6 +11,10 @@ body#login-body {
   position: relative;
 }
 
+.option-font {
+  font-size: small;
+}
+
 .card {
   position: absolute;
   width:350px;
