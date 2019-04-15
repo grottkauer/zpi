@@ -104,4 +104,7 @@ hr {
   .full-height {
     bottom: -25px;
   }
+  .cardRegistry {
+    width: 350px;
+  }
 }
