@@ -40,6 +40,38 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/bootstrap-material-design@4.1.1/dist/js/bootstrap-material-design.js" integrity="sha384-CauSuKpEqAFajSpkdjv3z9t8E7RlpJ1UP0lKM/+NdtSarroVKu069AlsRPKkFBz9" crossorigin="anonymous"></script>
     <script>$(document).ready(function() { $('body').bootstrapMaterialDesign(); });</script>
+    <!-- Toggle between login, registration, password reset -->
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#register").hide();
+            $("#reset").hide();
+            $("#btnRegisterReset").click(function(e){
+                $("#reset").hide();
+                $("#register").show();
+                e.preventDefault();
+            });
+            $("#btnRegister").click(function(e){
+                $("#login").hide();
+                $("#register").show();
+                e.preventDefault();
+            });
+            $("#btnLogin").click(function(e){
+                $("#login").show();
+                $("#register").hide();
+                e.preventDefault();
+            });
+            $("#btnReset").click(function(e){
+                $("#reset").show();
+                $("#login").hide();
+                e.preventDefault();
+            });
+            $("#btnLoginReset").click(function(e){
+                $("#login").show();
+                $("#reset").hide();
+                e.preventDefault();
+            });
+        });
+    </script>
 </head>
 <body id="login-body">
 <script>
@@ -78,9 +110,10 @@
         </div>
     </div>
 </nav>
-<!--<section>-->
+<!--Login-->
 <div class="d-flex justify-content-center align-items-center full-height">
-    <div class="card text-center">
+<!-- Login -->
+    <div id="login"  class="card cardLogin text-center">
         <div class="card-body text-center">
             <h2 class="card-title mb-5">Logowanie</h2>
             <form method="post">
@@ -102,20 +135,94 @@
                 <hr/>
                 <div class="d-flex">
                     <div class="p-2 flex-fill font-weight-light text-muted text-left" style="font-size: 13px">Nie pamiętasz hasła?</div>
-                    <div class="p-2 flex-fill text-right" style="font-size: 13px">Zresetuj hasło</div>
+                    <div class="p-2 flex-fill text-right" style="font-size: 13px"><a href="" id="btnReset">Zresetuj hasło</a></div>
                 </div>
                 <div class="d-flex">
                     <div class="p-2 flex-fill font-weight-light text-muted text-left" style="font-size: 13px">Nie masz konta?</div>
-                    <div class="p-2 flex-fill text-right" style="font-size: 13px">Zarejestruj się</div>
+                    <div class="p-2 flex-fill text-right" style="font-size: 13px"><a href="" id="btnRegister">Zarejestruj się</a></div>
+                </div>
+            </form>
+        </div>
+    </div>
+<!--    Rejestracja-->
+    <div id="register" class="card cardRegistry text-center">
+        <div class="card-body text-center">
+            <h2 class="card-title mb-5">Rejestracja</h2>
+            <form method="post">
+                <div class="form-group text-left">
+                    <input name="email" type="email" class="form-control" required placeholder="Adres email" >
+                </div>
+                <div class="d-flex">
+                    <div class="pr-2 flex-fill form-group text-left">
+                        <input name="password" type="password" class="form-control" required placeholder="Hasło">
+                    </div>
+                    <div class="pl-2 flex-fill form-group text-left">
+                        <input name="repeatPassword" type="password" class="form-control" required placeholder="Powtórz hasło">
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div class="pr-2 flex-fill form-group text-left">
+                        <input name="firstName" type="text" class="form-control" required placeholder="Imię">
+                    </div>
+                    <div class="pl-2 flex-fill form-group text-left">
+                        <input name="lastName" type="text" class="form-control" required placeholder="Nazwisko">
+                    </div>
+                </div>
+                <div class="form-group text-left">
+                    <input name="birthDate" type="date" class="form-control" required placeholder="Data urodzenia">
+                </div>
+                <div class="d-flex">
+                    <div class="pr-2 flex-fill form-group text-left">
+                        <input name="zipCode" type="text" class="form-control" required placeholder="Kod pocztowy">
+                    </div>
+                    <div class="pl-2 flex-fill form-group text-left">
+                        <input name="city" type="text" class="form-control" required placeholder="Miejscowość">
+                    </div>
+                </div>
+                <div class="d-flex">
+                    <div class="pr-2 form-group text-left" style="flex: 1 0 0">
+                        <input name="street" type="text" class="form-control" required placeholder="Ulica">
+                    </div>
+                    <div class="pl-2 d-flex" style="flex: 1 0 0">
+                        <div class="flex-fill form-group text-left">
+                            <input name="homeNr" type="text" class="form-control" required placeholder="Nr domu">
+                        </div>
+                        <div class="pl-2 flex-fill form-group text-left">
+                            <input name="flatNr" type="text" class="form-control" required placeholder="Nr mieszkania">
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-raised btn-primary btn-block mb-3">Zarejestruj</button>
+                <hr/>
+                <div class="d-flex">
+                    <div class="p-2 flex-fill font-weight-light text-muted text-left" style="font-size: 13px">Masz już konto?</div>
+                    <div class="p-2 flex-fill text-right" style="font-size: 13px"><a id="btnLogin" href="">Zaloguj się</a></div>
+                </div>
+            </form>
+        </div>
+    </div>
+<!--  Resetowanie hasła  -->
+    <div id="reset" class="card cardReset text-center">
+        <div class="card-body text-center">
+            <h2 class="card-title mb-5">Resetowanie hasła</h2>
+            <form method="post">
+                <div class="form-group text-left mb-4">
+                    <input name="email" type="email" class="form-control" required placeholder="Adres email" >
+                </div>
+                <button type="submit" class="btn btn-raised btn-primary btn-block mb-3">Resetuj hasło</button>
+                <hr/>
+                <div class="d-flex">
+                    <div class="p-2 flex-fill font-weight-light text-muted text-left" style="font-size: 13px">Nie masz konta?</div>
+                    <div class="p-2 flex-fill text-right" style="font-size: 13px"><a href="" id="btnRegisterReset">Zarejestruj się</a></div>
+                </div>
+                <div class="d-flex">
+                    <div class="p-2 flex-fill text-center mt-5" style="font-size: 13px; background-color: #f2f2f2" ><a class="text-dark font-weight-bold" id="btnLoginReset" href="">Powrót do logowania</a></div>
                 </div>
             </form>
         </div>
     </div>
 </div>
 
-</div>
-
-<!--</section>-->
 <!-- Bootstrap core JavaScript -->
 <script src="../startbootstrap-agency-gh-pages/vendor/jquery/jquery.min.js"></script>
 <script src="../startbootstrap-agency-gh-pages/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -129,5 +236,7 @@
 
 <!-- Custom scripts for this template -->
 <script src="../startbootstrap-agency-gh-pages/js/agency.min.js"></script>
+
+
 </body>
 </html>

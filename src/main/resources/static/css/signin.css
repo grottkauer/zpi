@@ -1,3 +1,7 @@
+a:hover{
+  text-decoration: none;
+}
+
 body#login-body {
   background-image: url("../images/login-bg.png");
   background-repeat: no-repeat;
@@ -11,15 +15,19 @@ body#login-body {
   position: relative;
 }
 
-.option-font {
-  font-size: small;
-}
-
-.card {
+.cardLogin, .cardReset {
   position: absolute;
   width:350px;
   text-align:center;
   margin: 0 auto;
+}
+
+.cardRegistry {
+    position: absolute;
+    width:700px;
+    text-align:center;
+    margin: 0 auto;
+    /*display: none;*/
 }
 
 hr {
