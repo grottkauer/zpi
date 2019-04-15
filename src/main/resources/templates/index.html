@@ -36,21 +36,25 @@
     <!-- Added jquery files -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+
+   <!-- Added service worker registration-->
+    <script src="../js/main.js"></script>
+
     <script>
-const PATH = '../js/service-worker.js';
+       // ServiceWorker is a progressive technology. Ignore unsupported browsers
+        if ('serviceWorker' in navigator) {
+          console.log('CLIENT: service worker registration in progress.');
+          navigator.serviceWorker.register('/service-worker.js').then(function() {
+            console.log('CLIENT: service worker registration complete.');
+          }, function() {
+            console.log('CLIENT: service worker registration failure.');
+          });
+        } else {
+          console.log('CLIENT: service worker is not supported.');
+        }
+    </script>
 
-let isServiceWorkersSupport = ('serviceWorker' in navigator);
-
-if (isServiceWorkersSupport) {
-    console.log('Will service worker register?');
-    navigator.serviceWorker.register(PATH).then(function () {
-        console.log("Yes it did.");
-    }).catch(function (err) {
-        console.log("No it didn't. This happened: ", err)
-    });
-}
-</script>
-
+    <!-- Added jquery onScroll-->
     <script type="text/javascript">
 $(document).ready(function() {
   /* Every time the window is scrolled ... */

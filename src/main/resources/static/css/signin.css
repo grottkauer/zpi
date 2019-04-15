@@ -7,7 +7,7 @@ body#login-body {
 
 .full-height{
   height: 100%;
-  bottom: -80px;
+  bottom: -25px;
   position: relative;
 }
 
@@ -90,6 +90,6 @@ hr {
 
 @media (max-width: 640px) {
   .full-height {
-    bottom: -40px;
+    bottom: -25px;
   }
 }
