@@ -1,34 +1,27 @@
 package com.lending.controller;
 
-import com.lending.ZasobService;
-import com.lending.entities.RodzajZasobu;
-import com.lending.entities.Zasob;
-import com.lending.repositories.RodzajZasobuRepository;
-import com.lending.repositories.ZasobRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping(value = {"/moje-konto"})
 public class UserPanelController {
 //    @Autowired
-//    public ZasobRepository zasobRepository;
+//    public ResourceRepository resourceRepository;
 //
 //    @Autowired
-//    public RodzajZasobuRepository rodzajZasobuRepository;
+//    public ResourceTypeRepository resourceTypeRepository;
 //
 //    @RequestMapping("/db")
 //    @ResponseBody
 //    public String testMethod() {
 //        StringBuilder response = new StringBuilder();
 //
-//        for(RodzajZasobu rodzajZasobu: rodzajZasobuRepository.findAll()) {
+//        for(ResourceType rodzajZasobu: resourceTypeRepository.findAll()) {
 //            response.append(rodzajZasobu).append("\n");
-//            for(Zasob task: rodzajZasobu.getZasoby()) {      // 1
+//            for(Resource task: rodzajZasobu.getResources()) {      // 1
 //                response.append("- ").append(task).append("\n");
 //            }
 //        }

@@ -1,41 +1,34 @@
-/*
-.form-signin {
-  width: 100%;
-  max-width: 330px;
-  padding: 15px;
-  margin: 0 auto;
-}
-.form-signin .checkbox {
-  font-weight: 400;
+a:hover{
+  text-decoration: none;
 }
 
-.form-signin .form-control {
+body#login-body {
+  height:100%;
+  overflow: hidden;
+}
+
+.full-height{
+  min-height: 100%;
+  margin-top: 20px;
   position: relative;
-  box-sizing: border-box;
-  height: auto;
-  padding: 10px;
-  font-size: 16px;
+  background-image: url("../images/login-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
-.form-signin .form-control:focus {
-  z-index: 2;
-}
-.form-signin input[type="email"] {
-  margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-}
-.form-signin input[type="password"] {
-  margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-}
-*/
 
-.card {
+.cardLogin, .cardReset {
   position: absolute;
   width:350px;
   text-align:center;
   margin: 0 auto;
+}
+
+.cardRegistry {
+    position: absolute;
+    width:700px;
+    text-align:center;
+    margin: 0 auto;
+    /*display: none;*/
 }
 
 hr {
@@ -106,4 +99,23 @@ hr {
 .loginBtn--google:hover,
 .loginBtn--google:focus {
   background: #E74B37;
+}
+
+@media (max-height: 650px) {
+  /*.cardRegistry {*/
+  /*  width: 350px;*/
+  /*}*/
+  .card {
+    top: 60px;
+  }
+}
+
+@media (max-width: 700px) {
+  .card {
+    width: 350px;
+  }
+  body#login-body {
+    overflow: scroll;
+  }
+  /*  TODO: background image should be stretched to the end of card*/
 }
