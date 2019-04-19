@@ -57,4 +57,11 @@ public class UserPanelController {
         modelAndView.setViewName("user-panel/my-account");
         return modelAndView;
     }
+
+    @GetMapping(value="/wypozyczenie")
+    public ModelAndView borrow() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("user-panel/borrow-panel");
+        return modelAndView;
+    }
 }

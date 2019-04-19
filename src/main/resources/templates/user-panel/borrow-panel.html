@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html lang="pl" xmlns:th="http://www.thymeleaf.org/">
-<head>
-    <meta charset="UTF-8"/>
-    <title></title>
-</head>
+<head th:replace="layout :: template_header"></head>
 <body>
 
+<nav th:replace="user-panel/user_layout :: navi"></nav>
 <!-- Portfolio Grid -->
 <section class="bg-light" id="portfolio">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h2 class="section-heading text-uppercase">Portfolio</h2>
-                <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                <h2 class="section-heading text-uppercase">Chcesz coś wypożyczyć? </h2>
+                <h3 class="section-subheading text-muted">Przygotowaliśmy dla Ciebie kilka kategorii</h3>
             </div>
         </div>
         <div class="row">
@@ -20,84 +18,92 @@
                 <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
                     <div class="portfolio-hover">
                         <div class="portfolio-hover-content">
-                            <i class="fas fa-plus fa-3x"></i>
+                            <i class="fas fa-book-open fa-3x"></i>
                         </div>
                     </div>
-                    <img class="img-fluid" src="img/portfolio/01-thumbnail.jpg" alt="">
+                    <img class="img-fluid" src="../../images/categories/book.jpg" alt="Książki">
                 </a>
                 <div class="portfolio-caption">
-                    <h4>Threads</h4>
-                    <p class="text-muted">Illustration</p>
+                    <h4>Książki</h4>
+                    <!--<p class="text-muted">Illustration</p>-->
                 </div>
             </div>
             <div class="col-md-4 col-sm-6 portfolio-item">
                 <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
                     <div class="portfolio-hover">
                         <div class="portfolio-hover-content">
-                            <i class="fas fa-plus fa-3x"></i>
+                            <i class="fas fa-film fa-3x"></i>
                         </div>
                     </div>
-                    <img class="img-fluid" src="img/portfolio/02-thumbnail.jpg" alt="">
+                    <img class="img-fluid" src="../../images/categories/movies_test.png" alt="Filmy">
                 </a>
                 <div class="portfolio-caption">
-                    <h4>Explore</h4>
-                    <p class="text-muted">Graphic Design</p>
+                    <h4>Filmy</h4>
                 </div>
             </div>
             <div class="col-md-4 col-sm-6 portfolio-item">
                 <a class="portfolio-link" data-toggle="modal" href="#portfolioModal3">
                     <div class="portfolio-hover">
                         <div class="portfolio-hover-content">
-                            <i class="fas fa-plus fa-3x"></i>
+                            <i class="fas fa-music fa-3x"></i>
                         </div>
                     </div>
-                    <img class="img-fluid" src="img/portfolio/03-thumbnail.jpg" alt="">
+                    <img class="img-fluid" src="../../images/categories/music.png" alt="Muzyka">
                 </a>
                 <div class="portfolio-caption">
-                    <h4>Finish</h4>
-                    <p class="text-muted">Identity</p>
+                    <h4>Muzyka</h4>
                 </div>
             </div>
             <div class="col-md-4 col-sm-6 portfolio-item">
                 <a class="portfolio-link" data-toggle="modal" href="#portfolioModal4">
                     <div class="portfolio-hover">
                         <div class="portfolio-hover-content">
-                            <i class="fas fa-plus fa-3x"></i>
+                            <i class="fas fa-cubes fa-3x"></i>
                         </div>
                     </div>
-                    <img class="img-fluid" src="img/portfolio/04-thumbnail.jpg" alt="">
+                    <img class="img-fluid" src="../../images/categories/board_games.jpg" alt="Gry planszowe">
                 </a>
                 <div class="portfolio-caption">
-                    <h4>Lines</h4>
-                    <p class="text-muted">Branding</p>
+                    <h4>Planszówki</h4>
                 </div>
             </div>
             <div class="col-md-4 col-sm-6 portfolio-item">
                 <a class="portfolio-link" data-toggle="modal" href="#portfolioModal5">
                     <div class="portfolio-hover">
                         <div class="portfolio-hover-content">
-                            <i class="fas fa-plus fa-3x"></i>
+                            <i class="fas fa-stamp fa-3x"></i>
                         </div>
                     </div>
-                    <img class="img-fluid" src="img/portfolio/05-thumbnail.jpg" alt="">
+                    <img class="img-fluid" src="../../images/categories/collections.jpg" alt="Artykuły kolekcjonerskie">
                 </a>
                 <div class="portfolio-caption">
-                    <h4>Southwest</h4>
-                    <p class="text-muted">Website Design</p>
+                    <h4>Kolekcjonerstwo</h4>
                 </div>
             </div>
             <div class="col-md-4 col-sm-6 portfolio-item">
                 <a class="portfolio-link" data-toggle="modal" href="#portfolioModal6">
                     <div class="portfolio-hover">
                         <div class="portfolio-hover-content">
-                            <i class="fas fa-plus fa-3x"></i>
+                            <i class="fas fa-star fa-3x"></i>
                         </div>
                     </div>
-                    <img class="img-fluid" src="img/portfolio/06-thumbnail.jpg" alt="">
+                    <img class="img-fluid" src="../../images/categories/magazines.jpg" alt="Czasopisma">
                 </a>
                 <div class="portfolio-caption">
-                    <h4>Window</h4>
-                    <p class="text-muted">Photography</p>
+                    <h4>Czasopisma</h4>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-6 portfolio-item">
+                <a class="portfolio-link" data-toggle="modal" href="#portfolioModal6">
+                    <div class="portfolio-hover">
+                        <div class="portfolio-hover-content">
+                            <i class="fas fa-child fa-3x"></i>
+                        </div>
+                    </div>
+                    <img class="img-fluid" src="../../images/categories/toys.jpg" alt="Zabawki">
+                </a>
+                <div class="portfolio-caption">
+                    <h4>Zabawki</h4>
                 </div>
             </div>
         </div>
