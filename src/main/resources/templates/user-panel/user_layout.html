@@ -1,17 +1,149 @@
 <!DOCTYPE html>
 <html lang="pl" xmlns:th="http://www.thymeleaf.org/">
-<head>
-    <meta charset="UTF-8"/>
+<head th:fragment="template_header">
+    <link rel="stylesheet" href="../css/master.css"><title>Borrow Me!</title>
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="Description" content="Pożyczaj przedmioty ludziom">
     <meta name="theme-color" content="#2a6fa5"/>
     <link rel="stylesheet" href="../css/master.css">
-    <title></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.7.0/css/all.css' integrity='sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ' crossorigin='anonymous'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="../startbootstrap-agency-gh-pages/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="../startbootstrap-agency-gh-pages/vendor/fontawesome-free/css/all.min.css" rel="stylesheet"
+          type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet'
+          type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+    <!-- FavIcon -->
+    <link rel="shortcut icon" type="image/png" href="https://raw.githubusercontent.com/grottkauer/zpi/master/!Documents/icons/32.png">
+
+    <!-- Custom styles for this template -->
+    <link href="../startbootstrap-agency-gh-pages/css/agency.min.css" rel="stylesheet">
+
+    <!-- Added css files -->
+    <link href="../css/master.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/signin.css">
+
+    <!-- Added jquery files -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <!--<script src="../js/activePanel.js"></script>-->
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $(".filmy-toggle-sub").hide();
+        $(".ksiazki-toggle-sub").hide();
+        $(".muzyka-toggle-sub").hide();
+        $(".zabawki-toggle-sub").hide();
+        $(".gry-toggle-sub").hide();
+        $(".kolekcje-toggle-sub").hide();
+        $(".ksiazki-toggle").click(function(){
+          $(".ksiazki-toggle-sub").slideToggle();
+        });
+        $(".filmy-toggle").click(function(){
+          $(".filmy-toggle-sub").slideToggle();
+        });
+        $(".muzyka-toggle").click(function(){
+          $(".muzyka-toggle-sub").slideToggle();
+        });
+        $(".zabawki-toggle").click(function(){
+          $(".zabawki-toggle-sub").slideToggle();
+        });
+        $(".gry-toggle").click(function(){
+          $(".gry-toggle-sub").slideToggle();
+        });
+        $(".kolekcje-toggle").click(function(){
+          $(".kolekcje-toggle-sub").slideToggle();
+        });
+      });
+    </script>
+    <!-- MOJE DANE -->
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $(".moje-towary-pod").hide();
+        $(".wypozyczone-towary-pod").hide();
+        $(".moje-towary").click(function(){
+          $(".moje-towary-pod").slideToggle();
+        });
+        $(".wypozyczone-towary").click(function(){
+          $(".wypozyczone-towary-pod").slideToggle();
+        });
+      });
+    </script>
+    <script>
+          jQuery(document).ready(function($) {
+                $(".clickable-title").click(function() {
+                    window.location = $(this).data("href");
+                });
+            });
+      </script>
+    <script>
+          <!--$(document).ready(function(){-->
+              <!--$("#btn-append-photo").click(function(){-->
+                <!--$("#photos-1").append("<br>");-->
+                <!--$("#photos-1").append($( "#photos-1" ) );-->
+              <!--});-->
+            <!--});-->
+            $(document).ready(function(){
+                  $('#screens-duplicate-button').click(function () {
+                    $('.screens-duplicate:first').clone().appendTo('.another');
+                  });
+                  $('#screens-remove-button').click(function () {
+                    $('.screens-duplicate:first').detach();
+                  });
+                });
+      </script>
+    <!-- PANEL UŻYTKOWNIKA -->
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $(".moje-towary-pod").hide();
+        $(".wypozyczone-towary-pod").hide();
+        $(".moje-towary").click(function(){
+          $(".moje-towary-pod").slideToggle();
+        });
+        $(".wypozyczone-towary").click(function(){
+          $(".wypozyczone-towary-pod").slideToggle();
+        });
+      });
+    </script>
+    <script>
+          jQuery(document).ready(function($) {
+                $(".clickable-title").click(function() {
+                    window.location = $(this).data("href");
+                });
+            });
+      </script>
+    <script>
+          <!--$(document).ready(function(){-->
+              <!--$("#btn-append-photo").click(function(){-->
+                <!--$("#photos-1").append("<br>");-->
+                <!--$("#photos-1").append($( "#photos-1" ) );-->
+              <!--});-->
+            <!--});-->
+            $(document).ready(function(){
+                  $('#screens-duplicate-button').click(function () {
+                    $('.screens-duplicate:first').clone().appendTo('.another');
+                  });
+                  $('#screens-remove-button').click(function () {
+                    $('.screens-duplicate:first').detach();
+                  });
+                });
+      </script>
 </head>
 <body>
 
 <!-- NAV BAR -->
-<nav th:fragment="navi" class="navbar navbar-expand-lg navbar-dark fixed-top" id="logMainNav">
+<nav th:fragment="navigation" class="navbar navbar-expand-lg navbar-dark fixed-top" id="logMainNav">
     <div class="container">
         <a class="navbar-brand js-scroll-trigger" href="/moje-konto">BorrowMe!</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
@@ -42,8 +174,8 @@
                         </li>
                         <li class="notification-box">
                             <div class="row">
-                                <div class="col-lg-3 col-sm-3 col-3 text-center">
-                                    <img src="/demo/man-profile.jpg" class="w-50 rounded-circle">
+                                <div class="pt-3 pl-3 col-lg-3 col-sm-3 col-3 text-center">
+                                    <img src="../images/icons/228.png" class="w-50 rounded-circle">
                                 </div>
                                 <div class="col-lg-8 col-sm-8 col-8">
                                     <strong class="text-info">David John</strong>
@@ -56,8 +188,8 @@
                         </li>
                         <li class="notification-box bg-gray">
                             <div class="row">
-                                <div class="col-lg-3 col-sm-3 col-3 text-center">
-                                    <img src="/demo/man-profile.jpg" class="w-50 rounded-circle">
+                                <div class="pt-3 pl-3 col-lg-3 col-sm-3 col-3 text-center">
+                                    <img src="../images/icons/228.png" class="w-50 rounded-circle">
                                 </div>
                                 <div class="col-lg-8 col-sm-8 col-8">
                                     <strong class="text-info">David John</strong>
@@ -70,8 +202,8 @@
                         </li>
                         <li class="notification-box">
                             <div class="row">
-                                <div class="col-lg-3 col-sm-3 col-3 text-center">
-                                    <img src="/demo/man-profile.jpg" class="w-50 rounded-circle">
+                                <div class="pt-3 pl-3 col-lg-3 col-sm-3 col-3 text-center">
+                                    <img src="../images/icons/228.png" class="w-50 rounded-circle">
                                 </div>
                                 <div class="col-lg-8 col-sm-8 col-8">
                                     <strong class="text-info">David John</strong>
@@ -90,7 +222,7 @@
                 <li class="nav-item">
                     <div class="dropdown">
                         <button type="button" class="btn dropdown-toggle text-light" data-toggle="dropdown">
-                            Menu
+                            Witaj
                         </button>
                         <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item" href="../moje-konto/panel">Panel użytkownika</a>
@@ -105,9 +237,9 @@
 </nav>
 
 <!-- NAVBAR -->
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top clearfix" th:fragment="navigation">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top clearfix" id="MainNav" th:fragment="navi">
     <!-- Brand/logo -->
-    <a class="navbar-brand" href="/moje-konto">Borrow Me!</a>
+    <a class="navbar-brand js-scroll-trigger" href="/moje-konto">BorrowMe!</a>
 
     <!-- Links -->
     <ul class="navbar-nav mr-auto">
@@ -118,6 +250,8 @@
             <a class="nav-link" href="moje-konto/kontakt">Kontakt</a>
         </li>
     </ul>
+
+
 
     <ul class="navbar-nav">
         <li class="nav-item dropdown">
@@ -185,6 +319,12 @@
                 <button type="button" class="btn dropdown-toggle text-light font-weight-bold" data-toggle="dropdown">
                     Witaj
                 </button>
+                <!--<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"-->
+                        <!--data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"-->
+                        <!--aria-label="Toggle navigation">-->
+                    <!--Menu-->
+                    <!--<i class="fas fa-bars"></i>-->
+                <!--</button>-->
                 <div class="dropdown-menu dropdown-menu-right">
                     <a class="dropdown-item" href="../moje-konto/panel">Panel użytkownika</a>
                     <a class="dropdown-item" href="../moje-konto/moje-dane">Moje dane</a>
