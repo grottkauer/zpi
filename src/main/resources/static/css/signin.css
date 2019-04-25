@@ -102,17 +102,15 @@ hr {
 }
 
 @media (max-height: 650px) {
-  /*.cardRegistry {*/
-  /*  width: 350px;*/
-  /*}*/
   .card {
     top: 60px;
   }
+
   body#login-body {
     overflow: scroll;
   }
+
   .full-height {
-    /*min-height: 100%;*/
     margin-top: 20px;
     position: relative;
     background-image: url("../images/login-bg.jpg");
@@ -127,10 +125,10 @@ hr {
   }
 }
 
-/*@media (max-width: 700px) {*/
-/*  .card {*/
-/*    width: 350px;*/
-/*  }*/
+@media (max-width: 700px) and (min-height: 650px) {
+  .card {
+    width: 350px;
+  }
 /*  body#login-body {*/
 /*    overflow: scroll;*/
 /*  }*/
@@ -147,6 +145,6 @@ hr {
 /*    background-size: cover;*/
 /*    -o-background-size: cover;*/
 /*    min-height: 725px;*/
-/*  }*/
+/*  }
   /*  TODO: background image should be stretched to the end of card*/
-/*}*/
+}
