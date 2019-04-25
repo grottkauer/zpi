@@ -129,22 +129,8 @@ hr {
   .card {
     width: 350px;
   }
-/*  body#login-body {*/
-/*    overflow: scroll;*/
-/*  }*/
-/*  .full-height {*/
-/*    !*min-height: 100%;*!*/
-/*    margin-top: 20px;*/
-/*    position: relative;*/
-/*    background-image: url("../images/login-bg.png");*/
-/*    background-repeat: no-repeat;*/
-/*    background-attachment: scroll;*/
-/*    background-position: center;*/
-/*    -webkit-background-size: cover;*/
-/*    -moz-background-size: cover;*/
-/*    background-size: cover;*/
-/*    -o-background-size: cover;*/
-/*    min-height: 725px;*/
-/*  }
-  /*  TODO: background image should be stretched to the end of card*/
+  .cardRegistry input,
+  .cardRegistry input::-webkit-input-placeholder {
+    font-size: small;
+  }
 }
