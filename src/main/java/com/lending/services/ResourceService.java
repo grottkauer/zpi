@@ -30,20 +30,20 @@ public class ResourceService {
         return zasoby;
     }
 
-    public Resource getZasob(int id){
+    public Resource getResource(int id){
         return resourceRepository.findById(id).get();
     }
 
-    public void addZasob(Resource resource){
+    public void addResource(Resource resource){
 
         resourceRepository.save(resource);
     }
 
-    public void updateZasob(Resource resource){
+    public void updateResource(Resource resource){
         resourceRepository.save(resource);
     }
 
-    public void deleteZasob(int id){
+    public void deleteResource(int id){
         resourceRepository.deleteById(id);
     }
 }
