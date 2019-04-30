@@ -62,6 +62,8 @@ public class UserPanelController {
         Iterable<ResourceType> resourceTypes = resourceTypeRepository.findAll();
         model.addAttribute("resourceTypes", resourceTypes);
 
+//        Iterable<ResourceType> resourceSubcategories = resourceTypeRepository.findAllInHigherCategory()
+
         return "user-panel/user-panel";
     }
 
