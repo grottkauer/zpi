@@ -92,3 +92,10 @@
       font-size: 13px;
     }
 }
+
+.table .thead-agency th {
+    color: #394046;
+    background-color: #fed54d;
+    border-color: #fec91b;
+    font-family: 'Roboto Slab',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif,'Apple Color Emoji','Segoe UI Emoji','Segoe UI Symbol','Noto Color Emoji';
+}

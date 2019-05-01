@@ -65,6 +65,62 @@ public class UserPanelController {
         return "user-panel/user-panel";
     }
 
+    @GetMapping(value="/moje-statystyki")
+    public ModelAndView stats() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("user-panel/user-stats");
+        return modelAndView;
+    }
+
+    @GetMapping(value="/moje-punkty")
+    public ModelAndView points() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("user-panel/user-points");
+        return modelAndView;
+    }
+
+    @GetMapping(value="/dodaj-produkt")
+    public ModelAndView addProduct() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("user-panel/user-add-product");
+        return modelAndView;
+    }
+
+    @GetMapping(value="/edytuj-produkt")
+    public ModelAndView editProduct() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("user-panel/user-edit-product");
+        return modelAndView;
+    }
+
+    @GetMapping(value="/usun-produkt")
+    public ModelAndView deleteProduct() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("user-panel/user-delete-product");
+        return modelAndView;
+    }
+
+    @GetMapping(value="/zwroc-produkt")
+    public ModelAndView backProduct() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("user-panel/user-back-product");
+        return modelAndView;
+    }
+
+    @GetMapping(value="/wypozyczone-produkty")
+    public ModelAndView borrowedProduct() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("user-panel/user-borrowed-products");
+        return modelAndView;
+    }
+
+    @GetMapping(value="/moje-produkty")
+    public ModelAndView products() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("user-panel/user-products");
+        return modelAndView;
+    }
+
     @GetMapping(value="/p")
     public ModelAndView p() {
         ModelAndView modelAndView = new ModelAndView();
@@ -72,17 +128,17 @@ public class UserPanelController {
         return modelAndView;
     }
 
-    @GetMapping(value="/pa")
-    public ModelAndView pa() {
+    @GetMapping(value="/edytuj-dane")
+    public ModelAndView myData() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("user-panel/pa");
+        modelAndView.setViewName("user-panel/user-edit-data");
         return modelAndView;
     }
 
-    @GetMapping(value="/moje-dane")
-    public ModelAndView mojeDane() {
+    @GetMapping(value="/zmien-haslo")
+    public ModelAndView editPassword() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("user-panel/my-account");
+        modelAndView.setViewName("user-panel/user-edit-password");
         return modelAndView;
     }
 
