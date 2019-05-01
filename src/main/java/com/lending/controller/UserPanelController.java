@@ -51,6 +51,20 @@ public class UserPanelController {
         return modelAndView;
     }
 
+    @GetMapping(value="/p")
+    public ModelAndView p() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("user-panel/user-p");
+        return modelAndView;
+    }
+
+    @GetMapping(value="/pa")
+    public ModelAndView pa() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("user-panel/pa");
+        return modelAndView;
+    }
+
     @GetMapping(value="/moje-dane")
     public ModelAndView mojeDane() {
         ModelAndView modelAndView = new ModelAndView();
