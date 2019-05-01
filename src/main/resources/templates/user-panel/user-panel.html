@@ -279,8 +279,9 @@
                         <div class="form-group col-md-6">
                             <label for="kategoriaProduktu">Kategoria</label>
                             <select id="kategoriaProduktu" class="form-control">
-                                <option selected>Wybierz...</option>
-                                <option>...</option>
+                                <div th:each="resTypes : ${resourceTypes}">
+                                    <option th:text="${resTypes.name}">Wybierz...</option>
+                                </div>
                             </select>
                         </div>
                     </div>
