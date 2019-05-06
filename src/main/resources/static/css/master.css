@@ -89,7 +89,7 @@
       right: 0;
     }
     .nav{
-      display: block;
+      display: flex;
     }
     .nav .nav-item,.nav .nav-item a{
       padding-left: 0px;
