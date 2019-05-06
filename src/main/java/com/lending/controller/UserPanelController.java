@@ -38,7 +38,7 @@ public class UserPanelController {
     @GetMapping(value="")
     public ModelAndView index() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("user-panel/index");
+        modelAndView.setViewName("user-panel/borrow-panel");
         return modelAndView;
 
     }
@@ -118,13 +118,6 @@ public class UserPanelController {
     public ModelAndView products() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("user-panel/user-products");
-        return modelAndView;
-    }
-
-    @GetMapping(value="/p")
-    public ModelAndView p() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("user-panel/user-p");
         return modelAndView;
     }
 

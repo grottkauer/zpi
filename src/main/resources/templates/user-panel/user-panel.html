@@ -24,7 +24,7 @@
 
 </head>
 
-<body id="page-top">
+<body id="page-top" class="sidebar-toggled">
 
 <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
@@ -106,7 +106,7 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                 <a class="dropdown-item" href="/moje-konto/panel">Panel Użytkownika</a>
-                <a class="dropdown-item" href="/moje-konto/moje-dane">Moje Dane</a>
+                <a class="dropdown-item" href="/moje-konto/moje-dane">Wypozyczenie</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="/" data-toggle="modal" data-target="#logoutModal">Wyloguj</a>
             </div>
@@ -118,7 +118,7 @@
 <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="sidebar navbar-nav">
+    <ul class="sidebar navbar-nav toggled">
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-fw fa-user-edit"></i>
@@ -130,7 +130,7 @@
                 <a class="dropdown-item" href="zmien-haslo">Zmien haslo</a>
             </div>
         </li>
-        <li class="nav-item dropdown active">
+        <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-fw fa-archive"></i>
                 <span>Moje produkty</span>
@@ -164,12 +164,74 @@
                 <i class="fas fa-fw fa-donate"></i>
                 <span>Moje punkty</span></a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="moj-kalendarz">
+                <i class="fas fa-fw fa-calendar-check"></i>
+                <span>Kalendarz</span></a>
+        </li>
     </ul>
 
     <div id="content-wrapper">
-        <div class="card-header">
-            <h1>Panel uzytkownika</h1>
+        <div class="card-header text-center">
+            <h1 class="text-uppercase">Panel uzytkownika</h1>
+            <h4 class="section-subheading text-muted">Witaj w panelu uzytkownika. Dostępne opcje dla Ciebie...</h4>
         </div>
+
+        <!-- Services -->
+
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-md-4 top-buffer">
+          <span class="fa-stack fa-3x">
+            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+            <i class="fas fa-user-edit fa-stack-1x fa-inverse"></i>
+          </span>
+                        <h4 class="service-heading">Edycja Konta</h4>
+                        <p class="text-muted">Tutaj mozesz zmianic dane dotyczace Twojego konta...</p>
+                    </div>
+                    <div class="col-md-4 top-buffer ">
+          <span class="fa-stack fa-3x">
+            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+            <i class="fas fa-archive fa-stack-1x fa-inverse"></i>
+          </span>
+                        <h4 class="service-heading">Moje produkty</h4>
+                        <p class="text-muted">Tutaj mozesz przegladac, dodawac oraz edytowac swoje produkty...</p>
+                    </div>
+                    <div class="col-md-4 top-buffer ">
+          <span class="fa-stack fa-3x">
+            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+            <i class="fas fa-shopping-basket fa-stack-1x fa-inverse"></i>
+          </span>
+                        <h4 class="service-heading">Produkty wypozyczone</h4>
+                        <p class="text-muted">Tutaj mozesz przegladac oraz oddac wypozyczone produkty...</p>
+                    </div>
+                    <div class="col-md-4 top-buffer ">
+          <span class="fa-stack fa-3x">
+            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+            <i class="fas fa-chart-area fa-stack-1x fa-inverse"></i>
+          </span>
+                        <h4 class="service-heading">Statystyki</h4>
+                        <p class="text-muted">Tutaj zobaczysz statystyki dotyczace Twojego konta, ilosc wypozyczen itd...</p>
+                    </div>
+                    <div class="col-md-4 top-buffer ">
+          <span class="fa-stack fa-3x">
+            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+            <i class="fas fa-donate fa-stack-1x fa-inverse"></i>
+          </span>
+                        <h4 class="service-heading">Punkty</h4>
+                        <p class="text-muted">Tutaj dowiesz sie jaki jest stan Twoich punktow...</p>
+                    </div>
+                    <div class="col-md-4 top-buffer ">
+          <span class="fa-stack fa-3x">
+            <i class="fas fa-circle fa-stack-2x text-primary"></i>
+            <i class="fas fa-calendar-check fa-stack-1x fa-inverse"></i>
+          </span>
+                        <h4 class="service-heading">Kalendarz</h4>
+                        <p class="text-muted">Tutaj zobaczysz swoj kalendarz wypozyczen...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
         <!-- Sticky Footer -->
         <footer class="sticky-footer">
             <div class="container my-auto">
