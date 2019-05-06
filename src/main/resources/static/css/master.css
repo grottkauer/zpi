@@ -16,6 +16,12 @@
     opacity:0;
 }
 
+#edit_data
+{
+    padding-top: inherit;
+    width: 80%;
+}
+
 .clickable-title:hover{
   cursor: pointer;
   opacity:0.9;
