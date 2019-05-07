@@ -11,6 +11,10 @@
   flex-direction: column;
 }
 
+#icon_cards{
+  margin: 10%;
+}
+
 .hideme
 {
     opacity:0;
