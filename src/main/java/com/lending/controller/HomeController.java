@@ -15,7 +15,6 @@ public class HomeController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("index");
         return modelAndView;
-
     }
 
     @GetMapping(value="kontakt")

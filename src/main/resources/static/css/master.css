@@ -39,6 +39,7 @@
 .dropdown-menu-notifications{
   top: 60px;
   right: 0px;
+  width: 460px;
   left: unset;
   box-shadow: 0px 5px 7px -1px #c1c1c1;
   padding-bottom: 0px;
@@ -82,11 +83,28 @@
   background-color: #eee;
 }
 
-@media (min-width: 300px) {
+@media (min-width: 560px) {
+    .notifyAlert{
+          display: none;
+        }
+}
+
+@media (max-width: 560px) {
     .dropdown-menu{
       top: 50px;
       left: auto;
       right: 0;
+    }
+
+    .notifyAlert{
+      display: show;
+    }
+
+    #alertsDropdownMain{
+      display: none !important;
+    }
+    #alertsDropdown{
+      display: none !important;
     }
     .nav{
       display: flex;
