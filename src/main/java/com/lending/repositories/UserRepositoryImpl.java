@@ -6,25 +6,25 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 @Component
-public class UzytkownikRepositoryImpl implements UzytkownikRepositoryCustom {
+public class UserRepositoryImpl implements UserRepositoryCustom {
 
 
     @Autowired
     @Lazy
-    UzytkownikRepository uzytkownikRepository;
+    UserRepository userRepository;
 
-    public User getUzytkownikByKluczEthereum(String kluczEthereum) {
+    public User getUserByEthereumKey(String ethereumKey) {
 
-        for (User u: uzytkownikRepository.findAll()) {
-            if(u.getEthereumKey().equals(kluczEthereum))
+        for (User u: userRepository.findAll()) {
+            if(u.getEthereumKey().equals(ethereumKey))
                 return u;
         }
         return null;
     }
 
-    public User getUzytkownikByEthereumAddress(String ethereumAddress) {
+    public User getUserByEthereumAddress(String ethereumAddress) {
 
-        for (User u: uzytkownikRepository.findAll()) {
+        for (User u: userRepository.findAll()) {
             if(u.getEthereumAddress().toLowerCase().equals(ethereumAddress.toLowerCase()))
                 return u;
         }

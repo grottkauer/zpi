@@ -4,11 +4,11 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "spotkania")
+@Table(name = "meeting")
 public class Meeting extends BaseEntity {
 
     @ManyToOne
-    @JoinColumn(name = "adres_id")
+    @JoinColumn(name = "id_address")
     private Address address;
 
     @Column

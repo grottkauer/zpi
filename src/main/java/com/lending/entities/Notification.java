@@ -4,15 +4,15 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "powiadomienia")
+@Table(name = "notification")
 public class Notification extends BaseEntity {
 
     @ManyToOne
-    @JoinColumn(name = "nadawcaID")
+    @JoinColumn(name = "id_sender")
     private User sender;
 
     @ManyToOne
-    @JoinColumn(name = "odbiorcaID")
+    @JoinColumn(name = "id_receiver")
     private User receiver;
 
     @Column(nullable = false)

@@ -1,24 +1,24 @@
 package com.lending.services;
 
-import com.lending.entities.User;
-import com.lending.entities.ResourceRenting;
 import com.lending.entities.Resource;
-import com.lending.repositories.WypozyczenieZasobuRepository;
+import com.lending.entities.ResourceRenting;
+import com.lending.entities.User;
+import com.lending.repositories.ResourceRentingRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ResourceRentingService {
 
-    private WypozyczenieZasobuRepository wypozyczenieZasobuRepository;
+    private ResourceRentingRepository resourceRentingRepository;
 
     @Autowired
-    public ResourceRentingService(WypozyczenieZasobuRepository wypozyczenieZasobuRepository) {
-        this.wypozyczenieZasobuRepository = wypozyczenieZasobuRepository;
+    public ResourceRentingService(ResourceRentingRepository resourceRentingRepository) {
+        this.resourceRentingRepository = resourceRentingRepository;
     }
 
     public ResourceRenting getWypozyczenie(int id){
-        return wypozyczenieZasobuRepository.findById(id).get();
+        return resourceRentingRepository.findById(id).get();
     }
 
     public ResourceRenting createWypozyczenie(User giver, User getter, Resource resource){
@@ -26,6 +26,6 @@ public class ResourceRentingService {
         resourceRenting.setGiver(giver);
         resourceRenting.setGetter(getter);
         resourceRenting.setResource(resource);
-        return wypozyczenieZasobuRepository.save(resourceRenting);
+        return resourceRentingRepository.save(resourceRenting);
     }
 }

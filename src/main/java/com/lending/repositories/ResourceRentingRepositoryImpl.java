@@ -17,7 +17,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.stream.StreamSupport;
 
 @Component
-public class WypozyczenieZasobuRepositoryImpl implements WypozyczenieZasobuRepository {
+public class ResourceRentingRepositoryImpl implements ResourceRentingRepository {
 
     static String privateKey = "704f7159d16f05e611306d71c61b98722c9e8ade2395e9bbfcf8dfa92caa27b1";
     static String contractAddres = "0x6F3b46efbFC0E57F3f27d8a4c6aCF92DE72a42cc";
@@ -27,14 +27,14 @@ public class WypozyczenieZasobuRepositoryImpl implements WypozyczenieZasobuRepos
     private BorrowMeContract contract;
 
     @Autowired
-    private UzytkownikRepository uzytkownikRepository;
+    private UserRepository userRepository;
 
     @Autowired
     private ResourceRepository resourceRepository;
 
-    public WypozyczenieZasobuRepositoryImpl(UzytkownikRepository uzytkownikRepository,
-                                            ResourceRepository resourceRepository) {
-        this.uzytkownikRepository = uzytkownikRepository;
+    public ResourceRentingRepositoryImpl(UserRepository userRepository,
+                                         ResourceRepository resourceRepository) {
+        this.userRepository = userRepository;
         this.resourceRepository = resourceRepository;
 
             contractConnector = new BorrowMeContractConnector(privateKey);
@@ -85,8 +85,8 @@ public class WypozyczenieZasobuRepositoryImpl implements WypozyczenieZasobuRepos
 
         ResourceRenting resourceRenting = new ResourceRenting(
                 wypozyczenieTuple.getValue1().intValue(),
-                uzytkownikRepository.getUzytkownikByEthereumAddress(wypozyczenieTuple.getValue2()),
-                uzytkownikRepository.getUzytkownikByEthereumAddress(wypozyczenieTuple.getValue3()),
+                userRepository.getUserByEthereumAddress(wypozyczenieTuple.getValue2()),
+                userRepository.getUserByEthereumAddress(wypozyczenieTuple.getValue3()),
                 resourceRepository.findById(wypozyczenieTuple.getValue4().intValue()).get(),
                 new Date(wypozyczenieTuple.getValue5().longValue()),
                 new Date(wypozyczenieTuple.getValue6().longValue()),

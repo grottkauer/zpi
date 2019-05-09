@@ -6,4 +6,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ResourceTypeRepository extends CrudRepository<ResourceType, Integer> {
+
+    /*@Query("from resource_type ")
+    public Iterable<ResourceType> findById(@Param("id")String id);*/
+
 }

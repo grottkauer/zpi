@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface WypozyczenieZasobuRepository {
+public interface ResourceRentingRepository {
 
     <S extends ResourceRenting> S save(S entity);
 

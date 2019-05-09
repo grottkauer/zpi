@@ -4,9 +4,10 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name = "resource_type")
 public class ResourceType {
     @Id
-    @Column(name = "resourceTypeID")
+    @Column(name = "id_resource_type")
     private int resourceTypeID;
 
     @Column
@@ -22,7 +23,7 @@ public class ResourceType {
     private List<ResourceType> higherLevels;
 
     @ManyToOne
-    @JoinColumn(name = "higherLevelID")
+    @JoinColumn(name = "id_resource_type_higher_level")
     private ResourceType higherLevel;
 
     public ResourceType(){

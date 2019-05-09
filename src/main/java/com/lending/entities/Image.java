@@ -3,11 +3,11 @@ package com.lending.entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "zdjecia")
+@Table(name = "image")
 public class Image extends BaseEntity {
 
     @ManyToOne
-    @JoinColumn(name = "zasob_id")
+    @JoinColumn(name = "id_resource")
     private Resource resource;
 
     @Column(nullable = false)

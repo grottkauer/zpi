@@ -1,9 +1,11 @@
 package com.lending.entities;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 @Entity
-@Table(name = "adresy")
+@Table(name = "address")
 public class Address extends BaseEntity {
 
 

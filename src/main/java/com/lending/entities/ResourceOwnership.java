@@ -4,18 +4,18 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "resourcesOwnerships")
+@Table(name = "resources_ownership")
 public class ResourceOwnership extends BaseEntity {
 
     @Column(nullable = false)
     private Date addDate;
 
     @ManyToOne
-    @JoinColumn(name = "uzytkownik_id")
+    @JoinColumn(name = "id_user")
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "zasob_id")
+    @JoinColumn(name = "id_resource")
     private Resource resource;
 
     public ResourceOwnership() {

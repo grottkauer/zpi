@@ -6,7 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "users")
+@Table(name = "user")
 public class User extends BaseEntity {
 
     @Column(nullable = false)
@@ -40,7 +40,7 @@ public class User extends BaseEntity {
     private Date recallDate;
 
     @ManyToOne
-    @JoinColumn(name = "adres_id")
+    @JoinColumn(name = "id_address")
     private Address address;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "sender")

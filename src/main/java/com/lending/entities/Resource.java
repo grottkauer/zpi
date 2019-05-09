@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "resources")
+@Table(name = "resource")
 public class Resource extends BaseEntity {
 
     @Column
@@ -21,14 +21,14 @@ public class Resource extends BaseEntity {
     private double weight;
 
     @ManyToOne
-    @JoinColumn(name = "resourceTypeID")
+    @JoinColumn(name = "id_resource_type")
     private ResourceType resourceType;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "resource")
-    private List<ResourceOwnership> posiadaniaZasobu = new ArrayList<>();
+    private List<ResourceOwnership> resourceOwnerships = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "resource")
-    private List<Image> zdjecia = new ArrayList<>();
+    private List<Image> photos = new ArrayList<>();
 
     public Resource(){
 
