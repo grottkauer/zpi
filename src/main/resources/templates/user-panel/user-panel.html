@@ -3,13 +3,18 @@
 <head th:replace="user-panel/user_layout :: template_header"></head>
 
 <body id="page-top" class="sidebar-toggled">
-
+<div class="full-height" id="bg-panel">
 <nav th:replace="user-panel/user_layout :: navi"></nav>
 
 <div id="wrapper">
 
     <!-- Sidebar -->
     <ul class="sidebar navbar-nav toggled">
+        <li class="nav-item active">
+            <a class="nav-link" href="panel">
+                <i class="fas fa-fw fa-th-large"></i>
+                <span>Panel</span></a>
+        </li>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-fw fa-user-edit"></i>
@@ -65,7 +70,7 @@
 
     <div id="content-wrapper">
         <div class="card-header text-center">
-            <h1 class="text-uppercase">Panel uzytkownika</h1>
+            <h1 class="text-uppercase">Panel użytkownika</h1>
             <h4 class="section-subheading text-muted">Witaj w panelu uzytkownika. Dostępne opcje dla Ciebie...</h4>
         </div>
 
@@ -182,7 +187,7 @@
 
         <!-- Sticky Footer -->
         <footer th:replace="user-panel/user_layout :: foot"></footer>
-
+    </div>
     </div>
     <!-- /.content-wrapper -->
 
