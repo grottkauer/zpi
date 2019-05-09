@@ -14,10 +14,7 @@
   background-image: url("../images/bg-panel.jpg");
 }
 
-@media (max-width: 500px) {
-  .card {
-    width: 300px;
-  }
+@media (max-width: 700px) {
   .cardRegistry input,
   .cardRegistry input::-webkit-input-placeholder {
     font-size: small;
