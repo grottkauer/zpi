@@ -7,6 +7,9 @@
 <meta name="description" content="e-commerce site well design with responsive view." />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <link rel="manifest" href="/manifest.json">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
 <!--<link href="../user-panel/category/image/favicon.png" rel="icon" type="image/png" >-->
 <link href="../user-panel/category/css/bootstrap.min.css" rel="stylesheet" media="screen" />
 <link href="../user-panel/category/js/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
@@ -16,7 +19,7 @@
 <link href="../user-panel/category/css/responsive.css" rel="stylesheet">
 <link href="../user-panel/category/javascript/owl-carousel/owl.carousel.css" type="text/css" rel="stylesheet" media="screen" />
 <link href="../user-panel/category/javascript/owl-carousel/owl.transitions.css" type="text/css" rel="stylesheet" media="screen" />
-<link href="../user-panel/cateory/css/sidefilter.scss" type="text/css" rel="stylesheet" />
+<link href="../user-panel/category/css/sidefilter.scss" type="text/css" rel="stylesheet" />
 <script type="text/javascript" src="../user-panel/category/javascript/jquery-2.1.1.min.js" ></script>
 <script type="text/javascript" src="../user-panel/category/javascript/bootstrap/js/bootstrap.min.js" ></script>
 <script type="text/javascript" src="../user-panel/category/javascript/template_js/jstree.min.js"></script>
@@ -24,11 +27,113 @@
 <script type="text/javascript" src="../user-panel/category/javascript/common.js" ></script>
 <script type="text/javascript" src="../user-panel/category/javascript/global.js" ></script>
 <script type="text/javascript" src="../user-panel/category/javascript/owl-carousel/owl.carousel.min.js"></script>
+
+  <!-- Fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+  <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet'
+        type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+  <!-- Custom fonts for this template-->
+  <link href="../../user-panel/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+
+  <!-- Page level plugin CSS-->
+  <link href="../../user-panel/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/master.css">
+
 </head>
 <body class="category col-2 left-col">
 <!--<div class="preloader loader" style="display: block;"> <img src="../user-panel/category/image/loader.gif"  alt="#"/></div>-->
-<header>
-</header>
+
+<div class="navbar navbar-expand navbar-dark bg-dark static-top">
+    <!--<button class="btn btn-link btn-sm text-white order-0 order-sm-0" id="sidebarToggle" href="#">-->
+    <!--<i class="fas fa-bars"></i>-->
+    <!--</button>-->
+
+    <a class="navbar-brand mr-1" href="/moje-konto">Borrow Me!</a>
+
+    <!-- Navbar -->
+    <ul class="navbar-nav navbar-right">
+      <li class="nav-item dropdown no-arrow mx-1">
+        <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-bell fa-fw"></i>
+          <span class="badge badge-danger">9+</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
+          <ul class="dropdown-item dropdown-menu-notifications">
+            <li class="head text-light bg-dark">
+              <div class="row">
+                <div class="col-lg-12 col-sm-12 col-12">
+                  <span>Notifications (3)</span>
+                  <a href="" class="float-right text-light">Mark all as read</a>
+                </div>
+              </div>
+            </li>
+            <li class="notification-box">
+              <div class="row">
+                <div class="pt-3 pl-3 col-lg-3 col-sm-3 col-3 text-center">
+                  <img src="../images/icons/228.png" class="w-50 rounded-circle">
+                </div>
+                <div class="col-lg-8 col-sm-8 col-8 text-wrap">
+                  <strong class="text-info">David John</strong>
+                  <div>
+                    Lorem ipsum dolor sit amet, consectetur
+                  </div>
+                  <small class="text-warning">27.11.2015, 15:00</small>
+                </div>
+              </div>
+            </li>
+            <li class="notification-box bg-gray">
+              <div class="row">
+                <div class="pt-3 pl-3 col-lg-3 col-sm-3 col-3 text-center">
+                  <img src="../images/icons/228.png" class="w-50 rounded-circle">
+                </div>
+                <div class="col-lg-8 col-sm-8 col-8 text-wrap">
+                  <strong class="text-info">David John</strong>
+                  <div>
+                    Lorem ipsum dolor sit amet, consectetur
+                  </div>
+                  <small class="text-warning">27.11.2015, 15:00</small>
+                </div>
+              </div>
+            </li>
+            <li class="notification-box">
+              <div class="row">
+                <div class="pt-3 pl-3 col-lg-3 col-sm-3 col-3 text-center">
+                  <img src="../images/icons/228.png" class="w-50 rounded-circle">
+                </div>
+                <div class="col-lg-8 col-sm-8 col-8 text-wrap">
+                  <strong class="text-info">David John</strong>
+                  <div>
+                    Lorem ipsum dolor sit amet, consectetur
+                  </div>
+                  <small class="text-warning">27.11.2015, 15:00</small>
+                </div>
+              </div>
+            </li>
+            <li class="footer bg-dark text-center">
+              <a href="powiadomienia" class="text-light">View All</a>
+            </li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav-item dropdown no-arrow">
+        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-user-circle fa-fw"></i>
+          Name
+        </a>
+        <div class="dropdown-menu dropdown-menu-right dropdown-user" aria-labelledby="userDropdown">
+          <a class="dropdown-item" href="/moje-konto/panel">Panel Użytkownika</a>
+          <a class="dropdown-item" href="/moje-konto">Wypozyczenie</a>
+          <div class="dropdown-divider"></div>
+          <hr>
+          <a class="dropdown-item" href="/" data-toggle="modal" data-target="#logoutModal">Wyloguj</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+
 <div class="container">
   <div class="row">
     <div id="column-left" class="col-sm-3 hidden-xs column-left">
@@ -174,11 +279,11 @@
               <h4 class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">Casual Shirt With Ruffle Hem</a></h4>
               <p class="price product-price">$122.00<span class="price-tax">Ex Tax: $100.00</span></p>
               <p class="product-desc"> More room to move.
-                
+
                 With 80GB or 160GB of storage and up to 40 hours of battery life, the new iPod classic lets you enjoy up to 40,000 songs or up to 200 hours of video or any combination wherever you go.
-                
+
                 Cover Flow.
-                
+
                 Browse through your music collection by flipping..</p>
               <ul class="button-group list-btn">
                 <li>
@@ -223,11 +328,11 @@
               <h4 class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">Casual Shirt With Ruffle Hem</a></h4>
               <p class="price product-price">$122.00<span class="price-tax">Ex Tax: $100.00</span></p>
               <p class="product-desc"> More room to move.
-                
+
                 With 80GB or 160GB of storage and up to 40 hours of battery life, the new iPod classic lets you enjoy up to 40,000 songs or up to 200 hours of video or any combination wherever you go.
-                
+
                 Cover Flow.
-                
+
                 Browse through your music collection by flipping..</p>
               <ul class="button-group list-btn">
                 <li>
@@ -272,11 +377,11 @@
               <h4 class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">Casual Shirt With Ruffle Hem</a></h4>
               <p class="price product-price">$122.00<span class="price-tax">Ex Tax: $100.00</span></p>
               <p class="product-desc"> More room to move.
-                
+
                 With 80GB or 160GB of storage and up to 40 hours of battery life, the new iPod classic lets you enjoy up to 40,000 songs or up to 200 hours of video or any combination wherever you go.
-                
+
                 Cover Flow.
-                
+
                 Browse through your music collection by flipping..</p>
               <ul class="button-group list-btn">
                 <li>
@@ -321,11 +426,11 @@
               <h4 class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">Casual Shirt With Ruffle Hem</a></h4>
               <p class="price product-price">$122.00<span class="price-tax">Ex Tax: $100.00</span></p>
               <p class="product-desc"> More room to move.
-                
+
                 With 80GB or 160GB of storage and up to 40 hours of battery life, the new iPod classic lets you enjoy up to 40,000 songs or up to 200 hours of video or any combination wherever you go.
-                
+
                 Cover Flow.
-                
+
                 Browse through your music collection by flipping..</p>
               <ul class="button-group list-btn">
                 <li>
@@ -370,11 +475,11 @@
               <h4 class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">Casual Shirt With Ruffle Hem</a></h4>
               <p class="price product-price">$122.00<span class="price-tax">Ex Tax: $100.00</span></p>
               <p class="product-desc"> More room to move.
-                
+
                 With 80GB or 160GB of storage and up to 40 hours of battery life, the new iPod classic lets you enjoy up to 40,000 songs or up to 200 hours of video or any combination wherever you go.
-                
+
                 Cover Flow.
-                
+
                 Browse through your music collection by flipping..</p>
               <ul class="button-group list-btn">
                 <li>
@@ -419,11 +524,11 @@
               <h4 class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">Casual Shirt With Ruffle Hem</a></h4>
               <p class="price product-price">$122.00<span class="price-tax">Ex Tax: $100.00</span></p>
               <p class="product-desc"> More room to move.
-                
+
                 With 80GB or 160GB of storage and up to 40 hours of battery life, the new iPod classic lets you enjoy up to 40,000 songs or up to 200 hours of video or any combination wherever you go.
-                
+
                 Cover Flow.
-                
+
                 Browse through your music collection by flipping..</p>
               <ul class="button-group list-btn">
                 <li>
@@ -468,11 +573,11 @@
               <h4 class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">Casual Shirt With Ruffle Hem</a></h4>
               <p class="price product-price">$122.00<span class="price-tax">Ex Tax: $100.00</span></p>
               <p class="product-desc"> More room to move.
-                
+
                 With 80GB or 160GB of storage and up to 40 hours of battery life, the new iPod classic lets you enjoy up to 40,000 songs or up to 200 hours of video or any combination wherever you go.
-                
+
                 Cover Flow.
-                
+
                 Browse through your music collection by flipping..</p>
               <ul class="button-group list-btn">
                 <li>
@@ -517,11 +622,11 @@
               <h4 class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">Casual Shirt With Ruffle Hem</a></h4>
               <p class="price product-price">$122.00<span class="price-tax">Ex Tax: $100.00</span></p>
               <p class="product-desc"> More room to move.
-                
+
                 With 80GB or 160GB of storage and up to 40 hours of battery life, the new iPod classic lets you enjoy up to 40,000 songs or up to 200 hours of video or any combination wherever you go.
-                
+
                 Cover Flow.
-                
+
                 Browse through your music collection by flipping..</p>
               <ul class="button-group list-btn">
                 <li>
