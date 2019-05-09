@@ -50,11 +50,11 @@ public class HomeController {
         }
         //todo else show that user was not found
 
-        //boolean is_account = simple_email.equals(email) && simple_passw.equals(password);
-
-        if (wasUserFound)
+        //todo add user id as parameter
+        if (wasUserFound) {
             // Redirect to /user-panel
             return "redirect:/moje-konto";
-        return "redirect:zaloguj";
+        }
+        return "redirect:logowanie";
     }
 }

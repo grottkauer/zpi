@@ -1,9 +1,9 @@
 package com.lending.controller;
 
 import com.lending.entities.Resource;
-import com.lending.entities.ResourceType;
 import com.lending.repositories.ResourceRepository;
 import com.lending.repositories.ResourceTypeRepository;
+import com.lending.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +18,9 @@ public class UserPanelController {
 //    @Autowired
 //    public ResourceRepository resourceRepository;
 //
+    @Autowired
+    public UserRepository userRepository;
+
     @Autowired
     public ResourceTypeRepository resourceTypeRepository;
 
@@ -71,8 +74,6 @@ public class UserPanelController {
 
     @GetMapping(value="/panel")
     public String panel(Model model) {
-        Iterable<ResourceType> resourceTypes = resourceTypeRepository.findAll();
-        model.addAttribute("resourceTypes", resourceTypes);
 
         return "user-panel/user-panel";
     }
