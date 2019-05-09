@@ -158,4 +158,11 @@ public class UserPanelController {
 
         return "user-panel/borrow-panel";
     }
+
+    @GetMapping(value="/szukaj")
+    public ModelAndView search() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("user-panel/category");
+        return modelAndView;
+    }
 }
