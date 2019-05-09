@@ -1,0 +1,25 @@
+.full-height{
+  min-height: 100%;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 10%;
+}
+
+#bg-borrow {
+  background-image: url("../images/things.jpg");
+}
+
+.bg-panel {
+  background-image: url("../images/bg-panel.jpg");
+}
+
+@media (max-width: 700px) and (min-height: 650px) {
+  .card {
+    width: 350px;
+  }
+  .cardRegistry input,
+  .cardRegistry input::-webkit-input-placeholder {
+    font-size: small;
+  }
+}
