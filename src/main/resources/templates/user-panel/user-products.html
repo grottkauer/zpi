@@ -4,824 +4,824 @@
 
 <body id="page-top" class="sidebar-toggled">
 
-<nav th:replace="user-panel/user_layout :: navi"></nav>
+<div class="full-height bg-panel">
 
-<div id="wrapper">
+    <nav th:replace="user-panel/user_layout :: navi"></nav>
 
-    <!-- Sidebar -->
-    <ul class="sidebar navbar-nav toggled">
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-fw fa-user-edit"></i>
-                <span>Moje dane</span>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-                <h6 class="dropdown-header pl-3">Moje konto:</h6>
-                <a class="dropdown-item" href="edytuj-dane">Edytuj swoje dane</a>
-                <a class="dropdown-item" href="zmien-haslo">Zmien haslo</a>
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="sidebar navbar-nav toggled">
+            <li class="nav-item">
+                <a class="nav-link" href="panel">
+                    <i class="fas fa-fw fa-th-large"></i>
+                    <span>Panel</span></a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-fw fa-user-edit"></i>
+                    <span>Moje dane</span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                    <h6 class="dropdown-header pl-3">Moje konto:</h6>
+                    <a class="dropdown-item" href="edytuj-dane">Edytuj swoje dane</a>
+                    <a class="dropdown-item" href="zmien-haslo">Zmień hasło</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown active">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-fw fa-archive"></i>
+                    <span>Moje produkty</span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                    <h6 class="dropdown-header pl-3">Moje produkty:</h6>
+                    <a class="dropdown-item" href="moje-produkty">Pokaż produkty</a>
+                    <a class="dropdown-item" href="dodaj-produkt">Dodaj produkt</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="wypozyczone-produkty">
+                    <i class="fas fa-fw fa-shopping-basket"></i>
+                    <span>Wypożyczone</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="moje-statystyki">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Statystyki</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="moje-punkty">
+                    <i class="fas fa-fw fa-donate"></i>
+                    <span>Moje punkty</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="powiadomienia">
+                    <i class="fas fa-fw fa-bell"></i>
+                    <span>Powiadomienia</span></a>
+            </li>
+        </ul>
+
+        <div id="content-wrapper">
+            <div class="card-header text-center">
+                <h1 class="text-uppercase">Moje produkty</h1>
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs text-left" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link pl-2 active show" data-toggle="tab" href="#current" role="tab" aria-selected="true">Obecne produkty</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link pl-2" data-toggle="tab" href="#past" role="tab">Archiwum</a>
+                    </li>
+                </ul>
             </div>
-        </li>
-        <li class="nav-item dropdown active">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-fw fa-archive"></i>
-                <span>Moje produkty</span>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-                <h6 class="dropdown-header pl-3">Moje produkty:</h6>
-                <a class="dropdown-item" href="moje-produkty">Pokaz produkty</a>
-                <a class="dropdown-item" href="dodaj-produkt">Dodaj produkt</a>
-                <a class="dropdown-item" href="edytuj-produkt">Edytuj produkt</a>
-                <a class="dropdown-item" href="usun-produkt">Usun produkt</a>
-            </div>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-fw fa-shopping-basket"></i>
-                <span>Wypozyczone</span>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-                <h6 class="dropdown-header pl-3">Wypozyczone produkty:</h6>
-                <a class="dropdown-item" href="wypozyczone-produkty">Pokaz produkty</a>
-                <a class="dropdown-item" href="zwroc-produkt">Oddaj produkt</a>
-            </div>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="moje-statystyki">
-                <i class="fas fa-fw fa-chart-area"></i>
-                <span>Statystyki</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="moje-punkty">
-                <i class="fas fa-fw fa-donate"></i>
-                <span>Moje punkty</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="powiadomienia">
-                <i class="fas fa-fw fa-bell"></i>
-                <span>Powiadomienia</span></a>
-        </li>
-    </ul>
-
-    <div id="content-wrapper">
-        <div class="card-header text-center">
-            <h1 class="text-uppercase">Moje produkty</h1>
-            <!-- Nav tabs -->
-            <ul class="nav nav-tabs text-left" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link pl-2 active show" data-toggle="tab" href="#current" role="tab" aria-selected="true">Obecne produkty</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link pl-2" data-toggle="tab" href="#past" role="tab">Archiwum</a>
-                </li>
-            </ul>
-        </div>
 
 
-        <!-- Tab panes {Fade}  -->
-        <div class="tab-content">
-            <div class="tab-pane fade in active show" id="current" name="current" role="tabpanel">
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                <thead class="thead-agency">
-                                <tr>
-                                    <th>Lp.</th>
-                                    <th>Nazwa Produktu</th>
-                                    <th>Kategoria</th>
-                                    <th>Data Dodania</th>
-                                    <th>Czy wypozyczony</th>
-                                </tr>
-                                </thead>
-                                <tfoot class="thead-agency">
-                                <tr>
-                                    <th>Lp.</th>
-                                    <th>Nazwa Produktu</th>
-                                    <th>Kategoria</th>
-                                    <th>Data Dodania</th>
-                                    <th>Czy wypozyczony</th>
-                                </tr>
-                                </tfoot>
-                                <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>NIE</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                </tbody>
-                            </table>
+            <!-- Tab panes {Fade}  -->
+            <div class="tab-content">
+                <div class="tab-pane fade in active show" id="current" name="current" role="tabpanel">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead class="thead-agency">
+                                    <tr>
+                                        <th>Lp.</th>
+                                        <th>Nazwa Produktu</th>
+                                        <th>Kategoria</th>
+                                        <th>Data Dodania</th>
+                                        <th>Czy wypozyczony</th>
+                                    </tr>
+                                    </thead>
+                                    <tfoot class="thead-agency">
+                                    <tr>
+                                        <th>Lp.</th>
+                                        <th>Nazwa Produktu</th>
+                                        <th>Kategoria</th>
+                                        <th>Data Dodania</th>
+                                        <th>Czy wypozyczony</th>
+                                    </tr>
+                                    </tfoot>
+                                    <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>NIE</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="past" role="tabpanel">
+                    <div class="card mb-3">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable2" width="100%" cellspacing="0">
+                                    <thead class="thead-agency">
+                                    <tr>
+                                        <th>Lp.</th>
+                                        <th>Nazwa Produktu</th>
+                                        <th>Kategoria</th>
+                                        <th>Data Dodania</th>
+                                        <th>Czy wypozyczony</th>
+                                    </tr>
+                                    </thead>
+                                    <tfoot class="thead-agency">
+                                    <tr>
+                                        <th>Lp.</th>
+                                        <th>Nazwa Produktu</th>
+                                        <th>Kategoria</th>
+                                        <th>Data Dodania</th>
+                                        <th>Czy wypozyczony</th>
+                                    </tr>
+                                    </tfoot>
+                                    <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>NIE</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>Tiger Nixon</td>
+                                        <td>System Architect</td>
+                                        <td>2011/04/25</td>
+                                        <td>TAK</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="tab-pane fade" id="past" role="tabpanel">
-                <div class="card mb-3">
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable2" width="100%" cellspacing="0">
-                                <thead class="thead-agency">
-                                <tr>
-                                    <th>Lp.</th>
-                                    <th>Nazwa Produktu</th>
-                                    <th>Kategoria</th>
-                                    <th>Data Dodania</th>
-                                    <th>Czy wypozyczony</th>
-                                </tr>
-                                </thead>
-                                <tfoot class="thead-agency">
-                                <tr>
-                                    <th>Lp.</th>
-                                    <th>Nazwa Produktu</th>
-                                    <th>Kategoria</th>
-                                    <th>Data Dodania</th>
-                                    <th>Czy wypozyczony</th>
-                                </tr>
-                                </tfoot>
-                                <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>NIE</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>2011/04/25</td>
-                                    <td>TAK</td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
+        <!-- /.container-fluid -->
+
+        <footer th:replace="user-panel/user_layout :: foot"></footer>
+
     </div>
-    <!-- /.container-fluid -->
+    <!-- /.content-wrapper -->
 
-    <footer th:replace="user-panel/user_layout :: foot"></footer>
-
-</div>
-<!-- /.content-wrapper -->
-
-</div>
+    </div>
 <!-- /#wrapper -->
+</div>
 
 <!-- Scroll to Top Button-->
 <a class="scroll-to-top rounded" href="#page-top">
@@ -833,12 +833,12 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Chcesz opuscic strone?</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Chcesz opuścić stronę?</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <div class="modal-body">Wybierz "Wyloguj" jeżeli chcesz zakonczyć sesje.</div>
+            <div class="modal-body">Wybierz "Wyloguj" jeżeli chcesz zakonczyć sesję.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Anuluj</button>
                 <a class="btn btn-primary" href="/">Wyloguj</a>

@@ -11,22 +11,6 @@
   flex-direction: column;
 }
 
-.full-height{
-  min-height: 100%;
-  position: relative;
-  background-repeat: no-repeat;
-  background-size: cover;
-  opacity: 10%;
-}
-
-#bg-borrow {
-  background-image: url("../images/things.jpg");
-}
-
-#bg-panel{
-  background-image: url("../images/bg-panel.jpg");
-}
-
 .hideme
 {
     opacity:0;

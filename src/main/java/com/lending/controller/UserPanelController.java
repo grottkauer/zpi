@@ -53,7 +53,7 @@ public class UserPanelController {
     @GetMapping(value="/powiadomienia")
     public ModelAndView alerts() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("user-panel/alerts");
+        modelAndView.setViewName("user-panel/user-alerts");
         return modelAndView;
 
     }
