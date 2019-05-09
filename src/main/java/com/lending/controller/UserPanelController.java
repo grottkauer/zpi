@@ -1,6 +1,8 @@
 package com.lending.controller;
 
+import com.lending.entities.Resource;
 import com.lending.entities.ResourceType;
+import com.lending.repositories.ResourceRepository;
 import com.lending.repositories.ResourceTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
-
 @Controller
 @RequestMapping(value = {"/moje-konto"})
 public class UserPanelController {
@@ -20,6 +20,9 @@ public class UserPanelController {
 //
     @Autowired
     public ResourceTypeRepository resourceTypeRepository;
+
+    @Autowired
+    public ResourceRepository resourceRepository;
 //
 //    @RequestMapping("/db")
 //    @ResponseBody
@@ -164,6 +167,9 @@ public class UserPanelController {
     public ModelAndView search(@RequestParam String id) {
         ModelAndView modelAndView = new ModelAndView();
         //todo get data from database and add it to modelandview
+        int idValue = Integer.parseInt(id);
+        Iterable<Resource> resources = resourceRepository.findByResourceTypeId(idValue);
+        modelAndView.addObject("resources", resources);
         modelAndView.setViewName("user-panel/category");
         return modelAndView;
     }

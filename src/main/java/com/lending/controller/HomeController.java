@@ -1,5 +1,7 @@
 package com.lending.controller;
 
+import com.lending.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +12,10 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 @RequestMapping(value = {""})
 public class HomeController {
+
+    @Autowired
+    UserRepository userRepository;
+
     @GetMapping(value="")
     public ModelAndView index() {
         ModelAndView modelAndView = new ModelAndView();
@@ -32,16 +38,21 @@ public class HomeController {
     }
 
     @RequestMapping(value = "zaloguj", method = RequestMethod.POST)
-    public String processLogiIn(@RequestParam String email,@RequestParam String password)
+    public String processLogIn(@RequestParam String email, @RequestParam String password)
     {
-        String simple_email = "natalia@wp.pl";
-        String simple_passw = "kotelki";
+        boolean wasUserFound = false;
+        int userId = Integer.MIN_VALUE;
+        if (userRepository.checkIfUserExists(email)) {
+            wasUserFound = userRepository.checkIfCredentialsAreCorrect(email, password);
+            if (wasUserFound)
+                userId = userRepository.getUserIdByEmail(email);
+            //todo else show that password is incorrect
+        }
+        //todo else show that user was not found
 
-        // TODO
-        // connect with server and check if user is there if true -> return user if false -> communicate
-        boolean is_account = simple_email.equals(email) && simple_passw.equals(password);
+        //boolean is_account = simple_email.equals(email) && simple_passw.equals(password);
 
-        if (is_account)
+        if (wasUserFound)
             // Redirect to /user-panel
             return "redirect:/moje-konto";
         return "redirect:zaloguj";

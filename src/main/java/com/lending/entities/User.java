@@ -10,9 +10,6 @@ import java.util.List;
 public class User extends BaseEntity {
 
     @Column(nullable = false)
-    private String login;
-
-    @Column(nullable = false)
     private String password;
 
     @Column(nullable = false)
@@ -55,8 +52,7 @@ public class User extends BaseEntity {
     public User() {
     }
 
-    public User(String login, String password, String ethereumAddress, String ethereumKey, String email, String lastName, String firstName, Date joinDate, Date birthDate, Date recallDate, Address address) {
-        this.login = login;
+    public User(String password, String ethereumAddress, String ethereumKey, String email, String lastName, String firstName, Date joinDate, Date birthDate, Date recallDate, Address address) {
         this.password = password;
         this.ethereumAddress = ethereumAddress;
         this.ethereumKey = ethereumKey;
@@ -67,14 +63,6 @@ public class User extends BaseEntity {
         this.birthDate = birthDate;
         this.recallDate = recallDate;
         this.address = address;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
     }
 
     public String getPassword() {
