@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head >
+<title>BorrowMe!</title>
+<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="e-commerce site well design with responsive view." />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="manifest" href="/manifest.json">
+<!--<link href="../user-panel/category/image/favicon.png" rel="icon" type="image/png" >-->
+<link href="../user-panel/category/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+<link href="../user-panel/category/js/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
+<link href='https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,700,900' rel='stylesheet' type='text/css'>
+<link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900,900i" rel="stylesheet">
+<link href="../user-panel/category/css/stylesheet.css" rel="stylesheet">
+<link href="../user-panel/category/css/responsive.css" rel="stylesheet">
+<link href="../user-panel/category/javascript/owl-carousel/owl.carousel.css" type="text/css" rel="stylesheet" media="screen" />
+<link href="../user-panel/category/javascript/owl-carousel/owl.transitions.css" type="text/css" rel="stylesheet" media="screen" />
+<link href="../user-panel/cateory/css/sidefilter.scss" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="../user-panel/category/javascript/jquery-2.1.1.min.js" ></script>
+<script type="text/javascript" src="../user-panel/category/javascript/bootstrap/js/bootstrap.min.js" ></script>
+<script type="text/javascript" src="../user-panel/category/javascript/template_js/jstree.min.js"></script>
+<script type="text/javascript" src="../user-panel/category/javascript/template_js/template.js"></script>
+<script type="text/javascript" src="../user-panel/category/javascript/common.js" ></script>
+<script type="text/javascript" src="../user-panel/category/javascript/global.js" ></script>
+<script type="text/javascript" src="../user-panel/category/javascript/owl-carousel/owl.carousel.min.js"></script>
+</head>
+<body class="category col-2 left-col">
+<!--<div class="preloader loader" style="display: block;"> <img src="../user-panel/category/image/loader.gif"  alt="#"/></div>-->
+<header>
+</header>
+<div class="container">
+  <div class="row">
+    <div id="column-left" class="col-sm-3 hidden-xs column-left">
+      <div class="Categories left-sidebar-widget">
+        <div class="columnblock-title">Kategorie</div>
+        <div class="category_block">
+          <ul class="box-category treeview">
+            <li><a href="#" class="activSub">Książki</a>
+              <ul>
+                <li><a href="#">Fantastyka</a></li>
+                <li><a href="#">Romans</a></li>
+              </ul>
+            </li>
+            <li><a href="#" class="activSub">Filmy</a>
+              <ul>
+                <li><a href="#">Horror</a></li>
+                <li><a href="#">Sensacja</a></li>
+              </ul>
+            </li>
+            <li><a href="#" class="activSub">Muzyka</a>
+              <ul>
+                <li><a href="#">Punk</a></li>
+                <li><a href="#">Gospel</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Planszówki</a></li>
+            <li><a href="#">Czasopisma</a></li>
+            <li><a href="#">Zabawki</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="filter left-sidebar-widget">
+        <div class="columnblock-title">Filtry</div>
+        <div class="filter-block">
+          <div class="list-group">
+            <p class="list-group-item">Color</p>
+            <div class="list-group-item">
+              <div id="filter-group1">
+                <label class="checkbox">
+                  <input name="filter[]" type="checkbox" value="1" />
+                  Black (7)</label>
+                <label class="checkbox">
+                  <input name="filter[]" type="checkbox" value="2" />
+                  Blue (6)</label>
+                <label class="checkbox">
+                  <input name="filter[]" type="checkbox" value="3" />
+                  Red (6)</label>
+              </div>
+            </div>
+            <p class="list-group-item">Price</p>
+            <div class="list-group-item">
+              <div id="filter-group2">
+                <label class="checkbox">
+                  <input name="filter[]" type="checkbox" value="4" />
+                  $100-$300 (6)</label>
+                <label class="checkbox">
+                  <input name="filter[]" type="checkbox" value="5" />
+                  $301-$1000 (6)</label>
+              </div>
+            </div>
+            <p class="list-group-item">Size</p>
+            <div class="list-group-item">
+              <div id="filter-group3">
+                <label class="checkbox">
+                  <input name="filter[]" type="checkbox" value="6" />
+                  Big (3)</label>
+                <label class="checkbox">
+                  <input name="filter[]" type="checkbox" value="7" />
+                  Medium (3)</label>
+                <label class="checkbox">
+                  <input name="filter[]" type="checkbox" value="8" />
+                  Small (1)</label>
+              </div>
+            </div>
+          </div>
+          <div class="panel-footer">
+            <button type="button" id="button-filter" class="btn btn-primary">Refine Search</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class=" content col-sm-9">
+      <div class="category-page-wrapper">
+        <div class="col-md-2 text-right sort-wrapper">
+          <label class="control-label" for="input-sort">Sortuj według:</label>
+          <div class="sort-inner">
+            <select id="input-sort" class="form-control">
+              <option value="ASC" selected="selected">Popularności</option>
+              <option value="ASC">Nazwy (A - Z)</option>
+              <option value="DESC">Nazwy (Z - A)</option>
+              <option value="ASC">Ceny (rosnąco)</option>
+              <option value="DESC">Ceny (malejąco)</option>
+              <option value="ASC">Ocen (rosnąco)</option>
+              <option value="DESC">Ocen (malejąco)</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-1 text-right page-wrapper">
+          <label class="control-label" for="input-limit">Pokaż:</label>
+          <div class="limit">
+            <select id="input-limit" class="form-control">
+              <option value="8" selected="selected">08</option>
+              <option value="25">25</option>
+              <option value="50">50</option>
+              <option value="75">75</option>
+              <option value="100">100</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-6 list-grid-wrapper">
+          <div class="btn-group btn-list-grid">
+            <button type="button" id="list-view" class="btn btn-default list" data-toggle="tooltip" title="Lista"></button>
+            <button type="button" id="grid-view" class="btn btn-default grid" data-toggle="tooltip" title="Kafelki"></button>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div class="grid-list-wrapper">
+        <div class="product-layout product-list col-xs-12">
+          <div class="product-thumb">
+            <div class="image product-imageblock">
+            <a href="product.html">
+            <img src="../user-panel/category/image/product/Pro-04.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive" />
+            <img src="../user-panel/category/image/product/Pro-04-1.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive" />
+            </a>
+              <ul class="button-group grid-btn">
+                <li>
+                  <button type="button" class="wishlist" data-toggle="tooltip" data-placement="top" title="Add to Wish List" ><i class="fa fa-heart-o"></i></button>
+                </li>
+                <li>
+                  <button type="button" class="compare" data-toggle="tooltip" data-placement="top" title="Compare this Product" ><i class="fa fa-exchange"></i></button>
+                </li>
+                <li>
+                  <button type="button" class="quick-view" data-toggle="tooltip" data-placement="top" title="Quick View" ><i class="fa fa-eye"></i></button>
+                </li>
+                <li>
+                  <button type="button" class="addtocart-btn" title="Add to Cart">Add to Cart</button>
+                </li>
+              </ul>
+            </div>
+            <div class="caption product-detail">
+              <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
+              <h4 class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">Casual Shirt With Ruffle Hem</a></h4>
+              <p class="price product-price">$122.00<span class="price-tax">Ex Tax: $100.00</span></p>
+              <p class="product-desc"> More room to move.
+                
+                With 80GB or 160GB of storage and up to 40 hours of battery life, the new iPod classic lets you enjoy up to 40,000 songs or up to 200 hours of video or any combination wherever you go.
+                
+                Cover Flow.
+                
+                Browse through your music collection by flipping..</p>
+              <ul class="button-group list-btn">
+                <li>
+                  <button type="button" class="wishlist" data-toggle="tooltip" data-placement="top" title="Add to Wish List" ><i class="fa fa-heart-o"></i></button>
+                </li>
+                <li>
+                  <button type="button" class="compare" data-toggle="tooltip" data-placement="top" title="Compare this Product" ><i class="fa fa-exchange"></i></button>
+                </li>
+                <li>
+                  <button type="button" class="quick-view" data-toggle="tooltip" data-placement="top" title="Quick View" ><i class="fa fa-eye"></i></button>
+                </li>
+                <li>
+                  <button type="button" class="addtocart-btn" data-toggle="tooltip" data-placement="top" title="Add to Cart"  ><i class="fa fa-shopping-bag"></i></button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="product-layout product-list col-xs-12">
+          <div class="product-thumb">
+            <div class="image product-imageblock"> <a href="product.html">
+            <img src="../user-panel/category/image/product/Pro-03.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive" />
+            <img src="../user-panel/category/image/product/Pro-03-1.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive" />
+            </a>
+              <ul class="button-group grid-btn">
+                <li>
+                  <button type="button" class="wishlist" data-toggle="tooltip" data-placement="top" title="Add to Wish List" ><i class="fa fa-heart-o"></i></button>
+                </li>
+                <li>
+                  <button type="button" class="compare" data-toggle="tooltip" data-placement="top" title="Compare this Product" ><i class="fa fa-exchange"></i></button>
+                </li>
+                <li>
+                  <button type="button" class="quick-view" data-toggle="tooltip" data-placement="top" title="Quick View" ><i class="fa fa-eye"></i></button>
+                </li>
+                <li>
+                  <button type="button" class="addtocart-btn" title="Add to Cart"  > Add to Cart </button>
+                </li>
+              </ul>
+            </div>
+            <div class="caption product-detail">
+              <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
+              <h4 class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">Casual Shirt With Ruffle Hem</a></h4>
+              <p class="price product-price">$122.00<span class="price-tax">Ex Tax: $100.00</span></p>
+              <p class="product-desc"> More room to move.
+                
+                With 80GB or 160GB of storage and up to 40 hours of battery life, the new iPod classic lets you enjoy up to 40,000 songs or up to 200 hours of video or any combination wherever you go.
+                
+                Cover Flow.
+                
+                Browse through your music collection by flipping..</p>
+              <ul class="button-group list-btn">
+                <li>
+                  <button type="button" class="wishlist" data-toggle="tooltip" data-placement="top" title="Add to Wish List" ><i class="fa fa-heart-o"></i></button>
+                </li>
+                <li>
+                  <button type="button" class="compare" data-toggle="tooltip" data-placement="top" title="Compare this Product" ><i class="fa fa-exchange"></i></button>
+                </li>
+                <li>
+                  <button type="button" class="quick-view" data-toggle="tooltip" data-placement="top" title="Quick View" ><i class="fa fa-eye"></i></button>
+                </li>
+                <li>
+                  <button type="button" class="addtocart-btn" data-toggle="tooltip" data-placement="top" title="Add to Cart"  ><i class="fa fa-shopping-bag"></i></button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="product-layout product-list col-xs-12">
+          <div class="product-thumb">
+            <div class="image product-imageblock"> <a href="product.html">
+            <img src="../user-panel/category/image/product/Pro-06.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive" />
+            <img src="../user-panel/category/image/product/Pro-06-1.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive" />
+            </a>
+              <ul class="button-group grid-btn">
+                <li>
+                  <button type="button" class="wishlist" data-toggle="tooltip" data-placement="top" title="Add to Wish List" ><i class="fa fa-heart-o"></i></button>
+                </li>
+                <li>
+                  <button type="button" class="compare" data-toggle="tooltip" data-placement="top" title="Compare this Product" ><i class="fa fa-exchange"></i></button>
+                </li>
+                <li>
+                  <button type="button" class="quick-view" data-toggle="tooltip" data-placement="top" title="Quick View" ><i class="fa fa-eye"></i></button>
+                </li>
+                <li>
+                  <button type="button" class="addtocart-btn" title="Add to Cart"  > Add to Cart </button>
+                </li>
+              </ul>
+            </div>
+            <div class="caption product-detail">
+              <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
+              <h4 class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">Casual Shirt With Ruffle Hem</a></h4>
+              <p class="price product-price">$122.00<span class="price-tax">Ex Tax: $100.00</span></p>
+              <p class="product-desc"> More room to move.
+                
+                With 80GB or 160GB of storage and up to 40 hours of battery life, the new iPod classic lets you enjoy up to 40,000 songs or up to 200 hours of video or any combination wherever you go.
+                
+                Cover Flow.
+                
+                Browse through your music collection by flipping..</p>
+              <ul class="button-group list-btn">
+                <li>
+                  <button type="button" class="wishlist" data-toggle="tooltip" data-placement="top" title="Add to Wish List" ><i class="fa fa-heart-o"></i></button>
+                </li>
+                <li>
+                  <button type="button" class="compare" data-toggle="tooltip" data-placement="top" title="Compare this Product" ><i class="fa fa-exchange"></i></button>
+                </li>
+                <li>
+                  <button type="button" class="quick-view" data-toggle="tooltip" data-placement="top" title="Quick View" ><i class="fa fa-eye"></i></button>
+                </li>
+                <li>
+                  <button type="button" class="addtocart-btn" data-toggle="tooltip" data-placement="top" title="Add to Cart"  ><i class="fa fa-shopping-bag"></i></button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="product-layout product-list col-xs-12">
+          <div class="product-thumb">
+            <div class="image product-imageblock"> <a href="product.html">
+            <img src="../user-panel/category/image/product/Pro-07.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive" />
+            <img src="../user-panel/category/image/product/Pro-07-1.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive" />
+            </a>
+              <ul class="button-group grid-btn">
+                <li>
+                  <button type="button" class="wishlist" data-toggle="tooltip" data-placement="top" title="Add to Wish List" ><i class="fa fa-heart-o"></i></button>
+                </li>
+                <li>
+                  <button type="button" class="compare" data-toggle="tooltip" data-placement="top" title="Compare this Product" ><i class="fa fa-exchange"></i></button>
+                </li>
+                <li>
+                  <button type="button" class="quick-view" data-toggle="tooltip" data-placement="top" title="Quick View" ><i class="fa fa-eye"></i></button>
+                </li>
+                <li>
+                  <button type="button" class="addtocart-btn" title="Add to Cart"  > Add to Cart </button>
+                </li>
+              </ul>
+            </div>
+            <div class="caption product-detail">
+              <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
+              <h4 class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">Casual Shirt With Ruffle Hem</a></h4>
+              <p class="price product-price">$122.00<span class="price-tax">Ex Tax: $100.00</span></p>
+              <p class="product-desc"> More room to move.
+                
+                With 80GB or 160GB of storage and up to 40 hours of battery life, the new iPod classic lets you enjoy up to 40,000 songs or up to 200 hours of video or any combination wherever you go.
+                
+                Cover Flow.
+                
+                Browse through your music collection by flipping..</p>
+              <ul class="button-group list-btn">
+                <li>
+                  <button type="button" class="wishlist" data-toggle="tooltip" data-placement="top" title="Add to Wish List" ><i class="fa fa-heart-o"></i></button>
+                </li>
+                <li>
+                  <button type="button" class="compare" data-toggle="tooltip" data-placement="top" title="Compare this Product" ><i class="fa fa-exchange"></i></button>
+                </li>
+                <li>
+                  <button type="button" class="quick-view" data-toggle="tooltip" data-placement="top" title="Quick View" ><i class="fa fa-eye"></i></button>
+                </li>
+                <li>
+                  <button type="button" class="addtocart-btn" data-toggle="tooltip" data-placement="top" title="Add to Cart"  ><i class="fa fa-shopping-bag"></i></button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="product-layout product-list col-xs-12">
+          <div class="product-thumb">
+            <div class="image product-imageblock"> <a href="product.html">
+            <img src="../user-panel/category/image/product/Pro-08.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive" />
+            <img src="../user-panel/category/image/product/Pro-08-1.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive" />
+            </a>
+              <ul class="button-group grid-btn">
+                <li>
+                  <button type="button" class="wishlist" data-toggle="tooltip" data-placement="top" title="Add to Wish List" ><i class="fa fa-heart-o"></i></button>
+                </li>
+                <li>
+                  <button type="button" class="compare" data-toggle="tooltip" data-placement="top" title="Compare this Product" ><i class="fa fa-exchange"></i></button>
+                </li>
+                <li>
+                  <button type="button" class="quick-view" data-toggle="tooltip" data-placement="top" title="Quick View" ><i class="fa fa-eye"></i></button>
+                </li>
+                <li>
+                  <button type="button" class="addtocart-btn" title="Add to Cart"  > Add to Cart </button>
+                </li>
+              </ul>
+            </div>
+            <div class="caption product-detail">
+              <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
+              <h4 class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">Casual Shirt With Ruffle Hem</a></h4>
+              <p class="price product-price">$122.00<span class="price-tax">Ex Tax: $100.00</span></p>
+              <p class="product-desc"> More room to move.
+                
+                With 80GB or 160GB of storage and up to 40 hours of battery life, the new iPod classic lets you enjoy up to 40,000 songs or up to 200 hours of video or any combination wherever you go.
+                
+                Cover Flow.
+                
+                Browse through your music collection by flipping..</p>
+              <ul class="button-group list-btn">
+                <li>
+                  <button type="button" class="wishlist" data-toggle="tooltip" data-placement="top" title="Add to Wish List" ><i class="fa fa-heart-o"></i></button>
+                </li>
+                <li>
+                  <button type="button" class="compare" data-toggle="tooltip" data-placement="top" title="Compare this Product" ><i class="fa fa-exchange"></i></button>
+                </li>
+                <li>
+                  <button type="button" class="quick-view" data-toggle="tooltip" data-placement="top" title="Quick View" ><i class="fa fa-eye"></i></button>
+                </li>
+                <li>
+                  <button type="button" class="addtocart-btn" data-toggle="tooltip" data-placement="top" title="Add to Cart"  ><i class="fa fa-shopping-bag"></i></button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="product-layout product-list col-xs-12">
+          <div class="product-thumb">
+            <div class="image product-imageblock"> <a href="product.html">
+            <img src="../user-panel/category/image/product/Pro-09.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive" />
+            <img src="../user-panel/category/image/product/Pro-09-1.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive" />
+            </a>
+              <ul class="button-group grid-btn">
+                <li>
+                  <button type="button" class="wishlist" data-toggle="tooltip" data-placement="top" title="Add to Wish List" ><i class="fa fa-heart-o"></i></button>
+                </li>
+                <li>
+                  <button type="button" class="compare" data-toggle="tooltip" data-placement="top" title="Compare this Product" ><i class="fa fa-exchange"></i></button>
+                </li>
+                <li>
+                  <button type="button" class="quick-view" data-toggle="tooltip" data-placement="top" title="Quick View" ><i class="fa fa-eye"></i></button>
+                </li>
+                <li>
+                  <button type="button" class="addtocart-btn" title="Add to Cart"  > Add to Cart </button>
+                </li>
+              </ul>
+            </div>
+            <div class="caption product-detail">
+              <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
+              <h4 class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">Casual Shirt With Ruffle Hem</a></h4>
+              <p class="price product-price">$122.00<span class="price-tax">Ex Tax: $100.00</span></p>
+              <p class="product-desc"> More room to move.
+                
+                With 80GB or 160GB of storage and up to 40 hours of battery life, the new iPod classic lets you enjoy up to 40,000 songs or up to 200 hours of video or any combination wherever you go.
+                
+                Cover Flow.
+                
+                Browse through your music collection by flipping..</p>
+              <ul class="button-group list-btn">
+                <li>
+                  <button type="button" class="wishlist" data-toggle="tooltip" data-placement="top" title="Add to Wish List" ><i class="fa fa-heart-o"></i></button>
+                </li>
+                <li>
+                  <button type="button" class="compare" data-toggle="tooltip" data-placement="top" title="Compare this Product" ><i class="fa fa-exchange"></i></button>
+                </li>
+                <li>
+                  <button type="button" class="quick-view" data-toggle="tooltip" data-placement="top" title="Quick View" ><i class="fa fa-eye"></i></button>
+                </li>
+                <li>
+                  <button type="button" class="addtocart-btn" data-toggle="tooltip" data-placement="top" title="Add to Cart"  ><i class="fa fa-shopping-bag"></i></button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="product-layout product-list col-xs-12">
+          <div class="product-thumb">
+            <div class="image product-imageblock"> <a href="product.html">
+            <img src="../user-panel/category/image/product/Pro-010.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive" />
+            <img src="../user-panel/category/image/product/Pro-010-1.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive" />
+            </a>
+              <ul class="button-group grid-btn">
+                <li>
+                  <button type="button" class="wishlist" data-toggle="tooltip" data-placement="top" title="Add to Wish List" ><i class="fa fa-heart-o"></i></button>
+                </li>
+                <li>
+                  <button type="button" class="compare" data-toggle="tooltip" data-placement="top" title="Compare this Product" ><i class="fa fa-exchange"></i></button>
+                </li>
+                <li>
+                  <button type="button" class="quick-view" data-toggle="tooltip" data-placement="top" title="Quick View" ><i class="fa fa-eye"></i></button>
+                </li>
+                <li>
+                  <button type="button" class="addtocart-btn" title="Add to Cart"  > Add to Cart </button>
+                </li>
+              </ul>
+            </div>
+            <div class="caption product-detail">
+              <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
+              <h4 class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">Casual Shirt With Ruffle Hem</a></h4>
+              <p class="price product-price">$122.00<span class="price-tax">Ex Tax: $100.00</span></p>
+              <p class="product-desc"> More room to move.
+                
+                With 80GB or 160GB of storage and up to 40 hours of battery life, the new iPod classic lets you enjoy up to 40,000 songs or up to 200 hours of video or any combination wherever you go.
+                
+                Cover Flow.
+                
+                Browse through your music collection by flipping..</p>
+              <ul class="button-group list-btn">
+                <li>
+                  <button type="button" class="wishlist" data-toggle="tooltip" data-placement="top" title="Add to Wish List" ><i class="fa fa-heart-o"></i></button>
+                </li>
+                <li>
+                  <button type="button" class="compare" data-toggle="tooltip" data-placement="top" title="Compare this Product" ><i class="fa fa-exchange"></i></button>
+                </li>
+                <li>
+                  <button type="button" class="quick-view" data-toggle="tooltip" data-placement="top" title="Quick View" ><i class="fa fa-eye"></i></button>
+                </li>
+                <li>
+                  <button type="button" class="addtocart-btn" data-toggle="tooltip" data-placement="top" title="Add to Cart"  ><i class="fa fa-shopping-bag"></i></button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="product-layout product-list col-xs-12">
+          <div class="product-thumb">
+            <div class="image product-imageblock"> <a href="product.html">
+            <img src="../user-panel/category/image/product/Pro-01.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive" />
+            <img src="../user-panel/category/image/product/Pro-01-1.jpg" alt="iPod Classic" title="iPod Classic" class="img-responsive" />
+            </a>
+              <ul class="button-group grid-btn">
+                <li>
+                  <button type="button" class="wishlist" data-toggle="tooltip" data-placement="top" title="Add to Wish List" ><i class="fa fa-heart-o"></i></button>
+                </li>
+                <li>
+                  <button type="button" class="compare" data-toggle="tooltip" data-placement="top" title="Compare this Product" ><i class="fa fa-exchange"></i></button>
+                </li>
+                <li>
+                  <button type="button" class="quick-view" data-toggle="tooltip" data-placement="top" title="Quick View" ><i class="fa fa-eye"></i></button>
+                </li>
+                <li>
+                  <button type="button" class="addtocart-btn" title="Add to Cart"  > Add to Cart </button>
+                </li>
+              </ul>
+            </div>
+            <div class="caption product-detail">
+              <div class="rating"> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i><i class="fa fa-star fa-stack-2x"></i></span> <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> </div>
+              <h4 class="product-name"><a href="#" title="Casual Shirt With Ruffle Hem">Casual Shirt With Ruffle Hem</a></h4>
+              <p class="price product-price">$122.00<span class="price-tax">Ex Tax: $100.00</span></p>
+              <p class="product-desc"> More room to move.
+                
+                With 80GB or 160GB of storage and up to 40 hours of battery life, the new iPod classic lets you enjoy up to 40,000 songs or up to 200 hours of video or any combination wherever you go.
+                
+                Cover Flow.
+                
+                Browse through your music collection by flipping..</p>
+              <ul class="button-group list-btn">
+                <li>
+                  <button type="button" class="wishlist" data-toggle="tooltip" data-placement="top" title="Add to Wish List" ><i class="fa fa-heart-o"></i></button>
+                </li>
+                <li>
+                  <button type="button" class="compare" data-toggle="tooltip" data-placement="top" title="Compare this Product" ><i class="fa fa-exchange"></i></button>
+                </li>
+                <li>
+                  <button type="button" class="quick-view" data-toggle="tooltip" data-placement="top" title="Quick View" ><i class="fa fa-eye"></i></button>
+                </li>
+                <li>
+                  <button type="button" class="addtocart-btn" data-toggle="tooltip" data-placement="top" title="Add to Cart"  ><i class="fa fa-shopping-bag"></i></button>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="category-page-wrapper">
+        <div class="result-inner">Showing 1 to 8 of 10 (2 Pages)</div>
+        <div class="pagination-inner">
+          <ul class="pagination">
+            <li class="active"><span>1</span></li>
+            <li><a href="category.html">2</a></li>
+            <li><a href="category.html">&gt;</a></li>
+            <li><a href="category.html">&gt;|</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
