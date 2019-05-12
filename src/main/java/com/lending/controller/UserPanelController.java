@@ -171,7 +171,7 @@ public class UserPanelController {
         int idValue = Integer.parseInt(id);
         Iterable<Resource> resources = resourceRepository.findByResourceTypeId(idValue);
         modelAndView.addObject("resources", resources);
-        modelAndView.setViewName("user-panel/category");
+        modelAndView.setViewName("user-panel/category2");
         return modelAndView;
     }
 }
