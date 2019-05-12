@@ -162,7 +162,7 @@ a {
 /*---------------------------------------------------- */
 /*----------------------------------------------------*/
 .active {
-  color: #1641ff; }
+  color: #fed136; }
 
 .header_area {
   position: absolute;
@@ -3264,12 +3264,12 @@ h6 {
   .s_product_text h3 {
     font-size: 24px;
     font-weight: 500;
-    color: #222222;
+    color: #eee;
     margin-bottom: 10px; }
   .s_product_text h2 {
     font-size: 24px;
     font-weight: bold;
-    color: #1641ff;
+    color: #fed136;
     margin-bottom: 15px; }
   .s_product_text .list li {
     margin-bottom: 5px; }
@@ -3277,23 +3277,25 @@ h6 {
       font-size: 14px;
       font-family: "Roboto", sans-serif;
       font-weight: normal;
-      color: #555555; }
+      color: #ccc; }
       .s_product_text .list li a span {
         width: 90px;
-        display: inline-block; }
+        display: inline-block;
+         color: #ccc; }
         .s_product_text .list li a span:hover {
           color: #555; }
       .s_product_text .list li a.active {
-        color: #1641ff; }
+        color: #fed136; }
         .s_product_text .list li a.active span {
-          color: #555; }
+          color: #ccc; }
     .s_product_text .list li:last-child {
       margin-bottom: 0px; }
   .s_product_text p {
     padding-top: 20px;
     border-top: 1px dotted #d5d5d5;
     margin-top: 20px;
-    margin-bottom: 70px; }
+    margin-bottom: 70px;
+    color: #ccc; }
   .s_product_text .card_area .main_btn {
     line-height: 38px;
     padding: 0px 38px;
@@ -3319,7 +3321,7 @@ h6 {
   margin-bottom: 24px; }
   .product_count label {
     font-size: 14px;
-    color: #777777;
+    color: #ccc;
     font-family: "Roboto", sans-serif;
     font-weight: normal;
     padding-right: 10px; }
@@ -3403,13 +3405,13 @@ h6 {
       margin-bottom: 30px; }
       .product_description_area .tab-content .total_rate .rating_list h3 {
         font-size: 18px;
-        color: #222222;
+        color: #eee;
         font-family: "Roboto", sans-serif;
         font-weight: 500;
         margin-bottom: 10px; }
       .product_description_area .tab-content .total_rate .rating_list .list li a {
         font-size: 14px;
-        color: #777777; }
+        color: #ccc; }
         .product_description_area .tab-content .total_rate .rating_list .list li a i {
           color: #fbd600; }
       .product_description_area .tab-content .total_rate .rating_list .list li:nth-child a i:last-child {
@@ -3425,7 +3427,7 @@ h6 {
           font-size: 14px;
           font-family: "Roboto", sans-serif;
           font-weight: normal;
-          color: #777777;
+          color: #ccc;
           margin-bottom: 0px;
           white-space: nowrap; }
       .product_description_area .tab-content .table tbody tr:first-child td {
@@ -3445,7 +3447,7 @@ h6 {
       .review_item .media .media-body h4 {
         margin-bottom: 0px;
         font-size: 14px;
-        color: #222222;
+        color: #ccc;
         font-family: "Roboto", sans-serif;
         margin-bottom: 8px; }
       .review_item .media .media-body i {
@@ -3453,7 +3455,7 @@ h6 {
       .review_item .media .media-body h5 {
         font-size: 13px;
         font-weight: normal;
-        color: #777777; }
+        color: #ccc; }
       .review_item .media .media-body .reply_btn {
         border: 1px solid #e0e0e0;
         padding: 0px 28px;
@@ -3462,7 +3464,7 @@ h6 {
         border-radius: 16px;
         font-size: 14px;
         font-family: "Roboto", sans-serif;
-        color: #222222;
+        color: #ccc;
         position: absolute;
         right: 0px;
         top: 14px; }
@@ -3478,7 +3480,7 @@ h6 {
 
 .review_box h4 {
   font-size: 24px;
-  color: #222222;
+  color: #ccc;
   margin-bottom: 20px; }
 .review_box p {
   margin-bottom: 0px;
@@ -4343,9 +4345,9 @@ h6 {
   .footer-bottom .footer-text {
     margin-bottom: 0px; }
     .footer-bottom .footer-text i {
-      color: #1641ff; }
+      color: #fed136; }
     .footer-bottom .footer-text a {
-      color: #1641ff; }
+      color: #fed136; }
   .footer-bottom .footer-social {
     text-align: right; }
     .footer-bottom .footer-social a {
@@ -4376,6 +4378,9 @@ h6 {
     height: 200px;
 }
 
+.short-description, .long-description{
+    background: rgba(0, 0, 0, 0.33);
+}
 
 /*---------------------------------------------------- */
 
