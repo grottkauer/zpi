@@ -82,7 +82,10 @@
 	content: "\e812";
 }
 .lnr-heart:before {
-	content: "\e813";
+	/*content: "\e813";*/
+	font-family: "Font Awesome 5 Free";
+    content: "\f004";
+    font-weight: normal;
 }
 .lnr-star:before {
 	content: "\e814";
@@ -163,7 +166,10 @@
 	content: "\e82d";
 }
 .lnr-cart:before {
-	content: "\e82e";
+	/*content: "\e82e";*/
+	content: '\f07a';
+      font-family: "Font Awesome 5 Free";
+      font-weight: 900;
 }
 .lnr-tag:before {
 	content: "\e82f";

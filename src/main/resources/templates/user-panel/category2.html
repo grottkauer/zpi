@@ -2,8 +2,9 @@
 <html lang="pl" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="user-panel/user_layout :: template_header"></head>
 <body>
+<nav th:replace="user-panel/user_layout :: navigation"></nav>
 <div class="full-height" id="bg-borrow">
-	<nav th:replace="user-panel/user_layout :: navigation"></nav>
+
 <!--
 <head>
 	<meta charset="utf-8">
@@ -36,7 +37,7 @@
 								<ul class="pagination">
 									<li class="page-item">
 										<a class="page-link" href="#">
-											<i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+											<i class="fa fa-long-arrow-alt-left" aria-hidden="true"></i>
 										</a>
 									</li>
 									<li class="page-item active">
@@ -56,7 +57,7 @@
 									</li>
 									<li class="page-item">
 										<a class="page-link" href="#">
-											<i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+											<i class="fa fa-long-arrow-alt-right" aria-hidden="true"></i>
 										</a>
 									</li>
 								</ul>
@@ -67,7 +68,7 @@
 						<div class="col-lg-3 col-md-3 col-sm-6">
 							<div class="f_p_item">
 								<div class="f_p_img">
-									<img class="img-fluid" src="../images/sample-products/talisman.png" alt="">
+									<img class="img-gallery" src="../images/sample-products/talisman.png" alt="">
 									<div class="p_icon">
 										<a href="#">
 											<i class="lnr lnr-heart"></i>
@@ -77,7 +78,28 @@
 										</a>
 									</div>
 								</div>
-								<a href="#">
+								<div class="underline-text">
+									<a href="szczegoly">
+										<h4>Long Sleeve TShirt</h4>
+									</a>
+									<h5>$150.00</h5>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-3 col-md-3 col-sm-6">
+							<div class="f_p_item">
+								<div class="f_p_img">
+									<img class="img-gallery" src="../images/sample-products/tajniacy.png" alt="">
+									<div class="p_icon">
+										<a href="#">
+											<i class="lnr lnr-heart"></i>
+										</a>
+										<a href="#">
+											<i class="lnr lnr-cart"></i>
+										</a>
+									</div>
+								</div>
+								<a href="szczegoly">
 									<h4>Long Sleeve TShirt</h4>
 								</a>
 								<h5>$150.00</h5>
@@ -86,7 +108,7 @@
 						<div class="col-lg-3 col-md-3 col-sm-6">
 							<div class="f_p_item">
 								<div class="f_p_img">
-									<img class="img-fluid" src="../images/sample-products/tajniacy.png" alt="">
+									<img class="img-gallery" src="../images/sample-products/dobble.png" alt="">
 									<div class="p_icon">
 										<a href="#">
 											<i class="lnr lnr-heart"></i>
@@ -96,7 +118,7 @@
 										</a>
 									</div>
 								</div>
-								<a href="#">
+								<a href="szczegoly">
 									<h4>Long Sleeve TShirt</h4>
 								</a>
 								<h5>$150.00</h5>
@@ -105,7 +127,7 @@
 						<div class="col-lg-3 col-md-3 col-sm-6">
 							<div class="f_p_item">
 								<div class="f_p_img">
-									<img class="img-fluid" src="../images/sample-products/dobble.png" alt="">
+									<img class="img-gallery" src="../images/sample-products/skipbo.png" alt="">
 									<div class="p_icon">
 										<a href="#">
 											<i class="lnr lnr-heart"></i>
@@ -115,7 +137,7 @@
 										</a>
 									</div>
 								</div>
-								<a href="#">
+								<a href="szczegoly">
 									<h4>Long Sleeve TShirt</h4>
 								</a>
 								<h5>$150.00</h5>
@@ -124,7 +146,7 @@
 						<div class="col-lg-3 col-md-3 col-sm-6">
 							<div class="f_p_item">
 								<div class="f_p_img">
-									<img class="img-fluid" src="../images/sample-products/skipbo.png" alt="">
+									<img class="img-gallery" src="../images/sample-products/7cudow.png" alt="">
 									<div class="p_icon">
 										<a href="#">
 											<i class="lnr lnr-heart"></i>
@@ -134,7 +156,7 @@
 										</a>
 									</div>
 								</div>
-								<a href="#">
+								<a href="szczegoly">
 									<h4>Long Sleeve TShirt</h4>
 								</a>
 								<h5>$150.00</h5>
@@ -143,7 +165,7 @@
 						<div class="col-lg-3 col-md-3 col-sm-6">
 							<div class="f_p_item">
 								<div class="f_p_img">
-									<img class="img-fluid" src="../images/sample-products/7cudow.png" alt="">
+									<img class="img-gallery" src="../images/sample-products/talisman.png" alt="">
 									<div class="p_icon">
 										<a href="#">
 											<i class="lnr lnr-heart"></i>
@@ -153,7 +175,7 @@
 										</a>
 									</div>
 								</div>
-								<a href="#">
+								<a href="szczegoly">
 									<h4>Long Sleeve TShirt</h4>
 								</a>
 								<h5>$150.00</h5>
@@ -162,7 +184,7 @@
 						<div class="col-lg-3 col-md-3 col-sm-6">
 							<div class="f_p_item">
 								<div class="f_p_img">
-									<img class="img-fluid" src="../images/sample-products/talisman.png" alt="">
+									<img class="img-gallery" src="../images/sample-products/dobble.png" alt="">
 									<div class="p_icon">
 										<a href="#">
 											<i class="lnr lnr-heart"></i>
@@ -172,7 +194,7 @@
 										</a>
 									</div>
 								</div>
-								<a href="#">
+								<a href="szczegoly">
 									<h4>Long Sleeve TShirt</h4>
 								</a>
 								<h5>$150.00</h5>
@@ -181,7 +203,7 @@
 						<div class="col-lg-3 col-md-3 col-sm-6">
 							<div class="f_p_item">
 								<div class="f_p_img">
-									<img class="img-fluid" src="../images/sample-products/dobble.png" alt="">
+									<img class="img-gallery" src="../images/sample-products/tajniacy.png" alt="">
 									<div class="p_icon">
 										<a href="#">
 											<i class="lnr lnr-heart"></i>
@@ -191,26 +213,7 @@
 										</a>
 									</div>
 								</div>
-								<a href="#">
-									<h4>Long Sleeve TShirt</h4>
-								</a>
-								<h5>$150.00</h5>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-3 col-sm-6">
-							<div class="f_p_item">
-								<div class="f_p_img">
-									<img class="img-fluid" src="../images/sample-products/tajniacy.png" alt="">
-									<div class="p_icon">
-										<a href="#">
-											<i class="lnr lnr-heart"></i>
-										</a>
-										<a href="#">
-											<i class="lnr lnr-cart"></i>
-										</a>
-									</div>
-								</div>
-								<a href="#">
+								<a href="szczegoly">
 									<h4>Long Sleeve TShirt</h4>
 								</a>
 								<h5>$150.00</h5>
@@ -389,6 +392,8 @@
 	</section>
 	<!--================End Category Product Area =================-->
 
+
+
 	<!--================ start footer Area  =================-->
 	<footer class="footer-area section_gap">
 		<div class="row footer-bottom d-flex justify-content-between align-items-center">
@@ -399,6 +404,44 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		</div>
 	</footer>
 	<!--================ End footer Area  =================-->
+
+	<!-- Logout Modal-->
+	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Chcesz opuscic strone?</h5>
+					<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+				</div>
+				<div class="modal-body">Wybierz "Wyloguj" jeżeli chcesz zakonczyć sesje.</div>
+				<div class="modal-footer">
+					<button class="btn btn-secondary" type="button" data-dismiss="modal">Anuluj</button>
+					<a class="btn btn-primary" href="/">Wyloguj</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Bootstrap core JavaScript-->
+	<script src="../../user-panel/vendor/jquery/jquery.min.js"></script>
+	<script src="../../user-panel/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+	<!-- Core plugin JavaScript-->
+	<script src="../../user-panel/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+	<!-- Page level plugin JavaScript-->
+	<script src="../../user-panel/vendor/chart.js/Chart.min.js"></script>
+	<script src="../../user-panel/vendor/datatables/jquery.dataTables.js"></script>
+	<script src="../../user-panel/vendor/datatables/dataTables.bootstrap4.js"></script>
+
+	<!-- Custom scripts for all pages-->
+	<script src="../../user-panel/js/sb-admin.min.js"></script>
+
+	<!-- Demo scripts for this page-->
+	<script src="../../user-panel/js/demo/datatables-demo.js"></script>
+	<script src="../../user-panel/js/demo/chart-area-demo.js"></script>
 
 </div>
 

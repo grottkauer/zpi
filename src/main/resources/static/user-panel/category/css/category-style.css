@@ -55,12 +55,12 @@ Table of Content:
 body {
   line-height: 24px;
   font-size: 14px;
-  font-family: "Roboto", sans-serif;
+ /* font-family: "Roboto", sans-serif; */
   font-weight: normal;
   color: #777777; }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Roboto", sans-serif;
+ /* font-family: "Roboto", sans-serif; */
   font-weight: 500; }
 
 button:focus {
@@ -2907,7 +2907,9 @@ h6 {
 
 .f_p_item {
   text-align: center;
-  margin-bottom: 50px; }
+  margin-bottom: 50px;
+      background-color: rgba(0, 0, 0, 0.33);
+  }
   .f_p_item .f_p_img {
     position: relative;
     overflow: hidden; }
@@ -2934,8 +2936,9 @@ h6 {
           color: #fff;
           background: #1641ff; }
   .f_p_item h4 {
-    color: #222222;
+    color: #eee;
     font-size: 16px;
+    font-weight: 600;
     margin-top: 15px;
     transition: all 300ms linear 0s; }
     .f_p_item h4:hover {
@@ -2943,7 +2946,7 @@ h6 {
   .f_p_item h5 {
     margin-bottom: 0px;
     font-size: 18px;
-    color: #777777; }
+    color: #ccc; }
   .f_p_item:hover .f_p_img .p_icon {
     right: 35px; }
 
@@ -3150,8 +3153,9 @@ h6 {
         font-family: "Roboto", sans-serif;
         color: #555555; }
     .product_top_bar .left_dorp .sorting:after {
-      content: "\f0d7";
-      font: normal normal normal 14px/1 FontAwesome;
+      font: normal normal normal 14px/1 "Font Awesome 5 Free";
+      content: "\f107";
+      font-weight: 900;
       transform: rotate(0);
       border: none;
       color: #555555;
@@ -3179,8 +3183,10 @@ h6 {
         font-family: "Roboto", sans-serif;
         color: #555555; }
     .product_top_bar .left_dorp .show:after {
-      content: "\f0d7";
-      font: normal normal normal 14px/1 FontAwesome;
+      /*content: "\f0d7";*/
+      font: normal normal normal 14px/1 "Font Awesome 5 Free";
+      content: "\f107";
+      font-weight: 900;
       transform: rotate(0);
       border: none;
       color: #555555;
@@ -4331,7 +4337,9 @@ h6 {
   margin-top: 30px; }
 
 .footer-bottom {
-  padding-top: 70px; }
+  padding: 35px;
+      background-color: rgba(0, 0, 0, 0.33);
+      color: #eee;}
   .footer-bottom .footer-text {
     margin-bottom: 0px; }
     .footer-bottom .footer-text i {
@@ -4362,6 +4370,12 @@ h6 {
     color: #1641ff; }
   .f_social_wd .f_social a:last-child {
     margin-right: 0px; }
+
+.img-gallery{
+    width: 150px;
+    height: 200px;
+}
+
 
 /*---------------------------------------------------- */
 

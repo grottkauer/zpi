@@ -174,4 +174,11 @@ public class UserPanelController {
         modelAndView.setViewName("user-panel/category2");
         return modelAndView;
     }
+
+    @GetMapping(value="/szczegoly")
+    public ModelAndView productDetails() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("user-panel/product-details");
+        return modelAndView;
+    }
 }
