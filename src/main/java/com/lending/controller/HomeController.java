@@ -55,6 +55,6 @@ public class HomeController {
             // Redirect to /user-panel
             return "redirect:/moje-konto";
         }
-        return "redirect:logowanie";
+        return "redirect:/zaloguj";
     }
 }
