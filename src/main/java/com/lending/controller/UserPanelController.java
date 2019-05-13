@@ -181,4 +181,11 @@ public class UserPanelController {
         modelAndView.setViewName("user-panel/product-details");
         return modelAndView;
     }
+
+    @GetMapping(value="/wypozycz")
+    public ModelAndView productBorrow() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("user-panel/product-borrow");
+        return modelAndView;
+    }
 }

@@ -4422,6 +4422,10 @@ input[type="button"].btn-block {
   text-align: center;
 }
 
+.tab-pane .card{
+    background-color: rgba(0, 0, 0, 0.66);
+}
+
 .tab-content > .tab-pane {
   display: none;
 }
@@ -6082,6 +6086,7 @@ a.close.disabled {
 .modal-title {
   margin-bottom: 0;
   line-height: 1.5;
+      color: #111;
 }
 
 .modal-body {
@@ -6090,6 +6095,7 @@ a.close.disabled {
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
   padding: 1rem;
+      color: #111;
 }
 
 .modal-footer {
@@ -10729,4 +10735,8 @@ body.sidebar-toggled footer.sticky-footer {
   body.sidebar-toggled footer.sticky-footer {
     width: calc(100% - 90px);
   }
+}
+
+.table-rows-body{
+    /*color: #dcb014;*/
 }

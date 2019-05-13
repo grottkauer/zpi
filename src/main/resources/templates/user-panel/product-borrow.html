@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="user-panel/user_layout :: template_header"></head>
+<body id="page-top">
+<nav th:replace="user-panel/user_layout :: navigation"></nav>
+<div class="full-height pt-3" id="bg-borrow">
+
+    <div class="card-header text-center">
+        <h1 class="text-uppercase">Wypożyczenie produktu</h1>
+        <h4 class="section-subheading text-muted">Wybierz termin spotkania oraz miejsce w celu wypożyczenia towaru...</h4>
+    </div>
+
+    <!--================Cart Area =================-->
+    <section class="cart_area">
+        <div class="container">
+            <div class="cart_inner">
+                <!--================Order Details Area =================-->
+                <section class="order_details p_120">
+                    <div class="container">
+                        <div class="row order_d_inner">
+                            <div class="col-lg-4">
+                                <div class="details_item">
+                                    <h4>Order Info</h4>
+                                    <ul class="list">
+                                        <li>
+                                            <a href="#">
+                                                <span>Order number</span> : 60235</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <span>Date</span> : Los Angeles</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <span>Total</span> : USD 2210</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <span>Payment method</span> : Check payments</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="details_item">
+                                    <h4>Billing Address</h4>
+                                    <ul class="list">
+                                        <li>
+                                            <a href="#">
+                                                <span>Street</span> : 56/8</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <span>City</span> : Los Angeles</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <span>Country</span> : United States</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <span>Postcode </span> : 36952</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-4">
+                                <div class="details_item">
+                                    <h4>Shipping Address</h4>
+                                    <ul class="list">
+                                        <li>
+                                            <a href="#">
+                                                <span>Street</span> : 56/8</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <span>City</span> : Los Angeles</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <span>Country</span> : United States</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <span>Postcode </span> : 36952</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!--================End Order Details Area =============-->
+
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Product</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>
+                                <div class="media">
+                                    <div class="d-flex">
+                                        <img src="../images/single-product/cart-1.jpg" alt="">
+                                    </div>
+                                    <div class="media-body">
+                                        <p>Minimalistic shop for multipurpose use</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+
+                            </td>
+                            <td>
+
+                            </td>
+                            <td>
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+
+                            </td>
+                            <td>
+
+                            </td>
+                            <td>
+                                <h5>Koszt BME</h5>
+                            </td>
+                            <td>
+                                <h5>4.0</h5>
+                            </td>
+                        </tr>
+                        <tr class="out_button_area">
+                            <td>
+
+                            </td>
+                            <td>
+
+                            </td>
+                            <td>
+
+                            </td>
+                            <td>
+                                <div class="checkout_btn_inner">
+                                    <a class="gray_btn" href="szczegoly">Wróć do produktu</a>
+                                    <a class="main_btn" href="#">Dokonaj wypożyczenia</a>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+    <!--================End Cart Area =================-->
+
+
+
+
+    <!--================ start footer Area  =================-->
+    <footer class="footer-area section_gap">
+        <div class="row footer-bottom d-flex justify-content-between align-items-center">
+            <p class="col-lg-12 footer-text text-center"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+        </div>
+    </footer>
+    <!--================ End footer Area  =================-->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Chcesz opuscic strone?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Wybierz "Wyloguj" jeżeli chcesz zakonczyć sesje.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Anuluj</button>
+                    <a class="btn btn-primary" href="/">Wyloguj</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- Bootstrap core JavaScript-->
+<script src="../../user-panel/vendor/jquery/jquery.min.js"></script>
+<script src="../../user-panel/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="../../user-panel/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Page level plugin JavaScript-->
+<script src="../../user-panel/vendor/chart.js/Chart.min.js"></script>
+<script src="../../user-panel/vendor/datatables/jquery.dataTables.js"></script>
+<script src="../../user-panel/vendor/datatables/dataTables.bootstrap4.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="../../user-panel/js/sb-admin.min.js"></script>
+
+<!-- Demo scripts for this page-->
+<script src="../../user-panel/js/demo/datatables-demo.js"></script>
+<script src="../../user-panel/js/demo/chart-area-demo.js"></script>
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="../user-panel/category/js/popper.js"></script>
+<script src="../user-panel/category/js/stellar.js"></script>
+<script src="../user-panel/category/js/simpleLightbox.min.js"></script>
+<script src="../user-panel/category/js/jquery.nice-select.min.js"></script>
+<script src="../user-panel/category/js/imagesloaded.pkgd.min.js"></script>
+<script src="../user-panel/category/js/isotope-min.js"></script>
+<script src="../user-panel/category/js/owl.carousel.min.js"></script>
+<script src="../user-panel/category/js/jquery.ajaxchimp.min.js"></script>
+<script src="../user-panel/category/js/mail-script.js"></script>
+<script src="../user-panel/category/js/jquery-ui.js"></script>
+<script src="../user-panel/category/js/jquery.waypoints.min.js"></script>
+<script src="../user-panel/category/js/jquery.counterup.js"></script>
+<script src="../user-panel/category/js/theme.js"></script>
+</body>
+</html>
