@@ -10740,3 +10740,7 @@ body.sidebar-toggled footer.sticky-footer {
 .table-rows-body{
     /*color: #dcb014;*/
 }
+
+.cart_inner .card{
+    background-color: rgba(0, 0, 0, 0);
+}

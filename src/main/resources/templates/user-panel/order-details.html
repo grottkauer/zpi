@@ -6,8 +6,8 @@
 <div class="full-height pt-3" id="bg-borrow">
 
     <div class="card-header text-center mb-4">
-        <h1 class="text-uppercase">Wypożyczenie produktu</h1>
-        <h4 class="section-subheading text-muted">Wybierz termin spotkania oraz miejsce w celu wypożyczenia towaru...</h4>
+        <h1 class="text-uppercase">Potwierdzenie wypożyczenia</h1>
+        <h4 class="section-subheading text-muted">Przeczytaj uważnie dane i sprawdź, czy na pewno wszystko się zgadza...</h4>
     </div>
 
     <!--================Cart Area =================-->
@@ -15,92 +15,83 @@
         <div class="container">
             <div class="cart_inner">
 
-                <div class="card cardRegistry text-center">
-                    <div class="card-body text-center">
-                        <form method="post">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Data spotkania</span>
+                <!--================Order Details Area =================-->
+                <section class="order_details">
+                    <div class="container">
+                        <div class="row order_d_inner">
+                            <div class="col-lg-4">
+                                <div class="details_item">
+                                    <h4>Dane zamówienia</h4>
+                                    <ul class="list">
+                                        <li>
+                                            <a href="#">
+                                                <span>Data spotkania</span> : 14/05/2019</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <span>Miejsce spotkania</span> : Los Angeles</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <span>Koszt BME</span> : 4.0</a>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <input data-date-format="dd/mm/yyyy" id="datepicker" class="form-control" required placeholder="Data spotkania">
                             </div>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Miejsce spotkania</span>
+                            <div class="col-lg-4">
+                                <div class="details_item">
+                                    <h4>Dane towaru</h4>
+                                    <ul class="list">
+                                        <li>
+                                            <a href="#">
+                                                <span>Nazwa</span> : 56/8</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <span>Kategoria</span> : Los Angeles</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <span>Kolor</span> : United States</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <span>Waga </span> : 36952</a>
+                                        </li>
+                                    </ul>
                                 </div>
-                                <input name="meetingAddress" type="text" class="form-control" required placeholder="Adres spotkania">
                             </div>
-                        </form>
+                            <div class="col-lg-4">
+                                <div class="details_item">
+                                    <h4>Dane wypożyczającego</h4>
+                                    <ul class="list">
+                                        <li>
+                                            <a href="#">
+                                                <span>Imię</span> : 56/8</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <span>Nazwisko</span> : Los Angeles</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <span>Login</span> : United States</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <span>Telefon </span> : 36952</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="checkout_btn_inner mt-5">
+                            <a class="gray_btn mb-2" href="wypozycz">Do poprzedniego kroku</a>
+                            <a class="main_btn outta-table" href="#">Dokonaj wypożyczenia</a>
+                        </div>
                     </div>
-                </div>
-
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th scope="col">Product</th>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
-                            <th scope="col"></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>
-                                <div class="media">
-                                    <div class="d-flex">
-                                        <img src="../images/single-product/cart-1.jpg" alt="">
-                                    </div>
-                                    <div class="media-body">
-                                        <p>Minimalistic shop for multipurpose use</p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>
-
-                            </td>
-                            <td>
-
-                            </td>
-                            <td>
-
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-
-                            </td>
-                            <td>
-
-                            </td>
-                            <td>
-                                <h5>Koszt BME</h5>
-                            </td>
-                            <td>
-                                <h5>4.0</h5>
-                            </td>
-                        </tr>
-                        <tr class="out_button_area">
-                            <td>
-
-                            </td>
-                            <td>
-
-                            </td>
-                            <td>
-
-                            </td>
-                            <td>
-                                <div class="checkout_btn_inner">
-                                    <a class="gray_btn mb-2" href="szczegoly">Wróć do produktu</a>
-                                    <a class="main_btn" href="potwierdzenie-zamowienia">Dokonaj wypożyczenia</a>
-                                </div>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-
+                </section>
+                <!--================End Order Details Area =============-->
             </div>
         </div>
     </section>

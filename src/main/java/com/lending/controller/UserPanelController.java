@@ -188,4 +188,11 @@ public class UserPanelController {
         modelAndView.setViewName("user-panel/product-borrow");
         return modelAndView;
     }
+
+    @GetMapping(value="/potwierdzenie-zamowienia")
+    public ModelAndView orderDetails() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("user-panel/order-details");
+        return modelAndView;
+    }
 }
