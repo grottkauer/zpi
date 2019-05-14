@@ -10744,3 +10744,7 @@ body.sidebar-toggled footer.sticky-footer {
 .cart_inner .card{
     background-color: rgba(0, 0, 0, 0);
 }
+
+#edit_data .card, #edit-password .card{
+    background-color: rgba(0, 0, 0, 0.33);
+}
