@@ -1,32 +1,32 @@
 package com.lending.entities;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.sql.Blob;
 
 @Entity
 @Table(name = "resource")
 public class Resource extends BaseEntity {
 
-    @Column
+    @Column(nullable = false)
     private int points;
 
-    @Column
+    @Column(nullable = false)
     private String name;
+
+    @Column
+    private String description;
+
+    @Lob
+    private Blob image;
 
     @ManyToOne
     @JoinColumn(name = "id_resource_type")
     private ResourceType resourceType;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "resource")
-    private List<ResourceOwnership> resourceOwnerships = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "id_owner")
+    private User owner;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "resource")
-    private List<Image> photos = new ArrayList<>();
-
-    public Resource(){
-
-    }
 
     public Resource(int points, String name, ResourceType resourceType) {
         this.points = points;

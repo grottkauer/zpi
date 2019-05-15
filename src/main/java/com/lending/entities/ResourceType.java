@@ -10,7 +10,7 @@ public class ResourceType {
     @Column(name = "id_resource_type")
     private int resourceTypeID;
 
-    @Column
+    @Column(nullable = false)
     private String name;
 
     @Column

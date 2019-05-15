@@ -8,23 +8,19 @@ import java.util.Date;
 public class Meeting extends BaseEntity {
 
     @ManyToOne
-    @JoinColumn(name = "id_address")
+    @JoinColumn(name = "id_address", nullable = false)
     private Address address;
 
-    @Column
-    private String name;
-
-    @Column
-    private Date meetingDate;
-
+    @ManyToOne
+    @JoinColumn(name = "id_resource_renting", nullable = false)
     private ResourceRenting resourceRenting;
 
-    public Meeting() {
-    }
+    @Column(nullable = false)
+    private Date meetingDate;
 
-    public Meeting(Address address, String name, Date meetingDate, ResourceRenting resourceRenting) {
+
+    public Meeting(Address address, Date meetingDate, ResourceRenting resourceRenting) {
         this.address = address;
-        this.name = name;
         this.meetingDate = meetingDate;
         this.resourceRenting = resourceRenting;
     }
@@ -35,14 +31,6 @@ public class Meeting extends BaseEntity {
 
     public void setAddress(Address address) {
         this.address = address;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Date getMeetingDate() {

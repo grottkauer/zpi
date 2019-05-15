@@ -1,10 +1,13 @@
 package com.lending.entities;
 
-import org.springframework.stereotype.Component;
-
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Enumerated;
+import javax.persistence.Table;
 import java.util.Date;
 
-@Component
+@Entity
+@Table(name = "resource_renting")
 public class ResourceRenting extends BaseEntity {
 
     public enum RentingStatus {
@@ -23,18 +26,26 @@ public class ResourceRenting extends BaseEntity {
         }
     }
 
+    @Column(nullable = false)
     private User giver;
 
+    @Column(nullable = false)
     private User getter;
 
+    @Column(nullable = false)
     private Resource resource;
 
-    private Date addDate;
+    @Column(nullable = false)
+    private Date orderDate;
 
-    private Date realisationDate;
+    @Column
+    private Date borrowDate;
 
+    @Column
     private Date giveBackDate;
 
+    @Enumerated
+    @Column(columnDefinition = "smallint", nullable = false)
     private RentingStatus rentingStatus;
 
     public ResourceRenting() {
@@ -45,8 +56,8 @@ public class ResourceRenting extends BaseEntity {
         this.giver = giver;
         this.getter = getter;
         this.resource = resource;
-        this.addDate = addDate;
-        this.realisationDate = realisationDate;
+        this.orderDate = addDate;
+        this.borrowDate = realisationDate;
         this.giveBackDate = giveBackDate;
         this.rentingStatus = rentingStatus;
     }
@@ -75,20 +86,20 @@ public class ResourceRenting extends BaseEntity {
         this.resource = resource;
     }
 
-    public Date getAddDate() {
-        return addDate;
+    public Date getOrderDate() {
+        return orderDate;
     }
 
-    public void setAddDate(Date addDate) {
-        this.addDate = addDate;
+    public void setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
     }
 
-    public Date getRealisationDate() {
-        return realisationDate;
+    public Date getBorrowDate() {
+        return borrowDate;
     }
 
-    public void setRealisationDate(Date realisationDate) {
-        this.realisationDate = realisationDate;
+    public void setBorrowDate(Date borrowDate) {
+        this.borrowDate = borrowDate;
     }
 
     public Date getGiveBackDate() {
@@ -113,8 +124,8 @@ public class ResourceRenting extends BaseEntity {
                 "giver=" + giver +
                 ", getter=" + getter +
                 ", resource=" + resource +
-                ", addDate=" + addDate +
-                ", realisationDate=" + realisationDate +
+                ", orderDate=" + orderDate +
+                ", borrowDate=" + borrowDate +
                 ", giveBackDate=" + giveBackDate +
                 ", rentingStatus=" + rentingStatus +
                 '}';

@@ -217,15 +217,11 @@ VALUES  (1, 'kowalski','0xb058ce0a76c7F87a08d75E2699C53AE62B0817C4','af2b6729ab7
 
 --some test data for natalia@wp.pl
 insert into ADDRESS(id, locality, nr_flat, nr_house, street, zip_code) values (1, 'Kotałkowo', '4', '12', 'Zwierzęca', '12-345');
-insert into RESOURCE(id, name, points, id_resource_type) values (1, 'Talisman', 2000, 151);
-insert into RESOURCE(id, name, points, id_resource_type) values (2, 'Dobble', 54, 153);
-insert into RESOURCE(id, name, points, id_resource_type) values (3, 'Tajniacy', 12, 153);
-insert into RESOURCE(id, name, points, id_resource_type) values (4, 'Skip-bo', 49, 153);
-insert into RESOURCE(id, name, points, id_resource_type) values (5, '7 cudów świata: Pojedynek', 33, 159);
 INSERT INTO user(id, password, ethereum_address ,ethereum_key, email, last_name, first_name, join_date, birth_date, recall_date, id_address)
     VALUES (3, 'kotelki', 'jakistamadres', 'jakistamklucz', 'natalia@wp.pl', 'Koty', 'Halo', '2019-03-28', '1997-08-02', NULL, 1);
-insert into RESOURCES_OWNERSHIP(id, add_date, id_resource, id_user) values (1, '2019-05-15', 1, 3);
-insert into RESOURCES_OWNERSHIP(id, add_date, id_resource, id_user) values (2, '2019-05-15', 2, 3);
-insert into RESOURCES_OWNERSHIP(id, add_date, id_resource, id_user) values (3, '2019-05-15', 3, 3);
-insert into RESOURCES_OWNERSHIP(id, add_date, id_resource, id_user) values (4, '2019-05-15', 4, 3);
-insert into RESOURCES_OWNERSHIP(id, add_date, id_resource, id_user) values (5, '2019-05-15', 5, 3);
+insert into RESOURCE(id, name, description, points, id_resource_type, id_owner) values (1, 'Talisman', 'Fajna', 2000, 151, 3);
+insert into RESOURCE(id, name, description, points, id_resource_type, id_owner) values (2, 'Dobble', 'Zabawa jak się patrzy', 54, 153, 3);
+insert into RESOURCE(id, name, description, points, id_resource_type, id_owner) values (3, 'Tajniacy', 'Szpieg', 12, 153, 3);
+insert into RESOURCE(id, name, description, points, id_resource_type, id_owner) values (4, 'Skip-bo', 'Inna nazwa: autobus', 49, 153, 3);
+insert into RESOURCE(id, name, description, points, id_resource_type, id_owner) values (5, '7 cudów świata: Pojedynek', 'Pojedynek', 33, 159, 3);
+

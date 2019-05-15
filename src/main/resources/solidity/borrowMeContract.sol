@@ -10,7 +10,7 @@ contract BorrowMeContract{
         address borrower;
         uint resourceID;
         uint createDate;
-        uint realisationDate;
+        uint borrowDate;
         uint returnDate;
         Status status;
     }
@@ -26,7 +26,7 @@ contract BorrowMeContract{
     
     function getBorrowing(uint _borrowingID) public view returns (uint, address, address, uint, uint, uint, uint, Status){
         Borrowing memory b = borrowings[_borrowingID];
-        return (b.borrowingID, b.owner, b.borrower, b.resourceID, b.createDate, b.realisationDate, b.returnDate, b.status);
+        return (b.borrowingID, b.owner, b.borrower, b.resourceID, b.createDate, b.borrowDate, b.returnDate, b.status);
     }
     
     function createBorrowing(address _owner, address _borrower, uint _resourceID) public {
@@ -40,7 +40,7 @@ contract BorrowMeContract{
     }
     
     function realizeBorrowing(uint borrowingID) public {
-        borrowings[borrowingID].realisationDate = block.timestamp;
+        borrowings[borrowingID].borrowDate = block.timestamp;
         borrowings[borrowingID].status = Status.Realized;
     }
     
@@ -61,7 +61,7 @@ contract BorrowMeContract{
     }
     
     function getBorrowingRealisationDate(uint borrowingID) public view returns (uint) {
-        return borrowings[borrowingID].realisationDate;
+        return borrowings[borrowingID].borrowDate;
     }
     
     function getBorrowingReturnDate(uint borrowingID) public view returns (uint) {
