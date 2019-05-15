@@ -128,11 +128,11 @@
     </div>
 </div>
 
-<!-- Order succes modal-->
+<!-- Order success modal-->
 <div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header header-order-success">
                 <h5 class="modal-title">Gratulacje, Złożono zamówienie!</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
@@ -146,9 +146,30 @@
     </div>
 </div>
 
+<!-- Giveback date modal-->
+<div class="modal fade" id="giveBackModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header header-order-success">
+                <h5 class="modal-title">Wybrano termin oddania</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <!-- todo date and time of meeting-->
+            <div class="modal-body">Ustalono termin na oddanie produktu - 20.12.2019.
+                Teraz czekaj, aż osoba wypożyczająca towar potwierdzi termin i miejsce spotkania. <br>
+                Wiadomość dostaniesz w Powiadomieniach. <br><br>
+                Dziękujemy za korzystanie z naszej aplikacji!</div>
+        </div>
+    </div>
+</div>
+
+<!-- todo select which modal should be showed -->
 <script type="text/javascript">
     $(document).ready(function(){
         $("#successModal").modal('show');
+        /*$("#giveBackModal").modal('show');*/
     });
 </script>
 

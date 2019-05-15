@@ -10754,3 +10754,7 @@ body.sidebar-toggled footer.sticky-footer {
         margin-bottom: 15px;
     }
 }
+
+.header-order-success{
+    background-color: #fed136;
+}
