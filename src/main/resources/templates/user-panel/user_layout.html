@@ -122,6 +122,53 @@
                   });
                 });
       </script>
+    <script type="text/javascript">
+$(document).ready(function(){
+	// Activate tooltip
+	$('[data-toggle="tooltip"]').tooltip();
+
+	// Select/Deselect checkboxes
+	var checkbox = $('table tbody input[type="checkbox"]');
+	$("#selectAllUp").click(function(){
+		if(this.checked){
+			checkbox.each(function(){
+				this.checked = true;
+			});
+			$("#selectAllDown").prop("checked", true);
+		} else{
+			checkbox.each(function(){
+				this.checked = false;
+			});
+			$("#selectAllDown").prop("checked", false);
+		}
+	});
+	$("#selectAllDown").click(function(){
+		if(this.checked){
+			checkbox.each(function(){
+				this.checked = true;
+			});
+			$("#selectAllUp").prop("checked", true);
+		} else{
+			checkbox.each(function(){
+				this.checked = false;
+			});
+			$("#selectAllUp").prop("checked", false);
+		}
+	});
+	checkbox.click(function(){
+		if(!this.checked){
+			$("#selectAllUp").prop("checked", false);
+			$("#selectAllDown").prop("checked", false);
+		}
+	});
+	checkbox.click(function(){
+		if(!this.checked){
+		    $("#selectAllUp").prop("checked", false);
+			$("#selectAllDown").prop("checked", false);
+		}
+	});
+});
+</script>
 </head>
 <body>
 

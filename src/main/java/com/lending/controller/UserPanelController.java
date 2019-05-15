@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -127,7 +128,7 @@ public class UserPanelController {
         return modelAndView;
     }
 
-    @GetMapping(value="/moje-produkty")
+    @RequestMapping(value="/moje-produkty", method = RequestMethod.GET)
     public ModelAndView products() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("user-panel/user-products");
@@ -172,6 +173,17 @@ public class UserPanelController {
         Iterable<Resource> resources = resourceRepository.findByResourceTypeId(idValue);
         modelAndView.addObject("resources", resources);
         modelAndView.setViewName("user-panel/category2");
+        return modelAndView;
+    }
+
+    @GetMapping(value="/moje-produkty/szczegoly-produktu")
+    public ModelAndView product(@RequestParam String id) {
+        ModelAndView modelAndView = new ModelAndView();
+        //todo get data from database and add it to modelandview
+        int idValue = Integer.parseInt(id);
+        //Iterable<Resource> resources = resourceRepository.findByResourceId(idValue);
+        //modelAndView.addObject("resources", resources);
+        modelAndView.setViewName("user-panel/user-product-info");
         return modelAndView;
     }
 
