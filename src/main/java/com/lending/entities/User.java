@@ -40,15 +40,6 @@ public class User extends BaseEntity {
     @JoinColumn(name = "id_address")
     private Address address;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "sender")
-    List<Notification> sentNotifications = new ArrayList<>();
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "receiver")
-    List<Notification> receivedNotifications = new ArrayList<>();
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
-    List<Resource> owningResources = new ArrayList<>();
-
 
     public User(String password, String ethereumAddress, String ethereumKey, String email, String lastName, String firstName, Date joinDate, Date birthDate, Date recallDate, Address address) {
         this.password = password;

@@ -1,9 +1,6 @@
 package com.lending.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Enumerated;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -26,13 +23,16 @@ public class ResourceRenting extends BaseEntity {
         }
     }
 
-    @Column(nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "id_giver", nullable = false)
     private User giver;
 
-    @Column(nullable = false)
-    private User getter;
+    @ManyToOne
+    @JoinColumn(name = "id_receiver", nullable = false)
+    private User recipent;
 
-    @Column(nullable = false)
+    @ManyToOne
+    @JoinColumn(name = "id_resource", nullable = false)
     private Resource resource;
 
     @Column(nullable = false)
@@ -46,20 +46,20 @@ public class ResourceRenting extends BaseEntity {
 
     @Enumerated
     @Column(columnDefinition = "smallint", nullable = false)
-    private RentingStatus rentingStatus;
+    private RentingStatus status;
 
     public ResourceRenting() {
     }
 
-    public ResourceRenting(int id, User giver, User getter, Resource resource, Date addDate, Date realisationDate, Date giveBackDate, RentingStatus rentingStatus) {
+    public ResourceRenting(int id, User giver, User recipent, Resource resource, Date addDate, Date realisationDate, Date giveBackDate, RentingStatus status) {
         super(id);
         this.giver = giver;
-        this.getter = getter;
+        this.recipent = recipent;
         this.resource = resource;
         this.orderDate = addDate;
         this.borrowDate = realisationDate;
         this.giveBackDate = giveBackDate;
-        this.rentingStatus = rentingStatus;
+        this.status = status;
     }
 
     public User getGiver() {
@@ -70,12 +70,12 @@ public class ResourceRenting extends BaseEntity {
         this.giver = giver;
     }
 
-    public User getGetter() {
-        return getter;
+    public User getRecipent() {
+        return recipent;
     }
 
-    public void setGetter(User getter) {
-        this.getter = getter;
+    public void setRecipent(User recipent) {
+        this.recipent = recipent;
     }
 
     public Resource getResource() {
@@ -110,24 +110,26 @@ public class ResourceRenting extends BaseEntity {
         this.giveBackDate = giveBackDate;
     }
 
-    public RentingStatus getRentingStatus() {
-        return rentingStatus;
+    public RentingStatus getStatus() {
+        return status;
     }
 
-    public void setRentingStatus(RentingStatus rentingStatus) {
-        this.rentingStatus = rentingStatus;
+    public void setStatus(RentingStatus status) {
+        this.status = status;
     }
 
     @Override
     public String toString() {
         return "ResourceRenting{" +
                 "giver=" + giver +
-                ", getter=" + getter +
+                ", recipent=" + recipent +
                 ", resource=" + resource +
                 ", orderDate=" + orderDate +
                 ", borrowDate=" + borrowDate +
                 ", giveBackDate=" + giveBackDate +
-                ", rentingStatus=" + rentingStatus +
+                ", status=" + status +
                 '}';
     }
+
+
 }

@@ -18,6 +18,9 @@ public class Meeting extends BaseEntity {
     @Column(nullable = false)
     private Date meetingDate;
 
+    public Meeting() {
+
+    }
 
     public Meeting(Address address, Date meetingDate, ResourceRenting resourceRenting) {
         this.address = address;

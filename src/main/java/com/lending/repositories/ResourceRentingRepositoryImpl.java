@@ -50,7 +50,7 @@ public class ResourceRentingRepositoryImpl implements ResourceRentingRepository 
         try {
             receipt = contract.createBorrowing(
                     entity.getGiver().getEthereumAddress(),
-                    entity.getGetter().getEthereumAddress(),
+                    entity.getRecipent().getEthereumAddress(),
                     resourceID
             ).sendAsync().get();
 
