@@ -114,12 +114,12 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Chcesz opuscic strone?</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Chcesz opuścić stronę?</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <div class="modal-body">Wybierz "Wyloguj" jeżeli chcesz zakonczyć sesje.</div>
+            <div class="modal-body">Wybierz "Wyloguj" jeżeli chcesz zakonczyć sesję.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Anuluj</button>
                 <a class="btn btn-primary" href="/">Wyloguj</a>
@@ -127,6 +127,30 @@
         </div>
     </div>
 </div>
+
+<!-- Order succes modal-->
+<div class="modal fade" id="successModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Gratulacje, Złożono zamówienie!</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Gratulacje! <br><br>
+                Udało Ci się złożyć u nas zamówienie produktu (ID). Teraz czekaj, aż osoba wypożyczająca towar potwierdzi termin i miejsce spotkania. <br>
+                Wiadomość dostaniesz w Powiadomieniach. <br><br>
+                Dziękujemy za korzystanie z naszej aplikacji!</div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#successModal").modal('show');
+    });
+</script>
 
 <!-- Bootstrap core JavaScript-->
 <script src="../../user-panel/vendor/jquery/jquery.min.js"></script>

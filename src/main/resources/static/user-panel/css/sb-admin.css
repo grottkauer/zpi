@@ -10748,3 +10748,9 @@ body.sidebar-toggled footer.sticky-footer {
 #edit_data .card, #edit-password .card{
     background-color: rgba(0, 0, 0, 0.33);
 }
+
+@media (max-width: 991px) {
+    .input-higher{
+        margin-bottom: 15px;
+    }
+}
