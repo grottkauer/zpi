@@ -3142,7 +3142,8 @@ h6 {
   background: #f9f9ff;
   clear: both;
   display: flex;
-  padding: 10px 20px; }
+  padding: 10px 20px;
+  margin-right: 15px;}
   .product_top_bar .left_dorp .sorting {
     display: inline-block;
     clear: none;

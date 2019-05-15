@@ -10758,3 +10758,23 @@ body.sidebar-toggled footer.sticky-footer {
 .header-order-success{
     background-color: #fed136;
 }
+
+.table-btn{
+    font-size: 12px;
+    background-color: #fed136;
+}
+
+.table-btn:hover, .table-btn:active{
+    background-color: rgba(0, 0, 0, 0.33);
+    color: #fed136;
+    border-color: #fed136;
+}
+
+.giveback-prepend{
+    width: 100%;
+}
+
+.pointer-row:hover{
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.1);
+}
