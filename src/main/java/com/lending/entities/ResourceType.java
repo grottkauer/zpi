@@ -1,9 +1,6 @@
 package com.lending.entities;
 
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
-
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "resource_type")
@@ -11,7 +8,7 @@ public class ResourceType {
 
     @Id
     @Column(name = "id_resource_type")
-    private int resourceTypeID;
+    private int id;
 
     @Column(nullable = false)
     private String name;
@@ -25,7 +22,7 @@ public class ResourceType {
     }
 
     public ResourceType(int id, String name, ResourceType higherLevel) {
-        this.resourceTypeID = id;
+        this.id = id;
         this.name = name;
         this.higherLevel = higherLevel;
     }
@@ -47,5 +44,7 @@ public class ResourceType {
         this.name = name;
     }
 
-
+    public int getId() {
+        return id;
+    }
 }

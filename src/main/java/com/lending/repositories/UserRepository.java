@@ -1,9 +1,12 @@
 package com.lending.repositories;
 
+import com.lending.dto.UsersProductDto;
 import com.lending.entities.User;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
+
+import java.util.List;
 
 public interface UserRepository extends CrudRepository<User, Integer>, UserRepositoryCustom {
 
@@ -18,5 +21,25 @@ public interface UserRepository extends CrudRepository<User, Integer>, UserRepos
 
     @Query("select u.id from User u where u.email=:email")
     int getUserIdByEmail(@Param("email") String email);
+
+    @Query("select new com.lending.dto.UsersProductDto (r.id, r.name, rt.name, r.addDate, \n" +
+            "(select rr2.status from ResourceRenting rr2 where rr2.orderDate = \n" +
+            "(select max(rr3.orderDate) from ResourceRenting rr3 where rr3.resource = r.id) \n" +
+            "and rr2.resource = r.id), r.canBeBorrowed) \n" +
+            "from User u \n" +
+            "inner join u.owningResources r \n" +
+            "inner join r.resourceType rt \n" +
+            "where u.id=:id \n" +
+            "and r.isDeleted = false \n")
+    List<UsersProductDto> getUsersProducts(@Param("id") int id);
+
+    @Query("select new com.lending.dto.UsersProductDto (r.id, r.name, rt.name, r.addDate) \n" +
+            "from User u \n" +
+            "inner join u.owningResources r \n" +
+            "inner join r.resourceType rt \n" +
+            "where r.isDeleted = true \n" +
+            "and u.id=:id \n")
+    List<UsersProductDto> getArchiveUsersProducts(@Param("id") int id);
+
 
 }

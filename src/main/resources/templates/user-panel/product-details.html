@@ -45,18 +45,24 @@
                 <div class="col-lg-5 offset-lg-1 short-description">
                     <div class="container">
                         <div class="s_product_text">
-                            <h3>Faded SkyBlu Denim Jeans</h3>
-                            <h2>$149.99</h2>
+                            <h3 th:text="${item.getName()}"></h3>
+                            <h2 th:text="${item.getPoints()}"></h2>
                             <div class="row">
                                 <div class="col-9">
                                     <ul class="list">
                                         <li>
                                             <a class="active" href="#">
-                                                <span>Kategoria</span> : Household</a>
+                                                <span>Kategoria</span> : <div th:text="${item.getCategoryName()}"></div></a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <span>Status</span> : In Stock</a>
+                                                <span>Status</span> :
+                                                <div th:switch="${item.getStatus()}">
+                                                    <div th:case="${T(com.lending.entities.RentingStatus).Zrealizowane}">Wypożyczony</div>
+                                                    <div th:case="${T(com.lending.entities.RentingStatus).Utworzone}">Zamówiony</div>
+                                                    <div th:case="*">Dostępny</div>
+                                                </div>
+                                            </a>
                                         </li>
                                     </ul>
                                 </div>
@@ -69,8 +75,7 @@
                                 </div>
                             </div>
 
-                            <p>Mill Oil is an innovative oil filled radiator with the most modern technology. If you are looking for something that
-                                can make your interior look awesome, and at the same time give you the pleasant warm feeling during the winter.</p>
+                            <p th:text="${item.getDescription()}"></p>
                             <div class="product_count">
 
                             </div>
@@ -270,7 +275,7 @@
                                 <div class="col-md-10">
                                     <div class="box_total">
                                         <h5>Koszt BME*</h5>
-                                        <h4>4.0</h4>
+                                        <h4 th:text="${item.getPoints()}"></h4>
                                         <h6>*Borrow Me Ethereum - kryptowaluta</h6>
                                     </div>
                                 </div>
@@ -279,7 +284,7 @@
                                 <div class="col-md-10">
                                     <div class="box_total">
                                         <h5>Liczba wypożyczeń</h5>
-                                        <h4>15</h4>
+                                        <h4 th:text="${item.getCountOfRenting()}"></h4>
                                         <h6>Popularny towar!</h6>
                                     </div>
                                 </div>
@@ -313,23 +318,11 @@
                                             </tr>
                                             </tfoot>
                                             <tbody class="table-rows-body">
-                                            <tr>
-                                                <td>1</td>
-                                                <td>2011/04/25</td>
-                                                <td>nataliag</td>
-                                                <td>2011/04/25</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-                                                <td>2011/04/25</td>
-                                                <td>nataliag</td>
-                                                <td>2011/04/25</td>
-                                            </tr>
-                                            <tr>
-                                                <td>3</td>
-                                                <td>2011/04/25</td>
-                                                <td>nataliag</td>
-                                                <td>2011/04/25</td>
+                                            <tr th:each="historyRent,iter :${history}">
+                                                <td th:text="${iter.index}+1"></td>
+                                                <td th:text="${#dates.format(historyRent.getBorrowDate(), 'dd-MM-yyyy')}"></td>
+                                                <td th:text="${historyRent.getUser()}"></td>
+                                                <td th:text="${#dates.format(historyRent.getGiveBackDate(), 'dd-MM-yyyy')}"></td>
                                             </tr>
                                             </tbody>
                                         </table>

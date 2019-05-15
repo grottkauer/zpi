@@ -1,0 +1,23 @@
+package com.lending.entities;
+
+public enum RentingStatus {
+    Utworzone(0), Zrealizowane(1), Oddane(2);
+
+    private final int value;
+
+    RentingStatus(int i) {
+        this.value = i;
+    }
+
+    public static RentingStatus fromInteger(int integer){
+        switch (integer){
+            case 0:
+                return Utworzone;
+            case 1:
+                return Zrealizowane;
+            case 2:
+                return Oddane;
+        }
+        return null;
+    }
+}

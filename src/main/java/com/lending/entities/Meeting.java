@@ -7,6 +7,11 @@ import java.util.Date;
 @Table(name = "meeting")
 public class Meeting extends BaseEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_meeting")
+    private int id;
+
     @ManyToOne
     @JoinColumn(name = "id_address", nullable = false)
     private Address address;

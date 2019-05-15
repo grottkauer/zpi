@@ -7,8 +7,15 @@ import java.util.Date;
 @Table(name = "resource_renting")
 public class ResourceRenting extends BaseEntity {
 
+    /*
     public enum RentingStatus {
-        Utworzone, Zrealizowane, Oddane;
+        Utworzone(0), Zrealizowane(1), Oddane(2);
+
+        private final int value;
+
+        RentingStatus(int i) {
+            this.value = i;
+        }
 
         public static RentingStatus fromInteger(int integer){
             switch (integer){
@@ -21,15 +28,19 @@ public class ResourceRenting extends BaseEntity {
             }
             return null;
         }
-    }
+    } */
 
-    @ManyToOne
-    @JoinColumn(name = "id_giver", nullable = false)
-    private User giver;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_resource_renting")
+    private int id;
 
     @ManyToOne
     @JoinColumn(name = "id_receiver", nullable = false)
     private User recipent;
+
+    @Transient
+    private User giver;
 
     @ManyToOne
     @JoinColumn(name = "id_resource", nullable = false)
@@ -62,20 +73,20 @@ public class ResourceRenting extends BaseEntity {
         this.status = status;
     }
 
-    public User getGiver() {
-        return giver;
-    }
-
-    public void setGiver(User giver) {
-        this.giver = giver;
-    }
-
     public User getRecipent() {
         return recipent;
     }
 
     public void setRecipent(User recipent) {
         this.recipent = recipent;
+    }
+
+    public User getGiver() {
+        return giver;
+    }
+
+    public void setGiver(User giver) {
+        this.giver = giver;
     }
 
     public Resource getResource() {
@@ -121,7 +132,6 @@ public class ResourceRenting extends BaseEntity {
     @Override
     public String toString() {
         return "ResourceRenting{" +
-                "giver=" + giver +
                 ", recipent=" + recipent +
                 ", resource=" + resource +
                 ", orderDate=" + orderDate +

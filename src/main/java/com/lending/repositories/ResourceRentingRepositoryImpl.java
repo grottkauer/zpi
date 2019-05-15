@@ -2,6 +2,7 @@ package com.lending.repositories;
 
 import com.lending.contracts.BorrowMeContract;
 import com.lending.contracts.BorrowMeContractConnector;
+import com.lending.entities.RentingStatus;
 import com.lending.entities.ResourceRenting;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -42,6 +43,7 @@ public class ResourceRentingRepositoryImpl implements ResourceRentingRepository 
             contract = contractConnector.getBorrowMeContract();
 
     }
+
 
     @Override
     public <S extends ResourceRenting> S save(S entity) {
@@ -91,7 +93,7 @@ public class ResourceRentingRepositoryImpl implements ResourceRentingRepository 
                 new Date(wypozyczenieTuple.getValue5().longValue()),
                 new Date(wypozyczenieTuple.getValue6().longValue()),
                 new Date(wypozyczenieTuple.getValue7().longValue()),
-                ResourceRenting.RentingStatus.fromInteger(wypozyczenieTuple.getValue8().intValue())
+                RentingStatus.fromInteger(wypozyczenieTuple.getValue8().intValue())
         );
 
         return Optional.of(resourceRenting);

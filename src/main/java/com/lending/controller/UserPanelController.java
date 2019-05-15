@@ -1,6 +1,10 @@
 package com.lending.controller;
 
-import com.lending.entities.Resource;
+import com.lending.dto.CategoriesDto;
+import com.lending.dto.ResourceDetailsDto;
+import com.lending.dto.ResourceRentingHistoryDto;
+import com.lending.dto.UsersProductDto;
+import com.lending.entities.ResourceType;
 import com.lending.repositories.ResourceRepository;
 import com.lending.repositories.ResourceTypeRepository;
 import com.lending.repositories.UserRepository;
@@ -12,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping(value = {"/moje-konto"})
@@ -132,6 +139,10 @@ public class UserPanelController {
     public ModelAndView products() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("user-panel/user-products");
+        List<UsersProductDto> products = userRepository.getUsersProducts(3);
+        List<UsersProductDto> archiveProducts = userRepository.getArchiveUsersProducts(3);
+        modelAndView.addObject("ProductsList", products);
+        modelAndView.addObject("ArchiveProductsList", archiveProducts);
         return modelAndView;
     }
 
@@ -166,30 +177,36 @@ public class UserPanelController {
     }
 
     @GetMapping(value="/szukaj")
-    public ModelAndView search(@RequestParam String id) {
+    public ModelAndView search(@RequestParam int id) {
         ModelAndView modelAndView = new ModelAndView();
-        //todo get data from database and add it to modelandview
-        int idValue = Integer.parseInt(id);
-        Iterable<Resource> resources = resourceRepository.findByResourceTypeId(idValue);
-        modelAndView.addObject("resources", resources);
+        List<ResourceType> higherLevels = resourceTypeRepository.getHigherLevelTypes();
+        List<CategoriesDto> categories = new ArrayList<>(9);
+        CategoriesDto dto;
+        List<ResourceType> subcategories;
+        for (ResourceType parent : higherLevels) {
+            subcategories = resourceTypeRepository.getSubcategories(parent.getId());
+            dto = new CategoriesDto(parent, subcategories);
+            categories.add(dto);
+        }
+        modelAndView.addObject("categories", categories);
         modelAndView.setViewName("user-panel/category2");
         return modelAndView;
     }
 
     @GetMapping(value="/moje-produkty/szczegoly-produktu")
-    public ModelAndView product(@RequestParam String id) {
+    public ModelAndView product(@RequestParam int id) {
         ModelAndView modelAndView = new ModelAndView();
-        //todo get data from database and add it to modelandview
-        int idValue = Integer.parseInt(id);
-        //Iterable<Resource> resources = resourceRepository.findByResourceId(idValue);
-        //modelAndView.addObject("resources", resources);
-        modelAndView.setViewName("user-panel/user-product-info");
+
         return modelAndView;
     }
 
     @GetMapping(value="/szczegoly")
-    public ModelAndView productDetails() {
+    public ModelAndView productDetails(@RequestParam int item) {
         ModelAndView modelAndView = new ModelAndView();
+        ResourceDetailsDto resource = resourceRepository.getProductDetails(item);
+        List<ResourceRentingHistoryDto> history = resourceRepository.getProductRentingHistory(item);
+        modelAndView.addObject("item", resource);
+        modelAndView.addObject("history", history);
         modelAndView.setViewName("user-panel/product-details");
         return modelAndView;
     }

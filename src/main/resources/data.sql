@@ -219,9 +219,14 @@ VALUES  (1, 'kowalski','0xb058ce0a76c7F87a08d75E2699C53AE62B0817C4','af2b6729ab7
 insert into ADDRESS(id, locality, nr_flat, nr_house, street, zip_code) values (1, 'Kotałkowo', '4', '12', 'Zwierzęca', '12-345');
 INSERT INTO user(id, password, ethereum_address ,ethereum_key, email, last_name, first_name, join_date, birth_date, recall_date, id_address)
     VALUES (3, 'kotelki', 'jakistamadres', 'jakistamklucz', 'natalia@wp.pl', 'Koty', 'Halo', '2019-03-28', '1997-08-02', NULL, 1);
-insert into RESOURCE(id, name, description, points, id_resource_type, id_owner, add_date) values (1, 'Talisman', 'Fajna', 2000, 151, 3, '2019-05-15');
-insert into RESOURCE(id, name, description, points, id_resource_type, id_owner, add_date) values (2, 'Dobble', 'Zabawa jak się patrzy', 54, 153, 3, '2019-05-15');
-insert into RESOURCE(id, name, description, points, id_resource_type, id_owner, add_date) values (3, 'Tajniacy', 'Szpieg', 12, 153, 3, '2019-05-15');
-insert into RESOURCE(id, name, description, points, id_resource_type, id_owner, add_date) values (4, 'Skip-bo', 'Inna nazwa: autobus', 49, 153, 3, '2019-05-15');
-insert into RESOURCE(id, name, description, points, id_resource_type, id_owner, add_date) values (5, '7 cudów świata: Pojedynek', 'Pojedynek', 33, 159, 3, '2019-05-15');
-
+insert into RESOURCE(id, name, description, points, id_resource_type, id_owner, add_date, can_be_borrowed, is_deleted) values (1, 'Talisman', 'Fajna', 2000, 151, 3, '2019-05-15', true, false);
+insert into RESOURCE(id, name, description, points, id_resource_type, id_owner, add_date, can_be_borrowed, is_deleted) values (2, 'Dobble', 'Zabawa jak się patrzy', 54, 153, 3, '2019-05-15', false, false);
+insert into RESOURCE(id, name, description, points, id_resource_type, id_owner, add_date, can_be_borrowed, is_deleted) values (3, 'Tajniacy', 'Szpieg', 12, 153, 3, '2019-05-15', false, false);
+insert into RESOURCE(id, name, description, points, id_resource_type, id_owner, add_date, can_be_borrowed, is_deleted) values (4, 'Skip-bo', 'Inna nazwa: autobus', 49, 153, 3, '2019-05-15', true, false);
+insert into RESOURCE(id, name, description, points, id_resource_type, id_owner, add_date, can_be_borrowed, is_deleted) values (5, '7 cudów świata: Pojedynek', 'Pojedynek', 33, 159, 3, '2019-05-15', true, false);
+insert into RESOURCE_RENTING(ORDER_DATE, STATUS, ID_RECEIVER, ID_RESOURCE) values (sysdate, 1, 1, 1);
+insert into RESOURCE_RENTING(ORDER_DATE, STATUS, ID_RECEIVER, ID_RESOURCE) values (sysdate-10, 0, 2, 5);
+insert into RESOURCE(id, name, description, points, id_resource_type, id_owner, add_date, can_be_borrowed, is_deleted) values (6, 'Taboo', 'Zepsuła się', 10, 153, 3, '2018-12-24', true, true);
+insert into RESOURCE(id, name, description, points, id_resource_type, id_owner, add_date, can_be_borrowed, is_deleted) values (7, 'Monopoly', 'Rozlałam na to kawę', 50, 159, 3, '2018-12-10', true, true);
+insert into RESOURCE_RENTING(ORDER_DATE, BORROW_DATE, GIVE_BACK_DATE, STATUS, ID_RECEIVER, ID_RESOURCE) values ('2019-01-03', '2019-01-05', '2019-02-01', 2, 1, 1);
+insert into RESOURCE_RENTING(ORDER_DATE, BORROW_DATE, GIVE_BACK_DATE, STATUS, ID_RECEIVER, ID_RESOURCE) values ('2018-10-14', '2018-10-15', '2018-12-31', 2, 2, 1);

@@ -9,6 +9,11 @@ import java.util.List;
 @Table(name = "user")
 public class User extends BaseEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_user")
+    private int id;
+
     @Column(nullable = false)
     private String email;
 
@@ -40,6 +45,13 @@ public class User extends BaseEntity {
     @JoinColumn(name = "id_address")
     private Address address;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
+    List<Resource> owningResources = new ArrayList<>();
+
+
+    public User() {
+
+    }
 
     public User(String password, String ethereumAddress, String ethereumKey, String email, String lastName, String firstName, Date joinDate, Date birthDate, Date recallDate, Address address) {
         this.password = password;
