@@ -234,3 +234,9 @@
 	.modal form label {
 		font-weight: normal;
 	}
+
+    .file-loading > input {
+      visibility:hidden;
+      width:0;
+      height:0
+    }

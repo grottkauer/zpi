@@ -66,6 +66,83 @@
             <div class="card-header text-center">
                 <h1 class="text-uppercase">Dodaj produkt</h1>
             </div>
+
+            <!--================ Cart Area =================-->
+            <section class="cart_area">
+                <div class="container">
+                    <div class="cart_inner">
+                        <form class="form form-vertical" action="#" method="post" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-sm-4 text-center">
+                                    <div class="form-group">
+                                        <div class="file-loading">
+                                            <img id="main_image" src="https://mdbootstrap.com/img/Photos/Others/placeholder.jpg" class="img-fluid mb-1">
+                                        </div>
+                                        <div class="btn btn-mdb-color btn-rounded">
+                                            <input id="fileInput" type="file" style="display:none;" onchange="onFileSelected(event)"/>
+                                            <input type="button" value="Wybierz plik" onclick="document.getElementById('fileInput').click();" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-8">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Nazwa produktu<span>*</span></label>
+                                                <input type="text" class="form-control" name="name" required="required"
+                                                       data-validation-required-message="Proszę podać nazwę.">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Kategoria<span>*</span></label>
+                                                <select class="form-control">
+                                                <option selected>Wybierz...</option>
+                                                <option>Książki</option>
+                                                <option>Filmy</option>
+                                                <option>Muzyka</option>
+                                                <option>Planszówki</option>
+                                                <option>Czasopisma</option>
+                                                <option>Zabawki</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Opis produktu</label>
+                                                <textarea class="form-control" id="message"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Dodaj kolejne zdjęcia</label>
+                                                <div class="custom-file mb-1">
+                                                    <input type="file" class="custom-file-input" id="customFile">
+                                                    <label class="custom-file-label  text-truncate" for="customFile">Wybierz plik</label>
+                                                </div>
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="customFileLang2" lang="pl-Pl">
+                                                    <label class="custom-file-label  text-truncate" for="customFileLang2">Wybierz plik</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <hr>
+                                        <div class="text-right">
+                                            <button type="submit" class="btn btn-primary">Dodaj</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+
             <!-- Sticky Footer -->
             <footer th:replace="user-panel/user_layout :: foot"></footer>
 
@@ -118,6 +195,29 @@
 <!-- Demo scripts for this page-->
 <script src="../user-panel/js/demo/datatables-demo.js"></script>
 <script src="../user-panel/js/demo/chart-area-demo.js"></script>
+
+<script>
+// Add the following code if you want the name of the file appear on select
+$(".custom-file-input").on("change", function() {
+  var fileName = $(this).val().split("\\").pop();
+  $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+});
+</script>
+<script>
+    function onFileSelected(event) {
+  var selectedFile = event.target.files[0];
+  var reader = new FileReader();
+
+  var imgtag = document.getElementById("main_image");
+  imgtag.title = selectedFile.name;
+
+  reader.onload = function(event) {
+    imgtag.src = event.target.result;
+  };
+
+  reader.readAsDataURL(selectedFile);
+}
+</script>
 
 </body>
 
