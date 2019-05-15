@@ -21,13 +21,17 @@ public class Address extends BaseEntity {
     @Column
     private String nrFlat;
 
+    @Column(nullable = false)
+    private String zipCode;
+
     public Address() {
     }
 
-    public Address(String locality, String street, String nrHouse, String nrFlat) {
+    public Address(String locality, String street, String nrHouse, String nrFlat, String zipCode) {
         this.locality = locality;
         this.street = street;
         this.nrHouse = nrHouse;
         this.nrFlat = nrFlat;
+        this.zipCode = zipCode;
     }
 }

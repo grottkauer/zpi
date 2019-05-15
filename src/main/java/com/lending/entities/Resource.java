@@ -14,12 +14,6 @@ public class Resource extends BaseEntity {
     @Column
     private String name;
 
-    @Column
-    private String color;
-
-    @Column
-    private double weight;
-
     @ManyToOne
     @JoinColumn(name = "id_resource_type")
     private ResourceType resourceType;
@@ -34,11 +28,9 @@ public class Resource extends BaseEntity {
 
     }
 
-    public Resource(int points, String name, String color, double weight, ResourceType resourceType) {
+    public Resource(int points, String name, ResourceType resourceType) {
         this.points = points;
         this.name = name;
-        this.color = color;
-        this.weight = weight;
         this.resourceType = resourceType;
     }
 
@@ -46,7 +38,7 @@ public class Resource extends BaseEntity {
         return resourceType;
     }
 
-    public void setRodzajZasobuID(ResourceType resourceType) {
+    public void setResourceType(ResourceType resourceType) {
         this.resourceType = resourceType;
     }
 
@@ -64,22 +56,6 @@ public class Resource extends BaseEntity {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    public double getWeight() {
-        return weight;
-    }
-
-    public void setWeight(double weight) {
-        this.weight = weight;
     }
 
     public String toString(){

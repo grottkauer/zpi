@@ -186,36 +186,46 @@ INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level)
 INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (150, 'Łamigłówki', 123);
 INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (151, 'Przygodowe', 123);
 INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (152, 'Strategiczne', 123);
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (153, 'Inne', 123);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (153, 'Towarzyskie', 123);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (154, 'Inne', 123);
 
 -- todo COLLECTIONS
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (154, 'Inne', 6);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (155, 'Inne', 6);
 
 -- NEWSPAPERS
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (155, 'Polityka', 7);
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (156, 'Architektura', 7);
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (157, 'Dla dzieci i młodzieży', 7);
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (158, 'Ekonomia', 7);
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (159, 'Hobby', 7);
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (160, 'IT', 7);
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (161, 'Kultura i sztuka', 7);
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (162, 'Motoryzacja', 7);
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (163, 'Specjalistyczne', 7);
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (164, 'Turystyka', 7);
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (165, 'Popularnonaukowe', 7);
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (166, 'Rozrywka', 7);
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (167, 'Sport', 7);
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (168, 'Historyczne', 7);
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (169, 'Życie rodzinne', 7);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (156, 'Polityka', 7);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (157, 'Architektura', 7);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (158, 'Dla dzieci i młodzieży', 7);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (159, 'Ekonomia', 7);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (160, 'Hobby', 7);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (161, 'IT', 7);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (162, 'Kultura i sztuka', 7);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (163, 'Motoryzacja', 7);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (164, 'Specjalistyczne', 7);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (165, 'Turystyka', 7);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (166, 'Popularnonaukowe', 7);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (167, 'Rozrywka', 7);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (168, 'Sport', 7);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (169, 'Historyczne', 7);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (170, 'Życie rodzinne', 7);
 
-
-
-INSERT INTO resource(id, points, weight, name, id_resource_type)
-    VALUES (1, 3, 0.5, 'pierwszy resource', 1);
-INSERT INTO resource(id, points, weight, name, id_resource_type) VALUES (2, 3, 0.5, 'drugi resource', 1);
-INSERT INTO resource(id, points, weight, name, id_resource_type) VALUES (3, 3, 0.5, 'trzeci resource', 1);
 
 INSERT INTO user(id, password, ethereum_address ,ethereum_key, email, last_name, first_name, join_date, birth_date, recall_date, id_address)
 VALUES  (1, 'kowalski','0xb058ce0a76c7F87a08d75E2699C53AE62B0817C4','af2b6729ab77cddfd86ee4f39231353bd142e2a5ab561098ae892269d24d1624','jan@kowalski.com','kowalski','jan', '2019-03-15','1980-06-29','2020-03-15',NULL ),
-        (2, 'nowak','0x3e673F7F53e2B04e77aE7E6C3b995A536ACa7Bf6','dc5ac2f7f3a70f00bec0b02e6d98930c3aad5539c7b36d1857b4ccfcf42653ba','znigniew@nowak.com','nowak','zbigniew', '2019-03-15','1980-06-29','2020-03-15',NULL ),
-        (3, 'kotelki', 'jakistamadres', 'jakistamklucz', 'natalia@wp.pl', 'Koty', 'Halo', '2019-03-28', NULL, NULL, NULL );
+        (2, 'nowak','0x3e673F7F53e2B04e77aE7E6C3b995A536ACa7Bf6','dc5ac2f7f3a70f00bec0b02e6d98930c3aad5539c7b36d1857b4ccfcf42653ba','znigniew@nowak.com','nowak','zbigniew', '2019-03-15','1980-06-29','2020-03-15',NULL );
+
+
+--some test data for natalia@wp.pl
+insert into ADDRESS(id, locality, nr_flat, nr_house, street, zip_code) values (1, 'Kotałkowo', '4', '12', 'Zwierzęca', '12-345');
+insert into RESOURCE(id, name, points, id_resource_type) values (1, 'Talisman', 2000, 151);
+insert into RESOURCE(id, name, points, id_resource_type) values (2, 'Dobble', 54, 153);
+insert into RESOURCE(id, name, points, id_resource_type) values (3, 'Tajniacy', 12, 153);
+insert into RESOURCE(id, name, points, id_resource_type) values (4, 'Skip-bo', 49, 153);
+insert into RESOURCE(id, name, points, id_resource_type) values (5, '7 cudów świata: Pojedynek', 33, 159);
+INSERT INTO user(id, password, ethereum_address ,ethereum_key, email, last_name, first_name, join_date, birth_date, recall_date, id_address)
+    VALUES (3, 'kotelki', 'jakistamadres', 'jakistamklucz', 'natalia@wp.pl', 'Koty', 'Halo', '2019-03-28', '1997-08-02', NULL, 1);
+insert into RESOURCES_OWNERSHIP(id, add_date, id_resource, id_user) values (1, '2019-05-15', 1, 3);
+insert into RESOURCES_OWNERSHIP(id, add_date, id_resource, id_user) values (2, '2019-05-15', 2, 3);
+insert into RESOURCES_OWNERSHIP(id, add_date, id_resource, id_user) values (3, '2019-05-15', 3, 3);
+insert into RESOURCES_OWNERSHIP(id, add_date, id_resource, id_user) values (4, '2019-05-15', 4, 3);
+insert into RESOURCES_OWNERSHIP(id, add_date, id_resource, id_user) values (5, '2019-05-15', 5, 3);
