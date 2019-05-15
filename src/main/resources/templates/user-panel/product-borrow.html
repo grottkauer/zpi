@@ -18,17 +18,19 @@
                 <div class="card cardRegistry text-center">
                     <div class="card-body text-center">
                         <form method="post">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Data spotkania</span>
+                            <div class="d-flex justify-content-around">
+                                <div class="input-group mr-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Data spotkania</span>
+                                    </div>
+                                    <input data-date-format="dd/mm/yyyy" id="datepicker" class="form-control" required placeholder="Data spotkania">
                                 </div>
-                                <input data-date-format="dd/mm/yyyy" id="datepicker" class="form-control" required placeholder="Data spotkania">
-                            </div>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Miejsce spotkania</span>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Miejsce spotkania</span>
+                                    </div>
+                                    <input name="meetingAddress" type="text" class="form-control" required placeholder="Adres spotkania">
                                 </div>
-                                <input name="meetingAddress" type="text" class="form-control" required placeholder="Adres spotkania">
                             </div>
                         </form>
                     </div>
