@@ -18,17 +18,19 @@
                 <div class="card cardRegistry text-center">
                     <div class="card-body text-center">
                         <form method="post">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Data spotkania</span>
+                            <div class="d-lg-flex justify-content-around">
+                                <div class="input-group mr-3 input-higher">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Data spotkania</span>
+                                    </div>
+                                    <input data-date-format="dd/mm/yyyy" id="datepicker" class="form-control" required placeholder="Data spotkania">
                                 </div>
-                                <input data-date-format="dd/mm/yyyy" id="datepicker" class="form-control" required placeholder="Data spotkania">
-                            </div>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Miejsce spotkania</span>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Miejsce spotkania</span>
+                                    </div>
+                                    <input name="meetingAddress" type="text" class="form-control" required placeholder="Adres spotkania">
                                 </div>
-                                <input name="meetingAddress" type="text" class="form-control" required placeholder="Adres spotkania">
                             </div>
                         </form>
                     </div>
@@ -130,12 +132,12 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Chcesz opuscic strone?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Chcesz opuścić stronę?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Wybierz "Wyloguj" jeżeli chcesz zakonczyć sesje.</div>
+                <div class="modal-body">Wybierz "Wyloguj" jeżeli chcesz zakonczyć sesję.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Anuluj</button>
                     <a class="btn btn-primary" href="/">Wyloguj</a>

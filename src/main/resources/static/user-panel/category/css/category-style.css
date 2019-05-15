@@ -4403,6 +4403,10 @@ h6 {
         text-transform: uppercase;
 }
 
+.card-heart{
+    background: #f9f9ff;
+}
+
 /*---------------------------------------------------- */
 
 /*# sourceMappingURL=style.css.map */

@@ -11388,7 +11388,7 @@
 				 *      } );
 				 *    } );
 				 */
-				"sNext": "Next",
+				"sNext": "Następne",
 	
 	
 				/**
@@ -11411,7 +11411,7 @@
 				 *      } );
 				 *    } );
 				 */
-				"sPrevious": "Previous"
+				"sPrevious": "Poprzednie"
 			},
 	
 			/**
@@ -11466,7 +11466,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfo": "Showing _START_ to _END_ of _TOTAL_ entries",
+			"sInfo": "Wyświetlono od _START_ do _END_ z _TOTAL_ rekordów",
 	
 	
 			/**
@@ -11487,7 +11487,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sInfoEmpty": "Showing 0 to 0 of 0 entries",
+			"sInfoEmpty": "Wyświetlono od 0 do 0 z 0 rekordów",
 	
 	
 			/**
@@ -11627,7 +11627,7 @@
 			 *      } );
 			 *    } );
 			 */
-			"sLengthMenu": "Show _MENU_ entries",
+			"sLengthMenu": "Wyświetl _MENU_ rekordów",
 	
 	
 			/**
