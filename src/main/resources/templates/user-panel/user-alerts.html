@@ -235,7 +235,7 @@
                                             </span>
                                         </td>
                                         <td>
-                                            <a href="#editMeetingModal" class="btn btn-danger notification-text mb-1" data-toggle="modal">
+                                            <a href="#cancelMeetingModal" class="btn btn-danger notification-text mb-1" data-toggle="modal">
                                                 <i class="fas fa-trash-alt"></i>
                                                 <span>Anuluj</span>
                                             </a>
@@ -267,7 +267,7 @@
                                             </span>
                                         </td>
                                         <td>
-                                            <a href="#editMeetingModal" class="btn btn-danger notification-text mb-1" data-toggle="modal">
+                                            <a href="#cancelMeetingModal" class="btn btn-danger notification-text mb-1" data-toggle="modal">
                                                 <i class="fas fa-trash-alt"></i>
                                                 <span>Anuluj</span>
                                             </a>
@@ -723,6 +723,25 @@
                     <button class="btn btn-primary" type="button" data-dismiss="modal">Potwierdź</button>
                 </div>
             </form>
+        </div>
+    </div>
+</div>
+
+<!-- Cancel Meeting Modal-->
+<div class="modal fade" id="cancelMeetingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Czy na pewno chcesz anulować wypożyczenie?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Wybierz "Potwierdź" jeżeli chcesz anulować wypożyczenia.</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Anuluj</button>
+                <button class="btn btn-primary" type="button" data-dismiss="modal">Potwierdź</button>
+            </div>
         </div>
     </div>
 </div>
