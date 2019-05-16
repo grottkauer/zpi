@@ -10792,3 +10792,8 @@ body.sidebar-toggled footer.sticky-footer {
       left: 40%;
       z-index: 999;
     }
+
+.notification-text{
+    font-size: 10px;
+    width: 120px;
+}

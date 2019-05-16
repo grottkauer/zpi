@@ -242,3 +242,11 @@
       width:0;
       height:0
     }
+
+    .in-work{
+        position: absolute;
+    }
+
+    .mockup-option{
+        opacity: 0.2;
+    }
