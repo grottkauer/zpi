@@ -70,57 +70,57 @@
                 <form method="post">
                     <div class="row">
                         <div class="col-sm-6 form-group text-left">
+                            <label>Imię</label>
                             <input name="firstName" type="text" class="form-control" required
                                    th:value="${user.getFirstName()}">
-                            <label class="custom-file-label  text-truncate">Imię</label>
                         </div>
-                        <div class="col-sm-6 flex-fill form-group text-left">
+                        <div class="col-sm-6 form-group text-left">
+                            <label>Nazwisko</label>
                             <input name="lastName" type="text" class="form-control" required
                                    th:value="${user.getLastName()}">
-                            <label class="custom-file-label  text-truncate">Nazwisko</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-12 form-group text-left">
+                            <label>Adres email</label>
                             <input name="email" type="email" class="form-control" required
                                    th:value="${user.getEmail()}" disabled>
-                            <label class="custom-file-label  text-truncate">Adres email</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-12 form-group text-left">
+                            <label>Data urodzenia</label>
                             <input name="birthDate" type="date" class="form-control" required
                                    th:value="*{#dates.format(user.getBirthDate(), 'dd/MM/yyyy')}">
-                            <label class="custom-file-label  text-truncate">Data urodzenia</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-6 form-group text-left">
+                            <label>Kod pocztowy</label>
                             <input name="zipCode" type="text" class="form-control" required
                                    th:value="${user.getZipCode()}">
-                            <label class="custom-file-label  text-truncate">Kod pocztowy</label>
                         </div>
                         <div class="col-sm-6 form-group text-left">
+                            <label>Miejscowość</label>
                             <input name="city" type="text" class="form-control" required
                                    th:value="${user.getLocality()}">
-                            <label class="custom-file-label  text-truncate">Miejscowość</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-6 form-group text-left">
+                            <label>Ulica</label>
                             <input name="street" type="text" class="form-control" required
                                    th:value="${user.getStreet()}">
-                            <label class="custom-file-label  text-truncate">Ulica</label>
                         </div>
                         <div class="col-sm-3 form-group text-left">
+                            <label>Nr</label>
                             <input name="homeNr" type="text" class="form-control" required
                                    th:value="${user.getNrHouse()}">
-                            <label class="custom-file-label  text-truncate">Nr</label>
                         </div>
                         <div class="col-sm-3 form-group text-left">
+                            <label>Lokal</label>
                             <input name="flatNr" type="text" class="form-control" required
                                    th:value="${user.getNrFlat()}">
-                            <label class="custom-file-label  text-truncate">Lokal</label>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-raised btn-primary mb-1">Zapisz dane</button>
