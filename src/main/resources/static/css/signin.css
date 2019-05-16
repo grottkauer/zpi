@@ -112,7 +112,7 @@ hr {
   .full-height {
     margin-top: 20px;
     position: relative;
-    background-image: url("../images/login-bg.jpg");
+    background-image: url("../images/backgrounds/login-bg.jpg");
     background-repeat: no-repeat;
     background-attachment: scroll;
     background-position: center;

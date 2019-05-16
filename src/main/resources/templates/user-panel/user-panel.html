@@ -2,14 +2,14 @@
 <html lang="pl" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="user-panel/user_layout :: template_header"></head>
 
-<body id="page-top" class="sidebar-toggled">
+<body id="page-top" class="">
 <div class="full-height bg-panel">
 <nav th:replace="user-panel/user_layout :: navi"></nav>
 
 <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="sidebar navbar-nav toggled">
+    <ul id="sidebar" class="sidebar navbar-nav">
         <li class="nav-item active">
             <a class="nav-link" href="panel">
                 <i class="fas fa-fw fa-th-large"></i>
@@ -228,6 +228,17 @@
 <!-- Demo scripts for this page-->
 <script src="../user-panel/js/demo/datatables-demo.js"></script>
 <script src="../user-panel/js/demo/chart-area-demo.js"></script>
+<script>
+    $(window).on('resize', function() {
+    if($(window).width() > 450) {
+        $('#page-top').removeClass('sidebar-toggled');
+        $('#sidebar').removeClass('toggled');
+    }else{
+        $('#page-top').addClass('sidebar-toggled');
+        $('#sidebar').addClass('toggled');
+    }
+})
+</script>
 
 </body>
 

@@ -66,41 +66,43 @@
 
         <div class="container" id="edit_data">
         <div class="card cardRegistry text-center">
-            <div class="card-body text-center">
+            <div class="card-body text-center mt-4">
                 <form method="post">
-                    <div class="d-flex">
-                        <div class="pr-2 flex-fill form-group text-left">
+                    <div class="row">
+                        <div class="col-sm-6 form-group text-left">
                             <input name="firstName" type="text" class="form-control" required placeholder="Imię">
                         </div>
-                        <div class="pl-2 flex-fill form-group text-left">
+                        <div class="col-sm-6 form-group text-left">
                             <input name="lastName" type="text" class="form-control" required placeholder="Nazwisko">
                         </div>
                     </div>
-                    <div class="form-group text-left">
-                        <input name="email" type="email" class="form-control" required placeholder="Adres email" >
+                    <div class="row">
+                        <div class="col-sm-12 form-group text-left">
+                            <input name="email" type="email" class="form-control" required placeholder="Adres email" >
+                        </div>
                     </div>
-                    <div class="form-group text-left">
-                        <input name="birthDate" type="date" class="form-control" required placeholder="Data urodzenia">
+                    <div class="row">
+                        <div class="col-sm-12 form-group text-left">
+                            <input name="birthDate" type="date" class="form-control" required placeholder="Data urodzenia">
+                        </div>
                     </div>
-                    <div class="d-flex">
-                        <div class="pr-2 flex-fill form-group text-left">
+                    <div class="row">
+                        <div class="col-sm-6 form-group text-left">
                             <input name="zipCode" type="text" class="form-control" required placeholder="Kod pocztowy">
                         </div>
-                        <div class="pl-2 flex-fill form-group text-left">
+                        <div class="col-sm-6 form-group text-left">
                             <input name="city" type="text" class="form-control" required placeholder="Miejscowość">
                         </div>
                     </div>
-                    <div class="d-flex">
-                        <div class="pr-2 form-group text-left" style="flex: 1 0 0">
+                    <div class="row">
+                        <div class="col-sm-6 form-group text-left">
                             <input name="street" type="text" class="form-control" required placeholder="Ulica">
                         </div>
-                        <div class="pl-2 d-flex" style="flex: 1 0 0">
-                            <div class="flex-fill form-group text-left">
-                                <input name="homeNr" type="text" class="form-control" required placeholder="Nr">
-                            </div>
-                            <div class="pl-2 flex-fill form-group text-left">
-                                <input name="flatNr" type="text" class="form-control" required placeholder="Lokal">
-                            </div>
+                        <div class="col-sm-3 form-group text-left">
+                            <input name="homeNr" type="text" class="form-control" required placeholder="Nr">
+                        </div>
+                        <div class="col-sm-3 form-group text-left">
+                            <input name="flatNr" type="text" class="form-control" required placeholder="Lokal">
                         </div>
                     </div>
                     <button type="submit" class="btn btn-raised btn-primary mb-1">Zapisz dane</button>
