@@ -219,7 +219,7 @@ INSERT INTO user(id, password, ethereum_address ,ethereum_key, email, last_name,
 insert into RESOURCE(id, name, description, points, id_resource_type, id_owner, add_date, can_be_borrowed, is_deleted) values (1, 'Talisman', 'Fajna', 2000, 151, 3, '2019-05-15', true, false);
 insert into RESOURCE(id, name, description, points, id_resource_type, id_owner, add_date, can_be_borrowed, is_deleted) values (2, 'Dobble', 'Zabawa jak się patrzy', 54, 153, 3, '2019-05-15', false, false);
 insert into RESOURCE(id, name, description, points, id_resource_type, id_owner, add_date, can_be_borrowed, is_deleted) values (3, 'Tajniacy', 'Szpieg', 12, 153, 3, '2019-05-15', false, false);
-insert into RESOURCE(id, name, description, points, id_resource_type, id_owner, add_date, can_be_borrowed, is_deleted) values (4, 'Skip-bo', 'Inna nazwa: autobus', 49, 153, 3, '2019-05-15', true, false);
+insert into RESOURCE(id, name, description, points, id_resource_type, id_owner, add_date, can_be_borrowed, is_deleted) values (4, 'Skip-bo', 'Inna nazwa: autobus\nRusza wóz', 49, 153, 3, '2019-05-15', true, false);
 insert into RESOURCE(id, name, description, points, id_resource_type, id_owner, add_date, can_be_borrowed, is_deleted) values (5, '7 cudów świata: Pojedynek', 'Pojedynek', 33, 159, 3, '2019-05-15', true, false);
 insert into RESOURCE_RENTING(ORDER_DATE, STATUS, ID_RECEIVER, ID_RESOURCE) values (sysdate, 1, 1, 1);
 insert into RESOURCE_RENTING(ORDER_DATE, STATUS, ID_RECEIVER, ID_RESOURCE) values (sysdate-10, 0, 2, 5);

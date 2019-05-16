@@ -1,9 +1,6 @@
 package com.lending.controller;
 
-import com.lending.dto.CategoriesDto;
-import com.lending.dto.ResourceDetailsDto;
-import com.lending.dto.ResourceRentingHistoryDto;
-import com.lending.dto.UsersProductDto;
+import com.lending.dto.*;
 import com.lending.entities.Resource;
 import com.lending.repositories.ResourceRepository;
 import com.lending.repositories.ResourceTypeRepository;
@@ -149,6 +146,8 @@ public class UserPanelController {
     public ModelAndView myData() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("user-panel/user-edit-data");
+        UserInfoDto currentUser = userRepository.getUserInfoById(3);
+        modelAndView.addObject("user", currentUser);
         return modelAndView;
     }
 
@@ -189,6 +188,7 @@ public class UserPanelController {
         }
         modelAndView.addObject("categories", categories);
         List<Resource> availableResources = resourceRepository.getAvailableResourcesWithHighestCategory(id);
+        //TODO: show resources which don't belong to current user
         modelAndView.addObject("availableResources", availableResources);
         modelAndView.setViewName("user-panel/category2");
         return modelAndView;

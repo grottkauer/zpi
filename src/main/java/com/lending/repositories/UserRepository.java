@@ -1,5 +1,6 @@
 package com.lending.repositories;
 
+import com.lending.dto.UserInfoDto;
 import com.lending.dto.UsersProductDto;
 import com.lending.entities.User;
 import org.springframework.data.jpa.repository.Query;
@@ -12,6 +13,12 @@ public interface UserRepository extends CrudRepository<User, Integer>, UserRepos
 
     @Query("select u from User u where u.email=:email")
     User findByEmail(@Param("email") String email);
+
+    @Query("select new com.lending.dto.UserInfoDto (u.firstName, u.lastName, \n" +
+            "u.email, u.birthDate, a.zipCode, a.locality, a.street, a.nrHouse, a.nrFlat) from User u \n" +
+            "inner join u.address a \n" +
+            "where u.id=:id")
+    UserInfoDto getUserInfoById(@Param("id") int id);
 
     @Query("select case when count(u) > 0 then true else false end from User u where u.email=:email")
     boolean checkIfUserExists(@Param("email") String email);

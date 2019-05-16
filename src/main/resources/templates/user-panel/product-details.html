@@ -321,6 +321,7 @@
                                             </tr>
                                             </tfoot>
                                             <tbody class="table-rows-body">
+                                                <!--TODO: empty table string -->
                                                 <tr th:each="historyRent,iter :${history}">
                                                     <td th:text="${iter.index}+1"></td>
                                                     <td th:text="${#dates.format(historyRent.getBorrowDate(), 'dd/MM/yyyy')}"></td>
