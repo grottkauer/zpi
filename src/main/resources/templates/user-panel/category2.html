@@ -76,10 +76,10 @@
 
 
 					<div class="latest_product_inner row">
-						<div class="col-lg-3 col-md-3 col-sm-6">
+						<div class="col-lg-3 col-md-3 col-sm-6" th:each="product:${availableResources}">
 							<div class="f_p_item">
 								<div class="f_p_img">
-									<a href="szczegoly">
+									<a th:href="@{'szczegoly/' + ${product.getId()}}">
 										<img class="img-gallery" src="../images/sample-products/talisman.png" alt="">
 									</a>
 									<div class="p_icon">
@@ -92,158 +92,11 @@
 									</div>
 								</div>
 								<div class="underline-text">
-									<a href="szczegoly">
-										<h4>Long Sleeve TShirt</h4>
-										<h5>$150.00</h5>
+									<a th:href="@{'szczegoly/' + ${product.getId()}}">
+										<h4 th:text="${product.getName()}"></h4>
+										<h5 th:text="${product.getPoints()}"></h5>
 									</a>
 								</div>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-3 col-sm-6">
-							<div class="f_p_item">
-								<div class="f_p_img">
-									<a href="szczegoly">
-										<img class="img-gallery" src="../images/sample-products/tajniacy.png" alt="">
-									</a>
-									<div class="p_icon">
-										<a href="#">
-											<i class="lnr lnr-heart"></i>
-										</a>
-										<a href="wypozycz">
-											<i class="lnr lnr-cart"></i>
-										</a>
-									</div>
-								</div>
-								<a href="szczegoly">
-									<h4>Long Sleeve TShirt</h4>
-									<h5>$150.00</h5>
-								</a>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-3 col-sm-6">
-							<div class="f_p_item">
-								<div class="f_p_img">
-									<a href="szczegoly">
-										<img class="img-gallery" src="../images/sample-products/dobble.png" alt="">
-									</a>
-									<div class="p_icon">
-										<a href="#">
-											<i class="lnr lnr-heart"></i>
-										</a>
-										<a href="wypozycz">
-											<i class="lnr lnr-cart"></i>
-										</a>
-									</div>
-								</div>
-								<a href="szczegoly">
-									<h4>Long Sleeve TShirt</h4>
-									<h5>$150.00</h5>
-								</a>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-3 col-sm-6">
-							<div class="f_p_item">
-								<div class="f_p_img">
-									<a href="szczegoly">
-										<img class="img-gallery" src="../images/sample-products/skipbo.png" alt="">
-									</a>
-									<div class="p_icon">
-										<a href="#">
-											<i class="lnr lnr-heart"></i>
-										</a>
-										<a href="wypozycz">
-											<i class="lnr lnr-cart"></i>
-										</a>
-									</div>
-								</div>
-								<a href="szczegoly">
-									<h4>Long Sleeve TShirt</h4>
-									<h5>$150.00</h5>
-								</a>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-3 col-sm-6">
-							<div class="f_p_item">
-								<div class="f_p_img">
-									<a href="szczegoly">
-										<img class="img-gallery" src="../images/sample-products/7cudow.png" alt="">
-									</a>
-									<div class="p_icon">
-										<a href="#">
-											<i class="lnr lnr-heart"></i>
-										</a>
-										<a href="wypozycz">
-											<i class="lnr lnr-cart"></i>
-										</a>
-									</div>
-								</div>
-								<a href="szczegoly">
-									<h4>Long Sleeve TShirt</h4>
-									<h5>$150.00</h5>
-								</a>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-3 col-sm-6">
-							<div class="f_p_item">
-								<div class="f_p_img">
-									<a href="szczegoly">
-										<img class="img-gallery" src="../images/sample-products/talisman.png" alt="">
-									</a>
-									<div class="p_icon">
-										<a href="#">
-											<i class="lnr lnr-heart"></i>
-										</a>
-										<a href="wypozycz">
-											<i class="lnr lnr-cart"></i>
-										</a>
-									</div>
-								</div>
-								<a href="szczegoly">
-									<h4>Long Sleeve TShirt</h4>
-									<h5>$150.00</h5>
-								</a>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-3 col-sm-6">
-							<div class="f_p_item">
-								<div class="f_p_img">
-									<a href="szczegoly">
-										<img class="img-gallery" src="../images/sample-products/dobble.png" alt="">
-									</a>
-									<div class="p_icon">
-										<a href="#">
-											<i class="lnr lnr-heart"></i>
-										</a>
-										<a href="wypozycz">
-											<i class="lnr lnr-cart"></i>
-										</a>
-									</div>
-								</div>
-								<a href="szczegoly">
-									<h4>Long Sleeve TShirt</h4>
-									<h5>$150.00</h5>
-								</a>
-							</div>
-						</div>
-						<div class="col-lg-3 col-md-3 col-sm-6">
-							<div class="f_p_item">
-								<div class="f_p_img">
-									<a href="szczegoly">
-										<img class="img-gallery" src="../images/sample-products/tajniacy.png" alt="">
-									</a>
-									<div class="p_icon">
-										<a href="#">
-											<i class="lnr lnr-heart"></i>
-										</a>
-										<a href="wypozycz">
-											<i class="lnr lnr-cart"></i>
-										</a>
-									</div>
-								</div>
-								<a href="szczegoly">
-									<h4>Long Sleeve TShirt</h4>
-									<h5>$150.00</h5>
-								</a>
 							</div>
 						</div>
 					</div>
@@ -258,9 +111,19 @@
 								<ul class="list" th:each="category:${categories}">
 									<li>
 										<a href="#" th:text="${category.getHigherLevelType().getName()}"></a>
-										<ul class="list" th:each="subcategory:${category.getSubcategories()}">
+										<ul class="list" th:each="sub1:${category.getSubcategories()}">
 											<li>
-												<a href="#" th:text="${subcategory.getName()}"></a>
+												<a href="#" th:text="${sub1.getHigherLevelType().getName()}"></a>
+												<ul class="list" th:each="sub2:${sub1.getSubcategories()}">
+													<li>
+														<a href="#" th:text="${sub2.getHigherLevelType().getName()}"></a>
+														<ul class="list" th:each="sub3:${sub2.getSubcategories()}">
+															<li>
+																<a href="#" th:text="${sub3.getHigherLevelType().getName()}"></a>
+															</li>
+														</ul>
+													</li>
+												</ul>
 											</li>
 										</ul>
 									</li>

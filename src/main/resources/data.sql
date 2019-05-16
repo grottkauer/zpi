@@ -151,8 +151,8 @@ INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level)
 INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (123, 'Planszowe', 5);
 
 -- GAMES - Cipher
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (124, 'Gry', 123);
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (125, 'Programy', 123);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (124, 'Gry', 122);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (125, 'Programy', 122);
 
 -- GAMES - Cipher - games
 INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (126, 'Akcja i strzelanki', 124);
@@ -189,25 +189,22 @@ INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level)
 INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (153, 'Towarzyskie', 123);
 INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (154, 'Inne', 123);
 
--- todo COLLECTIONS
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (155, 'Inne', 6);
-
 -- NEWSPAPERS
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (156, 'Polityka', 7);
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (157, 'Architektura', 7);
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (158, 'Dla dzieci i młodzieży', 7);
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (159, 'Ekonomia', 7);
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (160, 'Hobby', 7);
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (161, 'IT', 7);
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (162, 'Kultura i sztuka', 7);
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (163, 'Motoryzacja', 7);
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (164, 'Specjalistyczne', 7);
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (165, 'Turystyka', 7);
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (166, 'Popularnonaukowe', 7);
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (167, 'Rozrywka', 7);
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (168, 'Sport', 7);
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (169, 'Historyczne', 7);
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (170, 'Życie rodzinne', 7);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (155, 'Polityka', 7);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (156, 'Architektura', 7);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (157, 'Dla dzieci i młodzieży', 7);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (158, 'Ekonomia', 7);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (159, 'Hobby', 7);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (160, 'IT', 7);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (161, 'Kultura i sztuka', 7);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (162, 'Motoryzacja', 7);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (163, 'Specjalistyczne', 7);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (164, 'Turystyka', 7);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (165, 'Popularnonaukowe', 7);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (166, 'Rozrywka', 7);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (167, 'Sport', 7);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (168, 'Historyczne', 7);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (169, 'Życie rodzinne', 7);
 
 
 INSERT INTO user(id, password, ethereum_address ,ethereum_key, email, last_name, first_name, join_date, birth_date, recall_date, id_address)

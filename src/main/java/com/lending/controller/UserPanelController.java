@@ -4,7 +4,7 @@ import com.lending.dto.CategoriesDto;
 import com.lending.dto.ResourceDetailsDto;
 import com.lending.dto.ResourceRentingHistoryDto;
 import com.lending.dto.UsersProductDto;
-import com.lending.entities.ResourceType;
+import com.lending.entities.Resource;
 import com.lending.repositories.ResourceRepository;
 import com.lending.repositories.ResourceTypeRepository;
 import com.lending.repositories.UserRepository;
@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -179,16 +178,18 @@ public class UserPanelController {
     @GetMapping(value="/szukaj")
     public ModelAndView search(@RequestParam int id) {
         ModelAndView modelAndView = new ModelAndView();
-        List<ResourceType> higherLevels = resourceTypeRepository.getHigherLevelTypes();
-        List<CategoriesDto> categories = new ArrayList<>(9);
-        CategoriesDto dto;
-        List<ResourceType> subcategories;
-        for (ResourceType parent : higherLevels) {
-            subcategories = resourceTypeRepository.getSubcategories(parent.getId());
-            dto = new CategoriesDto(parent, subcategories);
-            categories.add(dto);
+        List<CategoriesDto> categories = resourceTypeRepository.getHigherLevelTypes();
+        for (CategoriesDto highestLevel : categories) {
+            highestLevel.setSubcategories(resourceTypeRepository.getSubcategories(highestLevel.getHigherLevelType().getId()));
+            for (CategoriesDto firstLevelSub : highestLevel.getSubcategories()) {
+                firstLevelSub.setSubcategories(resourceTypeRepository.getSubcategories(firstLevelSub.getHigherLevelType().getId()));
+                for (CategoriesDto secondLevelSub : firstLevelSub.getSubcategories())
+                    secondLevelSub.setSubcategories(resourceTypeRepository.getSubcategories(secondLevelSub.getHigherLevelType().getId()));
+            }
         }
         modelAndView.addObject("categories", categories);
+        List<Resource> availableResources = resourceRepository.getAvailableResourcesWithHighestCategory(id);
+        modelAndView.addObject("availableResources", availableResources);
         modelAndView.setViewName("user-panel/category2");
         return modelAndView;
     }
@@ -196,7 +197,7 @@ public class UserPanelController {
     @GetMapping(value="/moje-produkty/szczegoly-produktu")
     public ModelAndView product(@RequestParam int id) {
         ModelAndView modelAndView = new ModelAndView();
-
+        //todo: is this needed?
         return modelAndView;
     }
 

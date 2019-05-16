@@ -2,16 +2,22 @@ package com.lending.dto;
 
 import com.lending.entities.ResourceType;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CategoriesDto {
 
     private ResourceType higherLevelType;
-    private List<ResourceType> subcategories;
+    private List<CategoriesDto> subcategories;
 
-    public CategoriesDto(ResourceType higherLevelType, List<ResourceType> subcategories) {
+    public CategoriesDto(ResourceType higherLevelType, List<CategoriesDto> subcategories) {
         this.higherLevelType = higherLevelType;
         this.subcategories = subcategories;
+    }
+
+    public CategoriesDto(ResourceType higherLevelType) {
+        this.higherLevelType = higherLevelType;
+        this.subcategories = new ArrayList<>();
     }
 
     public ResourceType getHigherLevelType() {
@@ -22,11 +28,11 @@ public class CategoriesDto {
         this.higherLevelType = higherLevelType;
     }
 
-    public List<ResourceType> getSubcategories() {
+    public List<CategoriesDto> getSubcategories() {
         return subcategories;
     }
 
-    public void setSubcategories(List<ResourceType> subcategories) {
+    public void setSubcategories(List<CategoriesDto> subcategories) {
         this.subcategories = subcategories;
     }
 }
