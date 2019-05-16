@@ -321,12 +321,12 @@
                                             </tr>
                                             </tfoot>
                                             <tbody class="table-rows-body">
-                                            <tr th:each="historyRent,iter :${history}">
-                                                <td th:text="${iter.index}+1"></td>
-                                                <td th:text="${#dates.format(historyRent.getBorrowDate(), 'dd/MM/yyyy')}"></td>
-                                                <td th:text="${historyRent.getUser()}"></td>
-                                                <td th:text="${#dates.format(historyRent.getGiveBackDate(), 'dd/MM/yyyy')}"></td>
-                                            </tr>
+                                                <tr th:each="historyRent,iter :${history}">
+                                                    <td th:text="${iter.index}+1"></td>
+                                                    <td th:text="${#dates.format(historyRent.getBorrowDate(), 'dd/MM/yyyy')}"></td>
+                                                    <td th:text="${historyRent.getUser()}"></td>
+                                                    <td th:text="${#dates.format(historyRent.getGiveBackDate(), 'dd/MM/yyyy')}"></td>
+                                                </tr>
                                             </tbody>
                                         </table>
                                     </div>
