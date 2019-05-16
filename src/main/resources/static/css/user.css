@@ -8,10 +8,12 @@
 
 #bg-borrow {
   background-image: url("../images/things.jpg");
+  background-attachment: fixed;
 }
 
 .bg-panel {
   background-image: url("../images/bg-panel.jpg");
+  background-attachment: fixed;
 }
 
 @media (max-width: 700px) {
