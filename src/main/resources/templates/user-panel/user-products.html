@@ -148,10 +148,10 @@
                                             </span>
                                         </td>
                                         <td class="text-center">
-                                            <a href="#editEmployeeModal" class="edit" data-toggle="modal">
+                                            <a href="#editProductModal" class="edit" data-toggle="modal">
                                                 <i class="fas fa-edit"></i>
                                             </a>
-                                            <a href="#deleteEmployeeModal" class="edit" data-toggle="modal">
+                                            <a href="#deleteProductModal" class="edit" data-toggle="modal">
                                                 <i class="fas fa-trash-alt"></i>
                                             </a>
                                         </td>
@@ -219,6 +219,79 @@
     <i class="fas fa-angle-up"></i>
 </a>
 
+<!-- Delete Product Modal-->
+<div class="modal fade" id="deleteProductModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Czy na pewno chcesz usunąć produkt?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Wybierz "Potwierdź" jeżeli chcesz usunąć produkt.</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Anuluj</button>
+                <button class="btn btn-primary" type="button" data-dismiss="modal">Potwierdź</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Product Modal-->
+<div class="modal fade" id="editProductModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Chcesz edytować produkt?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <form method="post" action="/moje-konto">
+                <div class="modal-body">
+                        <div class="d-flex">
+                            <div class="pr-2 flex-fill form-group text-left">
+                                <input name="productName" type="text" class="form-control" required placeholder="Nazwa">
+                            </div>
+                            <div class="pl-2 flex-fill form-group text-left">
+                                <select name="productCategory" class="form-control">
+                                    <option selected="">Kategoria...</option>
+                                    <option>Książki</option>
+                                    <option>Filmy</option>
+                                    <option>Muzyka</option>
+                                    <option>Planszówki</option>
+                                    <option>Czasopisma</option>
+                                    <option>Zabawki</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group text-left">
+                            <textarea class="form-control" id="message" placeholder="Opis"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Dodaj kolejne zdjęcia</label>
+                            <div class="custom-file mb-1">
+                                <input type="file" class="custom-file-input" id="customFile">
+                                <label class="custom-file-label  text-truncate" for="customFile">Wybierz plik</label>
+                            </div>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="customFileLang2" lang="pl-Pl">
+                                <label class="custom-file-label  text-truncate" for="customFileLang2">Wybierz plik</label>
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <!-- todo uncomment this line and delete below when post supported -->
+                    <!--<input class="btn btn-raised btn-primary mb-1" type="submit" value="Zapisz dane">-->
+                    <button type="submit" class="btn btn-raised btn-primary mb-1">Zapisz dane</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
 <!-- Logout Modal-->
 <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -237,6 +310,30 @@
         </div>
     </div>
 </div>
+
+<!-- Reading files and filenames -->
+<script>
+// Add the following code if you want the name of the file appear on select
+$(".custom-file-input").on("change", function() {
+  var fileName = $(this).val().split("\\").pop();
+  $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+});
+</script>
+<script>
+    function onFileSelected(event) {
+  var selectedFile = event.target.files[0];
+  var reader = new FileReader();
+
+  var imgtag = document.getElementById("main_image");
+  imgtag.title = selectedFile.name;
+
+  reader.onload = function(event) {
+    imgtag.src = event.target.result;
+  };
+
+  reader.readAsDataURL(selectedFile);
+}
+</script>
 
 <!-- Bootstrap core JavaScript-->
 <script src="../user-panel/vendor/jquery/jquery.min.js"></script>
