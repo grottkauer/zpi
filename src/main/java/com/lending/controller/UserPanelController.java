@@ -1,5 +1,6 @@
 package com.lending.controller;
 
+import com.lending.dto.*;
 import com.lending.entities.Resource;
 import com.lending.repositories.ResourceRepository;
 import com.lending.repositories.ResourceTypeRepository;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 @Controller
 @RequestMapping(value = {"/moje-konto"})
@@ -132,6 +135,10 @@ public class UserPanelController {
     public ModelAndView products() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("user-panel/user-products");
+        List<UsersProductDto> products = userRepository.getUsersProducts(3);
+        List<UsersProductDto> archiveProducts = userRepository.getArchiveUsersProducts(3);
+        modelAndView.addObject("ProductsList", products);
+        modelAndView.addObject("ArchiveProductsList", archiveProducts);
         return modelAndView;
     }
 
@@ -139,6 +146,8 @@ public class UserPanelController {
     public ModelAndView myData() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("user-panel/user-edit-data");
+        UserInfoDto currentUser = userRepository.getUserInfoById(3);
+        modelAndView.addObject("user", currentUser);
         return modelAndView;
     }
 
@@ -166,30 +175,39 @@ public class UserPanelController {
     }
 
     @GetMapping(value="/szukaj")
-    public ModelAndView search(@RequestParam String id) {
+    public ModelAndView search(@RequestParam int id) {
         ModelAndView modelAndView = new ModelAndView();
-        //todo get data from database and add it to modelandview
-        int idValue = Integer.parseInt(id);
-        Iterable<Resource> resources = resourceRepository.findByResourceTypeId(idValue);
-        modelAndView.addObject("resources", resources);
+        List<CategoriesDto> categories = resourceTypeRepository.getHigherLevelTypes();
+        for (CategoriesDto highestLevel : categories) {
+            highestLevel.setSubcategories(resourceTypeRepository.getSubcategories(highestLevel.getHigherLevelType().getId()));
+            for (CategoriesDto firstLevelSub : highestLevel.getSubcategories()) {
+                firstLevelSub.setSubcategories(resourceTypeRepository.getSubcategories(firstLevelSub.getHigherLevelType().getId()));
+                for (CategoriesDto secondLevelSub : firstLevelSub.getSubcategories())
+                    secondLevelSub.setSubcategories(resourceTypeRepository.getSubcategories(secondLevelSub.getHigherLevelType().getId()));
+            }
+        }
+        modelAndView.addObject("categories", categories);
+        List<Resource> availableResources = resourceRepository.getAvailableResourcesWithHighestCategory(id);
+        //TODO: show resources which don't belong to current user
+        modelAndView.addObject("availableResources", availableResources);
         modelAndView.setViewName("user-panel/category2");
         return modelAndView;
     }
 
     @GetMapping(value="/moje-produkty/szczegoly-produktu")
-    public ModelAndView product(@RequestParam String id) {
+    public ModelAndView product(@RequestParam int id) {
         ModelAndView modelAndView = new ModelAndView();
-        //todo get data from database and add it to modelandview
-        int idValue = Integer.parseInt(id);
-        //Iterable<Resource> resources = resourceRepository.findByResourceId(idValue);
-        //modelAndView.addObject("resources", resources);
-        modelAndView.setViewName("user-panel/user-product-info");
+        //todo: is this needed?
         return modelAndView;
     }
 
     @GetMapping(value="/szczegoly")
-    public ModelAndView productDetails() {
+    public ModelAndView productDetails(@RequestParam int item) {
         ModelAndView modelAndView = new ModelAndView();
+        ResourceDetailsDto resource = resourceRepository.getProductDetails(item);
+        List<ResourceRentingHistoryDto> history = resourceRepository.getProductRentingHistory(item);
+        modelAndView.addObject("item", resource);
+        modelAndView.addObject("history", history);
         modelAndView.setViewName("user-panel/product-details");
         return modelAndView;
     }

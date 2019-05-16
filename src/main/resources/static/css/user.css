@@ -8,10 +8,12 @@
 
 #bg-borrow {
   background-image: url("../images/backgrounds/things.jpg");
+  background-attachment: fixed;
 }
 
 .bg-panel {
   background-image: url("../images/backgrounds/bg-panel.jpg");
+  background-attachment: fixed;
 }
 
 @media (max-width: 700px) {
@@ -239,4 +241,12 @@
       visibility:hidden;
       width:0;
       height:0
+    }
+
+    .in-work{
+        position: absolute;
+    }
+
+    .mockup-option{
+        opacity: 0.2;
     }

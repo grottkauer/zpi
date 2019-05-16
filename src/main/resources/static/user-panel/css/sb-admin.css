@@ -10758,3 +10758,42 @@ body.sidebar-toggled footer.sticky-footer {
 .header-order-success{
     background-color: #fed136;
 }
+
+.table-btn{
+    font-size: 12px;
+    background-color: #fed136;
+}
+
+.table-btn:hover, .table-btn:active{
+    background-color: rgba(0, 0, 0, 0.33);
+    color: #fed136;
+    border-color: #fed136;
+}
+
+.giveback-prepend{
+    width: 100%;
+}
+
+.pointer-row:hover{
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.pointer-cell:hover{
+    cursor: pointer;
+}
+
+.yellow-text{
+    color: #fed136;
+}
+
+.toast{
+      position: fixed;
+      top: 0;
+      left: 40%;
+      z-index: 999;
+    }
+
+.notification-text{
+    font-size: 10px;
+    width: 120px;
+}

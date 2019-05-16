@@ -24,7 +24,7 @@ public class ResourceRentingService {
     public ResourceRenting createWypozyczenie(User giver, User getter, Resource resource){
         ResourceRenting resourceRenting = new ResourceRenting();
         resourceRenting.setGiver(giver);
-        resourceRenting.setGetter(getter);
+        resourceRenting.setRecipent(getter);
         resourceRenting.setResource(resource);
         return resourceRentingRepository.save(resourceRenting);
     }

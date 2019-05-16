@@ -7,6 +7,11 @@ import java.util.Date;
 @Table(name = "notification")
 public class Notification extends BaseEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_notification")
+    private int id;
+
     @ManyToOne
     @JoinColumn(name = "id_sender")
     private User sender;

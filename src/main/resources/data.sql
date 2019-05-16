@@ -151,8 +151,8 @@ INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level)
 INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (123, 'Planszowe', 5);
 
 -- GAMES - Cipher
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (124, 'Gry', 123);
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (125, 'Programy', 123);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (124, 'Gry', 122);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (125, 'Programy', 122);
 
 -- GAMES - Cipher - games
 INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (126, 'Akcja i strzelanki', 124);
@@ -189,25 +189,22 @@ INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level)
 INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (153, 'Towarzyskie', 123);
 INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (154, 'Inne', 123);
 
--- todo COLLECTIONS
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (155, 'Inne', 6);
-
 -- NEWSPAPERS
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (156, 'Polityka', 7);
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (157, 'Architektura', 7);
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (158, 'Dla dzieci i młodzieży', 7);
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (159, 'Ekonomia', 7);
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (160, 'Hobby', 7);
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (161, 'IT', 7);
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (162, 'Kultura i sztuka', 7);
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (163, 'Motoryzacja', 7);
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (164, 'Specjalistyczne', 7);
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (165, 'Turystyka', 7);
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (166, 'Popularnonaukowe', 7);
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (167, 'Rozrywka', 7);
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (168, 'Sport', 7);
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (169, 'Historyczne', 7);
-INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (170, 'Życie rodzinne', 7);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (155, 'Polityka', 7);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (156, 'Architektura', 7);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (157, 'Dla dzieci i młodzieży', 7);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (158, 'Ekonomia', 7);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (159, 'Hobby', 7);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (160, 'IT', 7);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (161, 'Kultura i sztuka', 7);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (162, 'Motoryzacja', 7);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (163, 'Specjalistyczne', 7);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (164, 'Turystyka', 7);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (165, 'Popularnonaukowe', 7);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (166, 'Rozrywka', 7);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (167, 'Sport', 7);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (168, 'Historyczne', 7);
+INSERT INTO resource_type(id_resource_type, name, id_resource_type_higher_level) VALUES (169, 'Życie rodzinne', 7);
 
 
 INSERT INTO user(id, password, ethereum_address ,ethereum_key, email, last_name, first_name, join_date, birth_date, recall_date, id_address)
@@ -217,15 +214,16 @@ VALUES  (1, 'kowalski','0xb058ce0a76c7F87a08d75E2699C53AE62B0817C4','af2b6729ab7
 
 --some test data for natalia@wp.pl
 insert into ADDRESS(id, locality, nr_flat, nr_house, street, zip_code) values (1, 'Kotałkowo', '4', '12', 'Zwierzęca', '12-345');
-insert into RESOURCE(id, name, points, id_resource_type) values (1, 'Talisman', 2000, 151);
-insert into RESOURCE(id, name, points, id_resource_type) values (2, 'Dobble', 54, 153);
-insert into RESOURCE(id, name, points, id_resource_type) values (3, 'Tajniacy', 12, 153);
-insert into RESOURCE(id, name, points, id_resource_type) values (4, 'Skip-bo', 49, 153);
-insert into RESOURCE(id, name, points, id_resource_type) values (5, '7 cudów świata: Pojedynek', 33, 159);
 INSERT INTO user(id, password, ethereum_address ,ethereum_key, email, last_name, first_name, join_date, birth_date, recall_date, id_address)
     VALUES (3, 'kotelki', 'jakistamadres', 'jakistamklucz', 'natalia@wp.pl', 'Koty', 'Halo', '2019-03-28', '1997-08-02', NULL, 1);
-insert into RESOURCES_OWNERSHIP(id, add_date, id_resource, id_user) values (1, '2019-05-15', 1, 3);
-insert into RESOURCES_OWNERSHIP(id, add_date, id_resource, id_user) values (2, '2019-05-15', 2, 3);
-insert into RESOURCES_OWNERSHIP(id, add_date, id_resource, id_user) values (3, '2019-05-15', 3, 3);
-insert into RESOURCES_OWNERSHIP(id, add_date, id_resource, id_user) values (4, '2019-05-15', 4, 3);
-insert into RESOURCES_OWNERSHIP(id, add_date, id_resource, id_user) values (5, '2019-05-15', 5, 3);
+insert into RESOURCE(id, name, description, points, id_resource_type, id_owner, add_date, can_be_borrowed, is_deleted) values (1, 'Talisman', 'Fajna', 2000, 151, 3, '2019-05-15', true, false);
+insert into RESOURCE(id, name, description, points, id_resource_type, id_owner, add_date, can_be_borrowed, is_deleted) values (2, 'Dobble', 'Zabawa jak się patrzy', 54, 153, 3, '2019-05-15', false, false);
+insert into RESOURCE(id, name, description, points, id_resource_type, id_owner, add_date, can_be_borrowed, is_deleted) values (3, 'Tajniacy', 'Szpieg', 12, 153, 3, '2019-05-15', false, false);
+insert into RESOURCE(id, name, description, points, id_resource_type, id_owner, add_date, can_be_borrowed, is_deleted) values (4, 'Skip-bo', 'Inna nazwa: autobus\nRusza wóz', 49, 153, 3, '2019-05-15', true, false);
+insert into RESOURCE(id, name, description, points, id_resource_type, id_owner, add_date, can_be_borrowed, is_deleted) values (5, '7 cudów świata: Pojedynek', 'Pojedynek', 33, 159, 3, '2019-05-15', true, false);
+insert into RESOURCE_RENTING(ORDER_DATE, STATUS, ID_RECEIVER, ID_RESOURCE) values (sysdate, 1, 1, 1);
+insert into RESOURCE_RENTING(ORDER_DATE, STATUS, ID_RECEIVER, ID_RESOURCE) values (sysdate-10, 0, 2, 5);
+insert into RESOURCE(id, name, description, points, id_resource_type, id_owner, add_date, can_be_borrowed, is_deleted) values (6, 'Taboo', 'Zepsuła się', 10, 153, 3, '2018-12-24', true, true);
+insert into RESOURCE(id, name, description, points, id_resource_type, id_owner, add_date, can_be_borrowed, is_deleted) values (7, 'Monopoly', 'Rozlałam na to kawę', 50, 159, 3, '2018-12-10', true, true);
+insert into RESOURCE_RENTING(ORDER_DATE, BORROW_DATE, GIVE_BACK_DATE, STATUS, ID_RECEIVER, ID_RESOURCE) values ('2019-01-03', '2019-01-05', '2019-02-01', 2, 1, 1);
+insert into RESOURCE_RENTING(ORDER_DATE, BORROW_DATE, GIVE_BACK_DATE, STATUS, ID_RECEIVER, ID_RESOURCE) values ('2018-10-14', '2018-10-15', '2018-12-31', 2, 2, 1);

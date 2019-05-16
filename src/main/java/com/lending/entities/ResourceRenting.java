@@ -1,14 +1,21 @@
 package com.lending.entities;
 
-import org.springframework.stereotype.Component;
-
+import javax.persistence.*;
 import java.util.Date;
 
-@Component
+@Entity
+@Table(name = "resource_renting")
 public class ResourceRenting extends BaseEntity {
 
+    /*
     public enum RentingStatus {
-        Utworzone, Zrealizowane, Oddane;
+        Utworzone(0), Zrealizowane(1), Oddane(2);
+
+        private final int value;
+
+        RentingStatus(int i) {
+            this.value = i;
+        }
 
         public static RentingStatus fromInteger(int integer){
             switch (integer){
@@ -21,34 +28,57 @@ public class ResourceRenting extends BaseEntity {
             }
             return null;
         }
-    }
+    } */
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_resource_renting")
+    private int id;
+
+    @ManyToOne
+    @JoinColumn(name = "id_receiver", nullable = false)
+    private User recipent;
+
+    @Transient
     private User giver;
 
-    private User getter;
-
+    @ManyToOne
+    @JoinColumn(name = "id_resource", nullable = false)
     private Resource resource;
 
-    private Date addDate;
+    @Column(nullable = false)
+    private Date orderDate;
 
-    private Date realisationDate;
+    @Column
+    private Date borrowDate;
 
+    @Column
     private Date giveBackDate;
 
-    private RentingStatus rentingStatus;
+    @Enumerated
+    @Column(columnDefinition = "smallint", nullable = false)
+    private RentingStatus status;
 
     public ResourceRenting() {
     }
 
-    public ResourceRenting(int id, User giver, User getter, Resource resource, Date addDate, Date realisationDate, Date giveBackDate, RentingStatus rentingStatus) {
+    public ResourceRenting(int id, User giver, User recipent, Resource resource, Date addDate, Date realisationDate, Date giveBackDate, RentingStatus status) {
         super(id);
         this.giver = giver;
-        this.getter = getter;
+        this.recipent = recipent;
         this.resource = resource;
-        this.addDate = addDate;
-        this.realisationDate = realisationDate;
+        this.orderDate = addDate;
+        this.borrowDate = realisationDate;
         this.giveBackDate = giveBackDate;
-        this.rentingStatus = rentingStatus;
+        this.status = status;
+    }
+
+    public User getRecipent() {
+        return recipent;
+    }
+
+    public void setRecipent(User recipent) {
+        this.recipent = recipent;
     }
 
     public User getGiver() {
@@ -59,14 +89,6 @@ public class ResourceRenting extends BaseEntity {
         this.giver = giver;
     }
 
-    public User getGetter() {
-        return getter;
-    }
-
-    public void setGetter(User getter) {
-        this.getter = getter;
-    }
-
     public Resource getResource() {
         return resource;
     }
@@ -75,20 +97,20 @@ public class ResourceRenting extends BaseEntity {
         this.resource = resource;
     }
 
-    public Date getAddDate() {
-        return addDate;
+    public Date getOrderDate() {
+        return orderDate;
     }
 
-    public void setAddDate(Date addDate) {
-        this.addDate = addDate;
+    public void setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
     }
 
-    public Date getRealisationDate() {
-        return realisationDate;
+    public Date getBorrowDate() {
+        return borrowDate;
     }
 
-    public void setRealisationDate(Date realisationDate) {
-        this.realisationDate = realisationDate;
+    public void setBorrowDate(Date borrowDate) {
+        this.borrowDate = borrowDate;
     }
 
     public Date getGiveBackDate() {
@@ -99,24 +121,25 @@ public class ResourceRenting extends BaseEntity {
         this.giveBackDate = giveBackDate;
     }
 
-    public RentingStatus getRentingStatus() {
-        return rentingStatus;
+    public RentingStatus getStatus() {
+        return status;
     }
 
-    public void setRentingStatus(RentingStatus rentingStatus) {
-        this.rentingStatus = rentingStatus;
+    public void setStatus(RentingStatus status) {
+        this.status = status;
     }
 
     @Override
     public String toString() {
         return "ResourceRenting{" +
-                "giver=" + giver +
-                ", getter=" + getter +
+                ", recipent=" + recipent +
                 ", resource=" + resource +
-                ", addDate=" + addDate +
-                ", realisationDate=" + realisationDate +
+                ", orderDate=" + orderDate +
+                ", borrowDate=" + borrowDate +
                 ", giveBackDate=" + giveBackDate +
-                ", rentingStatus=" + rentingStatus +
+                ", status=" + status +
                 '}';
     }
+
+
 }

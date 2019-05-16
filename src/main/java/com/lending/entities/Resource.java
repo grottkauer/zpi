@@ -1,37 +1,67 @@
 package com.lending.entities;
 
 import javax.persistence.*;
+import java.sql.Blob;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
 @Table(name = "resource")
 public class Resource extends BaseEntity {
 
-    @Column
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_resource")
+    private int id;
+
+    @Column(nullable = false)
     private int points;
 
-    @Column
+    @Column(nullable = false)
     private String name;
+
+    @Column
+    private String description;
+
+    @Column(nullable = false)
+    private Date addDate;
+
+    @Lob
+    private Blob image;
+
+    @Column(nullable = false)
+    private boolean canBeBorrowed = false;
+
+    @Column(nullable = false)
+    private boolean isDeleted = false;
 
     @ManyToOne
     @JoinColumn(name = "id_resource_type")
     private ResourceType resourceType;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "resource")
-    private List<ResourceOwnership> resourceOwnerships = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "id_owner")
+    private User owner;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "resource")
-    private List<Image> photos = new ArrayList<>();
+    private List<ResourceRenting> rentings = new ArrayList<>();
 
-    public Resource(){
+
+    public Resource() {
 
     }
 
-    public Resource(int points, String name, ResourceType resourceType) {
+    public Resource(int points, String name, String description, ResourceType resourceType, User owner,
+                    Date addDate, Blob image, boolean canBeBorrowed, boolean isDeleted) {
         this.points = points;
         this.name = name;
         this.resourceType = resourceType;
+        this.owner = owner;
+        this.addDate = addDate;
+        this.image = image;
+        this.canBeBorrowed = canBeBorrowed;
+        this.isDeleted = isDeleted;
     }
 
     public ResourceType getResourceType() {
@@ -60,5 +90,66 @@ public class Resource extends BaseEntity {
 
     public String toString(){
         return super.getId() + ", " + name + "\n";
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Date getAddDate() {
+        return addDate;
+    }
+
+    public void setAddDate(Date addDate) {
+        this.addDate = addDate;
+    }
+
+    public Blob getImage() {
+        return image;
+    }
+
+    public void setImage(Blob image) {
+        this.image = image;
+    }
+
+    public User getOwner() {
+        return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
+    }
+
+    public boolean isCanBeBorrowed() {
+        return canBeBorrowed;
+    }
+
+    public void setCanBeBorrowed(boolean canBeBorrowed) {
+        this.canBeBorrowed = canBeBorrowed;
+    }
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    public boolean isDeleted() {
+        return isDeleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        isDeleted = deleted;
+    }
+
+    public List<ResourceRenting> getRentings() {
+        return rentings;
+    }
+
+    public void setRentings(List<ResourceRenting> rentings) {
+        this.rentings = rentings;
     }
 }

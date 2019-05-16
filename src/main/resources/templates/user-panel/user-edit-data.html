@@ -66,43 +66,50 @@
 
         <div class="container" id="edit_data">
         <div class="card cardRegistry text-center">
-            <div class="card-body text-center mt-4">
+            <div class="card-body text-center">
                 <form method="post">
-                    <div class="row">
-                        <div class="col-sm-6 form-group text-left">
-                            <input name="firstName" type="text" class="form-control" required placeholder="Imię">
+                    <div class="d-flex">
+                        <div class="pr-2 flex-fill form-group text-left">
+                            <input name="firstName" type="text" class="form-control" required placeholder="Imię"
+                                th:value="${user.getFirstName()}">
                         </div>
-                        <div class="col-sm-6 form-group text-left">
-                            <input name="lastName" type="text" class="form-control" required placeholder="Nazwisko">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 form-group text-left">
-                            <input name="email" type="email" class="form-control" required placeholder="Adres email" >
+                        <div class="pl-2 flex-fill form-group text-left">
+                            <input name="lastName" type="text" class="form-control" required placeholder="Nazwisko"
+                                th:value="${user.getLastName()}">
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-sm-12 form-group text-left">
-                            <input name="birthDate" type="date" class="form-control" required placeholder="Data urodzenia">
+                    <div class="form-group text-left">
+                        <input name="email" type="email" class="form-control" required placeholder="Adres email"
+                               th:value="${user.getEmail()}" disabled>
+                    </div>
+                    <div class="form-group text-left">
+                        <input name="birthDate" type="date" class="form-control" required placeholder="Data urodzenia"
+                               th:value="*{#dates.format(user.getBirthDate(), 'dd/MM/yyyy')}">
+                    </div>
+                    <div class="d-flex">
+                        <div class="pr-2 flex-fill form-group text-left">
+                            <input name="zipCode" type="text" class="form-control" required placeholder="Kod pocztowy"
+                                   th:value="${user.getZipCode()}">
+                        </div>
+                        <div class="pl-2 flex-fill form-group text-left">
+                            <input name="city" type="text" class="form-control" required placeholder="Miejscowość"
+                                   th:value="${user.getLocality()}">
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-sm-6 form-group text-left">
-                            <input name="zipCode" type="text" class="form-control" required placeholder="Kod pocztowy">
+                    <div class="d-flex">
+                        <div class="pr-2 form-group text-left" style="flex: 1 0 0">
+                            <input name="street" type="text" class="form-control" required placeholder="Ulica"
+                                   th:value="${user.getStreet()}">
                         </div>
-                        <div class="col-sm-6 form-group text-left">
-                            <input name="city" type="text" class="form-control" required placeholder="Miejscowość">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6 form-group text-left">
-                            <input name="street" type="text" class="form-control" required placeholder="Ulica">
-                        </div>
-                        <div class="col-sm-3 form-group text-left">
-                            <input name="homeNr" type="text" class="form-control" required placeholder="Nr">
-                        </div>
-                        <div class="col-sm-3 form-group text-left">
-                            <input name="flatNr" type="text" class="form-control" required placeholder="Lokal">
+                        <div class="pl-2 d-flex" style="flex: 1 0 0">
+                            <div class="flex-fill form-group text-left">
+                                <input name="homeNr" type="text" class="form-control" required placeholder="Nr"
+                                   th:value="${user.getNrHouse()}">
+                            </div>
+                            <div class="pl-2 flex-fill form-group text-left">
+                                <input name="flatNr" type="text" class="form-control" required placeholder="Lokal"
+                                   th:value="${user.getNrFlat()}">
+                            </div>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-raised btn-primary mb-1">Zapisz dane</button>

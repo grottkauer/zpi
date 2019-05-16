@@ -2,6 +2,7 @@ package com.lending.repositories;
 
 import com.lending.contracts.BorrowMeContract;
 import com.lending.contracts.BorrowMeContractConnector;
+import com.lending.entities.RentingStatus;
 import com.lending.entities.ResourceRenting;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -43,6 +44,7 @@ public class ResourceRentingRepositoryImpl implements ResourceRentingRepository 
 
     }
 
+
     @Override
     public <S extends ResourceRenting> S save(S entity) {
         TransactionReceipt receipt = null;
@@ -50,7 +52,7 @@ public class ResourceRentingRepositoryImpl implements ResourceRentingRepository 
         try {
             receipt = contract.createBorrowing(
                     entity.getGiver().getEthereumAddress(),
-                    entity.getGetter().getEthereumAddress(),
+                    entity.getRecipent().getEthereumAddress(),
                     resourceID
             ).sendAsync().get();
 
@@ -91,7 +93,7 @@ public class ResourceRentingRepositoryImpl implements ResourceRentingRepository 
                 new Date(wypozyczenieTuple.getValue5().longValue()),
                 new Date(wypozyczenieTuple.getValue6().longValue()),
                 new Date(wypozyczenieTuple.getValue7().longValue()),
-                ResourceRenting.RentingStatus.fromInteger(wypozyczenieTuple.getValue8().intValue())
+                RentingStatus.fromInteger(wypozyczenieTuple.getValue8().intValue())
         );
 
         return Optional.of(resourceRenting);

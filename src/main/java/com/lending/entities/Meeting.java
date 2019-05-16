@@ -7,24 +7,28 @@ import java.util.Date;
 @Table(name = "meeting")
 public class Meeting extends BaseEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_meeting")
+    private int id;
+
     @ManyToOne
-    @JoinColumn(name = "id_address")
+    @JoinColumn(name = "id_address", nullable = false)
     private Address address;
 
-    @Column
-    private String name;
-
-    @Column
-    private Date meetingDate;
-
+    @ManyToOne
+    @JoinColumn(name = "id_resource_renting", nullable = false)
     private ResourceRenting resourceRenting;
 
+    @Column(nullable = false)
+    private Date meetingDate;
+
     public Meeting() {
+
     }
 
-    public Meeting(Address address, String name, Date meetingDate, ResourceRenting resourceRenting) {
+    public Meeting(Address address, Date meetingDate, ResourceRenting resourceRenting) {
         this.address = address;
-        this.name = name;
         this.meetingDate = meetingDate;
         this.resourceRenting = resourceRenting;
     }
@@ -35,14 +39,6 @@ public class Meeting extends BaseEntity {
 
     public void setAddress(Address address) {
         this.address = address;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public Date getMeetingDate() {

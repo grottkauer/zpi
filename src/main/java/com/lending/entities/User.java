@@ -9,23 +9,22 @@ import java.util.List;
 @Table(name = "user")
 public class User extends BaseEntity {
 
-    @Column(nullable = false)
-    private String password;
-
-    @Column(nullable = false)
-    private String ethereumAddress;
-
-    @Column(nullable = false)
-    private String ethereumKey;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_user")
+    private int id;
 
     @Column(nullable = false)
     private String email;
 
-    @Column
-    private String lastName;
+    @Column(nullable = false)
+    private String password;
 
-    @Column
+    @Column(nullable = false)
     private String firstName;
+
+    @Column(nullable = false)
+    private String lastName;
 
     @Column(nullable = false)
     private Date joinDate;
@@ -36,20 +35,22 @@ public class User extends BaseEntity {
     @Column
     private Date recallDate;
 
+    @Column(nullable = false)
+    private String ethereumAddress;
+
+    @Column(nullable = false)
+    private String ethereumKey;
+
     @ManyToOne
     @JoinColumn(name = "id_address")
     private Address address;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "sender")
-    List<Notification> sentNotifications = new ArrayList<>();
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
+    List<Resource> owningResources = new ArrayList<>();
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "receiver")
-    List<Notification> receivedNotifications = new ArrayList<>();
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-    List<ResourceOwnership> resourcesOwnerships;
 
     public User() {
+
     }
 
     public User(String password, String ethereumAddress, String ethereumKey, String email, String lastName, String firstName, Date joinDate, Date birthDate, Date recallDate, Address address) {
