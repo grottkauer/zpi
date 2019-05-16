@@ -92,9 +92,12 @@
 									</div>
 								</div>
 								<div class="underline-text">
-									<a th:href="@{'szczegoly/' + ${product.getId()}}">
+									<a th:href="@{szczegoly(item=${product.getId()})}">
 										<h4 th:text="${product.getName()}"></h4>
-										<h5 th:text="${product.getPoints()}"></h5>
+										<div class="d-flex justify-content-center">
+											<h5 th:text="${product.getPoints()}"></h5>
+											<h5 class="ml-1"> BME</h5>
+										</div>
 									</a>
 								</div>
 							</div>

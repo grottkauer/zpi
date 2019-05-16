@@ -46,7 +46,10 @@
                     <div class="container">
                         <div class="s_product_text">
                             <h3 th:text="${item.getName()}"></h3>
-                            <h2 th:text="${item.getPoints()}"></h2>
+                            <div class="d-flex justify-content-start">
+                                <h2 th:text="${item.getPoints()}"></h2>
+                                <h2 class="ml-1"> BME</h2>
+                            </div>
                             <div class="row">
                                 <div class="col-9 row">
                                     <div class="col-3 mr-3">
