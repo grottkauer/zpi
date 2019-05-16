@@ -3290,7 +3290,7 @@ h6 {
       font-weight: normal;
       color: #ccc; }
       .s_product_text .list li a span {
-        width: 90px;
+        /*width: 90px;*/
         display: inline-block;
          color: #ccc; }
         .s_product_text .list li a span:hover {

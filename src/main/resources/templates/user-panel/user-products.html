@@ -128,11 +128,14 @@
                                                 <label for="checkbox1"></label>
                                             </span>
                                         </td>
-                                        <td th:text="${product.getProductName()}"
+                                        <td th:text="${product.getProductName()}" th:class="pointer-cell"
                                         th:onclick="|window.location.href='/moje-konto/szczegoly?item=${product.getId()}'|"></td>
-                                        <td th:text="${product.getCategoryName()}"></td>
-                                        <td th:text="${#dates.format(product.getAddDate(), 'dd-MM-yyyy')}"></td>
-                                        <td class="text-center" th:switch="${product.getStatus()}">
+                                        <td th:text="${product.getCategoryName()}" th:class="pointer-cell"
+                                            th:onclick="|window.location.href='/moje-konto/szczegoly?item=${product.getId()}'|"></td>
+                                        <td th:text="${#dates.format(product.getAddDate(), 'dd/MM/yyyy')}" th:class="pointer-cell"
+                                            th:onclick="|window.location.href='/moje-konto/szczegoly?item=${product.getId()}'|"></td>
+                                        <td class="text-center" th:switch="${product.getStatus()}" th:class="pointer-cell"
+                                            th:onclick="|window.location.href='/moje-konto/szczegoly?item=${product.getId()}'|">
                                             <div th:case="${T(com.lending.entities.RentingStatus).Zrealizowane}">Wypożyczony</div>
                                             <div th:case="${T(com.lending.entities.RentingStatus).Utworzone}">Zamówiony</div>
                                             <div th:case="*">-</div>

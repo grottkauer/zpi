@@ -48,27 +48,30 @@
                             <h3 th:text="${item.getName()}"></h3>
                             <h2 th:text="${item.getPoints()}"></h2>
                             <div class="row">
-                                <div class="col-9">
-                                    <ul class="list">
-                                        <li>
-                                            <a class="active" href="#">
-                                                <span>Kategoria</span> : <div th:text="${item.getCategoryName()}"></div></a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <span>Status</span> :
-                                                <div th:switch="${item.getStatus()}">
-                                                    <div th:case="${T(com.lending.entities.RentingStatus).Zrealizowane}">Wypożyczony</div>
-                                                    <div th:case="${T(com.lending.entities.RentingStatus).Utworzone}">Zamówiony</div>
-                                                    <div th:case="*">Dostępny</div>
-                                                </div>
-                                            </a>
-                                        </li>
-                                    </ul>
+                                <div class="col-9 row">
+                                    <div class="col-3 mr-3">
+                                        Kategoria:
+                                    </div>
+                                    <div class="col-6 yellow-text">
+                                        <div th:text="${item.getCategoryName()}"></div>
+                                    </div>
+
+                                    <div class="col-3 mr-3">
+                                        Status:
+                                    </div>
+                                    <div th:class="col-8" th:switch="${item.getStatus()}">
+                                        <div th:case="${T(com.lending.entities.RentingStatus).Zrealizowane}">
+                                           <div class="yellow-text">
+                                               Wypożyczony
+                                           </div>
+                                        </div>
+                                        <div th:case="${T(com.lending.entities.RentingStatus).Utworzone}">Zamówiony</div>
+                                        <div th:case="*">Dostępny</div>
+                                    </div>
                                 </div>
                                 <div class="col-3">
                                     <div class="card_area">
-                                        <a class="icon_btn" href="#">
+                                        <a id="addFavourites" class="icon_btn" href="#">
                                             <i class="lnr lnr lnr-heart"></i>
                                         </a>
                                     </div>
@@ -320,9 +323,9 @@
                                             <tbody class="table-rows-body">
                                             <tr th:each="historyRent,iter :${history}">
                                                 <td th:text="${iter.index}+1"></td>
-                                                <td th:text="${#dates.format(historyRent.getBorrowDate(), 'dd-MM-yyyy')}"></td>
+                                                <td th:text="${#dates.format(historyRent.getBorrowDate(), 'dd/MM/yyyy')}"></td>
                                                 <td th:text="${historyRent.getUser()}"></td>
-                                                <td th:text="${#dates.format(historyRent.getGiveBackDate(), 'dd-MM-yyyy')}"></td>
+                                                <td th:text="${#dates.format(historyRent.getGiveBackDate(), 'dd/MM/yyyy')}"></td>
                                             </tr>
                                             </tbody>
                                         </table>
@@ -375,7 +378,24 @@
         </div>
     </div>
 
+    <!-- Add to favourites toast -->
+    <div class="toast" data-delay="1500">
+        <div class="toast-header">
+            <strong class="mr-auto yellow-text">Dodano do ulubionych</strong>
+            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+        </div>
+    </div>
+
 </div>
+
+<!-- Add to favourites script-->
+<script>
+$(document).ready(function(){
+  $("#addFavourites").click(function(){
+    $('.toast').toast('show');
+  });
+});
+</script>
 
 <!-- Bootstrap core JavaScript-->
 <script src="../../user-panel/vendor/jquery/jquery.min.js"></script>
@@ -412,5 +432,7 @@
 <script src="../user-panel/category/js/jquery.waypoints.min.js"></script>
 <script src="../user-panel/category/js/jquery.counterup.js"></script>
 <script src="../user-panel/category/js/theme.js"></script>
+
+
 </body>
 </html>

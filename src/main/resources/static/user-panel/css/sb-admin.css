@@ -10775,6 +10775,20 @@ body.sidebar-toggled footer.sticky-footer {
 }
 
 .pointer-row:hover{
-    cursor: pointer;
     background-color: rgba(0, 0, 0, 0.1);
 }
+
+.pointer-cell:hover{
+    cursor: pointer;
+}
+
+.yellow-text{
+    color: #fed136;
+}
+
+.toast{
+      position: fixed;
+      top: 0;
+      left: 40%;
+      z-index: 999;
+    }
