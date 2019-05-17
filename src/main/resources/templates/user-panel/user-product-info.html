@@ -9,13 +9,13 @@
 <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="sidebar navbar-nav toggled">
+    <ul class="sidebar sidebar-info-product navbar-nav toggled">
         <li class="nav-item">
             <a class="nav-link" href="panel">
                 <i class="fas fa-fw fa-th-large"></i>
                 <span>Panel</span></a>
         </li>
-        <li class="nav-item dropdown active">
+        <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-fw fa-user-edit"></i>
                 <span>Moje dane</span>
@@ -23,17 +23,17 @@
             <div class="dropdown-menu" aria-labelledby="pagesDropdown">
                 <h6 class="dropdown-header pl-3">Moje konto:</h6>
                 <a class="dropdown-item" href="edytuj-dane">Edytuj swoje dane</a>
-                <a class="dropdown-item" href="zmien-haslo">Zmien haslo</a>
+                <a class="dropdown-item" href="zmien-haslo">Zmień hasło</a>
             </div>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown active">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-fw fa-archive"></i>
                 <span>Moje produkty</span>
             </a>
             <div class="dropdown-menu" aria-labelledby="pagesDropdown">
                 <h6 class="dropdown-header pl-3">Moje produkty:</h6>
-                <a class="dropdown-item" href="moje-produkty">Pokaz produkty</a>
+                <a class="dropdown-item" href="moje-produkty">Pokaż produkty</a>
                 <a class="dropdown-item" href="dodaj-produkt">Dodaj produkt</a>
             </div>
         </li>
@@ -60,54 +60,404 @@
     </ul>
 
     <div id="content-wrapper">
-        <div class="card-header text-center">
-            <h1 class="text-uppercase">Edycja danych</h1>
+        <div class="card-header text-center ml-5">
+            <h1 class="text-uppercase">Szczegóły produktu</h1>
         </div>
 
-        <div class="container" id="edit_data">
-        <div class="card cardRegistry text-center">
-            <div class="card-body text-center">
-                <form method="post">
-                    <div class="d-flex">
-                        <div class="pr-2 flex-fill form-group text-left">
-                            <input name="firstName" type="text" class="form-control" required placeholder="Imię">
-                        </div>
-                        <div class="pl-2 flex-fill form-group text-left">
-                            <input name="lastName" type="text" class="form-control" required placeholder="Nazwisko">
-                        </div>
-                    </div>
-                    <div class="form-group text-left">
-                        <input name="email" type="email" class="form-control" required placeholder="Adres email" >
-                    </div>
-                    <div class="form-group text-left">
-                        <input name="birthDate" type="date" class="form-control" required placeholder="Data urodzenia">
-                    </div>
-                    <div class="d-flex">
-                        <div class="pr-2 flex-fill form-group text-left">
-                            <input name="zipCode" type="text" class="form-control" required placeholder="Kod pocztowy">
-                        </div>
-                        <div class="pl-2 flex-fill form-group text-left">
-                            <input name="city" type="text" class="form-control" required placeholder="Miejscowość">
-                        </div>
-                    </div>
-                    <div class="d-flex">
-                        <div class="pr-2 form-group text-left" style="flex: 1 0 0">
-                            <input name="street" type="text" class="form-control" required placeholder="Ulica">
-                        </div>
-                        <div class="pl-2 d-flex" style="flex: 1 0 0">
-                            <div class="flex-fill form-group text-left">
-                                <input name="homeNr" type="text" class="form-control" required placeholder="Nr">
-                            </div>
-                            <div class="pl-2 flex-fill form-group text-left">
-                                <input name="flatNr" type="text" class="form-control" required placeholder="Lokal">
+        <!--================Single Product Area =================-->
+        <div class="product_image_area ml-5">
+            <div class="container">
+                <div class="row s_product_inner">
+                    <div class="col-lg-6">
+                        <div class="s_product_img">
+                            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                                <ol class="carousel-indicators">
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active">
+                                        <img src="../images/single-product/s-product-s-2.jpg" alt="">
+                                    </li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="1">
+                                        <img src="../images/single-product/s-product-s-3.jpg" alt="">
+                                    </li>
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="2">
+                                        <img src="../images/single-product/s-product-s-4.jpg" alt="">
+                                    </li>
+                                </ol>
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img class="d-block w-100" src="../images/single-product/s-product-1.jpg" alt="First slide">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img class="d-block w-100" src="../images/single-product/s-product-1.jpg" alt="Second slide">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img class="d-block w-100" src="../images/single-product/s-product-1.jpg" alt="Third slide">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-raised btn-primary mb-1">Zapisz dane</button>
-                </form>
+                    <div class="col-lg-5 offset-lg-1 short-description">
+                        <div class="container">
+                            <div class="s_product_text">
+                                <h3 th:text="${item.getName()}"></h3>
+                                <div class="d-flex justify-content-start">
+                                    <h2 th:text="${item.getPoints()}"></h2>
+                                    <h2 class="ml-1"> Borrow Coins</h2>
+                                </div>
+                                <div class="row">
+                                    <div class="col-9 row">
+                                        <div class="col-3 mr-3">
+                                            Kategoria:
+                                        </div>
+                                        <div class="col-6 yellow-text">
+                                            <div th:text="${item.getCategoryName()}"></div>
+                                        </div>
+
+                                        <div class="col-3 mr-3">
+                                            Status:
+                                        </div>
+                                        <div th:class="col-8" th:switch="${item.getStatus()}">
+                                            <div th:case="${T(com.lending.entities.RentingStatus).Zrealizowane}">
+                                                <div class="yellow-text">
+                                                    Wypożyczony
+                                                </div>
+                                            </div>
+                                            <div th:case="${T(com.lending.entities.RentingStatus).Utworzone}">Zamówiony</div>
+                                            <div th:case="*">Dostępny</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="card_area">
+                                            <a id="addFavourites" class="icon_btn" href="#">
+                                                <i class="lnr lnr lnr-heart"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <p th:text="${item.getDescription()}"></p>
+                                <div class="product_count">
+
+                                </div>
+                                <!--<div class="card_area pb-3">-->
+                                    <!--<a class="main_btn" href="wypozycz">Wypożycz</a>-->
+                                <!--</div>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        </div>
+        <!--================End Single Product Area =================-->
+
+        <!--<div class="container" id="edit_data">-->
+            <!--================Product Description Area =================-->
+            <section class="product_description_area ml-5">
+                <div class="container">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link" id="real-review-tab" data-toggle="tab" href="#real-review" role="tab" aria-controls="review" aria-selected="false">Opinie</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Dane wypożyczającego</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false">Zarobki i koszty</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content long-description" id="myTabContent">
+                        <div class="tab-pane fade show" id="real-review" role="tabpanel" aria-labelledby="real-review-tab">
+                            <div class="in-work">
+                                <h2>
+                                    Ta funkcjonalność zostanie dodana w następnej wersji aplikacji
+                                </h2>
+                            </div>
+                            <div class="row mockup-option">
+                                <div class="col-lg-6">
+                                    <div class="row total_rate">
+                                        <div class="col-6">
+                                            <div class="box_total">
+                                                <h5>Overall</h5>
+                                                <h4>4.0</h4>
+                                                <h6>(03 Reviews)</h6>
+                                            </div>
+                                        </div>
+                                        <div class="col-6">
+                                            <div class="rating_list">
+                                                <h3>Based on 3 Reviews</h3>
+                                                <ul class="list">
+                                                    <li>
+                                                        <a href="#">5 Star
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i> 01</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">4 Star
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i> 01</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">3 Star
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i> 01</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">2 Star
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i> 01</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">1 Star
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i>
+                                                            <i class="fa fa-star"></i> 01</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="review_list">
+                                        <div class="review_item">
+                                            <div class="media">
+                                                <div class="d-flex">
+                                                    <img src="../images/single-product/review-1.png" alt="">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h4>Blake Ruiz</h4>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                            </div>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                                                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
+                                        </div>
+                                        <div class="review_item">
+                                            <div class="media">
+                                                <div class="d-flex">
+                                                    <img src="../images/single-product/review-2.png" alt="">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h4>Blake Ruiz</h4>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                            </div>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                                                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
+                                        </div>
+                                        <div class="review_item">
+                                            <div class="media">
+                                                <div class="d-flex">
+                                                    <img src="../images/single-product/review-3.png" alt="">
+                                                </div>
+                                                <div class="media-body">
+                                                    <h4>Blake Ruiz</h4>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                    <i class="fa fa-star"></i>
+                                                </div>
+                                            </div>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                                                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="review_box">
+                                        <h4>Add a Review</h4>
+                                        <p>Your Rating:</p>
+                                        <ul class="list">
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-star"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-star"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-star"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-star"></i>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-star"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <p>Outstanding</p>
+                                        <form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" id="name" name="name" placeholder="Your Full name">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <input type="email" class="form-control" id="email" name="email" placeholder="Email Address">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" id="number" name="number" placeholder="Phone Number">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <textarea class="form-control" name="message" id="message" rows="1" placeholder="Review"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 text-right">
+                                                <button type="submit" value="submit" class="btn submit_btn">Submit Now</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <tbody>
+                                    <tr>
+                                        <td>
+                                            <h5>Imię</h5>
+                                        </td>
+                                        <td>
+                                            <h5>Ciocia</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Nazwisko</h5>
+                                        </td>
+                                        <td>
+                                            <h5>Gablocia</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Email</h5>
+                                        </td>
+                                        <td>
+                                            <h5>kotelki@gmail.com</h5>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h5>Miejscowość</h5>
+                                        </td>
+                                        <td>
+                                            <h5>Grodków</h5>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab">
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <div class="row total_rate pb-3">
+                                        <div class="col-md-10">
+                                            <div class="box_total">
+                                                <h5>Koszt BC*</h5>
+                                                <h4 th:text="${item.getPoints()}"></h4>
+                                                <h6>*Borrow Coins - kryptowaluta</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row total_rate">
+                                        <div class="col-md-10">
+                                            <div class="box_total">
+                                                <h5>Liczba wypożyczeń</h5>
+                                                <h4 th:text="${item.getCountOfRenting()}"></h4>
+                                                <h6>Popularny towar!</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-9">
+                                    <div class="review_box">
+                                        <h4>Ostatnie wypożyczenia:</h4>
+                                    </div>
+                                    <div class="review_list">
+                                        <div class="review_item">
+                                            <div class="tab-pane fade in active show" id="current" name="current" role="tabpanel">
+                                                <div class="mb-3">
+                                                    <div>
+                                                        <div class="table-responsive">
+                                                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                                                <thead class="thead-agency">
+                                                                <tr>
+                                                                    <th>Lp.</th>
+                                                                    <th>Data wypożyczenia</th>
+                                                                    <th>Nazwa uzytkownika</th>
+                                                                    <th>Data oddania</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tfoot class="thead-agency">
+                                                                <tr>
+                                                                    <th>Lp.</th>
+                                                                    <th>Data wypożyczenia</th>
+                                                                    <th>Nazwa uzytkownika</th>
+                                                                    <th>Data oddania</th>
+                                                                </tr>
+                                                                </tfoot>
+                                                                <tbody class="table-rows-body">
+                                                                <!--TODO: empty table string -->
+                                                                <tr th:each="historyRent,iter :${history}">
+                                                                    <td th:text="${iter.index}+1"></td>
+                                                                    <td th:text="${#dates.format(historyRent.getBorrowDate(), 'dd/MM/yyyy')}"></td>
+                                                                    <td th:text="${historyRent.getUser()}"></td>
+                                                                    <td th:text="${#dates.format(historyRent.getGiveBackDate(), 'dd/MM/yyyy')}"></td>
+                                                                </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!--================End Product Description Area =================-->
+        <!--</div>-->
     </div>
         <footer th:replace="user-panel/user_layout :: foot"></footer>
     </div>

@@ -194,10 +194,14 @@ public class UserPanelController {
         return modelAndView;
     }
 
-    @GetMapping(value="/moje-produkty/szczegoly-produktu")
-    public ModelAndView product(@RequestParam int id) {
+    @GetMapping(value="/info-produktu")
+    public ModelAndView productInfo(@RequestParam int item) {
         ModelAndView modelAndView = new ModelAndView();
-        //todo: is this needed?
+        ResourceDetailsDto resource = resourceRepository.getProductDetails(item);
+        List<ResourceRentingHistoryDto> history = resourceRepository.getProductRentingHistory(item);
+        modelAndView.addObject("item", resource);
+        modelAndView.addObject("history", history);
+        modelAndView.setViewName("user-panel/user-product-info");
         return modelAndView;
     }
 
