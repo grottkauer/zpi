@@ -3259,7 +3259,7 @@ h6 {
         display: none; }
       .s_product_img .carousel .carousel-indicators li:before {
         content: "";
-        background: rgba(197, 50, 45, 0.8);
+        background: rgba(254, 209, 54, 0.8);
         position: absolute;
         left: 0px;
         top: 0px;
