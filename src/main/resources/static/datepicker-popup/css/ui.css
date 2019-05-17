@@ -27,9 +27,9 @@ h5 {
 .input-calendar {
     display: block;
     width: 100%;
-    max-width: 360px;
+    /*max-width: 360px;*/
     margin: 0 auto;
-    height: 3.2em;
+    /*height: 3.2em;*/
     line-height: 3.2em;
     font: inherit;
     padding: 0 1.2em;
