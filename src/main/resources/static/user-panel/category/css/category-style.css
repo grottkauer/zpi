@@ -3429,6 +3429,8 @@ h6 {
         color: #eeeeee; }
     .product_description_area .tab-content .table {
       margin-bottom: 0px; }
+
+
       .product_description_area .tab-content .table tbody tr td {
         padding-left: 65px;
         padding-right: 65px;
@@ -4408,6 +4410,12 @@ h6 {
     background: #f9f9ff;
 }
 
+@media (max-width: 572px) {
+  .product_description_area .tab-content .table tbody tr .td-without-padding{
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
 /*---------------------------------------------------- */
 
 /*# sourceMappingURL=style.css.map */

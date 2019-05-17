@@ -10507,6 +10507,13 @@ body {
   z-index: 1;
 }
 
+@media (max-width: 572px) {
+  .sidebar-info-product{
+    position: relative;
+    z-index: 1;
+  }
+}
+
 .sidebar .nav-item:last-child {
   margin-bottom: 1rem;
 }
