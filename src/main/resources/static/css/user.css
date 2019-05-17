@@ -250,3 +250,34 @@
     .mockup-option{
         opacity: 0.2;
     }
+
+    .box_total {
+        background: #f9f9ff;
+        text-align: center;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+
+    .box_total h5 {
+        color: #222222;
+        margin-bottom: 0px;
+        font-size: 24px;
+    }
+
+    .box_total h4, .points-header h4 {
+        color: #fed136;
+        font-size: 48px;
+        font-weight: bold;
+    }
+
+    .box_total h6 {
+        color: #222222;
+        margin-bottom: 0px;
+        font-size: 14px;
+        color: #777777;
+        font-weight: normal;
+    }
+
+    .points-table{
+        background-color: rgba(0, 0, 0, 0.66);
+    }
