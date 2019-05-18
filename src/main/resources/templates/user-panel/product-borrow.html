@@ -36,6 +36,15 @@
                     </div>
                 </div>
 
+                <div id="mapid" style="width: 600px; height: 400px;"></div>
+                <div id="search">
+                    <div id="search-box" class="input-group mt-3 mb-3">
+                    <input type="text" class="form-control" name="addr" value="" id="addr" size="10" />
+                    <button type="button" class="btn btn-primary ml-2" onclick="addr_search();">Szukaj</button>
+                    </div>
+                    <div id="results"/>
+                </div>
+
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
@@ -190,5 +199,6 @@
     });
     $('#datepicker').datepicker("setDate", new Date());
 </script>
+<script src="../../leaflet/map.js"></script>
 </body>
 </html>

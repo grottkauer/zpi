@@ -6,6 +6,13 @@
   opacity: 10%;
 }
 
+.table-cart
+{
+    padding: 4% 0;
+    background-color: rgba(0, 0, 0, 0.46);
+    margin: 4% 4%;
+}
+
 #bg-borrow {
   background-image: url("../images/backgrounds/things.jpg");
   background-attachment: fixed;
