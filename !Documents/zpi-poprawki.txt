@@ -1,0 +1,27 @@
+Moje dane -> Moje produkty -> Poka¿ produkty:
+	- zrobiæ coœ z tym buttonem "Usuñ"
+	- usun¹æ filtry z pierwszego i ostatniego
+	- zmieniæ wygl¹d buttonów akcji
+
+Polskie znaki
+
+Datepickera dodaæ do wszystkich dat
+
+Statystyki opisaæ, ¿e w nastêpnej wersji aplikacji
+
+Dwa layouty product info:
+	- poprawiæ sidebar
+
+Powiadomienia:
+	- dodaæ modal do potwierdzenia
+	- poprawiæ wygl¹d tych po klikniêciu dzwonka (wyjustowanie
+byloby spoko)
+	- w wersji mobilnej poprawiæ szerokoœæ treœci powiadomienia 
+(tego w panelu)
+
+Category2:
+	- poprawiæ wysokoœci elementów (gdy wejdzie wiêksza baza)
+
+Sidebar mobilny
+
+Historia projektu
