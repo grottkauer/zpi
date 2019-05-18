@@ -139,9 +139,30 @@
                                 <div class="product_count">
 
                                 </div>
-                                <!--<div class="card_area pb-3">-->
-                                    <!--<a class="main_btn" href="wypozycz">Wypożycz</a>-->
-                                <!--</div>-->
+                                <div class="card_area row pb-3">
+                                    <div class="col-md-6">
+                                        <a class="btn table-btn mb-2" href="moje-produkty" style="width: 100%;">Wróć do moich produktów</a>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <a href="#editProductModal" class="btn table-btn mb-2" data-toggle="modal" style="width: 100%;">
+                                            <i class="fas fa-edit"></i>
+                                            <span>Edytuj produkt</span>
+                                        </a>
+                                    </div>
+                                    <!-- todo checkBorrowModal show only when status is Zamowiony or Wypozyczony -->
+                                    <div class="col-md-6">
+                                        <a href="#checkBorrowModal" class="btn table-btn mb-2" data-toggle="modal" style="width: 100%;">
+                                            <i class="fas fa-check"></i>
+                                            <span>Potwierdź oddanie/wypożyczenie</span>
+                                        </a>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <a href="#deleteProductModal" class="btn table-btn mb-2" data-toggle="modal" style="width: 100%;">
+                                            <i class="fas fa-trash-alt"></i>
+                                            <span>Usuń produkt</span>
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -150,314 +171,6 @@
         </div>
         <!--================End Single Product Area =================-->
 
-        <!--<div class="container" id="edit_data">-->
-            <!--================Product Description Area =================-->
-            <section class="product_description_area ml-md-5">
-                <div class="container">
-                    <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link" id="real-review-tab" data-toggle="tab" href="#real-review" role="tab" aria-controls="review" aria-selected="false">Opinie</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Dane wypożyczającego</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false">Zarobki i koszty</a>
-                        </li>
-                    </ul>
-                    <div class="tab-content long-description" id="myTabContent">
-                        <div class="tab-pane fade show" id="real-review" role="tabpanel" aria-labelledby="real-review-tab">
-                            <div class="in-work">
-                                <h2>
-                                    Ta funkcjonalność zostanie dodana w następnej wersji aplikacji
-                                </h2>
-                            </div>
-                            <div class="row mockup-option">
-                                <div class="col-lg-6">
-                                    <div class="row total_rate">
-                                        <div class="col-6">
-                                            <div class="box_total">
-                                                <h5>Overall</h5>
-                                                <h4>4.0</h4>
-                                                <h6>(03 Reviews)</h6>
-                                            </div>
-                                        </div>
-                                        <div class="col-6">
-                                            <div class="rating_list">
-                                                <h3>Based on 3 Reviews</h3>
-                                                <ul class="list">
-                                                    <li>
-                                                        <a href="#">5 Star
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i> 01</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">4 Star
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i> 01</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">3 Star
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i> 01</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">2 Star
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i> 01</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="#">1 Star
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i>
-                                                            <i class="fa fa-star"></i> 01</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="review_list">
-                                        <div class="review_item">
-                                            <div class="media">
-                                                <div class="d-flex">
-                                                    <img src="../images/single-product/review-1.png" alt="">
-                                                </div>
-                                                <div class="media-body">
-                                                    <h4>Blake Ruiz</h4>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                </div>
-                                            </div>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
-                                        </div>
-                                        <div class="review_item">
-                                            <div class="media">
-                                                <div class="d-flex">
-                                                    <img src="../images/single-product/review-2.png" alt="">
-                                                </div>
-                                                <div class="media-body">
-                                                    <h4>Blake Ruiz</h4>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                </div>
-                                            </div>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
-                                        </div>
-                                        <div class="review_item">
-                                            <div class="media">
-                                                <div class="d-flex">
-                                                    <img src="../images/single-product/review-3.png" alt="">
-                                                </div>
-                                                <div class="media-body">
-                                                    <h4>Blake Ruiz</h4>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                    <i class="fa fa-star"></i>
-                                                </div>
-                                            </div>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-                                                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="review_box">
-                                        <h4>Add a Review</h4>
-                                        <p>Your Rating:</p>
-                                        <ul class="list">
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fa fa-star"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fa fa-star"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fa fa-star"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fa fa-star"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fa fa-star"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <p>Outstanding</p>
-                                        <form class="row contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" id="name" name="name" placeholder="Your Full name">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <input type="email" class="form-control" id="email" name="email" placeholder="Email Address">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" id="number" name="number" placeholder="Phone Number">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <textarea class="form-control" name="message" id="message" rows="1" placeholder="Review"></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-12 text-right">
-                                                <button type="submit" value="submit" class="btn submit_btn">Submit Now</button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <tbody>
-                                    <tr>
-                                        <td class="td-without-padding">
-                                            <h5>Imię</h5>
-                                        </td>
-                                        <td class="td-without-padding">
-                                            <h5>Ciocia</h5>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="td-without-padding">
-                                            <h5>Nazwisko</h5>
-                                        </td>
-                                        <td class="td-without-padding">
-                                            <h5>Gablocia</h5>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="td-without-padding">
-                                            <h5>Email</h5>
-                                        </td>
-                                        <td class="td-without-padding">
-                                            <h5>kotelki@gmail.com</h5>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="td-without-padding">
-                                            <h5>Miejscowość</h5>
-                                        </td>
-                                        <td class="td-without-padding">
-                                            <h5>Grodków</h5>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade show active" id="review" role="tabpanel" aria-labelledby="review-tab">
-                            <div class="row">
-                                <div class="col-lg-3">
-                                    <div class="row total_rate pb-3">
-                                        <div class="col-md-10">
-                                            <div class="box_total">
-                                                <h5>Koszt BC*</h5>
-                                                <h4 th:text="${item.getPoints()}"></h4>
-                                                <h6>*Borrow Coins - kryptowaluta</h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row total_rate">
-                                        <div class="col-md-10">
-                                            <div class="box_total">
-                                                <h5>Liczba wypożyczeń</h5>
-                                                <h4 th:text="${item.getCountOfRenting()}"></h4>
-                                                <h6>Popularny towar!</h6>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-9">
-                                    <div class="review_box">
-                                        <h4>Ostatnie wypożyczenia:</h4>
-                                    </div>
-                                    <div class="review_list">
-                                        <div class="review_item">
-                                            <div class="tab-pane fade in active show" id="current" name="current" role="tabpanel">
-                                                <div class="mb-3">
-                                                    <div>
-                                                        <div class="table-responsive">
-                                                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                                                <thead class="thead-agency">
-                                                                <tr>
-                                                                    <th>Lp.</th>
-                                                                    <th>Data wypożyczenia</th>
-                                                                    <th>Nazwa uzytkownika</th>
-                                                                    <th>Data oddania</th>
-                                                                </tr>
-                                                                </thead>
-                                                                <tfoot class="thead-agency">
-                                                                <tr>
-                                                                    <th>Lp.</th>
-                                                                    <th>Data wypożyczenia</th>
-                                                                    <th>Nazwa uzytkownika</th>
-                                                                    <th>Data oddania</th>
-                                                                </tr>
-                                                                </tfoot>
-                                                                <tbody class="table-rows-body">
-                                                                <!--TODO: empty table string -->
-                                                                <tr th:each="historyRent,iter :${history}">
-                                                                    <td th:text="${iter.index}+1"></td>
-                                                                    <td th:text="${#dates.format(historyRent.getBorrowDate(), 'dd/MM/yyyy')}"></td>
-                                                                    <td th:text="${historyRent.getUser()}"></td>
-                                                                    <td th:text="${#dates.format(historyRent.getGiveBackDate(), 'dd/MM/yyyy')}"></td>
-                                                                </tr>
-                                                                </tbody>
-                                                            </table>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!--================End Product Description Area =================-->
-        <!--</div>-->
     </div>
         <footer th:replace="user-panel/user_layout :: foot"></footer>
     </div>
@@ -486,6 +199,143 @@
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Anuluj</button>
                 <a class="btn btn-primary" href="/">Wyloguj</a>
             </div>
+        </div>
+    </div>
+</div>
+
+<!-- Check Borrow Modal-->
+<div class="modal fade" id="checkBorrowModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!-- todo if status is Zamowiony -->
+                <h5 class="modal-title">Chcesz potwierdzić wypożyczenie produktu?</h5>
+                <!-- todo if status is Wypozyczony -->
+                <!--<h5 class="modal-title">Chcesz potwierdzić oddanie produktu?</h5>-->
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <form method="post" action="/moje-konto">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        Potwierdź termin udanego spotkania:
+                    </div>
+                    <div class="input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text giveback-prepend">Data spotkania</span>
+                        </div>
+                        <input data-date-format="dd/mm/yyyy" id="datepicker" class="form-control" required placeholder="Data spotkania">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Anuluj</button>
+                    <!-- todo uncomment this line and delete below when post supported -->
+                    <!--<input class="btn btn-primary" type="submit" value="Potwierdź">-->
+                    <button class="btn btn-primary" type="button" data-dismiss="modal">Potwierdź</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Product Modal-->
+<div class="modal fade" id="deleteProductModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Czy na pewno chcesz usunąć produkt?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Wybierz "Potwierdź" jeżeli chcesz usunąć produkt.</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Anuluj</button>
+                <button class="btn btn-primary" type="button" data-dismiss="modal">Potwierdź</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Product Modal-->
+<div class="modal fade" id="editProductModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Chcesz edytować produkt?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <form method="post" action="/moje-konto">
+                <div class="modal-body">
+                    <div class="d-flex">
+                        <div class="pr-2 flex-fill form-group text-left">
+                            <input name="productName" type="text" class="form-control" required placeholder="Nazwa">
+                        </div>
+                        <div class="pl-2 flex-fill form-group text-left">
+                            <select name="productCategory" class="form-control">
+                                <option selected="">Kategoria...</option>
+                                <option>Książki</option>
+                                <option>Filmy</option>
+                                <option>Muzyka</option>
+                                <option>Planszówki</option>
+                                <option>Czasopisma</option>
+                                <option>Zabawki</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group text-left">
+                        <textarea class="form-control" id="message" placeholder="Opis"></textarea>
+                    </div>
+                    <!-- todo max 3 photos could be in one resource -->
+                    <!-- todo if resource has at least one photo show div below-->
+                    <div class="form-group">
+                        <label>Usuń wybrane zdjęcie</label>
+                        <div class="row">
+                            <div class="col-md-4 text-center mb-5">
+                                    <span class="custom-checkbox">
+                                                <input type="checkbox" name="options[]" value="1">
+                                                <label for="checkbox1"></label>
+                                    </span>
+                                <img class="img-gallery" src="../images/sample-products/talisman.png" alt="">
+                            </div>
+                            <div class="col-md-4 text-center mb-5">
+                                    <span class="custom-checkbox">
+                                                <input type="checkbox" name="options[]" value="1">
+                                                <label for="checkbox1"></label>
+                                    </span>
+                                <img class="img-gallery" src="../images/sample-products/talisman.png" alt="">
+                            </div>
+                            <div class="col-md-4 text-center mb-5">
+                                    <span class="custom-checkbox">
+                                                <input type="checkbox" name="options[]" value="1">
+                                                <label for="checkbox1"></label>
+                                    </span>
+                                <img class="img-gallery" src="../images/sample-products/talisman.png" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <!-- todo if resource has max two photos show div below -->
+                    <div class="form-group">
+                        <label>Dodaj kolejne zdjęcia</label>
+                        <div class="custom-file mb-1">
+                            <input type="file" class="custom-file-input" id="customFile">
+                            <label class="custom-file-label  text-truncate" for="customFile">Wybierz plik</label>
+                        </div>
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="customFileLang2" lang="pl-Pl">
+                            <label class="custom-file-label  text-truncate" for="customFileLang2">Wybierz plik</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <!-- todo uncomment this line and delete below when post supported -->
+                    <!--<input class="btn btn-raised btn-primary mb-1" type="submit" value="Zapisz dane">-->
+                    <button type="submit" class="btn btn-raised btn-primary mb-1">Zapisz dane</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

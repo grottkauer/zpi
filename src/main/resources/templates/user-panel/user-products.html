@@ -148,6 +148,10 @@
                                             </span>
                                         </td>
                                         <td class="text-center">
+                                            <!-- todo checkBorrowModal show only when status is Zamowiony or Wypozyczony -->
+                                            <a href="#checkBorrowModal" class="edit" data-toggle="modal">
+                                                <i class="fas fa-check"></i>
+                                            </a>
                                             <a href="#editProductModal" class="edit" data-toggle="modal">
                                                 <i class="fas fa-edit"></i>
                                             </a>
@@ -269,6 +273,35 @@
                         <div class="form-group text-left">
                             <textarea class="form-control" id="message" placeholder="Opis"></textarea>
                         </div>
+                    <!-- todo max 3 photos could be in one resource -->
+                    <!-- todo if resource has at least one photo show div below-->
+                        <div class="form-group">
+                            <label>Usuń wybrane zdjęcie</label>
+                            <div class="row">
+                                <div class="col-md-4 text-center mb-5">
+                                    <span class="custom-checkbox">
+                                                <input type="checkbox" name="options[]" value="1">
+                                                <label for="checkbox1"></label>
+                                    </span>
+                                    <img class="img-gallery" src="../images/sample-products/talisman.png" alt="">
+                                </div>
+                                <div class="col-md-4 text-center mb-5">
+                                    <span class="custom-checkbox">
+                                                <input type="checkbox" name="options[]" value="1">
+                                                <label for="checkbox1"></label>
+                                    </span>
+                                    <img class="img-gallery" src="../images/sample-products/talisman.png" alt="">
+                                </div>
+                                <div class="col-md-4 text-center mb-5">
+                                    <span class="custom-checkbox">
+                                                <input type="checkbox" name="options[]" value="1">
+                                                <label for="checkbox1"></label>
+                                    </span>
+                                    <img class="img-gallery" src="../images/sample-products/talisman.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    <!-- todo if resource has max two photos show div below -->
                         <div class="form-group">
                             <label>Dodaj kolejne zdjęcia</label>
                             <div class="custom-file mb-1">
@@ -307,6 +340,42 @@
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Anuluj</button>
                 <a class="btn btn-primary" href="/">Wyloguj</a>
             </div>
+        </div>
+    </div>
+</div>
+
+<!-- Check Borrow Modal-->
+<div class="modal fade" id="checkBorrowModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!-- todo if status is Zamowiony -->
+                <h5 class="modal-title">Chcesz potwierdzić wypożyczenie produktu?</h5>
+                <!-- todo if status is Wypozyczony -->
+                <!--<h5 class="modal-title">Chcesz potwierdzić oddanie produktu?</h5>-->
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <form method="post" action="/moje-konto">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        Potwierdź termin udanego spotkania:
+                    </div>
+                    <div class="input-group-sm mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text giveback-prepend">Data spotkania</span>
+                        </div>
+                        <input data-date-format="dd/mm/yyyy" id="datepicker" class="form-control" required placeholder="Data spotkania">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Anuluj</button>
+                    <!-- todo uncomment this line and delete below when post supported -->
+                    <!--<input class="btn btn-primary" type="submit" value="Potwierdź">-->
+                    <button class="btn btn-primary" type="button" data-dismiss="modal">Potwierdź</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

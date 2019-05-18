@@ -205,6 +205,17 @@ public class UserPanelController {
         return modelAndView;
     }
 
+    @GetMapping(value="/info-wypozyczonego-produktu")
+    public ModelAndView productInfoBorrowed(@RequestParam int item) {
+        ModelAndView modelAndView = new ModelAndView();
+        ResourceDetailsDto resource = resourceRepository.getProductDetails(item);
+        List<ResourceRentingHistoryDto> history = resourceRepository.getProductRentingHistory(item);
+        modelAndView.addObject("item", resource);
+        modelAndView.addObject("history", history);
+        modelAndView.setViewName("user-panel/user-product-info-borrowed");
+        return modelAndView;
+    }
+
     @GetMapping(value="/szczegoly")
     public ModelAndView productDetails(@RequestParam int item) {
         ModelAndView modelAndView = new ModelAndView();
