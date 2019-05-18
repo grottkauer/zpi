@@ -90,7 +90,7 @@
                     <div class="row">
                         <div class="col-sm-12 form-group text-left">
                             <label>Data urodzenia</label>
-                            <input type="text" id="text-calendar" class="form-control input-calendar" required
+                            <input id="demo" type="text" class="form-control" required
                                    th:value="*{#dates.format(user.getBirthDate(), 'dd/MM/yyyy')}">
                         </div>
                     </div>
@@ -189,6 +189,55 @@
 <script src="../datepicker-popup/js/pignose.calendar.full.min.js"></script>
 <!-- script js -->
 <script src="../datepicker-popup/js/script.js"></script>
+
+<!-- Date picker range -->
+<script type="text/javascript" src="../../daterangepicker-master/moment.min.js"></script>
+<script type="text/javascript" src="../../daterangepicker-master/daterangepicker.js"></script>
+
+<script>
+$('#demo').daterangepicker({
+    "singleDatePicker": true,
+    "showDropdowns": true,
+    "locale": {
+        "format": "DD/MM/YYYY",
+        "separator": " / ",
+        "applyLabel": "",
+        "cancelLabel": "Cancel",
+        "fromLabel": "Od",
+        "toLabel": "Do",
+        "customRangeLabel": "Custom",
+        "weekLabel": "T",
+        "daysOfWeek": [
+            "Nie",
+            "Pon",
+            "Wto",
+            "Śro",
+            "Czw",
+            "Pią",
+            "Sob"
+        ],
+        "monthNames": [
+            "Styczeń",
+            "Luty",
+            "Marzec",
+            "Kwiecień",
+            "Maj",
+            "Czerwiec",
+            "Lipiec",
+            "Sierpień",
+            "Wrzesień",
+            "Październik",
+            "Listopad",
+            "Grudzień"
+        ],
+        "firstDay": 1
+    },
+    "applyButtonClasses": "btn-warning",
+    "cancelClass": "btn-warning"
+}, function(start, end, label) {
+  console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+});
+</script>
 </body>
 
 </html>
