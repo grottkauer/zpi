@@ -968,17 +968,32 @@
                     <div class="mb-3">
                         Wybierz termin i miejsce spotkania w celu oddania produktu:
                     </div>
-                    <div class="input-group-sm mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text giveback-prepend">Data spotkania</span>
+                    <div class="d-lg-flex justify-content-around">
+                        <div class="input-group mr-3 input-higher">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Data spotkania</span>
+                            </div>
+                            <input data-date-format="dd/mm/yyyy" id="demo" type="text" class="form-control" required placeholder="Data spotkania">
                         </div>
-                        <input data-date-format="dd/mm/yyyy" id="demo" class="form-control" required placeholder="Data spotkania">
+                        <div class="input-group"></div>
                     </div>
-                    <div class="input-group-sm">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text giveback-prepend">Miejsce spotkania</span>
+                    <div class="d-lg-flex justify-content-around mt-3 text-left">
+                        <div id="mapid" class="col-sm-6" style="height: 400px;">
                         </div>
-                        <input name="meetingAddress" type="text" class="form-control" required placeholder="Adres spotkania">
+                        <div class="col-sm-6 mt-3">
+                            <h4>Wynik wyszukiwań (wybierz miejsce, w którym chcesz się spotkać):</h4>
+                            <div id="results"></div>
+                        </div>
+                    </div>
+
+                    <div id="search">
+                        <div id="search-box" class="input-group mt-3 mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Miejsce spotkania</span>
+                            </div>
+                            <input type="text" class="form-control w-100" name="addr" value="" id="addr" size="10" required/>
+                            <button type="button" class="btn btn-primary" onclick="addr_search();">Szukaj</button>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -1017,7 +1032,7 @@
 <script>
 $('#demo').daterangepicker({
     "singleDatePicker": true,
-    "showDropdowns": true,
+    "showDropdowns": false,
     "locale": {
         "format": "DD/MM/YYYY",
         "separator": " / ",
