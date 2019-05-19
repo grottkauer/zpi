@@ -94,14 +94,14 @@
                                         <td>
                                             Tiger Nixon
                                         </td>
-                                        <td>
+                                        <td class="pointer-cell" data-toggle="modal" data-target="#orderDetailsModal">
                                             Zaproponowano termin i miejsce spotkania na
                                             <span>
                                                 30/04/2019, Grodków - Rynek
                                             </span>
                                             w celu wypożyczenia przedmiotu
                                             <span>
-                                                <a href="/moje-konto/szczegoly?item=1">
+                                                <a href="/moje-konto/info-wypozyczonego-produktu?item=1">
                                                     Nazwa przedmiotu (kategoria)
                                                 </a>
                                             </span>
@@ -111,7 +111,7 @@
                                                 <i class="fas fa-edit"></i>
                                                 <span>Edytuj</span>
                                             </a>
-                                            <a href="#" class="btn btn-primary notification-text" data-toggle="modal">
+                                            <a href="#submitMeetingModal" class="btn btn-primary notification-text" data-toggle="modal">
                                                 <i class="fas fa-check"></i>
                                                 <span>Potwierdź</span>
                                             </a>
@@ -122,7 +122,7 @@
                                         <td>
                                             Tiger Nixon
                                         </td>
-                                        <td>
+                                        <td class="pointer-cell" data-toggle="modal" data-target="#orderDetailsModal">
                                             Zaproponowano termin i miejsce spotkania na
                                             <span>
                                                 30/04/2019, Grodków - Rynek
@@ -139,7 +139,7 @@
                                                 <i class="fas fa-edit"></i>
                                                 <span>Zmień</span>
                                             </a>
-                                            <a href="#" class="btn btn-primary notification-text" data-toggle="modal">
+                                            <a href="#submitMeetingModal" class="btn btn-primary notification-text" data-toggle="modal">
                                                 <i class="fas fa-check"></i>
                                                 <span>Potwierdź</span>
                                             </a>
@@ -150,7 +150,7 @@
                                         <td>
                                             Tiger Nixon
                                         </td>
-                                        <td>
+                                        <td class="pointer-cell" data-toggle="modal" data-target="#orderDetailsModal">
                                             Potwierdzono termin i miejsce spotkania na
                                             <span>
                                                 30/04/2019, Grodków - Rynek
@@ -170,7 +170,7 @@
                                         <td>
                                             Tiger Nixon
                                         </td>
-                                        <td>
+                                        <td class="pointer-cell" data-toggle="modal" data-target="#orderDetailsModal">
                                             Potwierdzono termin i miejsce spotkania na
                                             <span>
                                                 30/04/2019, Grodków - Rynek
@@ -190,7 +190,7 @@
                                         <td>
                                             Tiger Nixon
                                         </td>
-                                        <td>
+                                        <td class="pointer-cell" data-toggle="modal" data-target="#orderDetailsModal">
                                             Potwierdzono oddanie produktu
                                             <span>
                                                 <a href="/moje-konto/szczegoly?item=1">
@@ -206,7 +206,7 @@
                                         <td>
                                             Tiger Nixon
                                         </td>
-                                        <td>
+                                        <td class="pointer-cell" data-toggle="modal" data-target="#orderDetailsModal">
                                             Potwierdzono wypożyczenie produktu
                                             <span>
                                                 <a href="/moje-konto/szczegoly?item=1">
@@ -222,7 +222,7 @@
                                         <td>
                                             Tiger Nixon (dawca)
                                         </td>
-                                        <td>
+                                        <td class="pointer-cell" data-toggle="modal" data-target="#orderDetailsModal">
                                             Zaproponowano termin i miejsce spotkania na
                                             <span>
                                                 30/04/2019, Grodków - Rynek
@@ -243,7 +243,7 @@
                                                 <i class="fas fa-edit"></i>
                                                 <span>Zmień</span>
                                             </a>
-                                            <a href="#" class="btn btn-primary notification-text" data-toggle="modal">
+                                            <a href="#submitMeetingModal" class="btn btn-primary notification-text" data-toggle="modal">
                                                 <i class="fas fa-check"></i>
                                                 <span>Potwierdź</span>
                                             </a>
@@ -254,7 +254,7 @@
                                         <td>
                                             Tiger Nixon (dawca)
                                         </td>
-                                        <td>
+                                        <td class="pointer-cell" data-toggle="modal" data-target="#orderDetailsModal">
                                             Zaproponowano termin i miejsce spotkania na
                                             <span>
                                                 30/04/2019, Grodków - Rynek
@@ -275,7 +275,7 @@
                                                 <i class="fas fa-edit"></i>
                                                 <span>Zmień</span>
                                             </a>
-                                            <a href="#" class="btn btn-primary notification-text" data-toggle="modal">
+                                            <a href="#submitMeetingModal" class="btn btn-primary notification-text" data-toggle="modal">
                                                 <i class="fas fa-check"></i>
                                                 <span>Potwierdź</span>
                                             </a>
@@ -325,7 +325,7 @@
 
 <!-- Edit Meeting Modal-->
 <div class="modal fade" id="editMeetingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Nie pasuje Ci miejsce bądź data spotkania?</h5>
@@ -338,17 +338,113 @@
                     <div class="mb-3">
                         Ustal nowy termin i miejsce spotkania:
                     </div>
-                    <div class="input-group-sm mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text giveback-prepend">Data spotkania</span>
+                    <div class="d-lg-flex justify-content-around">
+                        <div class="input-group mr-3 input-higher">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Data spotkania</span>
+                            </div>
+                            <input data-date-format="dd/mm/yyyy" id="demo" type="text" class="form-control" required placeholder="Data spotkania">
                         </div>
-                        <input data-date-format="dd/mm/yyyy" id="datepicker" class="form-control" required placeholder="Data spotkania">
+                        <div class="input-group"></div>
                     </div>
-                    <div class="input-group-sm">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text giveback-prepend">Miejsce spotkania</span>
+                    <div class="d-lg-flex justify-content-around mt-3 text-left">
+                        <div id="mapid" class="col-sm-6" style="height: 400px;">
                         </div>
-                        <input name="meetingAddress" type="text" class="form-control" required placeholder="Adres spotkania">
+                        <div class="col-sm-6 mt-3">
+                            <h4>Wynik wyszukiwań (wybierz miejsce, w którym chcesz się spotkać):</h4>
+                            <div id="results"></div>
+                        </div>
+                    </div>
+
+                    <div id="search">
+                        <div id="search-box" class="input-group mt-3 mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Miejsce spotkania</span>
+                            </div>
+                            <input type="text" class="form-control" name="addr" value="" id="addr" size="10" required/>
+                            <button type="button" class="btn btn-primary ml-2" onclick="addr_search();">Szukaj</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <!-- todo uncomment this line and delete below when post supported -->
+                    <!--<input class="btn btn-primary" type="submit" value="Potwierdź">-->
+                    <button class="btn btn-primary" type="button" data-dismiss="modal">Potwierdź</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Order Details Modal-->
+<div class="modal fade" id="orderDetailsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Szczegóły wypożyczenia</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <form method="post" action="/moje-konto">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        Termin i miejsce spotkania:
+                    </div>
+                    <div class="d-lg-flex justify-content-around">
+                        <div class="input-group mr-3 input-higher">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Data spotkania</span>
+                            </div>
+                            <input data-date-format="dd/mm/yyyy" id="demo" type="text" class="form-control" required placeholder="Data spotkania">
+                        </div>
+                        <div class="input-group"></div>
+                    </div>
+                    <div id="mapid" class="col-sm-6" style="height: 400px;">
+                    </div>
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Miejsce spotkania</span>
+                    </div>
+                    <input type="text" class="form-control" name="addr" value="" id="addr" size="10" required/>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">Produkt</th>
+                                <th scope="col"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td class="w-25">
+                                    <div class="media">
+                                        <div class="d-flex">
+                                            <img src="../images/single-product/cart-1.jpg" alt="">
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="media-body">
+                                        <p>Minimalistic shop for multipurpose use</p>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+
+                                </td>
+                                <td>
+                                    <div class="d-flex justify-content-end">
+                                        <h5 class="mr-2">Koszt BC*</h5>
+                                        <h5>4.0</h5>
+                                    </div>
+                                    <div class="text-right font-italic">
+                                        <small>BC - Borrow Coins</small>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -380,6 +476,24 @@
     </div>
 </div>
 
+<!-- Submit Meeting Modal-->
+<div class="modal fade" id="submitMeetingModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Czy na pewno chcesz potwierdzić spotkanie?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Wybierz "Potwierdź" jeżeli chcesz potwierdzić spotkanie.</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Anuluj</button>
+                <button class="btn btn-primary" type="button" data-dismiss="modal">Potwierdź</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 <!-- Bootstrap core JavaScript-->
 <script src="../user-panel/vendor/jquery/jquery.min.js"></script>
@@ -400,31 +514,58 @@
 <script src="../user-panel/js/demo/datatables-demo.js"></script>
 <script src="../user-panel/js/demo/chart-area-demo.js"></script>
 
+<!-- Date picker range -->
+<script type="text/javascript" src="../../daterangepicker-master/moment.min.js"></script>
+<script type="text/javascript" src="../../daterangepicker-master/daterangepicker.js"></script>
 
-<!-- Datepicker -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
-<style type="text/css">
-        // solution 1:
-        .datepicker {
-            font-size: 0.875em;
-        }
-        /* solution 2: the original datepicker use 20px so replace with the following:*/
-
-        .datepicker td, .datepicker th {
-            width: 1.5em;
-            height: 1.5em;
-        }
-
-    </style>
-<script type="text/javascript">
-    $('#datepicker').datepicker({
-        weekStart: 1,
-        daysOfWeekHighlighted: "6,0",
-        autoclose: true,
-        todayHighlight: true,
-    });
-    $('#datepicker').datepicker("setDate", new Date());
+<script>
+$('#demo').daterangepicker({
+    "singleDatePicker": true,
+    "showDropdowns": true,
+    "locale": {
+        "format": "DD/MM/YYYY",
+        "separator": " / ",
+        "applyLabel": "",
+        "cancelLabel": "Cancel",
+        "fromLabel": "Od",
+        "toLabel": "Do",
+        "customRangeLabel": "Custom",
+        "weekLabel": "T",
+        "daysOfWeek": [
+            "Nie",
+            "Pon",
+            "Wto",
+            "Śro",
+            "Czw",
+            "Pią",
+            "Sob"
+        ],
+        "monthNames": [
+            "Styczeń",
+            "Luty",
+            "Marzec",
+            "Kwiecień",
+            "Maj",
+            "Czerwiec",
+            "Lipiec",
+            "Sierpień",
+            "Wrzesień",
+            "Październik",
+            "Listopad",
+            "Grudzień"
+        ],
+        "firstDay": 1
+    },
+    "applyButtonClasses": "btn-warning",
+    "cancelClass": "btn-warning"
+}, function(start, end, label) {
+  console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+});
 </script>
+
+<!-- Open Street Map -->
+<script src="../../leaflet/map.js"></script>
+
 </body>
 
 </html>
