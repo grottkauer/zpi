@@ -968,17 +968,32 @@
                     <div class="mb-3">
                         Wybierz termin i miejsce spotkania w celu oddania produktu:
                     </div>
-                    <div class="input-group-sm mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text giveback-prepend">Data spotkania</span>
+                    <div class="d-lg-flex justify-content-around">
+                        <div class="input-group mr-3 input-higher">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Data spotkania</span>
+                            </div>
+                            <input data-date-format="dd/mm/yyyy" id="demo" type="text" class="form-control" required placeholder="Data spotkania">
                         </div>
-                        <input data-date-format="dd/mm/yyyy" id="datepicker" class="form-control" required placeholder="Data spotkania">
+                        <div class="input-group"></div>
                     </div>
-                    <div class="input-group-sm">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text giveback-prepend">Miejsce spotkania</span>
+                    <div class="d-lg-flex justify-content-around mt-3 text-left">
+                        <div id="mapid" class="col-sm-6" style="height: 400px;">
                         </div>
-                        <input name="meetingAddress" type="text" class="form-control" required placeholder="Adres spotkania">
+                        <div class="col-sm-6 mt-3">
+                            <h4>Wynik wyszukiwań (wybierz miejsce, w którym chcesz się spotkać):</h4>
+                            <div id="results"></div>
+                        </div>
+                    </div>
+
+                    <div id="search">
+                        <div id="search-box" class="input-group mt-3 mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Miejsce spotkania</span>
+                            </div>
+                            <input type="text" class="form-control w-100" name="addr" value="" id="addr" size="10" required/>
+                            <button type="button" class="btn btn-primary" onclick="addr_search();">Szukaj</button>
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -1010,30 +1025,55 @@
 <script src="../user-panel/js/demo/datatables-demo.js"></script>
 <script src="../user-panel/js/demo/chart-area-demo.js"></script>
 
-<!-- Datepicker -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
-<style type="text/css">
-        // solution 1:
-        .datepicker {
-            font-size: 0.875em;
-        }
-        /* solution 2: the original datepicker use 20px so replace with the following:*/
+<!-- Date picker range -->
+<script type="text/javascript" src="../../daterangepicker-master/moment.min.js"></script>
+<script type="text/javascript" src="../../daterangepicker-master/daterangepicker.js"></script>
 
-        .datepicker td, .datepicker th {
-            width: 1.5em;
-            height: 1.5em;
-        }
-
-    </style>
-<script type="text/javascript">
-    $('#datepicker').datepicker({
-        weekStart: 1,
-        daysOfWeekHighlighted: "6,0",
-        autoclose: true,
-        todayHighlight: true,
-    });
-    $('#datepicker').datepicker("setDate", new Date());
+<script>
+$('#demo').daterangepicker({
+    "singleDatePicker": true,
+    "showDropdowns": false,
+    "locale": {
+        "format": "DD/MM/YYYY",
+        "separator": " / ",
+        "applyLabel": "",
+        "cancelLabel": "Cancel",
+        "fromLabel": "Od",
+        "toLabel": "Do",
+        "customRangeLabel": "Custom",
+        "weekLabel": "T",
+        "daysOfWeek": [
+            "Nie",
+            "Pon",
+            "Wto",
+            "Śro",
+            "Czw",
+            "Pią",
+            "Sob"
+        ],
+        "monthNames": [
+            "Styczeń",
+            "Luty",
+            "Marzec",
+            "Kwiecień",
+            "Maj",
+            "Czerwiec",
+            "Lipiec",
+            "Sierpień",
+            "Wrzesień",
+            "Październik",
+            "Listopad",
+            "Grudzień"
+        ],
+        "firstDay": 1
+    },
+    "applyButtonClasses": "btn-warning",
+    "cancelClass": "btn-warning"
+}, function(start, end, label) {
+  console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+});
 </script>
+
 </body>
 
 </html>

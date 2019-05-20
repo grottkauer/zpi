@@ -23,7 +23,7 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">Data spotkania</span>
                                     </div>
-                                    <input data-date-format="dd/mm/yyyy" id="datepicker" class="form-control" required placeholder="Data spotkania">
+                                    <input data-date-format="dd/mm/yyyy" id="demo" type="text" class="form-control" required placeholder="Data spotkania">
                                 </div>
                                 <div class="input-group"></div>
                             </div>
@@ -31,7 +31,7 @@
                                 <div id="mapid" class="col-sm-6" style="height: 400px;" onclick="onMapClick();">
                                 </div>
                                 <div class="col-sm-6 mt-3">
-                                    <h4>Wynik wyszukiwań (wybierz miejsce, które chciałaś/eś wybrać):</h4>
+                                    <h4>Wynik wyszukiwań (wybierz miejsce, w którym chcesz się spotkać):</h4>
                                     <div id="results"></div>
                                 </div>
                             </div>
@@ -41,8 +41,8 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">Miejsce spotkania</span>
                                     </div>
-                                    <input type="text" class="form-control" name="addr" value="" id="addr" size="10" required/>
-                                    <button type="button" class="btn btn-primary ml-2" onclick="addr_search();">Szukaj</button>
+                                    <input type="text" class="form-control w-100" name="addr" value="" id="addr" size="10" required/>
+                                    <button type="button" class="btn btn-primary" onclick="addr_search();">Szukaj</button>
                                 </div>
                             </div>
                         </form>
@@ -182,30 +182,56 @@
 <script src="../user-panel/category/js/jquery.counterup.js"></script>
 <script src="../user-panel/category/js/theme.js"></script>
 
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
-<style type="text/css">
-        // solution 1:
-        .datepicker {
-            font-size: 0.875em;
-        }
-        /* solution 2: the original datepicker use 20px so replace with the following:*/
-
-        .datepicker td, .datepicker th {
-            width: 1.5em;
-            height: 1.5em;
-        }
-
-    </style>
-<script type="text/javascript">
-    $('#datepicker').datepicker({
-        weekStart: 1,
-        daysOfWeekHighlighted: "6,0",
-        autoclose: true,
-        todayHighlight: true,
-    });
-    $('#datepicker').datepicker("setDate", new Date());
-</script>
+<!-- Open Street Map -->
 <script src="../../leaflet/map.js"></script>
+
+<!-- Date picker range -->
+<script type="text/javascript" src="../../daterangepicker-master/moment.min.js"></script>
+<script type="text/javascript" src="../../daterangepicker-master/daterangepicker.js"></script>
+
+<script>
+$('#demo').daterangepicker({
+    "singleDatePicker": true,
+    "showDropdowns": false,
+    "locale": {
+        "format": "DD/MM/YYYY",
+        "separator": " / ",
+        "applyLabel": "",
+        "cancelLabel": "Cancel",
+        "fromLabel": "Od",
+        "toLabel": "Do",
+        "customRangeLabel": "Custom",
+        "weekLabel": "T",
+        "daysOfWeek": [
+            "Nie",
+            "Pon",
+            "Wto",
+            "Śro",
+            "Czw",
+            "Pią",
+            "Sob"
+        ],
+        "monthNames": [
+            "Styczeń",
+            "Luty",
+            "Marzec",
+            "Kwiecień",
+            "Maj",
+            "Czerwiec",
+            "Lipiec",
+            "Sierpień",
+            "Wrzesień",
+            "Październik",
+            "Listopad",
+            "Grudzień"
+        ],
+        "firstDay": 1
+    },
+    "applyButtonClasses": "btn-warning",
+    "cancelClass": "btn-warning"
+}, function(start, end, label) {
+  console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+});
+</script>
 </body>
 </html>

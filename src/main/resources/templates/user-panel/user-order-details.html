@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="user-panel/user_layout :: template_header"></head>
+
+<body id="page-top" class="sidebar-toggled">
+
+<div class="full-height bg-panel">
+
+    <nav th:replace="user-panel/user_layout :: navi"></nav>
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="sidebar navbar-nav toggled sidebar-info-product">
+            <li class="nav-item">
+                <a class="nav-link" href="panel">
+                    <i class="fas fa-fw fa-th-large"></i>
+                    <span>Panel</span></a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-fw fa-user-edit"></i>
+                    <span>Moje dane</span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                    <h6 class="dropdown-header pl-3">Moje konto:</h6>
+                    <a class="dropdown-item" href="edytuj-dane">Edytuj swoje dane</a>
+                    <a class="dropdown-item" href="zmien-haslo">Zmień hasło</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-fw fa-archive"></i>
+                    <span>Moje produkty</span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+                    <h6 class="dropdown-header pl-3">Moje produkty:</h6>
+                    <a class="dropdown-item" href="moje-produkty">Pokaż produkty</a>
+                    <a class="dropdown-item" href="dodaj-produkt">Dodaj produkt</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="wypozyczone-produkty">
+                    <i class="fas fa-fw fa-shopping-basket"></i>
+                    <span>Wypożyczone</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="moje-statystyki">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Statystyki</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="moje-punkty">
+                    <i class="fas fa-fw fa-donate"></i>
+                    <span>Moje punkty</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="powiadomienia">
+                    <i class="fas fa-fw fa-bell"></i>
+                    <span>Powiadomienia</span></a>
+            </li>
+        </ul>
+
+        <div id="content-wrapper">
+            <div class="card-header text-center">
+                <h1 class="text-uppercase">Szczegóły zamówienia</h1>
+            </div>
+
+            <!--================Cart Area =================-->
+            <section class="cart_area">
+                <div class="container">
+                    <div class="cart_inner">
+
+                        <div class="card cardRegistry text-center">
+                            <div class="card-body text-center">
+                                <form method="post">
+                                    <div class="d-lg-flex justify-content-around">
+                                        <div class="input-group mr-3 input-higher">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Data spotkania</span>
+                                            </div>
+                                            <input data-date-format="dd/mm/yyyy" id="demo" type="text" class="form-control" required placeholder="Data spotkania">
+                                        </div>
+                                        <div class="input-group"></div>
+                                    </div>
+                                    <div class="d-lg-flex justify-content-around mt-3 text-left">
+                                        <div id="mapid" class="col-sm-6" style="height: 400px;">
+                                        </div>
+                                        <div class="col-sm-6 mt-3">
+                                            <h4>Dokładne miejsce spotkania:</h4>
+                                            <div id="results"></div>
+                                        </div>
+                                    </div>
+
+                                    <div id="search">
+                                        <div id="search-box" class="input-group mt-3 mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Miejsce spotkania</span>
+                                            </div>
+                                            <input type="text" class="form-control w-100" name="addr" value="" id="addr" size="10" required/>
+                                            <!--<button type="button" class="btn btn-primary" onclick="addr_search();">Szukaj</button>-->
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th scope="col">Produkt</th>
+                                    <th scope="col"></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td class="w-25">
+                                        <div class="media">
+                                            <div class="d-flex">
+                                                <img src="../images/single-product/cart-1.jpg" alt="">
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="media-body">
+                                            <p>Minimalistic shop for multipurpose use</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+
+                                    </td>
+                                    <td>
+                                        <div class="d-flex justify-content-end">
+                                            <h5 class="mr-2">Koszt BC*</h5>
+                                            <h5>4.0</h5>
+                                        </div>
+                                        <div class="text-right font-italic">
+                                            <small>BC - Borrow Coins</small>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="out_button_area">
+                                    <td>
+
+                                    </td>
+                                    <td>
+                                        <div class="checkout_btn_inner text-right">
+                                            <a class="gray_btn mb-2" href="powiadomienia">Wróć do powiadomień</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            <!--================End Cart Area =================-->
+
+            <!-- Sticky Footer -->
+            <footer th:replace="user-panel/user_layout :: foot"></footer>
+
+        </div>
+        <!-- /.content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+</div>
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+</a>
+
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Chcesz opuścić stronę?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Wybierz "Wyloguj" jeżeli chcesz zakonczyć sesję.</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Anuluj</button>
+                <a class="btn btn-primary" href="/">Wyloguj</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap core JavaScript-->
+<script src="../user-panel/vendor/jquery/jquery.min.js"></script>
+<script src="../user-panel/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="../user-panel/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Page level plugin JavaScript-->
+<script src="../user-panel/vendor/chart.js/Chart.min.js"></script>
+<script src="../user-panel/vendor/datatables/jquery.dataTables.js"></script>
+<script src="../user-panel/vendor/datatables/dataTables.bootstrap4.js"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="../user-panel/js/sb-admin.min.js"></script>
+
+<!-- Demo scripts for this page-->
+<script src="../user-panel/js/demo/datatables-demo.js"></script>
+<script src="../user-panel/js/demo/chart-area-demo.js"></script>
+
+<!-- Date picker range -->
+<script type="text/javascript" src="../../daterangepicker-master/moment.min.js"></script>
+<script type="text/javascript" src="../../daterangepicker-master/daterangepicker.js"></script>
+
+<script>
+$('#demo').daterangepicker({
+    "singleDatePicker": true,
+    "showDropdowns": false,
+    "locale": {
+        "format": "DD/MM/YYYY",
+        "separator": " / ",
+        "applyLabel": "",
+        "cancelLabel": "Cancel",
+        "fromLabel": "Od",
+        "toLabel": "Do",
+        "customRangeLabel": "Custom",
+        "weekLabel": "T",
+        "daysOfWeek": [
+            "Nie",
+            "Pon",
+            "Wto",
+            "Śro",
+            "Czw",
+            "Pią",
+            "Sob"
+        ],
+        "monthNames": [
+            "Styczeń",
+            "Luty",
+            "Marzec",
+            "Kwiecień",
+            "Maj",
+            "Czerwiec",
+            "Lipiec",
+            "Sierpień",
+            "Wrzesień",
+            "Październik",
+            "Listopad",
+            "Grudzień"
+        ],
+        "firstDay": 1
+    },
+    "applyButtonClasses": "btn-warning",
+    "cancelClass": "btn-warning"
+}, function(start, end, label) {
+  console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+});
+</script>
+
+<script>
+$('#demo2').daterangepicker({
+    "singleDatePicker": true,
+    "showDropdowns": false,
+    "locale": {
+        "format": "DD/MM/YYYY",
+        "separator": " / ",
+        "applyLabel": "",
+        "cancelLabel": "Cancel",
+        "fromLabel": "Od",
+        "toLabel": "Do",
+        "customRangeLabel": "Custom",
+        "weekLabel": "T",
+        "daysOfWeek": [
+            "Nie",
+            "Pon",
+            "Wto",
+            "Śro",
+            "Czw",
+            "Pią",
+            "Sob"
+        ],
+        "monthNames": [
+            "Styczeń",
+            "Luty",
+            "Marzec",
+            "Kwiecień",
+            "Maj",
+            "Czerwiec",
+            "Lipiec",
+            "Sierpień",
+            "Wrzesień",
+            "Październik",
+            "Listopad",
+            "Grudzień"
+        ],
+        "firstDay": 1
+    },
+    "applyButtonClasses": "btn-warning",
+    "cancelClass": "btn-warning"
+}, function(start, end, label) {
+  console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+});
+</script>
+
+<!-- Open Street Map -->
+<script src="../../leaflet/map.js"></script>
+
+</body>
+
+</html>

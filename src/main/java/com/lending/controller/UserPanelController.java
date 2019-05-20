@@ -240,4 +240,11 @@ public class UserPanelController {
         modelAndView.setViewName("user-panel/order-details");
         return modelAndView;
     }
+
+    @GetMapping(value="/info-szczegoly-zamowienia")
+    public ModelAndView infoOrderDetails() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("user-panel/user-order-details");
+        return modelAndView;
+    }
 }

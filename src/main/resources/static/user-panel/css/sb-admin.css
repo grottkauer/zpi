@@ -10505,6 +10505,7 @@ body {
 .sidebar-info-product{
   position: fixed;
   z-index: 1;
+  min-height: calc(100vh - 116px);
 }
 
 @media (max-width: 572px) {
@@ -10766,6 +10767,8 @@ body.sidebar-toggled footer.sticky-footer {
         margin-bottom: 15px;
     }
 }
+
+
 
 .header-order-success{
     background-color: #fed136;

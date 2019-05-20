@@ -82,9 +82,9 @@
                         <div class="card-body">
                             <div class="table-responsive">
                                 <div class="mb-2">
-                                    <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal">
+                                    <a href="#deleteSelectedModal" class="btn btn-danger" data-toggle="modal">
                                         <i class="fas fa-trash-alt"></i>
-                                        <span>Usuń</span>
+                                        <span>Usuń zaznaczone</span>
                                     </a>
                                 </div>
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -234,6 +234,25 @@
                 </button>
             </div>
             <div class="modal-body">Wybierz "Potwierdź" jeżeli chcesz usunąć produkt.</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Anuluj</button>
+                <button class="btn btn-primary" type="button" data-dismiss="modal">Potwierdź</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Selected Product Modal-->
+<div class="modal fade" id="deleteSelectedModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Czy na pewno chcesz usunąć zaznaczone produkty?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Wybierz "Potwierdź" jeżeli chcesz usunąć zaznaczone.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Anuluj</button>
                 <button class="btn btn-primary" type="button" data-dismiss="modal">Potwierdź</button>
