@@ -1,8 +1,5 @@
-var mymap;
-var feature;
-
-function load_map() {
-	mymap = L.map('mapid').setView([51.1000000, 17.0333300], 13);
+var mymap = L.map('mapid').setView([51.109, 17.0333300], 13);
+var marker;
 
 	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
 		maxZoom: 18,
@@ -11,52 +8,57 @@ function load_map() {
 			'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
 		id: 'mapbox.streets'
 	}).addTo(mymap);
-}
 
-function chooseAddr(lat1, lng1, lat2, lng2, display_name, osm_type) {
-	var loc1 = new L.LatLng(lat1, lng1);
-	var loc2 = new L.LatLng(lat2, lng2);
-	var bounds = new L.LatLngBounds(loc1, loc2);
+	marker = L.marker([51.109, 17.0333300]).addTo(mymap);
+	marker.bindPopup("Wrocław").openPopup();
 
-	if (feature) {
-		mymap.removeLayer(feature);
+	var popup = L.popup();
+
+	function onMapClick(e) {
+	$.getJSON('https://nominatim.openstreetmap.org/reverse?format=json&lat=' + e.latlng.lat + '&lon=' + e.latlng.lng, function(data) {
+
+                name = data.display_name;
+
+                if (name == "") {
+                    name = "Błąd";
+                }
+            });
+
+            $('#addr').val(name);
+
+            marker.setLatLng(e.latlng)
+            		.bindPopup(name).openPopup();
+
 	}
-	if (osm_type == "node") {
-		feature = L.circle( loc1, 25, {color: 'green', fill: false}).addTo(mymap);
-		mymap.fitBounds(bounds);
-		mymap.setZoom(18);
-	} else {
-		var loc3 = new L.LatLng(lat1, lng2);
-		var loc4 = new L.LatLng(lat2, lng1);
 
-		feature = L.polyline( [loc1, loc4, loc2, loc3, loc1], {color: 'red'}).addTo(mymap);
-		mymap.fitBounds(bounds);
-	}
+	mymap.on('click', onMapClick);
 
-    $('#addr').val(display_name);
-}
+	function chooseAddr(lat1, lng1, lat2, lng2, display_name, osm_type) {
+    	marker.setLatLng(new L.LatLng((lat1+lat2)/2,(lng1+lng2)/2))
+                    		.bindPopup(display_name).openPopup();
 
-function addr_search() {
-    var inp = document.getElementById("addr");
+        $('#addr').val(display_name);
+    }
 
-    $.getJSON('https://nominatim.openstreetmap.org/search?format=json&limit=5&q=' + inp.value, function(data) {
-        var items = [];
+    function addr_search() {
+        var inp = document.getElementById("addr");
 
-        $.each(data, function(key, val) {
-            bb = val.boundingbox;
-            items.push("<li><a href='#' onclick='chooseAddr(" + bb[0] + ", " + bb[2] + ", " + bb[1] + ", " + bb[3] + ", \"" + val.display_name + "\", \"" + val.osm_type + "\");return false;'>" + val.display_name + '</a></li>');
+        $.getJSON('https://nominatim.openstreetmap.org/search?format=json&limit=7&q=' + inp.value, function(data) {
+            var items = [];
+
+            $.each(data, function(key, val) {
+                bb = val.boundingbox;
+                items.push("<li><a href='#' onclick='chooseAddr(" + bb[0] + ", " + bb[2] + ", " + bb[1] + ", " + bb[3] + ", \"" + val.display_name + "\", \"" + val.osm_type + "\");return false;'>" + val.display_name + '</a></li>');
+            });
+
+    		$('#results').empty();
+            if (items.length != 0) {
+                $('<ul/>', {
+                    'class': 'my-new-list',
+                    html: items.join('')
+                }).appendTo('#results');
+            } else {
+                $('<p>', { html: "Nie znaleziono wyniku dla zapytania" }).appendTo('#results');
+            }
         });
-
-		$('#results').empty();
-        if (items.length != 0) {
-            $('<ul/>', {
-                'class': 'my-new-list',
-                html: items.join('')
-            }).appendTo('#results');
-        } else {
-            $('<p>', { html: "No results found" }).appendTo('#results');
-        }
-    });
-}
-
-window.onload = load_map;
+    }
