@@ -29,6 +29,7 @@ public class Notification extends BaseEntity {
     @Column(nullable = false)
     private Date sendingDate;
 
+
     @Column
     private Date openDate;
 

@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.sql.Blob;
+import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 @Controller
@@ -193,8 +195,25 @@ public class UserPanelController {
         }
         modelAndView.addObject("categories", categories);
         List<Resource> availableResources = resourceRepository.getAvailableResourcesWithHighestCategory(id);
+        List<String> images = new ArrayList<>(availableResources.size());
+        for (Resource r : availableResources) {
+            boolean hasPhoto = resourceRepository.checkIfHasPhoto(r.getId());
+            Blob blob = resourceRepository.getPhotoOfResource(r.getId());
+            String photoSrc = null;
+            if (hasPhoto) {
+                try {
+                    byte[] photoBytes = blob.getBytes(1l, (int) blob.length());
+                    Base64.Encoder encoder = Base64.getEncoder();
+                    photoSrc = "data:image/png;base64," + encoder.encodeToString(photoBytes);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+            images.add(photoSrc);
+        }
         //TODO: show resources which don't belong to current user
         modelAndView.addObject("availableResources", availableResources);
+        modelAndView.addObject("images", images);
         modelAndView.setViewName("user-panel/category2");
         return modelAndView;
     }
@@ -204,8 +223,22 @@ public class UserPanelController {
         ModelAndView modelAndView = new ModelAndView();
         ResourceDetailsDto resource = resourceRepository.getProductDetails(item);
         List<ResourceRentingHistoryDto> history = resourceRepository.getProductRentingHistory(item);
+        boolean hasPhoto = resourceRepository.checkIfHasPhoto(item);
+        Blob blob = resourceRepository.getPhotoOfResource(item);
+        String photoSrc = null;
+        if (hasPhoto) {
+            try {
+                byte[] photoBytes = blob.getBytes(1l, (int) blob.length());
+                Base64.Encoder encoder = Base64.getEncoder();
+                photoSrc = "data:image/png;base64," + encoder.encodeToString(photoBytes);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
         modelAndView.addObject("item", resource);
         modelAndView.addObject("history", history);
+        modelAndView.addObject("hasPhoto", hasPhoto);
+        modelAndView.addObject("photo", photoSrc);
         modelAndView.setViewName("user-panel/user-product-info");
         return modelAndView;
     }
@@ -216,9 +249,23 @@ public class UserPanelController {
         ResourceDetailsDto resource = resourceRepository.getProductDetails(item);
         List<ResourceRentingHistoryDto> history = resourceRepository.getProductRentingHistory(item);
         BorrowingUserInfoDto borrowingUser = resourceRepository.getGivingUserInfo(item);
+        boolean hasPhoto = resourceRepository.checkIfHasPhoto(item);
+        Blob blob = resourceRepository.getPhotoOfResource(item);
+        String photoSrc = null;
+        if (hasPhoto) {
+            try {
+                byte[] photoBytes = blob.getBytes(1l, (int) blob.length());
+                Base64.Encoder encoder = Base64.getEncoder();
+                photoSrc = "data:image/png;base64," + encoder.encodeToString(photoBytes);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
         modelAndView.addObject("item", resource);
         modelAndView.addObject("history", history);
         modelAndView.addObject("borrowingUser", borrowingUser);
+        modelAndView.addObject("hasPhoto", hasPhoto);
+        modelAndView.addObject("photo", photoSrc);
         modelAndView.setViewName("user-panel/user-product-info-borrowed");
         return modelAndView;
     }
@@ -230,12 +277,22 @@ public class UserPanelController {
         List<ResourceRentingHistoryDto> history = resourceRepository.getProductRentingHistory(item);
         BorrowingUserInfoDto borrowingUser = resourceRepository.getGivingUserInfo(item);
         boolean hasPhoto = resourceRepository.checkIfHasPhoto(item);
-        Blob photo = resourceRepository.getPhotoOfResource(item);
+        Blob blob = resourceRepository.getPhotoOfResource(item);
+        String photoSrc = null;
+        if (hasPhoto) {
+            try {
+                byte[] photoBytes = blob.getBytes(1l, (int) blob.length());
+                Base64.Encoder encoder = Base64.getEncoder();
+                photoSrc = "data:image/png;base64," + encoder.encodeToString(photoBytes);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
         modelAndView.addObject("item", resource);
         modelAndView.addObject("history", history);
         modelAndView.addObject("borrowingUser", borrowingUser);
         modelAndView.addObject("hasPhoto", hasPhoto);
-        modelAndView.addObject("photo", photo);
+        modelAndView.addObject("photo", photoSrc);
         modelAndView.setViewName("user-panel/product-details");
         return modelAndView;
     }
