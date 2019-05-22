@@ -21,7 +21,7 @@ public class Resource extends BaseEntity {
     @Column(nullable = false)
     private String name;
 
-    @Column
+    @Column(length = 8192)
     private String description;
 
     @Column(nullable = false)

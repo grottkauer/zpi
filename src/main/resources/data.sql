@@ -227,3 +227,98 @@ insert into RESOURCE(id, name, description, points, id_resource_type, id_owner, 
 insert into RESOURCE(id, name, description, points, id_resource_type, id_owner, add_date, can_be_borrowed, is_deleted) values (7, 'Monopoly', 'Rozlałam na to kawę', 50, 159, 3, '2018-12-10', true, true);
 insert into RESOURCE_RENTING(ORDER_DATE, BORROW_DATE, GIVE_BACK_DATE, STATUS, ID_RECEIVER, ID_RESOURCE) values ('2019-01-03', '2019-01-05', '2019-02-01', 2, 1, 1);
 insert into RESOURCE_RENTING(ORDER_DATE, BORROW_DATE, GIVE_BACK_DATE, STATUS, ID_RECEIVER, ID_RESOURCE) values ('2018-10-14', '2018-10-15', '2018-12-31', 2, 2, 1);
+
+
+--SAMPLE DATA:
+
+--sample addresses:
+insert into ADDRESS(id, locality, nr_flat, nr_house, street, zip_code) values (2, 'Wrocław', '1', '10', 'Przykładowa', '54-365');
+insert into ADDRESS(id, locality, nr_flat, nr_house, street, zip_code) values (3, 'Warszawa', '56', '9', 'Warszawska', '01-346');
+insert into ADDRESS(id, locality, nr_flat, nr_house, street, zip_code) values (4, 'Wrocław', '5', '235', 'Wrocławska', '54-363');
+insert into ADDRESS(id, locality, nr_flat, nr_house, street, zip_code) values (5, 'Wrocław', '12', '34', 'Wałbrzyska', '54-361');
+insert into ADDRESS(id, locality, nr_flat, nr_house, street, zip_code) values (6, 'Wrocław', '9', '163', 'Uliczna', '54-360');
+insert into ADDRESS(id, locality, nr_flat, nr_house, street, zip_code) values (7, 'Wrocław', '34', '344', 'Piernikowa', '54-369');
+insert into ADDRESS(id, locality, nr_flat, nr_house, street, zip_code) values (8, 'Warszawa', '2', '453', 'Górna', '01-360');
+insert into ADDRESS(id, locality, nr_flat, nr_house, street, zip_code) values (9, 'Wrocław', '12', '18', 'Przykładowa', '54-365');
+
+--sample users:
+INSERT INTO user(id, password, ethereum_address ,ethereum_key, email, last_name, first_name, join_date, birth_date, recall_date, id_address) values
+     (4, 'haslo123', 'ethereum_a', 'ethereum_k', 'user1@bm.pl', 'Kowalski', 'Jan', '2019-05-22', '1990-01-01', NULL, 2),
+     (5, 'haslo123', 'ethereum_a', 'ethereum_k', 'user2@bm.pl', 'Szydło', 'Sławomir', '2019-05-22', '1965-10-12', NULL, 3),
+     (6, 'haslo123', 'ethereum_a', 'ethereum_k', 'user3@bm.pl', 'Szydło', 'Genowefa', '2019-05-22', '1993-09-19', NULL, 3),
+     (7, 'haslo123', 'ethereum_a', 'ethereum_k', 'user4@bm.pl', 'Jabłońska', 'Ilona', '2019-05-22', '1999-02-21', NULL, 4),
+     (8, 'haslo123', 'ethereum_a', 'ethereum_k', 'user5@bm.pl', 'Cytryńska', 'Karolina', '2019-05-22', '2001-05-26', NULL, 5),
+     (9, 'haslo123', 'ethereum_a', 'ethereum_k', 'user6@bm.pl', 'Wilczyńska', 'Adrianna', '2019-05-22', '2005-04-05', NULL, 6),
+     (10, 'haslo123', 'ethereum_a', 'ethereum_k', 'user7@bm.pl', 'Koralewski', 'Karol', '2019-05-22', '1997-11-13', NULL, 7),
+     (11, 'haslo123', 'ethereum_a', 'ethereum_k', 'user8@bm.pl', 'Różański', 'Witold', '2019-05-22', '1995-12-30', NULL, 8);
+
+--sample resources:
+--books
+insert into RESOURCE(id, name, points, id_resource_type, id_owner, add_date, can_be_borrowed, is_deleted, description) values
+     (8, 'Becoming. Moja historia', 132, 8, 6, '2019-05-22', true, false, 'Michelle Obama opisuje doświadczenia, które ją ukształtowały – od dzieciństwa w południowym Chicago, przez lata godzenia macierzyństwa z karierą, aż do czasu spędzonego w najsłynniejszym domu świata.'),
+     (9, 'Kuba Wojewódzki. Nieautoryzowana autobiografia', 56, 8, 11, '2019-05-22', true, false, 'Bezczelna, irytująca i bulwersująca – najlepsza autobiografia celebryty. Zalałem herbatą.'),
+     (10, 'Fit and sweet', 2999, 21, 9, '2019-05-22', true, false, 'Ta książka powstała, aby osłodzić Ci codzienność! Nie potrafisz wyobrazić sobie życia bez słodkich przyjemności? Spokojnie, my też nie! Zdrowa dieta to restrykcje, stres i frustracje? Nic z tych rzeczy!'),
+     (11, 'Cmętarz zwieżąt', 12, 13, 5, '2019-05-22', true, false, 'cóż, ortografia bywa trudna…'),
+     (12, 'Dzikie dziecko miłości', 673, 12, 11, '2019-05-22', true, false, 'Spokój? W słowniku Namiestniczki Thornu ten wyraz nie istnieje'),
+     (13, 'Becoming. Moja historia', 120, 8, 10, '2019-05-22', true, false, 'Jeszcze nie czytałam'),
+     (14, 'Krótka historia jednego zdjęcia', 450, 14, 4, '2019-05-22', true, false, 'Przed wami ponad 130 najciekawszych historii i zdjęć z niezwykłego fanpage’a "Krótka historia jednego zdjęcia" – jednej z najbardziej inspirujących stron na Facebooku.'),
+     (15, 'Data Science i uczenie maszynowe', 340, 15, 3, '2019-05-22', true, false, 'Książka przedstawia uczenie maszynowe w ujęciu praktycznym. Przeprowadzając opisane w niej eksperymenty data science poznamy zastosowanie reguł statystycznych i algorytmów uczenia maszynowego do rozwiązywania konkretnych problemów.'),
+     (16, 'Spider-Man', 2, 16, 7, '2019-05-22', true, false, 'Zbiór klasycznych komiksów ze Spider-Manem autorstwa Todda McFarlane’a.'),
+     (17, 'Listy zza grobu', 43, 17, 11, '2019-05-22', true, false, 'Największe tajemnice drzemią w małych miasteczkach.'),
+     (18, 'Tajemniczy ogród', 32, 22, 9, '2019-05-22', true, false, 'Najlepsza lektura w szkole'),
+     (19, 'Chłopcy, których kocham', 1278, 29, 8, '2019-05-22', true, false, 'Przepraszam, czy mogę się u ciebie schować? Czy możemy zbudować z koca kryjówkę na jedną noc i dwoje ludzi? I zostawmy nas na chwilę samych.'),
+     (20, 'Szycie jest łatwe ', 20, 30, 5, '2019-05-22', true, false, 'Wszystko o szyciu! Ponad 1000 ilustracji. Porady ekspertów. Informacje na temat tkanin i idealnych krojów.'),
+     (21, 'Konstytucja Rzeczypospolitej Polskiej', 1, 31, 4, '2019-05-22', true, false, 'Broszurowe wydanie zawiera tekst aktu prawnego o kluczowym znaczeniu dla polskiego systemu ustrojowego – konstytucję Rzeczypospolitej Polskiej z 2 kwietnia 1997 roku'),
+     (22, 'Biblia. Komiks', 2450, 32, 11, '2019-05-22', true, false, 'Ta nowocześnie ilustrowana książka też jest swoistą opowieścią o Superbohaterze i o tych, którzy stają się do Niego podobni, dzięki temu, że Mu zaufali. Wiara – jak przekonują twórcy komiksu - jest jedną z najbardziej fascynujących przygód, obfituje w zaskakujące zwroty akcji i nie brak w niej zagrożeń. Zarówno w sferze literackiej, jak i graficznej, komiks ten daleki jest od większości religijnych książek, w których nie brakuje idyllicznych przedstawień i pastelowych kolorów.'),
+     (23, 'In vitro. Rozmowy intymne', 984, 38, 6, '2019-05-22', true, false, 'Trzynaście rozmów i jeden temat – in vitro. Małgorzata Rozenek-Majdan inicjuje dyskusje i stawia trudne pytania lekarzom, embriologom, seksuologom.');
+
+--movies
+insert into RESOURCE(id, name, points, id_resource_type, id_owner, add_date, can_be_borrowed, is_deleted, description) values
+     (24, 'Król Lew', 3004, 59, 11, '2019-05-22', true, false, 'Ponadczasowa opowieść o dorastaniu, odwadze, miłości i przyjaźni,'),
+     (25, 'Fantastyczne zwierzęta i jak je znaleźć', 15, 60, 4, '2019-05-22', true, false, 'Odkryj nową erę świata czarodziejów sprzed czasów Harry''ego Pottera!'),
+     (26, 'Zakon Świętej Agaty', 4, 62, 10, '2019-05-22', true, false, 'Młoda, ciężarna kobieta o imieniu Mary szuka schronienia w klasztorze na prowincji stanu Georgia. Zakonnice przyjmują ją i obiecują pomoc, ale w zamian oczekują bezwzględnego przestrzegania reguł zgromadzenia i wyrzeknięcia się zła, jakie niesie ze sobą „zewnętrzny świat”. '),
+     (27, 'To', 666, 62, 10, '2019-05-22', true, false, 'Najlepszy film grozy wszech czasów!'),
+     (28, 'Ted', 355, 64, 9, '2019-05-22', true, false, 'Ted ożył dawno temu, kiedy mały John wypowiedział gwiazdkowe życzenie, w którym prosił o prawdziwego przyjaciela na całe życie. Prośba się spełniła, ale w dorosłym życiu Ted odmawia porzucenia swego przyjaciela, nie przejmując się jego wiekiem ani sytuacją życiową, w jakiej się znajduje.'),
+     (29, 'Simpsonowie', 45, 64, 8, '2019-05-22', true, false, 'Simpsonowie doczekali się pełnometrażowej wersji kinowej. Co ma o tyle dobrą stronę, że szeroki ekran w pełni odzwierciedli szerokie spektrum głupoty Homera Simpsona.'),
+     (30, 'Strażnicy galaktyki', 10, 67, 7, '2019-05-22', true, false, 'To od nich będą zależały losy całej galaktyki!'),
+     (31, 'Lista Schindlera', 987, 69, 5, '2019-05-22', true, false, 'Kinowe arcydzieło, które stało się jednym z najbardziej cenionych filmów w historii kina. Zdobywca aż siedmiu nagród Academy Award, w tym m. in. w kategoriach: Najlepszy Film i Najlepszy Reżyser, wszystkich głównych nagród przyznawanych dla Najlepszego Filmu, a także licznych wyróżnień.'),
+     (32, 'Szeregowiec Ryan', 68, 69, 5, '2019-05-22', true, false, 'II Wojna Światowa była przełomowym wydarzeniem XX wieku i decydującym momentem dla Ameryki i świata. Przesunęła granice państw.');
+
+--music
+insert into RESOURCE(id, name, points, id_resource_type, id_owner, add_date, can_be_borrowed, is_deleted, description) values
+     (33, 'Biesiada weselna', 7, 40, 5, '2019-05-22', true, false, 'Wszystkich miłośników muzyki łatwej, lekkiej i przyjemnej zapraszamy do słuchania.'),
+     (34, 'Sokratesa 18', 9999, 49, 3, '2019-05-22', true, false, 'Stargard in the night milknie powoli, chleba kilka pajd i szczypta soli... Co to za rynek bez katarynek? ... Same najlepsze hity!'),
+     (35, 'Dalej w morze', 11, 58, 4, '2019-05-22', true, false, 'Płyta CD zawiera 18 utworów w oryginalnym wykonaniu grupy Ryczące Dwudziestki'),
+     (36, 'The Best of Boys Ever', 98, 44, 6, '2019-05-22', true, false, 'Ta płyta jest tak szalona, jak ty');
+
+--board games
+insert into RESOURCE(id, name, points, id_resource_type, id_owner, add_date, can_be_borrowed, is_deleted, description) values
+     (37, 'O mój zboże!', 49, 146, 4, '2019-05-22', true, false, 'Europa, czasy średniowiecza. Stanowicie grupę rzemieślników wytwarzających buty, beczki, szkło, skóry i wiele innych towarów.'),
+     (38, 'Terraformacja Marsa', 159, 146, 4, '2019-05-22', true, false, 'Ludzkość rozpoczęła ekspansję w Układzie Słonecznym. Na Marsie założono już kilka niewielkich kolonii. Ich mieszkańcy są odgrodzeni od naturalnego środowiska straszliwie zimnej, suchej i niemal pozbawionej atmosfery planety.'),
+     (39, 'Dixit', 129, 147, 10, '2019-05-22', true, false, 'Pamiętaj, że jeden obraz jest wart więcej niż tysiąc słów!'),
+     (40, 'Zaginiony Klucz', 110, 147, 9, '2019-05-22', true, false, 'Zaginiony klucz to zbudowana na współpracy gra towarzyska o bardzo uniwersalnym charakterze, oparta o dedukcję i zabawę ze skojarzeniami. To od waszego współdziałania i skutecznej komunikacji zależy, czy klucz zostanie odnaleziony!'),
+     (41, 'Złoto Bohaterów', 79, 151, 8, '2019-05-22', true, false, 'Gracze obierają role Troli, Nieumarłych, Oceanicznych Bestii, Demonów, Insektów oraz Smoków, które pragną odzyskać nielegalnie zrabowane im złoto. Gracze będą musieli połączyć siły, żeby pokonać strażników, którym nakazano pilnować bogactw. Choć gra opiera się na współpracy, prawdziwe Potwory zawsze będą chciały zdobyć więcej świecidełek od swoich kolegów. Tę dynamiczną grę karcianą wygra gracz, który wykaże się ponadprzeciętnym sprytem i zgarnie najwięcej złota!'),
+     (42, 'Zombiaki Ameryki', 89, 151, 8, '2019-05-22', true, false, 'Zombiaki Ameryki to wyprawa samochodowa rodem z horroru. Jedziecie z Chicago do Los Angeles uciekając przed zarazą zombie w USA. Będziecie musieli wykazać się nie lada zaradnością, aby pokonać swoich przeciwników i przetrwać tę podróż! Aby mieć szansę na zwycięstwo, przynajmniej jeden z grupy ocalałych danego gracza musi dotrzeć do Zachodniego Wybrzeża.'),
+     (43, 'Wiek Złodziei', 180, 151, 7, '2019-05-22', true, false, 'Wiek Złodziei to wyjątkowa gra, której akcja dzieje się w oryginalnym uniwersum. Zapraszamy was do świata, który jest połączeniem klasycznego steampunku z wizjonerskimi projektami Leonarda da Vinci i odrobiną magii.'),
+     (44, 'Herosi', 45, 152, 6, '2019-05-22', true, false, 'Herosi to dynamiczna gra czasu rzeczywistego, przeznaczona dla od 2 do 4 graczy, w której wcielisz się w rolę jednego z władców czterech magicznych żywiołów i weźmiesz udział w pojedynku.'),
+     (45, 'Alchemicy', 150, 152, 6, '2019-05-22', true, false, 'Od dwóch do czterech graczy wciela się w rywalizujących alchemików chcących odkryć sekrety tej tajemnej sztuki. Punkty można zdobywać na różne sposoby, ale najwięcej otrzymuje się za publikację teorii - prawidłowych teorii, warto dodać. I w tym leży problem.'),
+     (46, 'K2', 99, 152, 6, '2019-05-22', true, false, 'W grze K2 każdy z graczy kieruje zespołem 2 himalaistów, którzy rywalizując z innymi zespołami, starają się zdobyć szczyt i przetrwać do końca 18-dniowej wyprawy.'),
+     (47, 'Królestwo w budowie', 149, 152, 5, '2019-05-22', true, false, 'Podczas rozgrywki w Królestwo w budowie, gracze tworzą własne królestwa, rozważnie stawiając nowe osady by na końcu rozgrywki posiąść jak najwięcej złota.'),
+     (48, 'Patchwork', 75, 149, 8, '2019-05-22', true, false, 'Patchwork to metoda szycia, w której łączy się małe kawałki materiału w większą całość, tworząc nowy wzór. W przeszłości wykorzystywano ją, żeby zagospodarować niechciane ścinki i skrawki.'),
+     (49, 'Mi pasuje!', 89, 149, 8, '2019-05-22', true, false, 'Mi pasuje! to klasyczna gra logiczna o bardzo prostych zasadach, zapewniająca wiele godzin rozrywki na najwyższym poziomie. Po raz pierwszy wydana w roku 1983 do dziś cieszy się niesłabnącą popularnością na całym świecie dzięki swojemu uniwersalnemu charakterowi.'),
+     (50, '4 w Linii', 39, 149, 8, '2019-05-22', true, false, '4 w Linii to gra logiczna przeznaczona dla dwóch osób (bądź dwóch zespołów). To pojedynek na przemyślność i przewidywanie. Spróbuj odgadnąć zamiary przeciwnika, równocześnie tworząc własną taktykę obliczoną na kilka ruchów do przodu. Wygra ten, kto zdoła jako pierwszy ułożyć 4 krążki w jednej linii.'),
+     (51, '4 w Linii', 59, 149, 6, '2019-05-22', true, false, 'Connect 4 w polskim wydaniu'),
+     (52, 'Blokus', 139, 149, 5, '2019-05-22', true, false, 'Po prostu genialna, genialnie prosta! Proste reguły i wciągająca rozgrywka to jej niezaprzeczalne atuty. Gra przeznaczona jest dla osób w różnym wieku - to nie wiek decyduje o szansie na sukces.');
+
+--magazines
+insert into RESOURCE(id, name, points, id_resource_type, id_owner, add_date, can_be_borrowed, is_deleted, description) values
+     (53, 'Polityka 21/2019', 99, 155, 5, '2019-05-22', true, false, 'Czy będą dymisje biskupów?'),
+     (54, 'Runner`s World 5-6/2019', 12, 167, 4, '2019-05-22', true, false, 'Zostań maratończykiem, Super food, Bieganie w ciąży');
+
+--toys
+insert into RESOURCE(id, name, points, id_resource_type, id_owner, add_date, can_be_borrowed, is_deleted, description) values
+     (55, 'LEGO City, klocki Pustynna wyścigówka', 37, 78, 4, '2019-05-22', true, false, 'Do startu, gotowi… START! Załóż kask i weź udział w pustynnym wyścigu w tej łatwej do zbudowania wyścigówce.'),
+     (56, 'Barbie, lalka Tęczowa syrenka', 68, 88, 4, '2019-05-22', true, false, 'Zanurz lalkę w wodzie, by zobaczyć, jak jej tęczowy ogon pięknie rozświetla się kolorowymi światełkami!'),
+     (57, 'Barbie, lalka Pediatra', 89, 88, 4, '2019-05-22', true, false, 'Uwaga! Produkt nieodpowiedni dla dzieci poniżej 3 roku życia.'),
+     (58, 'Pucio, puzzle Co tu pasuje', 23, 104, 4, '2019-05-22', true, false, 'kształtują wyobraźnię i logiczne myślenie'),
+     (59, 'Trefl, Psi Patrol, puzzle Gotowi do akcji', 12, 104, 4, '2019-05-22', true, false, 'Odporne na zginanie!');
