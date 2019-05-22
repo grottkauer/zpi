@@ -89,6 +89,7 @@
                                     </tr>
                                     </tfoot>
                                     <tbody>
+                                    <!-- todo set data like in user_layout -->
                                     <tr class="pointer-row">
                                         <td>25/04/2019</td>
                                         <td>
@@ -317,6 +318,7 @@
             <div class="modal-body">Wybierz "Wyloguj" jeżeli chcesz zakonczyć sesję.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Anuluj</button>
+                <!-- todo logout from session -->
                 <a class="btn btn-primary" href="/">Wyloguj</a>
             </div>
         </div>
@@ -343,6 +345,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Data spotkania</span>
                             </div>
+                            <!-- todo set last meeting date -->
                             <input data-date-format="dd/mm/yyyy" id="demo" type="text" class="form-control" required placeholder="Data spotkania">
                         </div>
                         <div class="input-group"></div>
@@ -361,8 +364,9 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">Miejsce spotkania</span>
                             </div>
+                            <!-- todo set last meeting localization -->
                             <input type="text" class="form-control w-100" name="addr" value="" id="addr" size="10" required/>
-                            <button type="button" class="btn btn-primary" onclick="addr_search();">Szukaj</button>
+                            <button type="button" class="btn btn-primary mt-2" onclick="addr_search();">Szukaj</button>
                         </div>
                     </div>
                 </div>
@@ -389,6 +393,7 @@
             <div class="modal-body">Wybierz "Potwierdź" jeżeli chcesz anulować wypożyczenia.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Anuluj</button>
+                <!-- todo set new renting status and cancel meeting -->
                 <button class="btn btn-primary" type="button" data-dismiss="modal">Potwierdź</button>
             </div>
         </div>
@@ -408,6 +413,7 @@
             <div class="modal-body">Wybierz "Potwierdź" jeżeli chcesz potwierdzić spotkanie.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Anuluj</button>
+                <!-- todo set new notification of checking date of meeting and set date of meeting -->
                 <button class="btn btn-primary" type="button" data-dismiss="modal">Potwierdź</button>
             </div>
         </div>

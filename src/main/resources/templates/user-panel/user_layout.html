@@ -168,6 +168,7 @@ $(document).ready(function(){
         <li class="nav-item dropdown no-arrow mx-1">
             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdownMain" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-bell fa-fw"></i>
+                <!-- todo add span with number of new notification -->
                 <span class="badge badge-danger">9+</span>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
@@ -175,32 +176,51 @@ $(document).ready(function(){
                     <li class="head text-light bg-dark">
                         <div class="row">
                             <div class="col-lg-12 col-sm-12 col-12">
+                                <!-- todo add span with number of new notification -->
                                 <span>Nowe (3)</span>
+                                <!-- todo set notification as opened -->
                                 <a href="" class="float-right text-light">Oznacz jako przeczytane</a>
                             </div>
                         </div>
                     </li>
-                    <li class="notification-box">
+                    <li class="notification-box pointer-row pointer-cell" onclick="window.location='/moje-konto/info-szczegoly-zamowienia';">
                         <div class="row">
                             <div class="pt-3 pl-3 col-lg-3 col-sm-3 col-3 text-center">
                                 <!--<img src="../images/icons/228.png" class="w-50 rounded-circle">-->
+                                <!-- todo set image depending on form of notification -->
+                                <!-- 1 - set the meeting date (fa-calendar-alt) -->
+                                <!-- 2 - checked meeting (fa-calendar-check) -->
+                                <!-- 3 - checked borrow/giveback (fa-check) -->
                                 <i class="fas fa-calendar-alt fa-2x"></i>
                             </div>
                             <div class="col-lg-8 col-sm-8 col-8 text-wrap">
                                 <div class="row">
                                     <div class="col-6">
+                                        <!-- todo set sender name -->
                                         <strong class="text-info notification-header">David John</strong>
                                     </div>
                                     <div class="col-6">
+                                        <!-- todo set sending date -->
                                         <small class="text-warning">27.11.2015, 15:00</small>
                                     </div>
                                 </div>
                                 <div class="notification-body text-justify">
+                                    <!-- todo set text one of these below -->
+                                    <!-- 1 - Zaproponowano termin i miejsce spotkania na -->
+                                    <!-- 2 - Potwierdzono termin i miejsce spotkania na -->
+                                    <!-- 3 - Potwierdzono wypożyczenie produktu -->
+                                    <!-- 4 - Potwierdzono oddanie produktu -->
                                     Zaproponowano termin i miejsce spotkania na
+                                    <!-- todo set meeting date and address -->
+                                    <!-- only when 1 or 2 -->
                                     <span>
                                         30/04/2019, Grodków - Rynek
                                     </span>
+                                    <!-- todo set text only when 1 or 2 -->
+                                    <!-- 1 - w celu wypożyczenia -->
+                                    <!-- 2 - w celu oddania -->
                                     w celu wypożyczenia
+                                    <!-- todo set name of resource with specific link to order -->
                                     <span>
                                         <a href="/moje-konto/szczegoly?item=1">
                                             Nazwa przedmiotu
@@ -210,7 +230,7 @@ $(document).ready(function(){
                             </div>
                         </div>
                     </li>
-                    <li class="notification-box bg-gray">
+                    <li class="notification-box bg-gray pointer-row pointer-cell" onclick="window.location='/moje-konto/info-szczegoly-zamowienia';">
                         <div class="row">
                             <div class="pt-3 pl-3 col-lg-3 col-sm-3 col-3 text-center">
                                 <!--<img src="../images/icons/228.png" class="w-50 rounded-circle">-->
@@ -240,7 +260,7 @@ $(document).ready(function(){
                             </div>
                         </div>
                     </li>
-                    <li class="notification-box">
+                    <li class="notification-box pointer-row pointer-cell" onclick="window.location='/moje-konto/info-szczegoly-zamowienia';">
                         <div class="row">
                             <div class="pt-3 pl-3 col-lg-3 col-sm-3 col-3 text-center">
                                 <i class="fas fa-check fa-2x"></i>
@@ -313,27 +333,44 @@ $(document).ready(function(){
                             </div>
                         </div>
                     </li>
-                    <li class="notification-box">
+                    <li class="notification-box pointer-row pointer-cell" onclick="window.location='/moje-konto/info-szczegoly-zamowienia';">
                         <div class="row">
                             <div class="pt-3 pl-3 col-lg-3 col-sm-3 col-3 text-center">
                                 <!--<img src="../images/icons/228.png" class="w-50 rounded-circle">-->
+                                <!-- todo set image depending on form of notification -->
+                                <!-- 1 - set the meeting date (fa-calendar-alt) -->
+                                <!-- 2 - checked meeting (fa-calendar-check) -->
+                                <!-- 3 - checked borrow/giveback (fa-check) -->
                                 <i class="fas fa-calendar-alt fa-2x"></i>
                             </div>
                             <div class="col-lg-8 col-sm-8 col-8 text-wrap">
                                 <div class="row">
                                     <div class="col-6">
+                                        <!-- todo set sender name -->
                                         <strong class="text-info notification-header">David John</strong>
                                     </div>
                                     <div class="col-6">
+                                        <!-- todo set sending date -->
                                         <small class="text-warning">27.11.2015, 15:00</small>
                                     </div>
                                 </div>
                                 <div class="notification-body text-justify">
+                                    <!-- todo set text one of these below -->
+                                    <!-- 1 - Zaproponowano termin i miejsce spotkania na -->
+                                    <!-- 2 - Potwierdzono termin i miejsce spotkania na -->
+                                    <!-- 3 - Potwierdzono wypożyczenie produktu -->
+                                    <!-- 4 - Potwierdzono oddanie produktu -->
                                     Zaproponowano termin i miejsce spotkania na
+                                    <!-- todo set meeting date and address -->
+                                    <!-- only when 1 or 2 -->
                                     <span>
                                         30/04/2019, Grodków - Rynek
                                     </span>
+                                    <!-- todo set text only when 1 or 2 -->
+                                    <!-- 1 - w celu wypożyczenia -->
+                                    <!-- 2 - w celu oddania -->
                                     w celu wypożyczenia
+                                    <!-- todo set name of resource with specific link to order -->
                                     <span>
                                         <a href="/moje-konto/szczegoly?item=1">
                                             Nazwa przedmiotu
@@ -343,7 +380,7 @@ $(document).ready(function(){
                             </div>
                         </div>
                     </li>
-                    <li class="notification-box bg-gray">
+                    <li class="notification-box bg-gray pointer-row pointer-cell" onclick="window.location='/moje-konto/info-szczegoly-zamowienia';">
                         <div class="row">
                             <div class="pt-3 pl-3 col-lg-3 col-sm-3 col-3 text-center">
                                 <!--<img src="../images/icons/228.png" class="w-50 rounded-circle">-->
@@ -373,7 +410,7 @@ $(document).ready(function(){
                             </div>
                         </div>
                     </li>
-                    <li class="notification-box">
+                    <li class="notification-box pointer-row pointer-cell" onclick="window.location='/moje-konto/info-szczegoly-zamowienia';">
                         <div class="row">
                             <div class="pt-3 pl-3 col-lg-3 col-sm-3 col-3 text-center">
                                 <i class="fas fa-check fa-2x"></i>
