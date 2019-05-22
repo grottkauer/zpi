@@ -35,9 +35,6 @@ public class User extends BaseEntity {
     @Column
     private Date recallDate;
 
-    @Column
-    private long wallet;
-
     @Column(nullable = false)
     private String ethereumAddress;
 

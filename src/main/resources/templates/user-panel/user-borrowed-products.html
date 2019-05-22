@@ -103,18 +103,18 @@
                                 <tbody>
                                     <tr class="pointer-row" th:each="product,iter :${borrowedProducts}">
                                         <td class="pointer-cell" th:text="${iter.index}+1"
-                                            th:onclick="|window.location.href='/moje-konto/info-wypozyczonego-profuktu?item=${product.getId()}'|"></td>
-                                        <td class="pointer-cell" th:onclick="|window.location.href='/moje-konto/info-wypozyczonego-profuktu?item=${product.getId()}'|"
+                                            th:onclick="|window.location.href='/moje-konto/info-wypozyczonego-produktu?item=${product.getId()}'|"></td>
+                                        <td class="pointer-cell" th:onclick="|window.location.href='/moje-konto/info-wypozyczonego-produktu?item=${product.getId()}'|"
                                             th:text="${product.getProductName()}">
                                         </td>
-                                        <td class="pointer-cell" th:onclick="|window.location.href='/moje-konto/info-wypozyczonego-profuktu?item=${product.getId()}'|"
+                                        <td class="pointer-cell" th:onclick="|window.location.href='/moje-konto/info-wypozyczonego-produktu?item=${product.getId()}'|"
                                             th:text="${product.getCategoryName()}">
                                         </td>
-                                        <td class="pointer-cell" th:onclick="|window.location.href='/moje-konto/info-wypozyczonego-profuktu?item=${product.getId()}'|"
+                                        <td class="pointer-cell" th:onclick="|window.location.href='/moje-konto/info-wypozyczonego-produktu?item=${product.getId()}'|"
                                             th:text="${#dates.format(product.getAddDate(), 'dd/MM/yyyy')}">
                                         </td>
                                         <td class="pointer-cell"
-                                            th:onclick="|window.location.href='/moje-konto/info-wypozyczonego-profuktu?item=${product.getId()}'|">TAK</td>
+                                            th:onclick="|window.location.href='/moje-konto/info-wypozyczonego-produktu?item=${product.getId()}'|">TAK</td>
                                         <td>
                                             <a href="#giveBackModal" class="btn table-btn" data-toggle="modal">
                                                 <i class="fas fa-exchange-alt"></i>

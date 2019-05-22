@@ -214,8 +214,10 @@ public class UserPanelController {
         ModelAndView modelAndView = new ModelAndView();
         ResourceDetailsDto resource = resourceRepository.getProductDetails(item);
         List<ResourceRentingHistoryDto> history = resourceRepository.getProductRentingHistory(item);
+        BorrowingUserInfoDto borrowingUser = resourceRepository.getGivingUserInfo(item);
         modelAndView.addObject("item", resource);
         modelAndView.addObject("history", history);
+        modelAndView.addObject("borrowingUser", borrowingUser);
         modelAndView.setViewName("user-panel/user-product-info-borrowed");
         return modelAndView;
     }
@@ -225,8 +227,10 @@ public class UserPanelController {
         ModelAndView modelAndView = new ModelAndView();
         ResourceDetailsDto resource = resourceRepository.getProductDetails(item);
         List<ResourceRentingHistoryDto> history = resourceRepository.getProductRentingHistory(item);
+        BorrowingUserInfoDto borrowingUser = resourceRepository.getGivingUserInfo(item);
         modelAndView.addObject("item", resource);
         modelAndView.addObject("history", history);
+        modelAndView.addObject("borrowingUser", borrowingUser);
         modelAndView.setViewName("user-panel/product-details");
         return modelAndView;
     }

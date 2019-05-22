@@ -1,5 +1,6 @@
 package com.lending.repositories;
 
+import com.lending.dto.BorrowingUserInfoDto;
 import com.lending.dto.ResourceDetailsDto;
 import com.lending.dto.ResourceRentingHistoryDto;
 import com.lending.dto.UsersProductDto;
@@ -88,6 +89,14 @@ public interface ResourceRepository extends CrudRepository<Resource, Integer> {
             "where u.id=:id \n" +
             "and rr.status = com.lending.entities.RentingStatus.Oddane")
     List<UsersProductDto> getArchiveProductsBorrowedByUser(@Param("id") int id);
+
+    @Query("select new com.lending.dto.BorrowingUserInfoDto(u.firstName, u.lastName, \n" +
+            "u.email, a.locality) \n" +
+        "from Resource r \n" +
+        "inner join r.owner u \n" +
+        "inner join u.address a \n" +
+        "where r.id=:prodID")
+    BorrowingUserInfoDto getGivingUserInfo(@Param("prodID") int prodID);
 
 
 }
