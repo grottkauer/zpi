@@ -81,8 +81,8 @@
                     <div class="row total_rate pb-3">
                         <div class="col-md-10">
                             <div class="box_total">
-                                <!-- todo set current month name -->
-                                <h5>Zdobyte BC* <br>w miesiącu</h5>
+                                <!-- current month name and year -->
+                                <h5>Zdobyte BC* <br>w <span class="date"></span></h5>
                                 <!-- todo set reached user points -->
                                 <h4>49</h4>
                                 <h6>*Borrow Coins - kryptowaluta</h6>
@@ -92,8 +92,8 @@
                     <div class="row total_rate pb-3">
                         <div class="col-md-10">
                             <div class="box_total">
-                                <!-- todo set current month name -->
-                                <h5>Utracone BC* <br>w miesiącu</h5>
+                                <!-- current month name and year -->
+                                <h5>Utracone BC* <br>w <span class="date"></span></h5>
                                 <!-- todo set lost user points -->
                                 <h4>49</h4>
                                 <h6>*Borrow Coins - kryptowaluta</h6>
@@ -205,6 +205,16 @@
 <!-- Demo scripts for this page-->
 <script src="../user-panel/js/demo/datatables-demo.js"></script>
 <script src="../user-panel/js/demo/chart-area-demo.js"></script>
+
+<script>
+	window.onload = function() {
+    var months = ['styczniu', 'lutym', 'marcu', 'kwietniu', 'maju', 'czerwcu', 'lipcu', 'sierpniu', 'wrześniu', 'październiku', 'listopadzie', 'grudniu'];;
+    var date = new Date();
+
+    document.getElementsByClassName('date')[0].innerHTML = months[date.getMonth()] + ' ' + date.getFullYear();
+    document.getElementsByClassName('date')[1].innerHTML = months[date.getMonth()] + ' ' + date.getFullYear();
+};
+</script>
 
 </body>
 
