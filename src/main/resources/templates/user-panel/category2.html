@@ -111,18 +111,18 @@
 								<h3>Browse Categories</h3>
 							</div>
 							<div class="widgets_inner">
-								<ul class="list" th:each="category:${categories}">
+								<ul class="main-menu" th:each="category:${categories}">
 									<li>
-										<a href="#" th:text="${category.getHigherLevelType().getName()}"></a>
-										<ul class="list" th:each="sub1:${category.getSubcategories()}">
+										<a href="#" th:class="menu-href" th:text="${category.getHigherLevelType().getName()}"></a>
+										<ul class="level2" th:each="sub1:${category.getSubcategories()}">
 											<li>
-												<a href="#" th:text="${sub1.getHigherLevelType().getName()}"></a>
-												<ul class="list" th:each="sub2:${sub1.getSubcategories()}">
+												<a href="#" th:class="menu-href" th:text="${sub1.getHigherLevelType().getName()}"></a>
+												<ul class="level3 pr-3" th:each="sub2:${sub1.getSubcategories()}">
 													<li>
-														<a href="#" th:text="${sub2.getHigherLevelType().getName()}"></a>
-														<ul class="list" th:each="sub3:${sub2.getSubcategories()}">
+														<a href="#" th:class="menu-href" th:text="${sub2.getHigherLevelType().getName()}"></a>
+														<ul class="level4 pr-3" th:each="sub3:${sub2.getSubcategories()}">
 															<li>
-																<a href="#" th:text="${sub3.getHigherLevelType().getName()}"></a>
+																<a href="#" th:class="menu-href" th:text="${sub3.getHigherLevelType().getName()}"></a>
 															</li>
 														</ul>
 													</li>
@@ -304,6 +304,35 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	<script src="../user-panel/category/js/jquery.waypoints.min.js"></script>
 	<script src="../user-panel/category/js/jquery.counterup.js"></script>
 	<script src="../user-panel/category/js/theme.js"></script>
+
+<script>
+$('.main-menu > li').click(function () {
+    $(this).toggleClass('active');
+    $('.level2 > li').removeClass('active');
+});
+
+$('.level2 > li').click(function (event) {
+    $(this).toggleClass('active');
+    event.stopPropagation();
+});
+
+$('.level3 > li').click(function (event) {
+    $(this).toggleClass('active');
+    event.stopPropagation();
+});
+
+$('.level4 > li').click(function (event) {
+    event.stopPropagation();
+});
+
+$('a.menu-href').click(function(e)
+{
+    // Special stuff to do when this link is clicked...
+
+    // Cancel the default action
+    e.preventDefault();
+});
+</script>
 </body>
 
 </html>
