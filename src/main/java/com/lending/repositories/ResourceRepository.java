@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
+import java.sql.Blob;
 import java.util.Date;
 import java.util.List;
 
@@ -97,6 +98,12 @@ public interface ResourceRepository extends CrudRepository<Resource, Integer> {
         "inner join u.address a \n" +
         "where r.id=:prodID")
     BorrowingUserInfoDto getGivingUserInfo(@Param("prodID") int prodID);
+
+    @Query("select case when r.image is null then false else true end from Resource r where r.id=:id")
+    boolean checkIfHasPhoto(@Param("id") int id);
+
+    @Query("select r.image from Resource r where r.id=:id")
+    Blob getPhotoOfResource(@Param("id") int id);
 
 
 }

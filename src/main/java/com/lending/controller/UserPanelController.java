@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.sql.Blob;
 import java.util.List;
 
 @Controller
@@ -228,9 +229,13 @@ public class UserPanelController {
         ResourceDetailsDto resource = resourceRepository.getProductDetails(item);
         List<ResourceRentingHistoryDto> history = resourceRepository.getProductRentingHistory(item);
         BorrowingUserInfoDto borrowingUser = resourceRepository.getGivingUserInfo(item);
+        boolean hasPhoto = resourceRepository.checkIfHasPhoto(item);
+        Blob photo = resourceRepository.getPhotoOfResource(item);
         modelAndView.addObject("item", resource);
         modelAndView.addObject("history", history);
         modelAndView.addObject("borrowingUser", borrowingUser);
+        modelAndView.addObject("hasPhoto", hasPhoto);
+        modelAndView.addObject("photo", photo);
         modelAndView.setViewName("user-panel/product-details");
         return modelAndView;
     }
