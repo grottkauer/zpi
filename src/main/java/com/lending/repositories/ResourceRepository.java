@@ -2,6 +2,7 @@ package com.lending.repositories;
 
 import com.lending.dto.ResourceDetailsDto;
 import com.lending.dto.ResourceRentingHistoryDto;
+import com.lending.dto.UsersProductDto;
 import com.lending.entities.Resource;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
@@ -70,6 +71,23 @@ public interface ResourceRepository extends CrudRepository<Resource, Integer> {
             "where r.id=:id")
     List<ResourceRentingHistoryDto> getProductRentingHistory(@Param("id") int id);
 
+    @Query("select new com.lending.dto.UsersProductDto (r.id, r.name, rt.name, rr.borrowDate) \n" +
+            "from Resource r \n" +
+            "inner join r.rentings rr \n" +
+            "inner join r.resourceType rt \n" +
+            "inner join rr.recipent u \n" +
+            "where u.id=:id \n" +
+            "and rr.status = com.lending.entities.RentingStatus.Zrealizowane")
+    List<UsersProductDto> getProductsBorrowedByUser(@Param("id") int id);
+
+    @Query("select new com.lending.dto.UsersProductDto (r.id, r.name, rt.name, rr.giveBackDate) \n" +
+            "from Resource r \n" +
+            "inner join r.rentings rr \n" +
+            "inner join r.resourceType rt \n" +
+            "inner join rr.recipent u \n" +
+            "where u.id=:id \n" +
+            "and rr.status = com.lending.entities.RentingStatus.Oddane")
+    List<UsersProductDto> getArchiveProductsBorrowedByUser(@Param("id") int id);
 
 
 }

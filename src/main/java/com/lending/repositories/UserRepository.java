@@ -49,4 +49,5 @@ public interface UserRepository extends CrudRepository<User, Integer>, UserRepos
     List<UsersProductDto> getArchiveUsersProducts(@Param("id") int id);
 
 
+
 }

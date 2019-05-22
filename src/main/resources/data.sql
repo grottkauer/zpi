@@ -322,3 +322,9 @@ insert into RESOURCE(id, name, points, id_resource_type, id_owner, add_date, can
      (57, 'Barbie, lalka Pediatra', 89, 88, 4, '2019-05-22', true, false, 'Uwaga! Produkt nieodpowiedni dla dzieci poniżej 3 roku życia.'),
      (58, 'Pucio, puzzle Co tu pasuje', 23, 104, 4, '2019-05-22', true, false, 'kształtują wyobraźnię i logiczne myślenie'),
      (59, 'Trefl, Psi Patrol, puzzle Gotowi do akcji', 12, 104, 4, '2019-05-22', true, false, 'Odporne na zginanie!');
+
+
+/* --test borrowed products on natalia
+insert into RESOURCE_RENTING(ORDER_DATE, BORROW_DATE, GIVE_BACK_DATE, STATUS, ID_RECEIVER, ID_RESOURCE) values ('2018-10-14', '2018-10-15', '2018-12-31', 2, 3, 52);
+insert into RESOURCE_RENTING(ORDER_DATE, BORROW_DATE, GIVE_BACK_DATE, STATUS, ID_RECEIVER, ID_RESOURCE) values ('2019-05-14', '2019-05-16', null, 1, 3, 51);
+ */

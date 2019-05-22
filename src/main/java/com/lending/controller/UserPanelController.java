@@ -127,6 +127,10 @@ public class UserPanelController {
     @GetMapping(value="/wypozyczone-produkty")
     public ModelAndView borrowedProduct() {
         ModelAndView modelAndView = new ModelAndView();
+        List<UsersProductDto> borrowedProducts = resourceRepository.getProductsBorrowedByUser(3);
+        modelAndView.addObject("borrowedProducts", borrowedProducts);
+        List<UsersProductDto> archivedProducts = resourceRepository.getArchiveProductsBorrowedByUser(3);
+        modelAndView.addObject("archivedProducts", archivedProducts);
         modelAndView.setViewName("user-panel/user-borrowed-products");
         return modelAndView;
     }
