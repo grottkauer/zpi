@@ -37,10 +37,10 @@ public class ResourceRenting extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "id_receiver", nullable = false)
-    private User recipent;
+    private Person recipent;
 
     @Transient
-    private User giver;
+    private Person giver;
 
     @ManyToOne
     @JoinColumn(name = "id_resource", nullable = false)
@@ -62,7 +62,7 @@ public class ResourceRenting extends BaseEntity {
     public ResourceRenting() {
     }
 
-    public ResourceRenting(int id, User giver, User recipent, Resource resource, Date addDate, Date realisationDate, Date giveBackDate, RentingStatus status) {
+    public ResourceRenting(int id, Person giver, Person recipent, Resource resource, Date addDate, Date realisationDate, Date giveBackDate, RentingStatus status) {
         super(id);
         this.giver = giver;
         this.recipent = recipent;
@@ -73,19 +73,19 @@ public class ResourceRenting extends BaseEntity {
         this.status = status;
     }
 
-    public User getRecipent() {
+    public Person getRecipent() {
         return recipent;
     }
 
-    public void setRecipent(User recipent) {
+    public void setRecipent(Person recipent) {
         this.recipent = recipent;
     }
 
-    public User getGiver() {
+    public Person getGiver() {
         return giver;
     }
 
-    public void setGiver(User giver) {
+    public void setGiver(Person giver) {
         this.giver = giver;
     }
 

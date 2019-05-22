@@ -6,12 +6,12 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "user")
-public class User extends BaseEntity {
+@Table(name = "person")
+public class Person extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_user")
+    @Column(name = "id")
     private int id;
 
     @Column(nullable = false)
@@ -49,11 +49,11 @@ public class User extends BaseEntity {
     List<Resource> owningResources = new ArrayList<>();
 
 
-    public User() {
+    public Person() {
 
     }
 
-    public User(String password, String ethereumAddress, String ethereumKey, String email, String lastName, String firstName, Date joinDate, Date birthDate, Date recallDate, Address address) {
+    public Person(String password, String ethereumAddress, String ethereumKey, String email, String lastName, String firstName, Date joinDate, Date birthDate, Date recallDate, Address address) {
         this.password = password;
         this.ethereumAddress = ethereumAddress;
         this.ethereumKey = ethereumKey;
@@ -132,7 +132,7 @@ public class User extends BaseEntity {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "Person{" +
                 "ID=" + super.getId() +
                 ", email='" + email + '\'' +
                 '}';

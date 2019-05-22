@@ -42,7 +42,7 @@ public class Resource extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "id_owner")
-    private User owner;
+    private Person owner;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "resource")
     private List<ResourceRenting> rentings = new ArrayList<>();
@@ -52,7 +52,7 @@ public class Resource extends BaseEntity {
 
     }
 
-    public Resource(int points, String name, String description, ResourceType resourceType, User owner,
+    public Resource(int points, String name, String description, ResourceType resourceType, Person owner,
                     Date addDate, Blob image, boolean canBeBorrowed, boolean isDeleted) {
         this.points = points;
         this.name = name;
@@ -116,11 +116,11 @@ public class Resource extends BaseEntity {
         this.image = image;
     }
 
-    public User getOwner() {
+    public Person getOwner() {
         return owner;
     }
 
-    public void setOwner(User owner) {
+    public void setOwner(Person owner) {
         this.owner = owner;
     }
 

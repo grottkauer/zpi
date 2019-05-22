@@ -2,38 +2,38 @@ package com.lending.repositories;
 
 import com.lending.dto.UserInfoDto;
 import com.lending.dto.UsersProductDto;
-import com.lending.entities.User;
+import com.lending.entities.Person;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface UserRepository extends CrudRepository<User, Integer>, UserRepositoryCustom {
+public interface UserRepository extends CrudRepository<Person, Integer>, UserRepositoryCustom {
 
-    @Query("select u from User u where u.email=:email")
-    User findByEmail(@Param("email") String email);
+    @Query("select u from Person u where u.email=:email")
+    Person findByEmail(@Param("email") String email);
 
     @Query("select new com.lending.dto.UserInfoDto (u.firstName, u.lastName, \n" +
-            "u.email, u.birthDate, a.zipCode, a.locality, a.street, a.nrHouse, a.nrFlat) from User u \n" +
+            "u.email, u.birthDate, a.zipCode, a.locality, a.street, a.nrHouse, a.nrFlat) from Person u \n" +
             "inner join u.address a \n" +
             "where u.id=:id")
     UserInfoDto getUserInfoById(@Param("id") int id);
 
-    @Query("select case when count(u) > 0 then true else false end from User u where u.email=:email")
+    @Query("select case when count(u) > 0 then true else false end from Person u where u.email=:email")
     boolean checkIfUserExists(@Param("email") String email);
 
-    @Query("select case when u.password=:password then true else false end from User u where u.email=:email")
+    @Query("select case when u.password=:password then true else false end from Person u where u.email=:email")
     boolean checkIfCredentialsAreCorrect(@Param("email") String email, @Param("password") String password);
 
-    @Query("select u.id from User u where u.email=:email")
+    @Query("select u.id from Person u where u.email=:email")
     int getUserIdByEmail(@Param("email") String email);
 
     @Query("select new com.lending.dto.UsersProductDto (r.id, r.name, rt.name, r.addDate, \n" +
             "(select rr2.status from ResourceRenting rr2 where rr2.orderDate = \n" +
             "(select max(rr3.orderDate) from ResourceRenting rr3 where rr3.resource = r.id) \n" +
             "and rr2.resource = r.id), r.canBeBorrowed) \n" +
-            "from User u \n" +
+            "from Person u \n" +
             "inner join u.owningResources r \n" +
             "inner join r.resourceType rt \n" +
             "where u.id=:id \n" +
@@ -41,7 +41,7 @@ public interface UserRepository extends CrudRepository<User, Integer>, UserRepos
     List<UsersProductDto> getUsersProducts(@Param("id") int id);
 
     @Query("select new com.lending.dto.UsersProductDto (r.id, r.name, rt.name, r.addDate) \n" +
-            "from User u \n" +
+            "from Person u \n" +
             "inner join u.owningResources r \n" +
             "inner join r.resourceType rt \n" +
             "where r.isDeleted = true \n" +

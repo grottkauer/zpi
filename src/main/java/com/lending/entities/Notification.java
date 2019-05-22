@@ -14,11 +14,11 @@ public class Notification extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "id_sender")
-    private User sender;
+    private Person sender;
 
     @ManyToOne
     @JoinColumn(name = "id_receiver")
-    private User receiver;
+    private Person receiver;
 
     @Column(nullable = false)
     private String title;
@@ -36,7 +36,7 @@ public class Notification extends BaseEntity {
     public Notification() {
     }
 
-    public Notification(User sender, User receiver, String title, String description, Date sendingDate, Date openDate) {
+    public Notification(Person sender, Person receiver, String title, String description, Date sendingDate, Date openDate) {
         this.sender = sender;
         this.receiver = receiver;
         this.title = title;
@@ -45,19 +45,19 @@ public class Notification extends BaseEntity {
         this.openDate = openDate;
     }
 
-    public User getSender() {
+    public Person getSender() {
         return sender;
     }
 
-    public void setSender(User sender) {
+    public void setSender(Person sender) {
         this.sender = sender;
     }
 
-    public User getReceiver() {
+    public Person getReceiver() {
         return receiver;
     }
 
-    public void setReceiver(User receiver) {
+    public void setReceiver(Person receiver) {
         this.receiver = receiver;
     }
 
