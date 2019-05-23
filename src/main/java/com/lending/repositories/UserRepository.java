@@ -14,6 +14,9 @@ public interface UserRepository extends CrudRepository<Person, Integer>, UserRep
     @Query("select u from Person u where u.email=:email")
     Person findByEmail(@Param("email") String email);
 
+    @Query("select u from Person u where u.id=:id")
+    Person getUserById(@Param("id") int id);
+
     @Query("select new com.lending.dto.UserInfoDto (u.firstName, u.lastName, \n" +
             "u.email, u.birthDate, a.zipCode, a.locality, a.street, a.nrHouse, a.nrFlat) from Person u \n" +
             "inner join u.address a \n" +
@@ -47,7 +50,6 @@ public interface UserRepository extends CrudRepository<Person, Integer>, UserRep
             "where r.isDeleted = true \n" +
             "and u.id=:id \n")
     List<UsersProductDto> getArchiveUsersProducts(@Param("id") int id);
-
 
 
 }

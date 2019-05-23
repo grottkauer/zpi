@@ -1,5 +1,7 @@
 package com.lending.dto;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class UserInfoDto {
@@ -7,7 +9,7 @@ public class UserInfoDto {
     private String firstName;
     private String lastName;
     private String email;
-    private Date birthDate;
+    @DateTimeFormat(pattern = "dd/MM/yyyy") private Date birthDate;
     private String zipCode;
     private String locality;
     private String street;

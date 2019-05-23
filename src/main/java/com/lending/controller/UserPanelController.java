@@ -1,17 +1,19 @@
 package com.lending.controller;
 
 import com.lending.dto.*;
+import com.lending.entities.Address;
+import com.lending.entities.Person;
 import com.lending.entities.Resource;
+import com.lending.repositories.AddressRepository;
 import com.lending.repositories.ResourceRepository;
 import com.lending.repositories.ResourceTypeRepository;
 import com.lending.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.sql.Blob;
@@ -33,6 +35,9 @@ public class UserPanelController {
 
     @Autowired
     public ResourceRepository resourceRepository;
+
+    @Autowired
+    AddressRepository addressRepository;
 
     private List<CategoriesDto> categories;
 //
@@ -133,9 +138,10 @@ public class UserPanelController {
     @GetMapping(value="/wypozyczone-produkty")
     public ModelAndView borrowedProduct() {
         ModelAndView modelAndView = new ModelAndView();
-        List<UsersProductDto> borrowedProducts = resourceRepository.getProductsBorrowedByUser(3);
+        int userId = getLoggedUserId();
+        List<UsersProductDto> borrowedProducts = resourceRepository.getProductsBorrowedByUser(userId);
         modelAndView.addObject("borrowedProducts", borrowedProducts);
-        List<UsersProductDto> archivedProducts = resourceRepository.getArchiveProductsBorrowedByUser(3);
+        List<UsersProductDto> archivedProducts = resourceRepository.getArchiveProductsBorrowedByUser(userId);
         modelAndView.addObject("archivedProducts", archivedProducts);
         modelAndView.setViewName("user-panel/user-borrowed-products");
         return modelAndView;
@@ -145,8 +151,9 @@ public class UserPanelController {
     public ModelAndView products() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("user-panel/user-products");
-        List<UsersProductDto> products = userRepository.getUsersProducts(3);
-        List<UsersProductDto> archiveProducts = userRepository.getArchiveUsersProducts(3);
+        int userId = getLoggedUserId();
+        List<UsersProductDto> products = userRepository.getUsersProducts(userId);
+        List<UsersProductDto> archiveProducts = userRepository.getArchiveUsersProducts(userId);
         modelAndView.addObject("ProductsList", products);
         modelAndView.addObject("ArchiveProductsList", archiveProducts);
         return modelAndView;
@@ -155,16 +162,71 @@ public class UserPanelController {
     @GetMapping(value="/edytuj-dane")
     public ModelAndView myData() {
         ModelAndView modelAndView = new ModelAndView();
+        int userId = getLoggedUserId();
+        UserInfoDto user = userRepository.getUserInfoById(userId);
         modelAndView.setViewName("user-panel/user-edit-data");
-        UserInfoDto currentUser = userRepository.getUserInfoById(3);
-        modelAndView.addObject("user", currentUser);
+        modelAndView.addObject("user", user);
+        return modelAndView;
+    }
+
+    @PostMapping("/edytuj-dane")
+    public ModelAndView myDataSubmit(@ModelAttribute UserInfoDto userInfo) {
+        ModelAndView modelAndView = new ModelAndView();
+        int userId = getLoggedUserId();
+        Person user = userRepository.getUserById(userId);
+        user.setFirstName(userInfo.getFirstName());
+        user.setLastName(userInfo.getLastName());
+        user.setBirthDate(userInfo.getBirthDate());
+        Address address = addressRepository.getAddressesByUserId(userId);
+        address.setZipCode(userInfo.getZipCode());
+        address.setLocality(userInfo.getLocality());
+        address.setStreet(userInfo.getStreet());
+        address.setNrHouse(userInfo.getNrHouse());
+        address.setNrFlat(userInfo.getNrFlat());
+        userRepository.save(user);
+        addressRepository.save(address);
+        //TODO: data changed successfully popup/dialog
+        modelAndView.setViewName("user-panel/user-panel");
         return modelAndView;
     }
 
     @GetMapping(value="/zmien-haslo")
     public ModelAndView editPassword() {
         ModelAndView modelAndView = new ModelAndView();
+        UserPasswordInfoDto userPasswordInfo = new UserPasswordInfoDto();
+        modelAndView.addObject("passwordInfo", userPasswordInfo);
         modelAndView.setViewName("user-panel/user-edit-password");
+        return modelAndView;
+    }
+
+    @PostMapping(value="/zmien-haslo")
+    public ModelAndView editPasswordSubmit(@ModelAttribute UserPasswordInfoDto passwordInfo) {
+        ModelAndView modelAndView = new ModelAndView();
+        String email = getLoggedUserEmail();
+        System.out.println(passwordInfo.getOldPassword());
+        if (userRepository.checkIfCredentialsAreCorrect(email, passwordInfo.getOldPassword())) {
+            if (passwordInfo.checkIfNewPasswordsMatch()) {
+                if (passwordInfo.checkIfOldAndNewAreDifferent()) {
+                    int userId = getLoggedUserId();
+                    Person user = userRepository.getUserById(userId);
+                    user.setPassword(passwordInfo.getNewPassword());
+                    userRepository.save(user);
+                    //TODO: data changed successfully popup/dialog
+                }
+                else {
+                    //TODO: new password cannot be the same as the old one
+                }
+            }
+            else {
+                System.out.println("Hasła nie są takie same");
+                //TODO: new passwords not match info
+            }
+        }
+        else {
+            System.out.println("Stare hasło jest nieprawidłowe");
+            //TODO: old password is incorrect info
+        }
+        modelAndView.setViewName("user-panel/user-panel");
         return modelAndView;
     }
 
@@ -291,4 +353,16 @@ public class UserPanelController {
         modelAndView.addObject("photo", photoSrc);
         return modelAndView;
     }
+
+    private int getLoggedUserId() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUser = authentication.getName();
+        return userRepository.getUserIdByEmail(currentUser);
+    }
+
+    private String getLoggedUserEmail() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        return authentication.getName();
+    }
+
 }
