@@ -8,10 +8,6 @@ Polskie znaki
 Powiadomienia:
 	- w wersji mobilnej poprawiæ szerokoœæ treœci powiadomienia 
 (tego w panelu)
-	- naprawiæ szczegó³y zamówienia (po klikniêciu na rowa) i
-dodaæ do nich linka z poziomu powiadomieñ dzwonkowych
-
-Category2:
-	- poprawiæ wysokoœci elementów (gdy wejdzie wiêksza baza)
+	- naprawiæ mapke w modalu edytuj¹cym
 
 Sidebar mobilny

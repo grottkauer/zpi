@@ -1,0 +1,33 @@
+Wypo¿yczenie:
+
+1. Propozycja terminu wypo¿yczenia przez biorcê (przed powiadomieniami)
+2. Powiadomienie propozycji terminu (dawca)
+3. Potwierdzenie przez dawcê propozycji terminu
+4. Powiadomienie potwierdzenia terminu (obie strony)
+5. Powiadomienie o terminie spotkania (obie strony)
+6. Powiadomienie o sprawdzeniu czy wypo¿yczono (obie strony)
+7. Potwierdzenie wypo¿yczenia (obie strony)
+
+Rozga³êzienie 1.:
+3a. Propozycja innego terminu (dawca)
+4a. Powiadomienie o innym terminie (biorca)
+	- potwierdzenie propozycji terminu i przejœcie do punktu 4. z g³ównego ruchu
+	- propozycja innego terminu (i tak do czasu, gdy biorca nie zrezygnuje)
+	- anulacja wypo¿yczenia
+
+Rozga³êzienie 2.:
+7a. Brak potwierdzenia po jednej ze stron = brak wypo¿yczenia
+8a. Propozycja nowego terminu (biorca)
+	- przejœcie do punktu 3. z g³ównego ruchu
+
+Rodzaje powiadomieñ:
+1. Propozycja terminu oddanie (dawca)
+2. Propozycja terminu wypo¿yczenie (dawca)
+3. Propozycja terminu oddanie (biorca)
+4. Propozycja terminu wypo¿yczenie (biorca)
+5. Potwierdzenie terminu oddania
+6. Potwierdzenie terminu wypo¿yczenia
+7. Potwierdzenie oddania
+8. Potwierdzenie wypo¿yczenia
+9. Sprawdzenie czy oddano
+10. Sprawdzenie czy wypo¿yczono

@@ -65,15 +65,29 @@
         </div>
 
         <!--================Single Product Area =================-->
-        <div class="product_image_area ml-md-5">
+        <div class="product_image_area ml-md-5" style="padding: 20px 0;">
             <div class="container">
                 <div class="row s_product_inner">
                     <div class="col-lg-6">
-                        <div class="s_product_img" th:if="${hasPhoto == false}">
-                            <img src="../images/sample-products/no_image.png">
-                        </div>
-                        <div class="s_product_img" th:if="${hasPhoto == true}">
-                            <img th:src="${photo}" height="500" width="500">
+                        <div class="s_product_img">
+                            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                                <ol class="carousel-indicators">
+                                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active">
+                                        <img src="../images/sample-products/no_image.png" alt=""
+                                             style="width: 60px; height: 60px;">
+                                    </li>
+                                </ol>
+                                <div th:class="carousel-inner" th:if="${hasPhoto == false}">>
+                                    <div class="carousel-item active">
+                                        <img class="d-block w-100" src="../images/sample-products/no_image.png" alt="First slide">
+                                    </div>
+                                </div>
+                                <div th:class="carousel-inner" th:if="${hasPhoto == true}">
+                                    <div class="carousel-item active">
+                                        <img th:src="${photo}" height="500" width="500">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-lg-5 offset-lg-1 short-description">
