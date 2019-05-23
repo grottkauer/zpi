@@ -19,8 +19,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers(
                         "/", "/kontakt",
-                        "/js/**",
+                        "../js/**",
+                        "/manifest.json",
                         "/css/**",
+                        "/startbootstrap-agency-gh-pages/vendor/**",
+                        "/startbootstrap-agency-gh-pages/css/**",
                         "/img/**",
                         "/webjars/**").permitAll()
                 .antMatchers("/user/**").hasRole("USER")
