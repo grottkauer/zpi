@@ -159,6 +159,15 @@ public class UserPanelController {
         return modelAndView;
     }
 
+    @DeleteMapping(value="/moje-produkty")
+    public ModelAndView productsDeleteItem(@RequestParam int item) {
+        Resource resourceToDelete = resourceRepository.getResourceById(item);
+        resourceToDelete.setDeleted(true);
+        resourceRepository.save(resourceToDelete);
+        //todo AJAX REFRESH IN USER_LAYOUT AND THEN POPUP SUCCESS
+        return new ModelAndView("redirect:moje-produkty");
+    }
+
     @GetMapping(value="/edytuj-dane")
     public ModelAndView myData() {
         ModelAndView modelAndView = new ModelAndView();

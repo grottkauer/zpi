@@ -247,7 +247,6 @@
             <div class="modal-body">Wybierz "Potwierdź" jeżeli chcesz usunąć produkt.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Anuluj</button>
-                <!-- todo logout from session -->
                 <form action="#" th:action="@{/moje-konto/info-produktu(item=${item.getId()})}" th:method="delete" >
                     <input type="hidden" name="_method" value="delete" />
                     <button class="btn btn-primary" type="submit"

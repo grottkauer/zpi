@@ -155,6 +155,26 @@ $(document).ready(function(){
 	});
 });
 </script>
+    <script>
+        function deleteSingleProduct(id) {
+            console.log("bla");
+            $('#deleteProductModal').modal();
+            $('#confirm-delete-item').on('click', function() {
+                $('#deleteProductModal').modal('hide');
+                //window.location.href = "moje-konto/moje-produkty";
+                $.ajax({
+                    type: 'DELETE',
+                    url: "/moje-konto/moje-produkty",
+                    data: {item: id},
+                    dataType: 'text',
+                    success: function(data) {
+                        location.reload();
+                    }
+                });
+
+            });
+        }
+    </script>
 </head>
 <body>
 

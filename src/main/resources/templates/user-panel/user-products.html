@@ -159,7 +159,11 @@
                                                 <i class="fas fa-edit"></i>
                                             </a>
                                             <!-- todo handle delete modal (db) -->
-                                            <a href="#deleteProductModal" class="edit" data-toggle="modal">
+<!--                                            <form>-->
+<!--                                                <input type="button" th:attr="onclick='deleteSingleProduct('+${product.getId()}+')'" value="G"/>-->
+<!--                                            </form>-->
+                                            <a class="edit" style="cursor: pointer"
+                                               th:attr="onclick='deleteSingleProduct('+${product.getId()}+')'">
                                                 <i class="fas fa-trash-alt"></i>
                                             </a>
                                         </td>
@@ -241,7 +245,7 @@
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Anuluj</button>
                 <!-- todo delete one resource -->
-                <button class="btn btn-primary"  type="button" data-dismiss="modal">Potwierdź</button>
+                <button class="btn btn-primary"  type="button" id="confirm-delete-item" data-dismiss="modal">Potwierdź</button>
             </div>
         </div>
     </div>
@@ -430,6 +434,8 @@ $(".custom-file-input").on("change", function() {
   reader.readAsDataURL(selectedFile);
 }
 </script>
+
+
 
 <!-- Bootstrap core JavaScript-->
 <script src="../user-panel/vendor/jquery/jquery.min.js"></script>
