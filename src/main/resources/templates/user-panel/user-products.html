@@ -85,6 +85,7 @@
                                     <a href="#deleteSelectedModal" class="btn btn-danger" data-toggle="modal">
                                         <i class="fas fa-trash-alt"></i>
                                         <span>Usuń zaznaczone</span>
+                                        <!-- todo archive products -->
                                     </a>
                                 </div>
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -149,12 +150,15 @@
                                         </td>
                                         <td class="text-center">
                                             <!-- todo checkBorrowModal show only when status is Zamowiony or Wypozyczony -->
+                                            <!-- todo handle check modal (db)-->
                                             <a href="#checkBorrowModal" class="edit" data-toggle="modal">
                                                 <i class="fas fa-check"></i>
                                             </a>
+                                            <!-- todo handle edit modal (db) -->
                                             <a href="#editProductModal" class="edit" data-toggle="modal">
                                                 <i class="fas fa-edit"></i>
                                             </a>
+                                            <!-- todo handle delete modal (db) -->
                                             <a href="#deleteProductModal" class="edit" data-toggle="modal">
                                                 <i class="fas fa-trash-alt"></i>
                                             </a>
@@ -237,7 +241,7 @@
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Anuluj</button>
                 <!-- todo delete one resource -->
-                <button class="btn btn-primary" type="button" data-dismiss="modal">Potwierdź</button>
+                <button class="btn btn-primary"  type="button" data-dismiss="modal">Potwierdź</button>
             </div>
         </div>
     </div>

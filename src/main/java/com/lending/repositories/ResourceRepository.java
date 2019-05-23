@@ -73,20 +73,36 @@ public interface ResourceRepository extends CrudRepository<Resource, Integer> {
             "where r.id=:id")
     List<ResourceRentingHistoryDto> getProductRentingHistory(@Param("id") int id);
 
-    @Query("select new com.lending.dto.UsersProductDto (r.id, r.name, rt.name, rr.borrowDate) \n" +
+    @Query("select new com.lending.dto.UsersProductDto (r.id, r.name, \n" +
+            "CONCAT(case when hl3.name is not null then concat(hl3.name,' -  ') else '' end,\n" +
+            "case when hl2.name is not null then concat(hl2.name,' - ') else '' end, \n" +
+            "case when hl1.name is not null then concat(hl1.name,' - ') else '' end, \n" +
+            "rt.name), \n" +
+            "rr.borrowDate) \n" +
             "from Resource r \n" +
             "inner join r.rentings rr \n" +
             "inner join r.resourceType rt \n" +
             "inner join rr.recipent u \n" +
+            "left join rt.higherLevel hl1 \n" +
+            "left join hl1.higherLevel hl2 \n" +
+            "left join hl2.higherLevel hl3 \n" +
             "where u.id=:id \n" +
             "and rr.status = com.lending.entities.RentingStatus.Zrealizowane")
     List<UsersProductDto> getProductsBorrowedByUser(@Param("id") int id);
 
-    @Query("select new com.lending.dto.UsersProductDto (r.id, r.name, rt.name, rr.giveBackDate) \n" +
+    @Query("select new com.lending.dto.UsersProductDto (r.id, r.name, \n" +
+            "CONCAT(case when hl3.name is not null then concat(hl3.name,' -  ') else '' end, \n" +
+            "case when hl2.name is not null then concat(hl2.name,' - ') else '' end, \n" +
+            "case when hl1.name is not null then concat(hl1.name,' - ') else '' end, \n" +
+            "rt.name), \n" +
+            "rr.giveBackDate) \n" +
             "from Resource r \n" +
             "inner join r.rentings rr \n" +
             "inner join r.resourceType rt \n" +
             "inner join rr.recipent u \n" +
+            "left join rt.higherLevel hl1 \n" +
+            "left join hl1.higherLevel hl2 \n" +
+            "left join hl2.higherLevel hl3 \n" +
             "where u.id=:id \n" +
             "and rr.status = com.lending.entities.RentingStatus.Oddane")
     List<UsersProductDto> getArchiveProductsBorrowedByUser(@Param("id") int id);
