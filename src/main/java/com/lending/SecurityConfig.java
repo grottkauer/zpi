@@ -1,17 +1,27 @@
 package com.lending;
 
+import com.lending.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
+import java.util.ArrayList;
 
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private LoggingAccessDeniedHandler accessDeniedHandler;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -48,8 +58,24 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("natalia@wp.pl").password("{noop}kotelki").roles("USER");
+        auth.authenticationProvider(new AuthenticationProvider() {
+            @Override
+            public Authentication authenticate(Authentication authentication) throws AuthenticationException {
+                String email = authentication.getName();
+                String password = authentication.getCredentials().toString();
+                if (userRepository.checkIfUserExists(email) && userRepository.checkIfCredentialsAreCorrect(email, password))
+                    return new UsernamePasswordAuthenticationToken(email, password, new ArrayList<>());
+                else
+                    return null;
+            }
+
+            @Override
+            public boolean supports(Class<?> aClass) {
+                return aClass.equals(UsernamePasswordAuthenticationToken.class);
+            }
+        });
+        //auth.inMemoryAuthentication()
+        //        .withUser("natalia@wp.pl").password("{noop}kotelki").roles("USER");
     }
 
 }
