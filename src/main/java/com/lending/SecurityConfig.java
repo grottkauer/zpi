@@ -26,6 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/startbootstrap-agency-gh-pages/css/**",
                         "/startbootstrap-agency-gh-pages/**",
                         "/img/**",
+                        "/images/**",
                         "/webjars/**").permitAll()
                 .antMatchers("/user/**").hasRole("USER")
                 .anyRequest().authenticated()
