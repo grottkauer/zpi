@@ -103,6 +103,7 @@
                                         <div class="col-3 mr-3">
                                             Kategoria:
                                         </div>
+                                        <!-- todo adjust to longer category name -->
                                         <div class="col-6 yellow-text">
                                             <div th:text="${item.getCategoryName()}"></div>
                                         </div>
@@ -247,7 +248,12 @@
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Anuluj</button>
                 <!-- todo logout from session -->
-                <button class="btn btn-primary" type="button" data-dismiss="modal">Potwierdź</button>
+                <form action="#" th:action="@{/moje-konto/info-produktu(item=${item.getId()})}" th:method="delete" >
+                    <input type="hidden" name="_method" value="delete" />
+                    <button class="btn btn-primary" type="submit"
+                        >Potwierdź</button>
+                </form>
+
             </div>
         </div>
     </div>

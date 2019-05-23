@@ -282,6 +282,15 @@ public class UserPanelController {
         return modelAndView;
     }
 
+    @DeleteMapping(value="/info-produktu")
+    public ModelAndView productInfoDelete(@RequestParam int item) {
+        Resource resourceToDelete = resourceRepository.getResourceById(item);
+        resourceToDelete.setDeleted(true);
+        resourceRepository.save(resourceToDelete);
+        //todo: success dialog/popup
+        return products();
+    }
+
     @GetMapping(value="/info-wypozyczonego-produktu")
     public ModelAndView productInfoBorrowed(@RequestParam int item) {
         ModelAndView modelAndView = initializeModelAndViewForProductDetails(item);

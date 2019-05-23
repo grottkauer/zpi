@@ -130,5 +130,8 @@ public interface ResourceRepository extends CrudRepository<Resource, Integer> {
     @Query("select i.content from Resource r inner join r.images i where r.id=:id")
     List<Blob> getPhotosOfResource(@Param("id") int id);
 
+    @Query("select r from Resource r where r.id=:id")
+    Resource getResourceById(@Param("id") int id);
+
 
 }
