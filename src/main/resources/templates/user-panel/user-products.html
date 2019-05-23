@@ -82,10 +82,10 @@
                         <div class="card-body">
                             <div class="table-responsive">
                                 <div class="mb-2">
-                                    <a href="#deleteSelectedModal" class="btn btn-danger" data-toggle="modal">
+                                    <a onclick="deleteSeletedProducts()" class="btn btn-danger" 
+                                        style="cursor:pointer;">
                                         <i class="fas fa-trash-alt"></i>
                                         <span>Usuń zaznaczone</span>
-                                        <!-- todo archive products -->
                                     </a>
                                 </div>
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -125,7 +125,7 @@
                                     <tr class="pointer-row" th:each="product:${ProductsList}">
                                         <td class="text-center">
                                             <span class="custom-checkbox">
-                                                <input type="checkbox" id="checkbox1" name="options[]" value="1">
+                                                <input type="checkbox" id="checkbox1" name="product" th:value="${product.getId()}">
                                                 <label for="checkbox1"></label>
                                             </span>
                                         </td>
@@ -158,10 +158,6 @@
                                             <a href="#editProductModal" class="edit" data-toggle="modal">
                                                 <i class="fas fa-edit"></i>
                                             </a>
-                                            <!-- todo handle delete modal (db) -->
-<!--                                            <form>-->
-<!--                                                <input type="button" th:attr="onclick='deleteSingleProduct('+${product.getId()}+')'" value="G"/>-->
-<!--                                            </form>-->
                                             <a class="edit" style="cursor: pointer"
                                                th:attr="onclick='deleteSingleProduct('+${product.getId()}+')'">
                                                 <i class="fas fa-trash-alt"></i>
@@ -244,7 +240,6 @@
             <div class="modal-body">Wybierz "Potwierdź" jeżeli chcesz usunąć produkt.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Anuluj</button>
-                <!-- todo delete one resource -->
                 <button class="btn btn-primary"  type="button" id="confirm-delete-item" data-dismiss="modal">Potwierdź</button>
             </div>
         </div>
@@ -264,8 +259,7 @@
             <div class="modal-body">Wybierz "Potwierdź" jeżeli chcesz usunąć zaznaczone.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Anuluj</button>
-                <!-- todo delete selected resources -->
-                <button class="btn btn-primary" type="button" data-dismiss="modal">Potwierdź</button>
+                <button class="btn btn-primary" type="button" data-dismiss="modal" id="confirm-selection-delete">Potwierdź</button>
             </div>
         </div>
     </div>

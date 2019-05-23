@@ -168,6 +168,17 @@ public class UserPanelController {
         return new ModelAndView("redirect:moje-produkty");
     }
 
+    @DeleteMapping(value="/moje-produkty/selected")
+    public ModelAndView productsDeleteMultipleItems(@RequestParam(value = "itemsArray[]") Integer[] itemsArray) {
+        List<Resource> resourcesToDelete = resourceRepository.getResourcesByIds(itemsArray);
+        for (Resource r : resourcesToDelete) {
+            r.setDeleted(true);
+        }
+        resourceRepository.saveAll(resourcesToDelete);
+        //todo AJAX REFRESH IN USER_LAYOUT AND THEN POPUP SUCCESS
+        return new ModelAndView("redirect:moje-produkty");
+    }
+
     @GetMapping(value="/edytuj-dane")
     public ModelAndView myData() {
         ModelAndView modelAndView = new ModelAndView();
