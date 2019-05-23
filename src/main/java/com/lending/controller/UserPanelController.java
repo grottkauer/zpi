@@ -197,12 +197,12 @@ public class UserPanelController {
         List<Resource> availableResources = resourceRepository.getAvailableResourcesWithHighestCategory(id);
         List<String> images = new ArrayList<>(availableResources.size());
         for (Resource r : availableResources) {
-            boolean hasPhoto = resourceRepository.checkIfHasPhoto(r.getId());
-            Blob blob = resourceRepository.getPhotoOfResource(r.getId());
+            boolean hasPhoto = resourceRepository.checkIfHasPhoto(r.getId_resource());
+            List<Blob> blob = resourceRepository.getPhotosOfResource(r.getId_resource());
             String photoSrc = null;
             if (hasPhoto) {
                 try {
-                    byte[] photoBytes = blob.getBytes(1l, (int) blob.length());
+                    byte[] photoBytes = blob.get(0).getBytes(1l, (int) blob.get(0).length());
                     Base64.Encoder encoder = Base64.getEncoder();
                     photoSrc = "data:image/png;base64," + encoder.encodeToString(photoBytes);
                 } catch (Exception e) {
@@ -224,11 +224,11 @@ public class UserPanelController {
         ResourceDetailsDto resource = resourceRepository.getProductDetails(item);
         List<ResourceRentingHistoryDto> history = resourceRepository.getProductRentingHistory(item);
         boolean hasPhoto = resourceRepository.checkIfHasPhoto(item);
-        Blob blob = resourceRepository.getPhotoOfResource(item);
+        List<Blob> blob = resourceRepository.getPhotosOfResource(item);
         String photoSrc = null;
         if (hasPhoto) {
             try {
-                byte[] photoBytes = blob.getBytes(1l, (int) blob.length());
+                byte[] photoBytes = blob.get(0).getBytes(1l, (int) blob.get(0).length());
                 Base64.Encoder encoder = Base64.getEncoder();
                 photoSrc = "data:image/png;base64," + encoder.encodeToString(photoBytes);
             } catch (Exception e) {
@@ -250,11 +250,11 @@ public class UserPanelController {
         List<ResourceRentingHistoryDto> history = resourceRepository.getProductRentingHistory(item);
         BorrowingUserInfoDto borrowingUser = resourceRepository.getGivingUserInfo(item);
         boolean hasPhoto = resourceRepository.checkIfHasPhoto(item);
-        Blob blob = resourceRepository.getPhotoOfResource(item);
+        List<Blob> blob = resourceRepository.getPhotosOfResource(item);
         String photoSrc = null;
         if (hasPhoto) {
             try {
-                byte[] photoBytes = blob.getBytes(1l, (int) blob.length());
+                byte[] photoBytes = blob.get(0).getBytes(1l, (int) blob.get(0).length());
                 Base64.Encoder encoder = Base64.getEncoder();
                 photoSrc = "data:image/png;base64," + encoder.encodeToString(photoBytes);
             } catch (Exception e) {
@@ -277,11 +277,11 @@ public class UserPanelController {
         List<ResourceRentingHistoryDto> history = resourceRepository.getProductRentingHistory(item);
         BorrowingUserInfoDto borrowingUser = resourceRepository.getGivingUserInfo(item);
         boolean hasPhoto = resourceRepository.checkIfHasPhoto(item);
-        Blob blob = resourceRepository.getPhotoOfResource(item);
+        List<Blob> blob = resourceRepository.getPhotosOfResource(item);
         String photoSrc = null;
         if (hasPhoto) {
             try {
-                byte[] photoBytes = blob.getBytes(1l, (int) blob.length());
+                byte[] photoBytes = blob.get(0).getBytes(1l, (int) blob.get(0).length());
                 Base64.Encoder encoder = Base64.getEncoder();
                 photoSrc = "data:image/png;base64," + encoder.encodeToString(photoBytes);
             } catch (Exception e) {

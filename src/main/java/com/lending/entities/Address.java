@@ -8,7 +8,7 @@ public class Address extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_address")
+    @Column(name = "id")
     private int id;
 
     @Column(nullable = false)

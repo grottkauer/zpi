@@ -99,11 +99,13 @@ public interface ResourceRepository extends CrudRepository<Resource, Integer> {
         "where r.id=:prodID")
     BorrowingUserInfoDto getGivingUserInfo(@Param("prodID") int prodID);
 
-    @Query("select case when r.image is null then false else true end from Resource r where r.id=:id")
+    //@Query("select case when r.image is null then false else true end from Resource r where r.id=:id")
+    @Query("select case when count(i.id) = 0 then false else true end \n" +
+            "from Resource r inner join r.images i where r.id=:id")
     boolean checkIfHasPhoto(@Param("id") int id);
 
-    @Query("select r.image from Resource r where r.id=:id")
-    Blob getPhotoOfResource(@Param("id") int id);
+    @Query("select i.content from Resource r inner join r.images i where r.id=:id")
+    List<Blob> getPhotosOfResource(@Param("id") int id);
 
 
 }

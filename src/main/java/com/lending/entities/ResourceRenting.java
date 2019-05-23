@@ -7,32 +7,9 @@ import java.util.Date;
 @Table(name = "resource_renting")
 public class ResourceRenting extends BaseEntity {
 
-    /*
-    public enum RentingStatus {
-        Utworzone(0), Zrealizowane(1), Oddane(2);
-
-        private final int value;
-
-        RentingStatus(int i) {
-            this.value = i;
-        }
-
-        public static RentingStatus fromInteger(int integer){
-            switch (integer){
-                case 0:
-                    return Utworzone;
-                case 1:
-                    return Zrealizowane;
-                case 2:
-                    return Oddane;
-            }
-            return null;
-        }
-    } */
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_resource_renting")
+    @Column(name = "id")
     private int id;
 
     @ManyToOne

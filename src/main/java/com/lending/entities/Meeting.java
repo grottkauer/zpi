@@ -9,7 +9,7 @@ public class Meeting extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_meeting")
+    @Column(name = "id")
     private int id;
 
     @ManyToOne
