@@ -1,3 +1,4 @@
+/*
 -- todo add current date in used type of sql
 -- MAIN CATEGORIES
 INSERT INTO resource_type(id, name) VALUES (1, 'Książki');
@@ -327,3 +328,4 @@ insert into RESOURCE(id, name, points, id_resource_type, id_owner, add_date, can
  --test borrowed products on natalia
 insert into RESOURCE_RENTING(ORDER_DATE, BORROW_DATE, GIVE_BACK_DATE, STATUS, ID_RECEIVER, ID_RESOURCE) values ('2018-10-14', '2018-10-15', '2018-12-31', 2, 3, 52);
 insert into RESOURCE_RENTING(ORDER_DATE, BORROW_DATE, GIVE_BACK_DATE, STATUS, ID_RECEIVER, ID_RESOURCE) values ('2019-05-14', '2019-05-16', null, 1, 3, 51);
+*/
