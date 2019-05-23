@@ -193,7 +193,40 @@ public class UserPanelController {
     @GetMapping(value="/zmien-haslo")
     public ModelAndView editPassword() {
         ModelAndView modelAndView = new ModelAndView();
+        UserPasswordInfoDto userPasswordInfo = new UserPasswordInfoDto();
+        modelAndView.addObject("passwordInfo", userPasswordInfo);
         modelAndView.setViewName("user-panel/user-edit-password");
+        return modelAndView;
+    }
+
+    @PostMapping(value="/zmien-haslo")
+    public ModelAndView editPasswordSubmit(@ModelAttribute UserPasswordInfoDto passwordInfo) {
+        ModelAndView modelAndView = new ModelAndView();
+        String email = getLoggedUserEmail();
+        System.out.println(passwordInfo.getOldPassword());
+        if (userRepository.checkIfCredentialsAreCorrect(email, passwordInfo.getOldPassword())) {
+            if (passwordInfo.checkIfNewPasswordsMatch()) {
+                if (passwordInfo.checkIfOldAndNewAreDifferent()) {
+                    int userId = getLoggedUserId();
+                    Person user = userRepository.getUserById(userId);
+                    user.setPassword(passwordInfo.getNewPassword());
+                    userRepository.save(user);
+                    //TODO: data changed successfully popup/dialog
+                }
+                else {
+                    //TODO: new password cannot be the same as the old one
+                }
+            }
+            else {
+                System.out.println("Hasła nie są takie same");
+                //TODO: new passwords not match info
+            }
+        }
+        else {
+            System.out.println("Stare hasło jest nieprawidłowe");
+            //TODO: old password is incorrect info
+        }
+        modelAndView.setViewName("user-panel/user-panel");
         return modelAndView;
     }
 
@@ -325,6 +358,11 @@ public class UserPanelController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String currentUser = authentication.getName();
         return userRepository.getUserIdByEmail(currentUser);
+    }
+
+    private String getLoggedUserEmail() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        return authentication.getName();
     }
 
 }
