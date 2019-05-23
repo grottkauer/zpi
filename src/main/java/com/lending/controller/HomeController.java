@@ -37,24 +37,24 @@ public class HomeController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "zaloguj", method = RequestMethod.POST)
-    public String processLogIn(@RequestParam String email, @RequestParam String password)
-    {
-        boolean wasUserFound = false;
-        int userId = Integer.MIN_VALUE;
-        if (userRepository.checkIfUserExists(email)) {
-            wasUserFound = userRepository.checkIfCredentialsAreCorrect(email, password);
-            if (wasUserFound)
-                userId = userRepository.getUserIdByEmail(email);
-            // else show that password is incorrect
-        }
-        // else show that user was not found
-
-        // add user id as parameter
-        if (wasUserFound) {
-            // Redirect to /user-panel
-            return "redirect:/moje-konto";
-        }
-        return "redirect:/zaloguj";
-    }
+//    @RequestMapping(value = "zaloguj", method = RequestMethod.POST)
+//    public String processLogIn(@RequestParam String email, @RequestParam String password)
+//    {
+//        boolean wasUserFound = false;
+//        int userId = Integer.MIN_VALUE;
+//        if (userRepository.checkIfUserExists(email)) {
+//            wasUserFound = userRepository.checkIfCredentialsAreCorrect(email, password);
+//            if (wasUserFound)
+//                userId = userRepository.getUserIdByEmail(email);
+//            // else show that password is incorrect
+//        }
+//        // else show that user was not found
+//
+//        // add user id as parameter
+//        if (wasUserFound) {
+//            // Redirect to /user-panel
+//            return "redirect:/moje-konto";
+//        }
+//        return "redirect:/zaloguj";
+//    }
 }
