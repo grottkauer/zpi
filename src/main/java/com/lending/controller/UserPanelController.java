@@ -33,6 +33,8 @@ public class UserPanelController {
 
     @Autowired
     public ResourceRepository resourceRepository;
+
+    private List<CategoriesDto> categories;
 //
 //    @RequestMapping("/db")
 //    @ResponseBody
@@ -53,6 +55,7 @@ public class UserPanelController {
     public ModelAndView index() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("user-panel/borrow-panel");
+        //initializeCategories();
         return modelAndView;
 
     }
@@ -184,15 +187,7 @@ public class UserPanelController {
     @GetMapping(value="/szukaj")
     public ModelAndView search(@RequestParam int id) {
         ModelAndView modelAndView = new ModelAndView();
-        List<CategoriesDto> categories = resourceTypeRepository.getHigherLevelTypes();
-        for (CategoriesDto highestLevel : categories) {
-            highestLevel.setSubcategories(resourceTypeRepository.getSubcategories(highestLevel.getHigherLevelType().getId()));
-            for (CategoriesDto firstLevelSub : highestLevel.getSubcategories()) {
-                firstLevelSub.setSubcategories(resourceTypeRepository.getSubcategories(firstLevelSub.getHigherLevelType().getId()));
-                for (CategoriesDto secondLevelSub : firstLevelSub.getSubcategories())
-                    secondLevelSub.setSubcategories(resourceTypeRepository.getSubcategories(secondLevelSub.getHigherLevelType().getId()));
-            }
-        }
+        initializeCategories();
         modelAndView.addObject("categories", categories);
         List<Resource> availableResources = resourceRepository.getAvailableResourcesWithHighestCategory(id);
         List<String> images = new ArrayList<>(availableResources.size());
@@ -220,79 +215,21 @@ public class UserPanelController {
 
     @GetMapping(value="/info-produktu")
     public ModelAndView productInfo(@RequestParam int item) {
-        ModelAndView modelAndView = new ModelAndView();
-        ResourceDetailsDto resource = resourceRepository.getProductDetails(item);
-        List<ResourceRentingHistoryDto> history = resourceRepository.getProductRentingHistory(item);
-        boolean hasPhoto = resourceRepository.checkIfHasPhoto(item);
-        List<Blob> blob = resourceRepository.getPhotosOfResource(item);
-        String photoSrc = null;
-        if (hasPhoto) {
-            try {
-                byte[] photoBytes = blob.get(0).getBytes(1l, (int) blob.get(0).length());
-                Base64.Encoder encoder = Base64.getEncoder();
-                photoSrc = "data:image/png;base64," + encoder.encodeToString(photoBytes);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        modelAndView.addObject("item", resource);
-        modelAndView.addObject("history", history);
-        modelAndView.addObject("hasPhoto", hasPhoto);
-        modelAndView.addObject("photo", photoSrc);
+        ModelAndView modelAndView = initializeModelAndViewForProductDetails(item);
         modelAndView.setViewName("user-panel/user-product-info");
         return modelAndView;
     }
 
     @GetMapping(value="/info-wypozyczonego-produktu")
     public ModelAndView productInfoBorrowed(@RequestParam int item) {
-        ModelAndView modelAndView = new ModelAndView();
-        ResourceDetailsDto resource = resourceRepository.getProductDetails(item);
-        List<ResourceRentingHistoryDto> history = resourceRepository.getProductRentingHistory(item);
-        BorrowingUserInfoDto borrowingUser = resourceRepository.getGivingUserInfo(item);
-        boolean hasPhoto = resourceRepository.checkIfHasPhoto(item);
-        List<Blob> blob = resourceRepository.getPhotosOfResource(item);
-        String photoSrc = null;
-        if (hasPhoto) {
-            try {
-                byte[] photoBytes = blob.get(0).getBytes(1l, (int) blob.get(0).length());
-                Base64.Encoder encoder = Base64.getEncoder();
-                photoSrc = "data:image/png;base64," + encoder.encodeToString(photoBytes);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        modelAndView.addObject("item", resource);
-        modelAndView.addObject("history", history);
-        modelAndView.addObject("borrowingUser", borrowingUser);
-        modelAndView.addObject("hasPhoto", hasPhoto);
-        modelAndView.addObject("photo", photoSrc);
+        ModelAndView modelAndView = initializeModelAndViewForProductDetails(item);
         modelAndView.setViewName("user-panel/user-product-info-borrowed");
         return modelAndView;
     }
 
     @GetMapping(value="/szczegoly")
     public ModelAndView productDetails(@RequestParam int item) {
-        ModelAndView modelAndView = new ModelAndView();
-        ResourceDetailsDto resource = resourceRepository.getProductDetails(item);
-        List<ResourceRentingHistoryDto> history = resourceRepository.getProductRentingHistory(item);
-        BorrowingUserInfoDto borrowingUser = resourceRepository.getGivingUserInfo(item);
-        boolean hasPhoto = resourceRepository.checkIfHasPhoto(item);
-        List<Blob> blob = resourceRepository.getPhotosOfResource(item);
-        String photoSrc = null;
-        if (hasPhoto) {
-            try {
-                byte[] photoBytes = blob.get(0).getBytes(1l, (int) blob.get(0).length());
-                Base64.Encoder encoder = Base64.getEncoder();
-                photoSrc = "data:image/png;base64," + encoder.encodeToString(photoBytes);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
-        modelAndView.addObject("item", resource);
-        modelAndView.addObject("history", history);
-        modelAndView.addObject("borrowingUser", borrowingUser);
-        modelAndView.addObject("hasPhoto", hasPhoto);
-        modelAndView.addObject("photo", photoSrc);
+        ModelAndView modelAndView = initializeModelAndViewForProductDetails(item);
         modelAndView.setViewName("user-panel/product-details");
         return modelAndView;
     }
@@ -315,6 +252,43 @@ public class UserPanelController {
     public ModelAndView infoOrderDetails() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("user-panel/user-order-details");
+        return modelAndView;
+    }
+
+    private void initializeCategories() {
+        categories = resourceTypeRepository.getHigherLevelTypes();
+        for (CategoriesDto highestLevel : categories) {
+            highestLevel.setSubcategories(resourceTypeRepository.getSubcategories(highestLevel.getHigherLevelType().getId()));
+            for (CategoriesDto firstLevelSub : highestLevel.getSubcategories()) {
+                firstLevelSub.setSubcategories(resourceTypeRepository.getSubcategories(firstLevelSub.getHigherLevelType().getId()));
+                for (CategoriesDto secondLevelSub : firstLevelSub.getSubcategories())
+                    secondLevelSub.setSubcategories(resourceTypeRepository.getSubcategories(secondLevelSub.getHigherLevelType().getId()));
+            }
+        }
+    }
+
+    private ModelAndView initializeModelAndViewForProductDetails(int item) {
+        ModelAndView modelAndView = new ModelAndView();
+        ResourceDetailsDto resource = resourceRepository.getProductDetails(item);
+        List<ResourceRentingHistoryDto> history = resourceRepository.getProductRentingHistory(item);
+        BorrowingUserInfoDto borrowingUser = resourceRepository.getGivingUserInfo(item);
+        boolean hasPhoto = resourceRepository.checkIfHasPhoto(item);
+        List<Blob> blob = resourceRepository.getPhotosOfResource(item);
+        String photoSrc = null;
+        if (hasPhoto) {
+            try {
+                byte[] photoBytes = blob.get(0).getBytes(1l, (int) blob.get(0).length());
+                Base64.Encoder encoder = Base64.getEncoder();
+                photoSrc = "data:image/png;base64," + encoder.encodeToString(photoBytes);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        modelAndView.addObject("item", resource);
+        modelAndView.addObject("history", history);
+        modelAndView.addObject("borrowingUser", borrowingUser);
+        modelAndView.addObject("hasPhoto", hasPhoto);
+        modelAndView.addObject("photo", photoSrc);
         return modelAndView;
     }
 }
