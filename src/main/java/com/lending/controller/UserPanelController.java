@@ -6,6 +6,8 @@ import com.lending.repositories.ResourceRepository;
 import com.lending.repositories.ResourceTypeRepository;
 import com.lending.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -133,9 +135,12 @@ public class UserPanelController {
     @GetMapping(value="/wypozyczone-produkty")
     public ModelAndView borrowedProduct() {
         ModelAndView modelAndView = new ModelAndView();
-        List<UsersProductDto> borrowedProducts = resourceRepository.getProductsBorrowedByUser(3);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUser = authentication.getName();
+        int userId = userRepository.getUserIdByEmail(currentUser);
+        List<UsersProductDto> borrowedProducts = resourceRepository.getProductsBorrowedByUser(userId);
         modelAndView.addObject("borrowedProducts", borrowedProducts);
-        List<UsersProductDto> archivedProducts = resourceRepository.getArchiveProductsBorrowedByUser(3);
+        List<UsersProductDto> archivedProducts = resourceRepository.getArchiveProductsBorrowedByUser(userId);
         modelAndView.addObject("archivedProducts", archivedProducts);
         modelAndView.setViewName("user-panel/user-borrowed-products");
         return modelAndView;
@@ -145,8 +150,11 @@ public class UserPanelController {
     public ModelAndView products() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("user-panel/user-products");
-        List<UsersProductDto> products = userRepository.getUsersProducts(3);
-        List<UsersProductDto> archiveProducts = userRepository.getArchiveUsersProducts(3);
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUser = authentication.getName();
+        int userId = userRepository.getUserIdByEmail(currentUser);
+        List<UsersProductDto> products = userRepository.getUsersProducts(userId);
+        List<UsersProductDto> archiveProducts = userRepository.getArchiveUsersProducts(userId);
         modelAndView.addObject("ProductsList", products);
         modelAndView.addObject("ArchiveProductsList", archiveProducts);
         return modelAndView;
@@ -155,9 +163,12 @@ public class UserPanelController {
     @GetMapping(value="/edytuj-dane")
     public ModelAndView myData() {
         ModelAndView modelAndView = new ModelAndView();
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUser = authentication.getName();
+        int userId = userRepository.getUserIdByEmail(currentUser);
+        UserInfoDto user = userRepository.getUserInfoById(userId);
         modelAndView.setViewName("user-panel/user-edit-data");
-        UserInfoDto currentUser = userRepository.getUserInfoById(3);
-        modelAndView.addObject("user", currentUser);
+        modelAndView.addObject("user", user);
         return modelAndView;
     }
 
