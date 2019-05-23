@@ -4,6 +4,7 @@ import com.lending.dto.*;
 import com.lending.entities.Address;
 import com.lending.entities.Person;
 import com.lending.entities.Resource;
+import com.lending.repositories.AddressRepository;
 import com.lending.repositories.ResourceRepository;
 import com.lending.repositories.ResourceTypeRepository;
 import com.lending.repositories.UserRepository;
@@ -34,6 +35,9 @@ public class UserPanelController {
 
     @Autowired
     public ResourceRepository resourceRepository;
+
+    @Autowired
+    AddressRepository addressRepository;
 
     private List<CategoriesDto> categories;
 //
@@ -173,13 +177,14 @@ public class UserPanelController {
         user.setFirstName(userInfo.getFirstName());
         user.setLastName(userInfo.getLastName());
         user.setBirthDate(userInfo.getBirthDate());
-        Address address = userRepository.getUsersAddressById(userId);
+        Address address = addressRepository.getAddressesByUserId(userId);
         address.setZipCode(userInfo.getZipCode());
         address.setLocality(userInfo.getLocality());
         address.setStreet(userInfo.getStreet());
         address.setNrHouse(userInfo.getNrHouse());
         address.setNrFlat(userInfo.getNrFlat());
         userRepository.save(user);
+        addressRepository.save(address);
         //TODO: data changed successfully popup/dialog
         modelAndView.setViewName("user-panel/user-panel");
         return modelAndView;
