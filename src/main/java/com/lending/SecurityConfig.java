@@ -1,5 +1,5 @@
 package com.lending;
-/*
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -7,7 +7,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
-//@EnableWebSecurity
+@EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -24,6 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/css/**",
                         "/startbootstrap-agency-gh-pages/vendor/**",
                         "/startbootstrap-agency-gh-pages/css/**",
+                        "/startbootstrap-agency-gh-pages/**",
                         "/img/**",
                         "/webjars/**").permitAll()
                 .antMatchers("/user/**").hasRole("USER")
@@ -52,4 +53,3 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
 }
-*/
