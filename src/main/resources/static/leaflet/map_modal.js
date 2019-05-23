@@ -1,6 +1,7 @@
-var mymap = L.map('mapid').setView([51.109, 17.0333300], 13);
+var mymap;
 var marker;
 
+    mymap = L.map('mapid').setView([51.109, 17.0333300], 13);
 	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
 		maxZoom: 18,
 		attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
@@ -12,6 +13,8 @@ var marker;
 	marker = L.marker([51.109, 17.0333300]).addTo(mymap);
 
 	var popup = L.popup();
+	mymap.on('click', onMapClick);
+
 
 	function onMapClick(e) {
 	$.getJSON('https://nominatim.openstreetmap.org/reverse?format=json&lat=' + e.latlng.lat + '&lon=' + e.latlng.lng, function(data) {
@@ -30,7 +33,6 @@ var marker;
 
 	}
 
-	mymap.on('click', onMapClick);
 
 	function chooseAddr(lat1, lng1, lat2, lng2, display_name, osm_type) {
     	marker.setLatLng(new L.LatLng((lat1+lat2)/2,(lng1+lng2)/2))
@@ -42,7 +44,7 @@ var marker;
     function addr_search() {
         var inp = document.getElementById("addr");
 
-        $.getJSON('https://nominatim.openstreetmap.org/search?format=json&limit=7&q=' + inp.value, function(data) {
+        $.getJSON('https://nominatim.openstreetmap.org/search?format=json&limit=4&q=' + inp.value, function(data) {
             var items = [];
 
             $.each(data, function(key, val) {
@@ -61,3 +63,10 @@ var marker;
             }
         });
     }
+$(document).ready(function() {
+    $('#giveBackModal').on('shown.bs.modal', function(){
+
+        mymap.invalidateSize();
+
+     });
+});

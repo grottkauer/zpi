@@ -229,12 +229,13 @@
                         <div class="input-group"></div>
                     </div>
                     <div class="d-lg-flex justify-content-around mt-3 text-left">
-                        <div id="mapid" class="col-sm-6" style="height: 400px;">
+                        <div id="mapid" class="col-lg-12" style="height: 400px;">
                         </div>
-                        <div class="col-sm-6 mt-3">
-                            <h4>Wynik wyszukiwań (wybierz miejsce, w którym chcesz się spotkać):</h4>
-                            <div id="results"></div>
-                        </div>
+                    </div>
+
+                    <div class="col-sm-12 mt-3">
+                        <h4>Wynik wyszukiwań (wybierz miejsce, w którym chcesz się spotkać):</h4>
+                        <div id="results"></div>
                     </div>
 
                     <div id="search">
@@ -324,7 +325,7 @@ $('#demo').daterangepicker({
   console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
 });
 </script>
-
+<script src="../../leaflet/map_modal.js"></script>
 </body>
 
 </html>
