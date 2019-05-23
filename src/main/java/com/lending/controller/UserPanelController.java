@@ -10,10 +10,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.sql.Blob;
@@ -169,6 +166,14 @@ public class UserPanelController {
         UserInfoDto user = userRepository.getUserInfoById(userId);
         modelAndView.setViewName("user-panel/user-edit-data");
         modelAndView.addObject("user", user);
+        return modelAndView;
+    }
+
+    @PostMapping("/edytuj-dane")
+    public ModelAndView myDataSubmit() {
+        System.out.println("sumbit");
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("user-panel/user-panel");
         return modelAndView;
     }
 

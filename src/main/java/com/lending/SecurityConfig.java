@@ -37,6 +37,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/startbootstrap-agency-gh-pages/**",
                         "/img/**",
                         "/images/**",
+                        "/h2-console",
+                        "/h2-console/**",
                         "/webjars/**").permitAll()
                 .antMatchers("/user/**").hasRole("USER")
                 .anyRequest().authenticated()
@@ -55,6 +57,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .exceptionHandling()
                 .accessDeniedHandler(accessDeniedHandler);
+        http.csrf().disable();
+        http.headers().frameOptions().disable();
     }
 
     @Override
@@ -75,8 +79,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 return aClass.equals(UsernamePasswordAuthenticationToken.class);
             }
         });
-        //auth.inMemoryAuthentication()
-        //        .withUser("natalia@wp.pl").password("{noop}kotelki").roles("USER");
+        auth.inMemoryAuthentication()
+                .withUser("admin@bm.pl").password("{noop}kotelki").roles("ADMIN");
     }
 
 }
