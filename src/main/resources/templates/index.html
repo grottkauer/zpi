@@ -38,21 +38,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 
    <!-- Added service worker registration-->
-    <script src="../js/main.js"></script>
+    <!--<script src="../js/main.js"></script>-->
 
-    <script>
-       // ServiceWorker is a progressive technology. Ignore unsupported browsers
-        if ('serviceWorker' in navigator) {
-          console.log('CLIENT: service worker registration in progress.');
-          navigator.serviceWorker.register('/service-worker.js').then(function() {
-            console.log('CLIENT: service worker registration complete.');
-          }, function() {
-            console.log('CLIENT: service worker registration failure.');
-          });
-        } else {
-          console.log('CLIENT: service worker is not supported.');
-        }
-    </script>
+    <!--<script>-->
+       <!--// ServiceWorker is a progressive technology. Ignore unsupported browsers-->
+        <!--if ('serviceWorker' in navigator) {-->
+          <!--console.log('CLIENT: service worker registration in progress.');-->
+          <!--navigator.serviceWorker.register('/service-worker.js').then(function() {-->
+            <!--console.log('CLIENT: service worker registration complete.');-->
+          <!--}, function() {-->
+            <!--console.log('CLIENT: service worker registration failure.');-->
+          <!--});-->
+        <!--} else {-->
+          <!--console.log('CLIENT: service worker is not supported.');-->
+        <!--}-->
+    <!--</script>-->
 
     <!-- Added jquery onScroll-->
     <script type="text/javascript">
