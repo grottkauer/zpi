@@ -67,60 +67,61 @@
         <div class="container" id="edit_data">
         <div class="card cardRegistry text-center">
             <div class="card-body text-center">
-                <form method="post">
+                <form method="post" th:object="${user}">
                     <div class="row">
                         <div class="col-sm-6 form-group text-left">
                             <label>Imię</label>
                             <input name="firstName" type="text" class="form-control" required
-                                   th:value="${user.getFirstName()}">
+                                   th:value="${user.getFirstName()}" th:field="*{firstName}">
                         </div>
                         <div class="col-sm-6 form-group text-left">
                             <label>Nazwisko</label>
                             <input name="lastName" type="text" class="form-control" required
-                                   th:value="${user.getLastName()}">
+                                   th:value="${user.getLastName()}" th:field="*{lastName}">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-12 form-group text-left">
                             <label>Adres email</label>
                             <input name="email" type="email" class="form-control" required
-                                   th:value="${user.getEmail()}" disabled>
+                                   th:value="${user.getEmail()}" disabled th:field="*{email}">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-12 form-group text-left">
                             <label>Data urodzenia</label>
                             <input id="demo" type="text" class="form-control" required
-                                   th:value="*{#dates.format(user.getBirthDate(), 'dd/MM/yyyy')}">
+                                   th:value="${#dates.format(user.getBirthDate(), 'dd/MM/yyyy')}"
+                                    th:field="*{birthDate}">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-6 form-group text-left">
                             <label>Kod pocztowy</label>
                             <input name="zipCode" type="text" class="form-control" required
-                                   th:value="${user.getZipCode()}">
+                                   th:value="${user.getZipCode()}" th:field="*{zipCode}">
                         </div>
                         <div class="col-sm-6 form-group text-left">
                             <label>Miejscowość</label>
                             <input name="city" type="text" class="form-control" required
-                                   th:value="${user.getLocality()}">
+                                   th:value="${user.getLocality()}" th:field="*{locality}">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-6 form-group text-left">
                             <label>Ulica</label>
                             <input name="street" type="text" class="form-control" required
-                                   th:value="${user.getStreet()}">
+                                   th:value="${user.getStreet()}" th:field="*{street}">
                         </div>
                         <div class="col-sm-3 form-group text-left">
                             <label>Nr</label>
                             <input name="homeNr" type="text" class="form-control" required
-                                   th:value="${user.getNrHouse()}">
+                                   th:value="${user.getNrHouse()}" th:field="*{nrHouse}">
                         </div>
                         <div class="col-sm-3 form-group text-left">
                             <label>Lokal</label>
                             <input name="flatNr" type="text" class="form-control" required
-                                   th:value="${user.getNrFlat()}">
+                                   th:value="${user.getNrFlat()}" th:field="*{nrFlat}">
                         </div>
                     </div>
                     <!-- todo set edited data to db -->

@@ -1,6 +1,8 @@
 package com.lending.controller;
 
 import com.lending.dto.*;
+import com.lending.entities.Address;
+import com.lending.entities.Person;
 import com.lending.entities.Resource;
 import com.lending.repositories.ResourceRepository;
 import com.lending.repositories.ResourceTypeRepository;
@@ -132,9 +134,7 @@ public class UserPanelController {
     @GetMapping(value="/wypozyczone-produkty")
     public ModelAndView borrowedProduct() {
         ModelAndView modelAndView = new ModelAndView();
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String currentUser = authentication.getName();
-        int userId = userRepository.getUserIdByEmail(currentUser);
+        int userId = getLoggedUserId();
         List<UsersProductDto> borrowedProducts = resourceRepository.getProductsBorrowedByUser(userId);
         modelAndView.addObject("borrowedProducts", borrowedProducts);
         List<UsersProductDto> archivedProducts = resourceRepository.getArchiveProductsBorrowedByUser(userId);
@@ -147,9 +147,7 @@ public class UserPanelController {
     public ModelAndView products() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("user-panel/user-products");
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String currentUser = authentication.getName();
-        int userId = userRepository.getUserIdByEmail(currentUser);
+        int userId = getLoggedUserId();
         List<UsersProductDto> products = userRepository.getUsersProducts(userId);
         List<UsersProductDto> archiveProducts = userRepository.getArchiveUsersProducts(userId);
         modelAndView.addObject("ProductsList", products);
@@ -160,9 +158,7 @@ public class UserPanelController {
     @GetMapping(value="/edytuj-dane")
     public ModelAndView myData() {
         ModelAndView modelAndView = new ModelAndView();
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        String currentUser = authentication.getName();
-        int userId = userRepository.getUserIdByEmail(currentUser);
+        int userId = getLoggedUserId();
         UserInfoDto user = userRepository.getUserInfoById(userId);
         modelAndView.setViewName("user-panel/user-edit-data");
         modelAndView.addObject("user", user);
@@ -170,9 +166,21 @@ public class UserPanelController {
     }
 
     @PostMapping("/edytuj-dane")
-    public ModelAndView myDataSubmit() {
-        System.out.println("sumbit");
+    public ModelAndView myDataSubmit(@ModelAttribute UserInfoDto userInfo) {
         ModelAndView modelAndView = new ModelAndView();
+        int userId = getLoggedUserId();
+        Person user = userRepository.getUserById(userId);
+        user.setFirstName(userInfo.getFirstName());
+        user.setLastName(userInfo.getLastName());
+        user.setBirthDate(userInfo.getBirthDate());
+        Address address = userRepository.getUsersAddressById(userId);
+        address.setZipCode(userInfo.getZipCode());
+        address.setLocality(userInfo.getLocality());
+        address.setStreet(userInfo.getStreet());
+        address.setNrHouse(userInfo.getNrHouse());
+        address.setNrFlat(userInfo.getNrFlat());
+        userRepository.save(user);
+        //TODO: data changed successfully popup/dialog
         modelAndView.setViewName("user-panel/user-panel");
         return modelAndView;
     }
@@ -307,4 +315,11 @@ public class UserPanelController {
         modelAndView.addObject("photo", photoSrc);
         return modelAndView;
     }
+
+    private int getLoggedUserId() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentUser = authentication.getName();
+        return userRepository.getUserIdByEmail(currentUser);
+    }
+
 }
