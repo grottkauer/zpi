@@ -133,7 +133,7 @@ public class Person extends BaseEntity {
     @Override
     public String toString() {
         return "Person{" +
-                "ID=" + super.getId() +
+                "ID=" + super.getId_resource() +
                 ", email='" + email + '\'' +
                 '}';
     }

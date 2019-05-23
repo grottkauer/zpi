@@ -9,16 +9,17 @@ public class Notification extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_notification")
+    @Column(name = "id")
     private int id;
 
     @ManyToOne
     @JoinColumn(name = "id_sender")
     private Person sender;
 
+    /*
     @ManyToOne
     @JoinColumn(name = "id_receiver")
-    private Person receiver;
+    private Person receiver;*/
 
     @Column(nullable = false)
     private String title;
@@ -38,7 +39,7 @@ public class Notification extends BaseEntity {
 
     public Notification(Person sender, Person receiver, String title, String description, Date sendingDate, Date openDate) {
         this.sender = sender;
-        this.receiver = receiver;
+        //this.receiver = receiver;
         this.title = title;
         this.description = description;
         this.sendingDate = sendingDate;
@@ -53,13 +54,13 @@ public class Notification extends BaseEntity {
         this.sender = sender;
     }
 
-    public Person getReceiver() {
-        return receiver;
-    }
-
-    public void setReceiver(Person receiver) {
-        this.receiver = receiver;
-    }
+//    public Person getReceiver() {
+//        return receiver;
+//    }
+//
+//    public void setReceiver(Person receiver) {
+//        this.receiver = receiver;
+//    }
 
     public String getTitle() {
         return title;

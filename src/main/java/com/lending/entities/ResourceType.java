@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class ResourceType {
 
     @Id
-    @Column(name = "id_resource_type")
+    @Column(name = "id")
     private int id;
 
     @Column(nullable = false)

@@ -1,7 +1,6 @@
 package com.lending.entities;
 
 import javax.persistence.*;
-import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -12,7 +11,7 @@ public class Resource extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_resource")
+    @Column(name = "id")
     private int id;
 
     @Column(nullable = false)
@@ -26,9 +25,6 @@ public class Resource extends BaseEntity {
 
     @Column(nullable = false)
     private Date addDate;
-
-    @Lob
-    private Blob image;
 
     @Column(nullable = false)
     private boolean canBeBorrowed = false;
@@ -47,19 +43,21 @@ public class Resource extends BaseEntity {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "resource")
     private List<ResourceRenting> rentings = new ArrayList<>();
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "resource")
+    private List<Image> images = new ArrayList<>();
+
 
     public Resource() {
 
     }
 
     public Resource(int points, String name, String description, ResourceType resourceType, Person owner,
-                    Date addDate, Blob image, boolean canBeBorrowed, boolean isDeleted) {
+                    Date addDate, boolean canBeBorrowed, boolean isDeleted) {
         this.points = points;
         this.name = name;
         this.resourceType = resourceType;
         this.owner = owner;
         this.addDate = addDate;
-        this.image = image;
         this.canBeBorrowed = canBeBorrowed;
         this.isDeleted = isDeleted;
     }
@@ -89,7 +87,7 @@ public class Resource extends BaseEntity {
     }
 
     public String toString(){
-        return super.getId() + ", " + name + "\n";
+        return super.getId_resource() + ", " + name + "\n";
     }
 
     public String getDescription() {
@@ -108,14 +106,6 @@ public class Resource extends BaseEntity {
         this.addDate = addDate;
     }
 
-    public Blob getImage() {
-        return image;
-    }
-
-    public void setImage(Blob image) {
-        this.image = image;
-    }
-
     public Person getOwner() {
         return owner;
     }
@@ -132,7 +122,6 @@ public class Resource extends BaseEntity {
         this.canBeBorrowed = canBeBorrowed;
     }
 
-    @Override
     public int getId() {
         return id;
     }

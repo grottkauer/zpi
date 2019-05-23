@@ -48,7 +48,7 @@ public class ResourceRentingRepositoryImpl implements ResourceRentingRepository 
     @Override
     public <S extends ResourceRenting> S save(S entity) {
         TransactionReceipt receipt = null;
-        BigInteger resourceID = BigInteger.valueOf(entity.getResource().getId());
+        BigInteger resourceID = BigInteger.valueOf(entity.getResource().getId_resource());
         try {
             receipt = contract.createBorrowing(
                     entity.getGiver().getEthereumAddress(),
@@ -120,7 +120,7 @@ public class ResourceRentingRepositoryImpl implements ResourceRentingRepository 
         List<ResourceRenting> wypozyczenia = new ArrayList<ResourceRenting>(count);
         for(int i = 0; i<count;i++){
             ResourceRenting wypozyczenie = findById(i).get();
-            if(containsHelper(ids, wypozyczenie.getId()))
+            if(containsHelper(ids, wypozyczenie.getId_resource()))
                 wypozyczenia.add(wypozyczenie);
         }
         return wypozyczenia;

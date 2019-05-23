@@ -21,7 +21,7 @@ public class BaseEntity implements Serializable {
         this.id = id;
     }
 
-    public int getId() {
+    public int getId_resource() {
         return id;
     }
 
