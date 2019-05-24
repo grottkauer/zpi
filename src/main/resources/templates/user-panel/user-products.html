@@ -429,7 +429,15 @@ $(".custom-file-input").on("change", function() {
 }
 </script>
 
-
+<script type="text/javascript" th:inline="javascript">
+    $('document').ready(function() {
+        var refresh = [[${refreshNeeded}]];
+        if (refresh === true) {
+            window.location.reload();
+            //TODO: skoro był refresh to znaczy ze cos usunieto, a wiec popup ze usunieto xd
+        }
+    });
+</script>
 
 <!-- Bootstrap core JavaScript-->
 <script src="../user-panel/vendor/jquery/jquery.min.js"></script>

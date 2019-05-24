@@ -24,9 +24,7 @@ import java.util.List;
 @Controller
 @RequestMapping(value = {"/moje-konto"})
 public class UserPanelController {
-//    @Autowired
-//    public ResourceRepository resourceRepository;
-//
+
     @Autowired
     public UserRepository userRepository;
 
@@ -40,21 +38,6 @@ public class UserPanelController {
     AddressRepository addressRepository;
 
     private List<CategoriesDto> categories;
-//
-//    @RequestMapping("/db")
-//    @ResponseBody
-//    public String testMethod() {
-//        StringBuilder response = new StringBuilder();
-//
-//        for(ResourceType rodzajZasobu: resourceTypeRepository.findAll()) {
-//            response.append(rodzajZasobu).append("\n");
-//            for(Resource task: rodzajZasobu.getResources()) {      // 1
-//                response.append("- ").append(task).append("\n");
-//            }
-//        }
-//
-//        return response.toString();
-//    }
 
     @GetMapping(value="")
     public ModelAndView index() {
@@ -79,13 +62,6 @@ public class UserPanelController {
         return modelAndView;
 
     }
-
-//    @GetMapping(value="/panel")
-//    public ModelAndView panel() {
-//        ModelAndView modelAndView = new ModelAndView();
-//        modelAndView.setViewName("user-panel/user-panel");
-//        return modelAndView;
-//    }
 
     @GetMapping(value="/panel")
     public String panel(Model model) {
@@ -149,14 +125,7 @@ public class UserPanelController {
 
     @RequestMapping(value="/moje-produkty", method = RequestMethod.GET)
     public ModelAndView products() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("user-panel/user-products");
-        int userId = getLoggedUserId();
-        List<UsersProductDto> products = userRepository.getUsersProducts(userId);
-        List<UsersProductDto> archiveProducts = userRepository.getArchiveUsersProducts(userId);
-        modelAndView.addObject("ProductsList", products);
-        modelAndView.addObject("ArchiveProductsList", archiveProducts);
-        return modelAndView;
+        return getUsersProductView(false);
     }
 
     @DeleteMapping(value="/moje-produkty")
@@ -164,8 +133,7 @@ public class UserPanelController {
         Resource resourceToDelete = resourceRepository.getResourceById(item);
         resourceToDelete.setDeleted(true);
         resourceRepository.save(resourceToDelete);
-        //todo AJAX REFRESH IN USER_LAYOUT AND THEN POPUP SUCCESS
-        return new ModelAndView("redirect:moje-produkty");
+        return getUsersProductView(true);
     }
 
     @DeleteMapping(value="/moje-produkty/selected")
@@ -175,8 +143,7 @@ public class UserPanelController {
             r.setDeleted(true);
         }
         resourceRepository.saveAll(resourcesToDelete);
-        //todo AJAX REFRESH IN USER_LAYOUT AND THEN POPUP SUCCESS
-        return new ModelAndView("redirect:moje-produkty");
+        return getUsersProductView(true);
     }
 
     @GetMapping(value="/edytuj-dane")
@@ -205,8 +172,8 @@ public class UserPanelController {
         address.setNrFlat(userInfo.getNrFlat());
         userRepository.save(user);
         addressRepository.save(address);
-//        time to show toast
-        Thread.sleep(1600);
+        //time to show toast
+        Thread.sleep(2000);
         modelAndView.setViewName("user-panel/user-panel");
         return modelAndView;
     }
@@ -232,18 +199,9 @@ public class UserPanelController {
                     Person user = userRepository.getUserById(userId);
                     user.setPassword(passwordInfo.getNewPassword());
                     userRepository.save(user);
-//        time to show toast
-                    Thread.sleep(1600);
+                    //time to show toast
+                    Thread.sleep(2000);
                 }
-                else {
-                    //TODO: new password cannot be the same as the old one
-                    // DONE IN HTML
-                }
-            }
-            else {
-                System.out.println("Hasła nie są takie same");
-                //TODO: new passwords not match info
-                // DONE IN HTML
             }
         }
         else {
@@ -254,21 +212,6 @@ public class UserPanelController {
         return modelAndView;
     }
 
-//    @GetMapping(value="/wypozyczenie")
-//    public ModelAndView borrow() {
-//        ModelAndView modelAndView = new ModelAndView();
-//        modelAndView.setViewName("user-panel/borrow-panel");
-//
-//        return modelAndView;
-//    }
-
-    @GetMapping(value="/wypozyczenie")
-    public String borrow(Model model) {
-//        Iterable<ResourceType> resourceTypes = resourceTypeRepository.findAll();
-//        model.addAttribute("resourceTypes", resourceTypes);
-
-        return "user-panel/borrow-panel";
-    }
 
     @GetMapping(value="/szukaj")
     public ModelAndView search(@RequestParam int id) {
@@ -396,6 +339,18 @@ public class UserPanelController {
     private String getLoggedUserEmail() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         return authentication.getName();
+    }
+
+    private ModelAndView getUsersProductView(boolean refresh) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("user-panel/user-products");
+        int userId = getLoggedUserId();
+        List<UsersProductDto> products = userRepository.getUsersProducts(userId);
+        List<UsersProductDto> archiveProducts = userRepository.getArchiveUsersProducts(userId);
+        modelAndView.addObject("ProductsList", products);
+        modelAndView.addObject("ArchiveProductsList", archiveProducts);
+        modelAndView.addObject("refreshNeeded", refresh);
+        return modelAndView;
     }
 
 }
