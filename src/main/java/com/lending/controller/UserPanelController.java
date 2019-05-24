@@ -190,7 +190,7 @@ public class UserPanelController {
     }
 
     @PostMapping("/edytuj-dane")
-    public ModelAndView myDataSubmit(@ModelAttribute UserInfoDto userInfo) {
+    public ModelAndView myDataSubmit(@ModelAttribute UserInfoDto userInfo) throws InterruptedException {
         ModelAndView modelAndView = new ModelAndView();
         int userId = getLoggedUserId();
         Person user = userRepository.getUserById(userId);
@@ -205,7 +205,8 @@ public class UserPanelController {
         address.setNrFlat(userInfo.getNrFlat());
         userRepository.save(user);
         addressRepository.save(address);
-        //TODO: data changed successfully popup/dialog
+//        time to show toast
+        Thread.sleep(1600);
         modelAndView.setViewName("user-panel/user-panel");
         return modelAndView;
     }
@@ -220,7 +221,7 @@ public class UserPanelController {
     }
 
     @PostMapping(value="/zmien-haslo")
-    public ModelAndView editPasswordSubmit(@ModelAttribute UserPasswordInfoDto passwordInfo) {
+    public ModelAndView editPasswordSubmit(@ModelAttribute UserPasswordInfoDto passwordInfo) throws InterruptedException {
         ModelAndView modelAndView = new ModelAndView();
         String email = getLoggedUserEmail();
         System.out.println(passwordInfo.getOldPassword());
@@ -231,15 +232,18 @@ public class UserPanelController {
                     Person user = userRepository.getUserById(userId);
                     user.setPassword(passwordInfo.getNewPassword());
                     userRepository.save(user);
-                    //TODO: data changed successfully popup/dialog
+//        time to show toast
+                    Thread.sleep(1600);
                 }
                 else {
                     //TODO: new password cannot be the same as the old one
+                    // DONE IN HTML
                 }
             }
             else {
                 System.out.println("Hasła nie są takie same");
                 //TODO: new passwords not match info
+                // DONE IN HTML
             }
         }
         else {

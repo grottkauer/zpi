@@ -124,7 +124,7 @@
                                    th:value="${user.getNrFlat()}" th:field="*{nrFlat}">
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-raised btn-primary mb-1">Zapisz dane</button>
+                    <button type="submit" class="btn btn-raised btn-primary mb-1" id="saveData">Zapisz dane</button>
                 </form>
             </div>
         </div>
@@ -161,6 +161,23 @@
         </div>
     </div>
 </div>
+
+<!-- Save data toast -->
+<div class="toast" data-delay="1500">
+    <div class="toast-header">
+        <strong class="mr-auto yellow-text">Poprawnie zapisano zmiany.</strong>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+    </div>
+</div>
+
+<!-- Save data script-->
+<script>
+$(document).ready(function(){
+  $("#saveData").click(function(){
+    $('.toast').toast('show');
+  });
+});
+</script>
 
 <!-- Bootstrap core JavaScript-->
 <script src="../user-panel/vendor/jquery/jquery.min.js"></script>
