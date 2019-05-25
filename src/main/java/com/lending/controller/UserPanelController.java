@@ -256,20 +256,20 @@ public class UserPanelController {
 
     @PostMapping(value="/info-produktu/edycja")
     public ModelAndView productInfoEditDone(@RequestParam(value = "info[]") String[] info) {
-        System.out.println("xd");
-        int item = Integer.parseInt(info[0]);
-        String name = info[1];
-        ResourceType category = resourceTypeRepository.getCategoryByName(info[2]);
-        String desc = info[3];
-        Resource resourceToEdit = resourceRepository.getResourceById(item);
-        resourceToEdit.setName(name);
-        resourceToEdit.setResourceType(category);
-        resourceToEdit.setDescription(desc);
-        resourceRepository.save(resourceToEdit);
+        editResource(info);
         //todo fix refresh?
         //todo: update images in db and on dialog
         //todo: popup
-        return getProductView(item, true);
+        return getProductView(Integer.parseInt(info[0]), true);
+    }
+
+    @PostMapping(value="/moje-produkty/edycja")
+    public ModelAndView productEditDone(@RequestParam(value = "info[]") String[] info) {
+        editResource(info);
+        //todo fix refresh?
+        //todo: update images in db and on dialog
+        //todo: popup
+        return getUsersProductView(true);
     }
 
     @GetMapping(value="/info-wypozyczonego-produktu")
@@ -353,6 +353,9 @@ public class UserPanelController {
         modelAndView.addObject("ProductsList", products);
         modelAndView.addObject("ArchiveProductsList", archiveProducts);
         modelAndView.addObject("refreshNeeded", refresh);
+        if (categories == null)
+            initializeCategories();
+        modelAndView.addObject("categories", categories);
         return modelAndView;
     }
 
@@ -379,6 +382,18 @@ public class UserPanelController {
             }
         }
         return photoSrcs;
+    }
+
+    private void editResource(String[] info) {
+        int item = Integer.parseInt(info[0]);
+        String name = info[1];
+        ResourceType category = resourceTypeRepository.getCategoryByName(info[2]);
+        String desc = info[3];
+        Resource resourceToEdit = resourceRepository.getResourceById(item);
+        resourceToEdit.setName(name);
+        resourceToEdit.setResourceType(category);
+        resourceToEdit.setDescription(desc);
+        resourceRepository.save(resourceToEdit);
     }
 
 }
