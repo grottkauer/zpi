@@ -139,7 +139,8 @@
                                         <a class="btn table-btn mb-2" href="moje-produkty" style="width: 100%;">Wróć do moich produktów</a>
                                     </div>
                                     <div class="col-md-6">
-                                        <a href="#editProductModal" class="btn table-btn mb-2" data-toggle="modal" style="width: 100%;">
+                                        <a th:href="@{edycja-produktu/(id=${item.getId()})}" id="editButton"
+                                           class="btn table-btn mb-2" data-toggle="modal" style="width: 100%;">
                                             <i class="fas fa-edit"></i>
                                             <span>Edytuj produkt</span>
                                         </a>
@@ -272,10 +273,11 @@
                 <div class="modal-body">
                     <div class="d-flex">
                         <div class="pr-2 flex-fill form-group text-left">
-                            <input name="productName" type="text" class="form-control" required placeholder="Nazwa">
+                            <input name="productName" type="text" class="form-control" required placeholder="Nazwa"
+                                id="editProductName">
                         </div>
                         <div class="pl-2 flex-fill form-group text-left">
-                            <select name="productCategory" class="form-control">
+                            <select name="productCategory" class="form-control" id="editProductCategory">
                                 <option selected="">Kategoria...</option>
                                 <option>Książki</option>
                                 <option>Filmy</option>
@@ -283,32 +285,31 @@
                                 <option>Planszówki</option>
                                 <option>Czasopisma</option>
                                 <option>Zabawki</option>
+                                <option>Prawnicze</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-group text-left">
-                        <textarea class="form-control" id="message" placeholder="Opis"></textarea>
+                        <textarea class="form-control" id="editProductDescroption" placeholder="Opis"></textarea>
                     </div>
-                    <!-- todo max 3 photos could be in one resource -->
-                    <!-- todo if resource has at least one photo show div below-->
-                    <div class="form-group">
+                    <div class="form-group" id="editProductDeletePhotos">
                         <label>Usuń wybrane zdjęcie</label>
                         <div class="row">
-                            <div class="col-md-4 text-center mb-5">
+                            <div class="col-md-4 text-center mb-5" id="editProductDeletePhoto1">
                                     <span class="custom-checkbox">
                                                 <input type="checkbox" name="options[]" value="1">
                                                 <label for="checkbox1"></label>
                                     </span>
                                 <img class="img-gallery" src="../images/sample-products/talisman.png" alt="">
                             </div>
-                            <div class="col-md-4 text-center mb-5">
+                            <div class="col-md-4 text-center mb-5" id="editProductDeletePhoto2">
                                     <span class="custom-checkbox">
                                                 <input type="checkbox" name="options[]" value="1">
                                                 <label for="checkbox1"></label>
                                     </span>
                                 <img class="img-gallery" src="../images/sample-products/talisman.png" alt="">
                             </div>
-                            <div class="col-md-4 text-center mb-5">
+                            <div class="col-md-4 text-center mb-5" id="editProductDeletePhoto3">
                                     <span class="custom-checkbox">
                                                 <input type="checkbox" name="options[]" value="1">
                                                 <label for="checkbox1"></label>
@@ -317,16 +318,19 @@
                             </div>
                         </div>
                     </div>
-                    <!-- todo if resource has max two photos show div below -->
-                    <div class="form-group">
-                        <label>Dodaj kolejne zdjęcia</label>
-                        <div class="custom-file mb-1">
+                    <div class="form-group" id="editProductAddPhotos">
+                        <label>Dodaj zdjęcia</label>
+                        <div class="custom-file mb-1" id="editProductAddPhoto1">
                             <input type="file" class="custom-file-input" id="customFile">
                             <label class="custom-file-label  text-truncate" for="customFile">Wybierz plik</label>
                         </div>
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="customFileLang2" lang="pl-Pl">
-                            <label class="custom-file-label  text-truncate" for="customFileLang2">Wybierz plik</label>
+                        <div class="custom-file mb-1" id="editProductAddPhoto2">
+                            <input type="file" class="custom-file-input" id="customFile2" lang="pl-Pl">
+                            <label class="custom-file-label  text-truncate" for="customFile2">Wybierz plik</label>
+                        </div>
+                        <div class="custom-file" id="editProductAddPhoto3">
+                            <input type="file" class="custom-file-input" id="customFile3" lang="pl-Pl">
+                            <label class="custom-file-label  text-truncate" for="customFile3">Wybierz plik</label>
                         </div>
                     </div>
                 </div>
@@ -406,6 +410,46 @@ $('#demo').daterangepicker({
 }, function(start, end, label) {
   console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
 });
+</script>
+
+<!-- edit product popup -->
+<script>
+    $(document).ready(function() {
+       $('#editButton').on('click',function (event) {
+           event.preventDefault();
+           var info = $(this).attr('href');
+           $.get(info,function(productInfo,status){
+               $('#editProductModal #editProductName').val(productInfo.name);
+               $('#editProductModal #editProductCategory').val(productInfo.category);
+               $('#editProductModal #editProductDescroption').val(productInfo.description);
+               switch(productInfo.images.length) {
+                   case 0:
+                       $('#editProductModal #editProductDeletePhotos').hide();
+                       break;
+                   case 1:
+                       $('#editProductModal #editProductAddPhoto3').hide();
+                       $('#editProductModal #editProductDeletePhoto1 .img-gallery').val(productInfo.images.get(0));
+                       $('#editProductModal #editProductDeletePhoto2').hide();
+                       $('#editProductModal #editProductDeletePhoto3').hide();
+                       break;
+                   case 2:
+                       $('#editProductModal #editProductAddPhoto2').hide();
+                       $('#editProductModal #editProductAddPhoto3').hide();
+                       $('#editProductModal #editProductDeletePhoto1 .img-gallery').val(productInfo.images.get(0));
+                       $('#editProductModal #editProductDeletePhoto2 .img-gallery').val(productInfo.images.get(1));
+                       $('#editProductModal #editProductDeletePhoto3').hide();
+                       break;
+                   case 3:
+                       $('#editProductModal #editProductAddPhotos').hide();
+                       $('#editProductModal #editProductDeletePhoto1 .img-gallery').val(productInfo.images.get(0));
+                       $('#editProductModal #editProductDeletePhoto2 .img-gallery').val(productInfo.images.get(1));
+                       $('#editProductModal #editProductDeletePhoto3 .img-gallery').val(productInfo.images.get(2));
+                       break;
+               }
+           });
+           $('#editProductModal').modal();
+       })
+    });
 </script>
 
 </body>

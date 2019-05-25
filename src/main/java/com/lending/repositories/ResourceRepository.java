@@ -45,6 +45,21 @@ public interface ResourceRepository extends CrudRepository<Resource, Integer> {
             "and rr2.resource = r.id) is null)")
     List<Resource> getAvailableResourcesWithHighestCategory(@Param("id") int id);
 
+    @Query("select r from Resource r \n" +
+            "inner join r.resourceType t1 \n" +
+            "left join t1.higherLevel t2 \n" +
+            "left join t2.higherLevel t3 \n" +
+            "left join t3.higherLevel t4 \n" +
+            "where r.isDeleted = false and r.canBeBorrowed = true \n" +
+            "and (t1.id=:catId or t2.id=:catId or t3.id=:catId or t4.id=:catId) \n" +
+            "and ((select rr2.status from ResourceRenting rr2 \n" +
+            "where rr2.orderDate = (select max(rr3.orderDate) from ResourceRenting rr3 where rr3.resource = r.id) \n" +
+            "and rr2.resource = r.id) = com.lending.entities.RentingStatus.Oddane or \n" +
+            "(select rr2.status from ResourceRenting rr2 \n" +
+            "where rr2.orderDate = (select max(rr3.orderDate) from ResourceRenting rr3 where rr3.resource = r.id) \n" +
+            "and rr2.resource = r.id) is null) and r.owner <>:userId")
+    List<Resource> getAvailableResourcesHighestCatNotUser(@Param("catId") int catId, @Param("userId") int userId);
+
     @Query("select r from Resource r where r.isDeleted = false and r.canBeBorrowed = true \n" +
             "and ((select rr2.status from ResourceRenting rr2 \n" +
             "where rr2.orderDate = (select max(rr3.orderDate) from ResourceRenting rr3 where rr3.resource = r.id) \n" +

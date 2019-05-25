@@ -218,24 +218,13 @@ public class UserPanelController {
         ModelAndView modelAndView = new ModelAndView();
         initializeCategories();
         modelAndView.addObject("categories", categories);
-        List<Resource> availableResources = resourceRepository.getAvailableResourcesWithHighestCategory(id);
+        //List<Resource> availableResources = resourceRepository.getAvailableResourcesWithHighestCategory(id);
+        List<Resource> availableResources = resourceRepository.getAvailableResourcesHighestCatNotUser(id, getLoggedUserId());
         List<String> images = new ArrayList<>(availableResources.size());
         for (Resource r : availableResources) {
-            boolean hasPhoto = resourceRepository.checkIfHasPhoto(r.getId_resource());
-            List<Blob> blob = resourceRepository.getPhotosOfResource(r.getId_resource());
-            String photoSrc = null;
-            if (hasPhoto) {
-                try {
-                    byte[] photoBytes = blob.get(0).getBytes(1l, (int) blob.get(0).length());
-                    Base64.Encoder encoder = Base64.getEncoder();
-                    photoSrc = "data:image/png;base64," + encoder.encodeToString(photoBytes);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-            images.add(photoSrc);
+            List<String> photosScr = getPhotosSrc(r.getId());
+            images.add(photosScr.size() > 0 ? photosScr.get(0) : null);
         }
-        //TODO: show resources which don't belong to current user
         modelAndView.addObject("availableResources", availableResources);
         modelAndView.addObject("images", images);
         modelAndView.setViewName("user-panel/category2");
@@ -256,6 +245,14 @@ public class UserPanelController {
         resourceRepository.save(resourceToDelete);
         //todo: success dialog/popup
         return products();
+    }
+
+    @GetMapping(value="/edycja-produktu")
+    @ResponseBody
+    public ResourceToEditDto productInfoEdit(int id) {
+        Resource resource = resourceRepository.getResourceById(id);
+        return new ResourceToEditDto(id, resource.getName(), resource.getResourceType().getName(),
+                resource.getDescription(), getPhotosSrc(id));
     }
 
     @GetMapping(value="/info-wypozyczonego-produktu")
@@ -310,23 +307,12 @@ public class UserPanelController {
         ResourceDetailsDto resource = resourceRepository.getProductDetails(item);
         List<ResourceRentingHistoryDto> history = resourceRepository.getProductRentingHistory(item);
         BorrowingUserInfoDto borrowingUser = resourceRepository.getGivingUserInfo(item);
-        boolean hasPhoto = resourceRepository.checkIfHasPhoto(item);
-        List<Blob> blob = resourceRepository.getPhotosOfResource(item);
-        String photoSrc = null;
-        if (hasPhoto) {
-            try {
-                byte[] photoBytes = blob.get(0).getBytes(1l, (int) blob.get(0).length());
-                Base64.Encoder encoder = Base64.getEncoder();
-                photoSrc = "data:image/png;base64," + encoder.encodeToString(photoBytes);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        }
+        List<String> photosSrc = getPhotosSrc(item);
         modelAndView.addObject("item", resource);
         modelAndView.addObject("history", history);
         modelAndView.addObject("borrowingUser", borrowingUser);
-        modelAndView.addObject("hasPhoto", hasPhoto);
-        modelAndView.addObject("photo", photoSrc);
+        modelAndView.addObject("hasPhoto", photosSrc.size() > 0);
+        modelAndView.addObject("photo", photosSrc.size() > 0 ? photosSrc.get(0) : null);
         return modelAndView;
     }
 
@@ -351,6 +337,21 @@ public class UserPanelController {
         modelAndView.addObject("ArchiveProductsList", archiveProducts);
         modelAndView.addObject("refreshNeeded", refresh);
         return modelAndView;
+    }
+
+    private List<String> getPhotosSrc (int id) {
+        List<Blob> photos = resourceRepository.getPhotosOfResource(id);
+        List<String> photoSrcs = new ArrayList<>(3);
+        for (Blob blob : photos) {
+            try {
+                byte[] photoBytes = blob.getBytes(1l, (int) blob.length());
+                Base64.Encoder encoder = Base64.getEncoder();
+                photoSrcs.add("data:image/png;base64," + encoder.encodeToString(photoBytes));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+        return photoSrcs;
     }
 
 }
