@@ -57,7 +57,7 @@ public interface ResourceRepository extends CrudRepository<Resource, Integer> {
             "and rr2.resource = r.id) = com.lending.entities.RentingStatus.Oddane or \n" +
             "(select rr2.status from ResourceRenting rr2 \n" +
             "where rr2.orderDate = (select max(rr3.orderDate) from ResourceRenting rr3 where rr3.resource = r.id) \n" +
-            "and rr2.resource = r.id) is null) and r.owner <>:userId")
+            "and rr2.resource = r.id) is null) and r.owner.id <>:userId")
     List<Resource> getAvailableResourcesHighestCatNotUser(@Param("catId") int catId, @Param("userId") int userId);
 
     @Query("select r from Resource r where r.isDeleted = false and r.canBeBorrowed = true \n" +
