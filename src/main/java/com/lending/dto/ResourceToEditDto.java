@@ -66,4 +66,5 @@ public class ResourceToEditDto {
     public void addImage(String image) {
         this.images.add(image);
     }
+    
 }

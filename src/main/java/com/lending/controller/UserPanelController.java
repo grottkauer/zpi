@@ -4,6 +4,7 @@ import com.lending.dto.*;
 import com.lending.entities.Address;
 import com.lending.entities.Person;
 import com.lending.entities.Resource;
+import com.lending.entities.ResourceType;
 import com.lending.repositories.AddressRepository;
 import com.lending.repositories.ResourceRepository;
 import com.lending.repositories.ResourceTypeRepository;
@@ -37,7 +38,7 @@ public class UserPanelController {
     @Autowired
     AddressRepository addressRepository;
 
-    private List<CategoriesDto> categories;
+    private List<CategoriesDto> categories = null;
 
     @GetMapping(value="")
     public ModelAndView index() {
@@ -233,9 +234,7 @@ public class UserPanelController {
 
     @GetMapping(value="/info-produktu")
     public ModelAndView productInfo(@RequestParam int item) {
-        ModelAndView modelAndView = initializeModelAndViewForProductDetails(item);
-        modelAndView.setViewName("user-panel/user-product-info");
-        return modelAndView;
+        return getProductView(item, false);
     }
 
     @DeleteMapping(value="/info-produktu")
@@ -247,12 +246,30 @@ public class UserPanelController {
         return products();
     }
 
-    @GetMapping(value="/edycja-produktu")
+    @GetMapping(value="/info-produktu/edycja-produktu")
     @ResponseBody
-    public ResourceToEditDto productInfoEdit(int id) {
+    public ResourceToEditDto productInfoEdit(Integer id) {
         Resource resource = resourceRepository.getResourceById(id);
         return new ResourceToEditDto(id, resource.getName(), resource.getResourceType().getName(),
                 resource.getDescription(), getPhotosSrc(id));
+    }
+
+    @PostMapping(value="/info-produktu/edycja")
+    public ModelAndView productInfoEditDone(@RequestParam(value = "info[]") String[] info) {
+        System.out.println("xd");
+        int item = Integer.parseInt(info[0]);
+        String name = info[1];
+        ResourceType category = resourceTypeRepository.getCategoryByName(info[2]);
+        String desc = info[3];
+        Resource resourceToEdit = resourceRepository.getResourceById(item);
+        resourceToEdit.setName(name);
+        resourceToEdit.setResourceType(category);
+        resourceToEdit.setDescription(desc);
+        resourceRepository.save(resourceToEdit);
+        //todo fix refresh?
+        //todo: update images in db and on dialog
+        //todo: popup
+        return getProductView(item, true);
     }
 
     @GetMapping(value="/info-wypozyczonego-produktu")
@@ -335,6 +352,16 @@ public class UserPanelController {
         List<UsersProductDto> archiveProducts = userRepository.getArchiveUsersProducts(userId);
         modelAndView.addObject("ProductsList", products);
         modelAndView.addObject("ArchiveProductsList", archiveProducts);
+        modelAndView.addObject("refreshNeeded", refresh);
+        return modelAndView;
+    }
+
+    private ModelAndView getProductView(int id, boolean refresh) {
+        ModelAndView modelAndView = initializeModelAndViewForProductDetails(id);
+        if (categories == null)
+            initializeCategories();
+        modelAndView.addObject("categories", categories);
+        modelAndView.setViewName("user-panel/user-product-info");
         modelAndView.addObject("refreshNeeded", refresh);
         return modelAndView;
     }

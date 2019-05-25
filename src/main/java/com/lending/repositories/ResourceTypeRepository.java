@@ -21,4 +21,10 @@ public interface ResourceTypeRepository extends CrudRepository<ResourceType, Int
     @Query("select new com.lending.dto.CategoriesDto(rt) from ResourceType  rt where rt.id=:id")
     CategoriesDto getCategoryById(@Param("id") int id);
 
+    @Query("select rt.id from ResourceType rt where rt.name=:name")
+    int getCategoryIdByName(@Param("name") String name);
+
+    @Query("select rt from ResourceType rt where rt.name=:name")
+    ResourceType getCategoryByName(@Param("name") String name);
+
 }

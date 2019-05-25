@@ -139,7 +139,7 @@
                                         <a class="btn table-btn mb-2" href="moje-produkty" style="width: 100%;">Wróć do moich produktów</a>
                                     </div>
                                     <div class="col-md-6">
-                                        <a th:href="@{edycja-produktu/(id=${item.getId()})}" id="editButton"
+                                        <a th:href="@{/moje-konto/info-produktu/edycja-produktu/(id=${item.getId()})}" id="editButton"
                                            class="btn table-btn mb-2" data-toggle="modal" style="width: 100%;">
                                             <i class="fas fa-edit"></i>
                                             <span>Edytuj produkt</span>
@@ -261,10 +261,12 @@
 
 <!-- Edit Product Modal-->
 <div class="modal fade" id="editProductModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!--    todo edit product modal : everything is too small -->
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">Chcesz edytować produkt?</h5>
+                <input type="hidden" id="editProductId" />
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -278,14 +280,36 @@
                         </div>
                         <div class="pl-2 flex-fill form-group text-left">
                             <select name="productCategory" class="form-control" id="editProductCategory">
-                                <option selected="">Kategoria...</option>
-                                <option>Książki</option>
-                                <option>Filmy</option>
-                                <option>Muzyka</option>
-                                <option>Planszówki</option>
-                                <option>Czasopisma</option>
-                                <option>Zabawki</option>
-                                <option>Prawnicze</option>
+                                <div th:each="cat:${categories}">
+                                    <!-- TODO make margins work - list of categories in combobox -->
+                                    <optgroup th:label="${cat.getHigherLevelType().getName()}"
+                                              th:value="${cat.getHigherLevelType().getName()}"></optgroup>
+                                    <div th:each="sub1:${cat.getSubcategories()}">
+                                        <option th:if="${sub1.getSubcategories().size() == 0}"
+                                                th:value="${sub1.getHigherLevelType().getName()}"
+                                                th:label="${sub1.getHigherLevelType().getName()}"
+                                                style="margin-left: 15px;"></option>
+                                        <optgroup th:if="${sub1.getSubcategories().size() != 0}"
+                                                  th:value="${sub1.getHigherLevelType().getName()}"
+                                                  th:label="${sub1.getHigherLevelType().getName()}"
+                                                  style="margin-left: 15px;"></optgroup>
+                                        <div th:each="sub2:${sub1.getSubcategories()}">
+                                            <option th:if="${sub2.getSubcategories().size() == 0}"
+                                                    th:value="${sub2.getHigherLevelType().getName()}"
+                                                    th:label="${sub2.getHigherLevelType().getName()}"
+                                                    style="margin-left: 30px;"></option>
+                                            <optgroup th:if="${sub2.getSubcategories().size() != 0}"
+                                                    th:value="${sub2.getHigherLevelType().getName()}"
+                                                    th:label="${sub2.getHigherLevelType().getName()}"
+                                                    style="margin-left: 30px;"></optgroup>
+                                            <div th:each="sub3:${sub2.getSubcategories()}">
+                                                <option th:value="${sub3.getHigherLevelType().getName()}"
+                                                        th:label="${sub3.getHigherLevelType().getName()}"
+                                                        style="margin-left: 45px;"></option>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </select>
                         </div>
                     </div>
@@ -337,7 +361,8 @@
                 <div class="modal-footer">
                     <!-- todo uncomment this line and delete below when post supported -->
                     <!--<input class="btn btn-raised btn-primary mb-1" type="submit" value="Zapisz dane">-->
-                    <button type="submit" class="btn btn-raised btn-primary mb-1">Zapisz dane</button>
+                    <button type="submit" class="btn btn-raised btn-primary mb-1"
+                        id="editProductSave">Zapisz dane</button>
                 </div>
             </form>
         </div>
@@ -414,14 +439,15 @@ $('#demo').daterangepicker({
 
 <!-- edit product popup -->
 <script>
-    $(document).ready(function() {
-       $('#editButton').on('click',function (event) {
+    $('document').ready(function() {
+        $('#editButton').on('click',function (event) {
            event.preventDefault();
            var info = $(this).attr('href');
            $.get(info,function(productInfo,status){
                $('#editProductModal #editProductName').val(productInfo.name);
                $('#editProductModal #editProductCategory').val(productInfo.category);
                $('#editProductModal #editProductDescroption').val(productInfo.description);
+               $('#editProductModal #editProductId').val(productInfo.id);
                switch(productInfo.images.length) {
                    case 0:
                        $('#editProductModal #editProductDeletePhotos').hide();
@@ -448,7 +474,41 @@ $('#demo').daterangepicker({
                }
            });
            $('#editProductModal').modal();
-       })
+           //todo make image browser work
+       }); //end of starting modal
+       $('#editProductModal #editProductSave').on('click',function(event){
+           event.preventDefault();
+           var data = [];
+           var id = $('#editProductModal #editProductId').val();
+           var name = $('#editProductModal #editProductName').val();
+           var category = $('#editProductModal #editProductCategory').val();
+           var desc = $('#editProductModal #editProductDescroption').val();
+           //var data = [id, name, category, desc];
+           data.push(id);
+           data.push(name);
+           data.push(category);
+           data.push(desc);
+           var arrayData = jQuery.makeArray(data);
+           $('#editProductModal').modal('hide');
+           $.ajax ({
+               type: 'POST',
+               url: '/moje-konto/info-produktu/edycja',
+               data: {info: data},
+               success: function (result) {//On Successful service call
+                   console.log(result);
+               }
+           });
+       });
+    });
+</script>
+
+<script type="text/javascript" th:inline="javascript">
+    $('document').ready(function() {
+        var refresh = [[${refreshNeeded}]];
+        if (refresh === true) {
+            window.location.reload();
+            //TODO: skoro był refresh to znaczy ze cos usunieto, a wiec popup ze usunieto xd
+        }
     });
 </script>
 
