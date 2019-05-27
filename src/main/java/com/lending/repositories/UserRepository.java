@@ -65,5 +65,8 @@ public interface UserRepository extends CrudRepository<Person, Integer>, UserRep
             "and u.id=:id \n")
     List<UsersProductDto> getArchiveUsersProducts(@Param("id") int id);
 
+    @Query("select u.firstName from Person u where u.id =:id")
+    String getUserFirstName(@Param("id") int id);
+
 
 }

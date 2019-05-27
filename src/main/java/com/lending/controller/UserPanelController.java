@@ -43,7 +43,7 @@ public class UserPanelController {
     public ModelAndView index() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("user-panel/borrow-panel");
-        //initializeCategories();
+        modelAndView.addObject("userName", getUserPseudo());
         return modelAndView;
 
     }
@@ -52,6 +52,7 @@ public class UserPanelController {
     public ModelAndView contact(){
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("user-panel/contact-us");
+        //modelAndView.addObject("userName", getUserPseudo());
         return modelAndView;
     }
 
@@ -59,6 +60,7 @@ public class UserPanelController {
     public ModelAndView alerts() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("user-panel/user-alerts");
+        modelAndView.addObject("userName", getUserPseudo());
         return modelAndView;
 
     }
@@ -72,6 +74,7 @@ public class UserPanelController {
     @GetMapping(value="/moje-statystyki")
     public ModelAndView stats() {
         ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("userName", getUserPseudo());
         modelAndView.setViewName("user-panel/user-stats");
         return modelAndView;
     }
@@ -79,6 +82,7 @@ public class UserPanelController {
     @GetMapping(value="/moje-punkty")
     public ModelAndView points() {
         ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("userName", getUserPseudo());
         modelAndView.setViewName("user-panel/user-points");
         return modelAndView;
     }
@@ -86,6 +90,7 @@ public class UserPanelController {
     @GetMapping(value="/dodaj-produkt")
     public ModelAndView addProduct() {
         ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("userName", getUserPseudo());
         modelAndView.setViewName("user-panel/user-add-product");
         if (categories == null)
             initializeCategories();
@@ -97,6 +102,7 @@ public class UserPanelController {
     public ModelAndView addProductDone(@RequestParam(value = "info[]") String[] info,
                                        @RequestParam(value = "images[]", required = false) String[] images) {
         ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("userName", getUserPseudo());
         modelAndView.setViewName("user-panel/borrow-panel");
         String name = info[0];
         ResourceType category = resourceTypeRepository.getCategoryById(Integer.parseInt(info[1])).getHigherLevelType();
@@ -115,6 +121,7 @@ public class UserPanelController {
     public ModelAndView editProduct() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("user-panel/user-edit-product");
+        modelAndView.addObject("userName", getUserPseudo());
         return modelAndView;
     }
 
@@ -122,6 +129,7 @@ public class UserPanelController {
     public ModelAndView deleteProduct() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("user-panel/user-delete-product");
+        modelAndView.addObject("userName", getUserPseudo());
         return modelAndView;
     }
 
@@ -129,6 +137,7 @@ public class UserPanelController {
     public ModelAndView backProduct() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("user-panel/user-back-product");
+        modelAndView.addObject("userName", getUserPseudo());
         return modelAndView;
     }
 
@@ -141,6 +150,7 @@ public class UserPanelController {
         List<UsersProductDto> archivedProducts = resourceRepository.getArchiveProductsBorrowedByUser(userId);
         modelAndView.addObject("archivedProducts", archivedProducts);
         modelAndView.setViewName("user-panel/user-borrowed-products");
+        modelAndView.addObject("userName", getUserPseudo());
         return modelAndView;
     }
 
@@ -170,6 +180,7 @@ public class UserPanelController {
     @GetMapping(value="/edytuj-dane")
     public ModelAndView myData() {
         ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("userName", getUserPseudo());
         int userId = getLoggedUserId();
         UserInfoDto user = userRepository.getUserInfoById(userId);
         modelAndView.setViewName("user-panel/user-edit-data");
@@ -180,6 +191,7 @@ public class UserPanelController {
     @PostMapping("/edytuj-dane")
     public ModelAndView myDataSubmit(@ModelAttribute UserInfoDto userInfo) throws InterruptedException {
         ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("userName", getUserPseudo());
         int userId = getLoggedUserId();
         Person user = userRepository.getUserById(userId);
         user.setFirstName(userInfo.getFirstName());
@@ -205,12 +217,14 @@ public class UserPanelController {
         UserPasswordInfoDto userPasswordInfo = new UserPasswordInfoDto();
         modelAndView.addObject("passwordInfo", userPasswordInfo);
         modelAndView.setViewName("user-panel/user-edit-password");
+        modelAndView.addObject("userName", getUserPseudo());
         return modelAndView;
     }
 
     @PostMapping(value="/zmien-haslo")
     public ModelAndView editPasswordSubmit(@ModelAttribute UserPasswordInfoDto passwordInfo) throws InterruptedException {
         ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("userName", getUserPseudo());
         String email = getLoggedUserEmail();
         if (userRepository.checkIfCredentialsAreCorrect(email, passwordInfo.getOldPassword())) {
             if (passwordInfo.checkIfNewPasswordsMatch()) {
@@ -236,6 +250,7 @@ public class UserPanelController {
     @GetMapping(value="/szukaj")
     public ModelAndView search(@RequestParam int id) {
         ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("userName", getUserPseudo());
         initializeCategories();
         modelAndView.addObject("categories", categories);
         //List<Resource> availableResources = resourceRepository.getAvailableResourcesWithHighestCategory(id);
@@ -310,6 +325,7 @@ public class UserPanelController {
     public ModelAndView productInfoBorrowed(@RequestParam int item) {
         ModelAndView modelAndView = initializeModelAndViewForProductDetails(item);
         modelAndView.setViewName("user-panel/user-product-info-borrowed");
+        modelAndView.addObject("userName", getUserPseudo());
         return modelAndView;
     }
 
@@ -317,6 +333,7 @@ public class UserPanelController {
     public ModelAndView productDetails(@RequestParam int item) {
         ModelAndView modelAndView = initializeModelAndViewForProductDetails(item);
         modelAndView.setViewName("user-panel/product-details");
+        modelAndView.addObject("userName", getUserPseudo());
         return modelAndView;
     }
 
@@ -324,6 +341,7 @@ public class UserPanelController {
     public ModelAndView productBorrow() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("user-panel/product-borrow");
+        modelAndView.addObject("userName", getUserPseudo());
         return modelAndView;
     }
 
@@ -331,6 +349,7 @@ public class UserPanelController {
     public ModelAndView orderDetails() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("user-panel/order-details");
+        modelAndView.addObject("userName", getUserPseudo());
         return modelAndView;
     }
 
@@ -338,6 +357,7 @@ public class UserPanelController {
     public ModelAndView infoOrderDetails() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("user-panel/user-order-details");
+        modelAndView.addObject("userName", getUserPseudo());
         return modelAndView;
     }
 
@@ -362,8 +382,8 @@ public class UserPanelController {
         modelAndView.addObject("item", resource);
         modelAndView.addObject("history", history);
         modelAndView.addObject("borrowingUser", borrowingUser);
-        modelAndView.addObject("photo", photosSrc.size() > 0 ? photosSrc.get(0) : null);
-        //too: list of photos
+        modelAndView.addObject("photos", photosSrc);
+        modelAndView.addObject("userName", getUserPseudo());
         return modelAndView;
     }
 
@@ -390,6 +410,7 @@ public class UserPanelController {
         if (categories == null)
             initializeCategories();
         modelAndView.addObject("categories", categories);
+        modelAndView.addObject("userName", getUserPseudo());
         return modelAndView;
     }
 
@@ -400,6 +421,7 @@ public class UserPanelController {
         modelAndView.addObject("categories", categories);
         modelAndView.setViewName("user-panel/user-product-info");
         modelAndView.addObject("refreshNeeded", refresh);
+        modelAndView.addObject("userName", getUserPseudo());
         return modelAndView;
     }
 
@@ -453,6 +475,11 @@ public class UserPanelController {
     private void removeImagesFromResource(Integer[] ids) {
         List<Image> imagesToDelete = imageRepository.getImagesByIds(ids);
         imageRepository.deleteAll(imagesToDelete);
+    }
+
+    private String getUserPseudo() {
+        int id = getLoggedUserId();
+        return userRepository.getUserFirstName(id);
     }
 
 }
