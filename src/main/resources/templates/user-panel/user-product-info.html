@@ -453,6 +453,7 @@ $('#demo').daterangepicker({
                $('#editProductModal #editProductName').val(productInfo.name);
                $('#editProductModal #editProductCategory').val(productInfo.category);
                $('#editProductModal #editProductDescroption').val(productInfo.description);
+               $('#editProductModal #editProductPoints').val(productInfo.coins);
                $('#editProductModal #editProductId').val(productInfo.id);
                switch(productInfo.images.length) {
                    case 0:
@@ -489,11 +490,13 @@ $('#demo').daterangepicker({
            var name = $('#editProductModal #editProductName').val();
            var category = $('#editProductModal #editProductCategory').val();
            var desc = $('#editProductModal #editProductDescroption').val();
+           var coins = $('#editProductModal #editProductPoints').val();
            //var data = [id, name, category, desc];
            data.push(id);
            data.push(name);
            data.push(category);
            data.push(desc);
+           data.push(coins);
            var arrayData = jQuery.makeArray(data);
            $('#editProductModal').modal('hide');
            $.ajax ({
