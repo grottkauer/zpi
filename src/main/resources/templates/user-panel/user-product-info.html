@@ -96,7 +96,7 @@
                                 <h3 th:text="${item.getName()}"></h3>
                                 <div class="d-flex justify-content-start">
                                     <h2 th:text="${item.getPoints()}"></h2>
-                                    <h2 class="ml-1"> Borrow Coins</h2>
+                                    <h2 class="ml-1">  Borrow Coins</h2>
                                 </div>
                                 <div class="row">
                                     <div class="col-9 row">
@@ -317,7 +317,7 @@
                     </div>
                     <div class="form-group text-left">
                         <label>Cena Borrow Coins:</label>
-                        <input name="productCoins" type="text" class="form-control" required placeholder="Cena Borrow Coins"
+                        <input name="productCoins" type="number" class="form-control" required placeholder="Cena Borrow Coins"
                                id="editProductPoints">
                     </div>
                     <div class="form-group text-left">
@@ -505,6 +505,7 @@ $('#demo').daterangepicker({
                data: {info: data},
                success: function (result) {//On Successful service call
                    console.log(result);
+                   location.reload();
                }
            });
        });

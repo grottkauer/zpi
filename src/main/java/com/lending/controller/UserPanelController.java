@@ -94,6 +94,13 @@ public class UserPanelController {
         return modelAndView;
     }
 
+    @PostMapping(value="/dodaj-produkt/dodaj")
+    public ModelAndView addProductDone(@RequestParam(value = "info[]") String[] info) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("user-panel/borrow-panel");
+        return modelAndView;
+    }
+
     @GetMapping(value="/edytuj-produkt")
     public ModelAndView editProduct() {
         ModelAndView modelAndView = new ModelAndView();

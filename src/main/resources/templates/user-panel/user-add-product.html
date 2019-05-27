@@ -71,7 +71,7 @@
             <section class="cart_area">
                 <div class="container">
                     <div class="cart_inner">
-                        <form class="form form-vertical" action="#" method="post" enctype="multipart/form-data">
+                        <form class="form form-vertical" action="#" method="post" enctype="multipart/form-data" id="addProductForm">
                             <div class="row">
                                 <div class="col-sm-4 text-center">
                                     <div class="form-group">
@@ -79,7 +79,7 @@
                                             <img id="main_image" src="../images/placeholders/image-placeholder.jpg" class="img-fluid mb-1">
                                         </div>
                                         <div class="btn btn-mdb-color btn-rounded">
-                                            <input id="fileInput" type="file" style="display:none;" onchange="onFileSelected(event)"/>
+                                            <input id="fileInput" type="file" style="display:none;" onchange="onFileSelected(event)" id="addProductPhoto1"/>
                                             <input type="button" value="Wybierz plik" onclick="document.getElementById('fileInput').click();" />
                                         </div>
                                     </div>
@@ -88,29 +88,52 @@
                                     <div class="form-group">
                                         <label>Nazwa produktu<span>*</span></label>
                                         <input type="text" class="form-control" name="name" required="required"
-                                               data-validation-required-message="Proszę podać nazwę.">
+                                               data-validation-required-message="Proszę podać nazwę." id="addProductName">
                                     </div>
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>Kategoria<span>*</span></label>
-                                                <select class="form-control">
-                                                    <option selected>Wybierz...</option>
-                                                    <option>Książki</option>
-                                                    <option>Filmy</option>
-                                                    <option>Muzyka</option>
-                                                    <option>Planszówki</option>
-                                                    <option>Czasopisma</option>
-                                                    <option>Zabawki</option>
+                                                <select name="productCategory" class="form-control" id="addProductCategory">
+                                                    <div th:each="cat:${categories}">
+                                                        <optgroup th:label="${cat.getHigherLevelType().getName()}"
+                                                                  th:value="${cat.getHigherLevelType().getName()}">
+                                                        </optgroup>
+                                                        <div th:each="sub1:${cat.getSubcategories()}">
+                                                            <option th:if="${sub1.getSubcategories().size() == 0}"
+                                                                    th:value="${sub1.getHigherLevelType().getName()}"
+                                                                    th:label="${'---->' + sub1.getHigherLevelType().getName()}"
+                                                            ></option>
+                                                            <optgroup th:if="${sub1.getSubcategories().size() != 0}"
+                                                                      th:value="${sub1.getHigherLevelType().getName()}"
+                                                                      th:label="${'---->' + sub1.getHigherLevelType().getName()}"
+                                                            ></optgroup>
+                                                            <div th:each="sub2:${sub1.getSubcategories()}">
+                                                                <option th:if="${sub2.getSubcategories().size() == 0}"
+                                                                        th:value="${sub2.getHigherLevelType().getName()}"
+                                                                        th:label="${'-------->' + sub2.getHigherLevelType().getName()}"
+                                                                ></option>
+                                                                <optgroup th:if="${sub2.getSubcategories().size() != 0}"
+                                                                          th:value="${sub2.getHigherLevelType().getName()}"
+                                                                          th:label="${'-------->' + sub2.getHigherLevelType().getName()}"
+                                                                ></optgroup>
+                                                                <div th:each="sub3:${sub2.getSubcategories()}">
+                                                                    <option th:value="${sub3.getHigherLevelType().getName()}"
+                                                                            th:label="${'------------>' + sub3.getHigherLevelType().getName()}"
+                                                                    ></option>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>Cena Borrow Coins<span>*</span></label>
-                                                <input name="productCoins" type="text" class="form-control" required
+                                                <input name="productCoins" type="number" class="form-control" required
                                                        data-validation-required-message="Proszę podać cenę produktu."
-                                                       id="editProductPoints">
+                                                       id="addProductCoins">
 
                                             </div>
                                         </div>
@@ -120,19 +143,19 @@
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>Opis produktu</label>
-                                                <textarea class="form-control" id="message"></textarea>
+                                                <textarea class="form-control" id="addProductDescription"></textarea>
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>Dodaj kolejne zdjęcia</label>
                                                 <div class="custom-file mb-1">
-                                                    <input type="file" class="custom-file-input" id="customFile">
-                                                    <label class="custom-file-label  text-truncate" for="customFile">Wybierz plik</label>
+                                                    <input type="file" class="custom-file-input" id="addProductPhoto2">
+                                                    <label class="custom-file-label  text-truncate" for="addProductPhoto2">Wybierz plik</label>
                                                 </div>
                                                 <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="customFileLang2" lang="pl-Pl">
-                                                    <label class="custom-file-label  text-truncate" for="customFileLang2">Wybierz plik</label>
+                                                    <input type="file" class="custom-file-input" id="addProductPhoto3" lang="pl-Pl">
+                                                    <label class="custom-file-label  text-truncate" for="addProductPhoto3">Wybierz plik</label>
                                                 </div>
                                             </div>
                                         </div>
@@ -140,7 +163,7 @@
                                     <div class="form-group">
                                         <hr>
                                         <div class="text-right">
-                                            <button type="submit" class="btn btn-primary">Dodaj</button>
+                                            <button type="submit" class="btn btn-primary" id="addProductSubmit">Dodaj</button>
                                         </div>
                                     </div>
                                 </div>
@@ -226,6 +249,33 @@ $(".custom-file-input").on("change", function() {
 
   reader.readAsDataURL(selectedFile);
 }
+</script>
+
+<!--Adding product-->
+<script>
+    $('document').ready(function() {
+       $('#addProductForm #addProductSubmit').on('click', function(event) {
+          event.preventDefault();
+          var name = $('#addProductForm #addProductName').val();
+          var category = $('#addProductForm #addProductCategory').val();
+          var desc = $('#addProductForm #addProductDescription').val();
+           var coins = $('#addProductForm #addProductCoins').val();
+          //todo: photos;
+          var data = [];
+          data.push(name);
+          data.push(category);
+          data.push(desc);
+          data.push(coins);
+          $.ajax({
+              type: 'POST',
+              url: '',
+              data: {info: data},
+              success: function (result) {//On Successful service call
+                  console.log(result);
+              }
+          });
+       });
+    });
 </script>
 
 </body>

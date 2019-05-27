@@ -330,7 +330,7 @@
                     </div>
                     <div class="form-group text-left">
                         <label>Cena Borrow Coins:</label>
-                        <input name="productCoins" type="text" class="form-control" required placeholder="Cena Borrow Coins"
+                        <input name="productCoins" type="number" class="form-control" required placeholder="Cena Borrow Coins"
                                id="editProductPoints">
                     </div>
                     <div class="form-group text-left">
@@ -532,6 +532,7 @@ $(".custom-file-input").on("change", function() {
                 data: {info: data},
                 success: function (result) {//On Successful service call
                     console.log(result);
+                    location.reload();
                 }
             });
         });
