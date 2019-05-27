@@ -85,29 +85,37 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-8">
+                                    <div class="form-group">
+                                        <label>Nazwa produktu<span>*</span></label>
+                                        <input type="text" class="form-control" name="name" required="required"
+                                               data-validation-required-message="Proszę podać nazwę.">
+                                    </div>
                                     <div class="row">
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label>Nazwa produktu<span>*</span></label>
-                                                <input type="text" class="form-control" name="name" required="required"
-                                                       data-validation-required-message="Proszę podać nazwę.">
-                                            </div>
-                                        </div>
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>Kategoria<span>*</span></label>
                                                 <select class="form-control">
-                                                <option selected>Wybierz...</option>
-                                                <option>Książki</option>
-                                                <option>Filmy</option>
-                                                <option>Muzyka</option>
-                                                <option>Planszówki</option>
-                                                <option>Czasopisma</option>
-                                                <option>Zabawki</option>
+                                                    <option selected>Wybierz...</option>
+                                                    <option>Książki</option>
+                                                    <option>Filmy</option>
+                                                    <option>Muzyka</option>
+                                                    <option>Planszówki</option>
+                                                    <option>Czasopisma</option>
+                                                    <option>Zabawki</option>
                                                 </select>
                                             </div>
                                         </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Cena Borrow Coins<span>*</span></label>
+                                                <input name="productCoins" type="text" class="form-control" required
+                                                       data-validation-required-message="Proszę podać cenę produktu."
+                                                       id="editProductPoints">
+
+                                            </div>
+                                        </div>
                                     </div>
+
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <div class="form-group">

@@ -28,6 +28,13 @@
   .cardRegistry input::-webkit-input-placeholder {
     font-size: small;
   }
+
+}
+
+@media (max-width: 1200px) {
+#borrow-lend-button {
+    padding: 15px 0;
+  }
 }
 
 .table-wrapper {
@@ -255,7 +262,7 @@
     }
 
     .mockup-option{
-        opacity: 0.2;
+        opacity: 0.1;
     }
 
     .box_total {
@@ -335,4 +342,10 @@
         padding-left:22px;
         line-height:24px;
         color:#3a7d34;
+    }
+    .site-works {
+        background-image: url("../images/backgrounds/strona-w-budowie.jpg");
+       	background-repeat: no-repeat;
+       	background-attachment: fixed;
+       	background-position: 50% 50%;
     }

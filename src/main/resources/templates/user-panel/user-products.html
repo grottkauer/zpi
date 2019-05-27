@@ -267,7 +267,6 @@
 
 <!-- Edit Product Modal-->
 <div class="modal fade" id="editProductModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <!--    todo edit product modal : everything is too small -->
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -279,51 +278,67 @@
             </div>
             <form method="post" action="/moje-konto">
                 <div class="modal-body">
-                    <div class="d-flex">
-                        <div class="pr-2 flex-fill form-group text-left">
-                            <input name="productName" type="text" class="form-control" required placeholder="Nazwa"
-                                   id="editProductName">
-                        </div>
-                        <div class="pl-2 flex-fill form-group text-left">
-                            <select name="productCategory" class="form-control" id="editProductCategory">
-                                <div th:each="cat:${categories}">
-                                    <!-- TODO make margins work - list of categories in combobox -->
-                                    <optgroup th:label="${cat.getHigherLevelType().getName()}"
-                                              th:value="${cat.getHigherLevelType().getName()}"></optgroup>
-                                    <div th:each="sub1:${cat.getSubcategories()}">
-                                        <option th:if="${sub1.getSubcategories().size() == 0}"
-                                                th:value="${sub1.getHigherLevelType().getName()}"
-                                                th:label="${sub1.getHigherLevelType().getName()}"
-                                                style="margin-left: 15px;"></option>
-                                        <optgroup th:if="${sub1.getSubcategories().size() != 0}"
-                                                  th:value="${sub1.getHigherLevelType().getName()}"
-                                                  th:label="${sub1.getHigherLevelType().getName()}"
-                                                  style="margin-left: 15px;"></optgroup>
-                                        <div th:each="sub2:${sub1.getSubcategories()}">
-                                            <option th:if="${sub2.getSubcategories().size() == 0}"
-                                                    th:value="${sub2.getHigherLevelType().getName()}"
-                                                    th:label="${sub2.getHigherLevelType().getName()}"
-                                                    style="margin-left: 30px;"></option>
-                                            <optgroup th:if="${sub2.getSubcategories().size() != 0}"
-                                                      th:value="${sub2.getHigherLevelType().getName()}"
-                                                      th:label="${sub2.getHigherLevelType().getName()}"
-                                                      style="margin-left: 30px;"></optgroup>
-                                            <div th:each="sub3:${sub2.getSubcategories()}">
-                                                <option th:value="${sub3.getHigherLevelType().getName()}"
-                                                        th:label="${sub3.getHigherLevelType().getName()}"
-                                                        style="margin-left: 45px;"></option>
-                                            </div>
+                    <!--<div class="d-md-flex">-->
+                        <!--<div class="pr-md-2 flex-fill form-group text-left">-->
+                            <!--<input name="productName" type="text" class="form-control" required placeholder="Nazwa"-->
+                                   <!--id="editProductName">-->
+                        <!--</div>-->
+                        <!--<div class="pl-md-2 flex-fill form-group text-left">-->
+                            <!--<input name="productCoins" type="text" class="form-control" required placeholder="Cena Borrow Coins"-->
+                                   <!--id="editProductPoints">-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <div class="form-group text-left">
+                        <label>Nazwa przedmiotu:</label>
+                        <input name="productName" type="text" class="form-control" required placeholder="Nazwa"
+                               id="editProductName">
+                    </div>
+                    <div class="form-group text-left">
+                        <label>Kategoria:</label>
+                        <select name="productCategory" class="form-control" id="editProductCategory">
+                            <div th:each="cat:${categories}">
+                                <optgroup th:label="${cat.getHigherLevelType().getName()}"
+                                          th:value="${cat.getHigherLevelType().getName()}">
+                                </optgroup>
+                                <div th:each="sub1:${cat.getSubcategories()}">
+                                    <option th:if="${sub1.getSubcategories().size() == 0}"
+                                            th:value="${sub1.getHigherLevelType().getName()}"
+                                            th:label="${'---->' + sub1.getHigherLevelType().getName()}"
+                                            ></option>
+                                    <optgroup th:if="${sub1.getSubcategories().size() != 0}"
+                                              th:value="${sub1.getHigherLevelType().getName()}"
+                                              th:label="${'---->' + sub1.getHigherLevelType().getName()}"
+                                              ></optgroup>
+                                    <div th:each="sub2:${sub1.getSubcategories()}">
+                                        <option th:if="${sub2.getSubcategories().size() == 0}"
+                                                th:value="${sub2.getHigherLevelType().getName()}"
+                                                th:label="${'-------->' + sub2.getHigherLevelType().getName()}"
+                                                ></option>
+                                        <optgroup th:if="${sub2.getSubcategories().size() != 0}"
+                                                  th:value="${sub2.getHigherLevelType().getName()}"
+                                                  th:label="${'-------->' + sub2.getHigherLevelType().getName()}"
+                                                  ></optgroup>
+                                        <div th:each="sub3:${sub2.getSubcategories()}">
+                                            <option th:value="${sub3.getHigherLevelType().getName()}"
+                                                    th:label="${'------------>' + sub3.getHigherLevelType().getName()}"
+                                                    ></option>
                                         </div>
                                     </div>
                                 </div>
-                            </select>
-                        </div>
+                            </div>
+                        </select>
                     </div>
                     <div class="form-group text-left">
+                        <label>Cena Borrow Coins:</label>
+                        <input name="productCoins" type="text" class="form-control" required placeholder="Cena Borrow Coins"
+                               id="editProductPoints">
+                    </div>
+                    <div class="form-group text-left">
+                        <label>Opis:</label>
                         <textarea class="form-control" id="editProductDescroption" placeholder="Opis"></textarea>
                     </div>
                     <div class="form-group" id="editProductDeletePhotos">
-                        <label>Usuń wybrane zdjęcie</label>
+                        <label>Usuń wybrane zdjęcie:</label>
                         <div class="row">
                             <div class="col-md-4 text-center mb-5" id="editProductDeletePhoto1">
                                     <span class="custom-checkbox">
@@ -349,7 +364,7 @@
                         </div>
                     </div>
                     <div class="form-group" id="editProductAddPhotos">
-                        <label>Dodaj zdjęcia</label>
+                        <label>Dodaj zdjęcia:</label>
                         <div class="custom-file mb-1" id="editProductAddPhoto1">
                             <input type="file" class="custom-file-input" id="customFile">
                             <label class="custom-file-label  text-truncate" for="customFile">Wybierz plik</label>

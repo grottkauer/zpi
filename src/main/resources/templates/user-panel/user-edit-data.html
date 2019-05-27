@@ -64,7 +64,7 @@
             <h1 class="text-uppercase">Edycja danych</h1>
         </div>
 
-        <div class="container" id="edit_data">
+        <div class="container mb-4" id="edit_data">
         <div class="card cardRegistry text-center">
             <div class="card-body text-center">
                 <form method="post" th:object="${user}">
@@ -93,20 +93,27 @@
                             <input id="demo" type="text" class="form-control" required
                                    th:value="${#dates.format(user.getBirthDate(), 'dd/MM/yyyy')}"
                                     th:field="*{birthDate}">
+                            <span class="alert alert-danger text-center mt-2" id="birthMessage" style="display: none;
+                                        padding: 0.25rem 0;"></span>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-sm-6 form-group text-left">
                             <label>Kod pocztowy</label>
-                            <input name="zipCode" type="text" class="form-control" required
+                            <input id="zipCode" name="zipCode" type="text" class="form-control" required
                                    th:value="${user.getZipCode()}" th:field="*{zipCode}">
+                            <span class="alert alert-danger text-center mt-2" id="zipMessage" style="display: none;
+                                        padding: 0.25rem 0;"></span>
                         </div>
+
                         <div class="col-sm-6 form-group text-left">
                             <label>Miejscowość</label>
                             <input name="city" type="text" class="form-control" required
                                    th:value="${user.getLocality()}" th:field="*{locality}">
                         </div>
+
                     </div>
+
                     <div class="row">
                         <div class="col-sm-6 form-group text-left">
                             <label>Ulica</label>
@@ -177,6 +184,52 @@ $(document).ready(function(){
     $('.toast').toast('show');
   });
 });
+</script>
+
+<!-- check edit data elements -->
+<script>
+    $(document).ready(function () {
+        $('#zipCode').on('keyup', function () {
+            var zip = $('#zipCode').val();
+            if ( zip.match( /^\d{2}-\d{3}$/ ) ){
+                $('#zipMessage').css('display', 'none');
+                $("#saveData").attr("disabled", false);
+            } else {
+                $('#zipMessage').html('Zły format kodu pocztowego').css('display', 'block')
+                .css('background-color', '#f8d7da');
+                $("#saveData").attr("disabled", true);
+            }
+        });
+        $('#demo').on('keyup', function () {
+            var birth = $('#demo').val();
+            var res = birth.substring(0, 2);
+            var res2 = birth.substring(2, 6);
+            var res3 = birth.substring(6, 10);
+            var text = res3.concat(res2);
+            text = text.concat(res);
+
+            var today = new Date();
+            var dd = today.getDate();
+            if ( dd < 10 )
+            	dd = '0' + dd;
+
+            var mm = today.getMonth()+1;
+
+            if ( mm < 10 )
+            	mm = '0' + mm;
+            var yyyy = today.getFullYear();
+            var today_text = yyyy + "/" + mm + "/" + dd;
+
+            if ( text < today_text ){
+                $('#birthMessage').css('display', 'none');
+                $("#saveData").attr("disabled", false);
+            } else {
+                $('#birthMessage').html('Niepoprawna data').css('display', 'block')
+                .css('background-color', '#f8d7da');
+                $("#saveData").attr("disabled", true);
+            }
+        });
+    });
 </script>
 
 <!-- Bootstrap core JavaScript-->

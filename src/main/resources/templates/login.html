@@ -210,11 +210,29 @@
                 </div>
                 <div class="d-flex">
                     <div class="pr-2 flex-fill form-group text-left">
-                        <input name="password" type="password" class="form-control" required placeholder="Hasło">
+                        <input id="password" name="password" type="password" class="form-control" required placeholder="Hasło">
+                        <!-- An element to toggle between password visibility -->
+                        <input class="ml-2" type="checkbox" onclick="showPassword()">
+                        <span style="font-weight: bold;">Pokaż nowe hasło</span>
+                        <div id="pswd_info">
+                            <h4 class="text-center">Hasło musi posiadać następujące cechy:</h4>
+                            <ul class="text-left" style="color: black;">
+                                <li id="letter" class="invalid">Co najmniej <strong>jedną literę</strong></li>
+                                <li id="capital" class="invalid">Co najmniej <strong>jedną wielką literę</strong></li>
+                                <li id="number" class="invalid">Co najmniej <strong>jedną cyfrę</strong></li>
+                                <li id="length" class="invalid">Co najmniej <strong>8 znaków</strong></li>
+                                <li id="old" class="valid">Być inne od <strong>starego hasła</strong></li>
+                            </ul>
+                        </div>
                     </div>
+
                     <div class="pl-2 flex-fill form-group text-left">
-                        <input name="repeatPassword" type="password" class="form-control" required placeholder="Powtórz hasło">
+                        <input id="rep_password" name="repeatPassword" type="password" class="form-control" required placeholder="Powtórz hasło">
+                        <span class="alert alert-danger" id="message" style="display: none;
+                                        padding: 0.25rem 0.55rem;">
+                        </span>
                     </div>
+
                 </div>
                 <div class="d-flex">
                     <div class="pr-2 flex-fill form-group text-left">
@@ -248,7 +266,7 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-raised btn-primary btn-block mb-3">Zarejestruj</button>
+                <button id="registerSubmit" type="submit" class="btn btn-raised btn-primary btn-block mb-3">Zarejestruj</button>
                 <hr/>
                 <div class="d-flex">
                     <div class="p-2 flex-fill font-weight-light text-muted text-left" style="font-size: 13px">Masz już konto?</div>
@@ -278,6 +296,91 @@
         </div>
     </div>
 </div>
+
+<!-- check new passwords -->
+<script>
+    $('#rep_password').on('keyup', function () {
+      if ($('#password').val().length > 0 && $('#rep_password').val().length > 0){
+          if ($('#password').val() == $('#rep_password').val()) {
+            $('#message').html('Nowe hasła do siebie pasują').css('display', 'none');
+            $("#registerSubmit").attr("disabled", false);
+          }
+          else {
+            $('#message').html('Nowe hasła są różne').css('display', 'block')
+                .css('background-color', '#f8d7da');
+            $("#registerSubmit").attr("disabled", true);
+          }
+      } else {
+            $('#message').html('Nie podano poprawnego hasła').css('display', 'block')
+                .css('background-color', '#f8d7da');
+            $("#registerSubmit").attr("disabled", true);
+       }
+    });
+</script>
+
+<!-- check correctness of new password -->
+<script>
+    $(document).ready(function () {
+        $("#registerSubmit").attr("disabled", true);
+        $('#password').keyup(function() {
+            // keyup code here
+            // set password variable
+            var pswd = $(this).val();
+
+            //validate the length
+            if ( pswd.length < 8 ) {
+                $('#length').removeClass('valid').addClass('invalid');
+            } else {
+                $('#length').removeClass('invalid').addClass('valid');
+            }
+
+            //validate letter
+            if ( pswd.match(/[A-z]/) ) {
+                $('#letter').removeClass('invalid').addClass('valid');
+            } else {
+                $('#letter').removeClass('valid').addClass('invalid');
+            }
+
+            //validate capital letter
+            if ( pswd.match(/[A-Z]/) ) {
+                $('#capital').removeClass('invalid').addClass('valid');
+            } else {
+                $('#capital').removeClass('valid').addClass('invalid');
+            }
+
+            //validate number
+            if ( pswd.match(/\d/) ) {
+                $('#number').removeClass('invalid').addClass('valid');
+            } else {
+                $('#number').removeClass('valid').addClass('invalid');
+            }
+
+            if (pswd.match(/\d/)
+                    && pswd.match(/[A-Z]/) && pswd.match(/[A-z]/) && pswd.length < 8 ) {
+                $("#registerSubmit").attr("disabled", false);
+            } else {
+                $("#registerSubmit").attr("disabled", true);
+            }
+
+        }).focus(function() {
+            $('#pswd_info').show();
+        }).blur(function() {
+            $('#pswd_info').hide();
+        });
+    });
+</script>
+
+<!-- show new password -->
+<script>
+        function showPassword() {
+          var x = document.getElementById("password");
+          if (x.type === "password") {
+            x.type = "text";
+          } else {
+            x.type = "password";
+          }
+        }
+</script>
 
 <!-- Bootstrap core JavaScript -->
 <script src="../startbootstrap-agency-gh-pages/vendor/jquery/jquery.min.js"></script>
