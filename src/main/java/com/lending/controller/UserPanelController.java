@@ -1,14 +1,8 @@
 package com.lending.controller;
 
 import com.lending.dto.*;
-import com.lending.entities.Address;
-import com.lending.entities.Person;
-import com.lending.entities.Resource;
-import com.lending.entities.ResourceType;
-import com.lending.repositories.AddressRepository;
-import com.lending.repositories.ResourceRepository;
-import com.lending.repositories.ResourceTypeRepository;
-import com.lending.repositories.UserRepository;
+import com.lending.entities.*;
+import com.lending.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -17,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.sql.rowset.serial.SerialBlob;
 import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.Base64;
@@ -38,6 +33,9 @@ public class UserPanelController {
 
     @Autowired
     AddressRepository addressRepository;
+
+    @Autowired
+    ImageRepository imageRepository;
 
     private List<CategoriesDto> categories = null;
 
@@ -271,23 +269,28 @@ public class UserPanelController {
     public ResourceToEditDto productInfoEdit(Integer id) {
         Resource resource = resourceRepository.getResourceById(id);
         return new ResourceToEditDto(id, resource.getName(), resource.getResourceType().getId(),
-                resource.getDescription(), resource.getPoints(), getPhotosSrc(id));
+                resource.getDescription(), resource.getPoints(), getPhotosSrc(id),
+                imageRepository.getPhotosIdsOfResource(id));
     }
 
     @PostMapping(value="/info-produktu/edycja")
-    public ModelAndView productInfoEditDone(@RequestParam(value = "info[]") String[] info) {
+    public ModelAndView productInfoEditDone(@RequestParam(value = "info[]") String[] info,
+                                            @RequestParam(value = "images[]", required = false) String[] images,
+                                            @RequestParam(value = "toDelete[]", required = false) Integer[] toDelete) {
         editResource(info);
-        //todo fix refresh?
-        //todo: update images in db and on dialog
+        addImagesToResource(Integer.parseInt(info[0]),images);
+        removeImagesFromResource(toDelete);
         //todo: popup
         return getProductView(Integer.parseInt(info[0]), true);
     }
 
     @PostMapping(value="/moje-produkty/edycja")
-    public ModelAndView productEditDone(@RequestParam(value = "info[]") String[] info) {
+    public ModelAndView productEditDone(@RequestParam(value = "info[]") String[] info,
+                                        @RequestParam(value = "images[]", required = false) String[] images,
+                                        @RequestParam(value = "toDelete[]", required = false) Integer[] toDelete) {
         editResource(info);
-        //todo fix refresh?
-        //todo: update images in db and on dialog
+        addImagesToResource(Integer.parseInt(info[0]),images);
+        removeImagesFromResource(toDelete);
         //todo: popup
         return getUsersProductView(true);
     }
@@ -348,8 +351,8 @@ public class UserPanelController {
         modelAndView.addObject("item", resource);
         modelAndView.addObject("history", history);
         modelAndView.addObject("borrowingUser", borrowingUser);
-        modelAndView.addObject("hasPhoto", photosSrc.size() > 0);
         modelAndView.addObject("photo", photosSrc.size() > 0 ? photosSrc.get(0) : null);
+        //too: list of photos
         return modelAndView;
     }
 
@@ -416,6 +419,30 @@ public class UserPanelController {
         resourceToEdit.setDescription(desc);
         resourceToEdit.setPoints(points);
         resourceRepository.save(resourceToEdit);
+    }
+
+    private void addImagesToResource(int id, String[] images) {
+        byte[] decodedByte;
+        Blob blob;
+        Image imgToSave;
+        Resource resource = resourceRepository.getResourceById(id);
+        for (String image : images) {
+            System.out.println(image);
+            if (image != null && image.length() != 0 && !image.trim().equals("")) {
+                decodedByte = Base64.getDecoder().decode(image);
+                try {
+                    blob = new SerialBlob(decodedByte);
+                    imgToSave = new Image(resource, blob);
+                    imageRepository.save(imgToSave);
+                }
+                catch (Exception e) {e.printStackTrace();}
+            }
+        }
+    }
+
+    private void removeImagesFromResource(Integer[] ids) {
+        List<Image> imagesToDelete = imageRepository.getImagesByIds(ids);
+        imageRepository.deleteAll(imagesToDelete);
     }
 
 }

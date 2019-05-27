@@ -77,12 +77,12 @@
                                              style="width: 60px; height: 60px;">
                                     </li>
                                 </ol>
-                                <div th:class="carousel-inner" th:if="${hasPhoto == false}">>
+                                <div th:class="carousel-inner" th:if="${photo == null}">>
                                     <div class="carousel-item active">
                                         <img class="d-block w-100" src="../images/sample-products/no_image.png" alt="First slide">
                                     </div>
                                 </div>
-                                <div th:class="carousel-inner" th:if="${hasPhoto == true}">
+                                <div th:class="carousel-inner" th:if="${photo != null}">
                                     <div class="carousel-item active">
                                         <img th:src="${photo}" height="500" width="500">
                                     </div>
@@ -263,7 +263,6 @@
 
 <!-- Edit Product Modal-->
 <div class="modal fade" id="editProductModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-<!--    todo edit product modal : everything is too small -->
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -329,41 +328,49 @@
                         <div class="row">
                             <div class="col-md-4 text-center mb-5" id="editProductDeletePhoto1">
                                     <span class="custom-checkbox">
-                                                <input type="checkbox" name="options[]" value="1">
-                                                <label for="checkbox1"></label>
+                                        <input type="checkbox" name="toDelete" value="1" id="deletePhotoCheck1">
+                                        <label for="checkbox1"></label>
                                     </span>
-                                <img class="img-gallery" src="../images/sample-products/talisman.png" alt="">
+                                <img class="img-gallery" alt="" id="showPhoto1">
                             </div>
-                            <div class="col-md-4 text-center mb-5" id="editProductDeletePhoto2">
+                            <div class="col-md-4 text-center mb-5" id="editProductDeletePhoto2" >
                                     <span class="custom-checkbox">
-                                                <input type="checkbox" name="options[]" value="1">
-                                                <label for="checkbox1"></label>
+                                        <input type="checkbox" name="toDelete" value="1" id="deletePhotoCheck2">
+                                        <label for="checkbox1"></label>
                                     </span>
-                                <img class="img-gallery" src="../images/sample-products/talisman.png" alt="">
+                                <img class="img-gallery" alt="" id="showPhoto2">
                             </div>
                             <div class="col-md-4 text-center mb-5" id="editProductDeletePhoto3">
                                     <span class="custom-checkbox">
-                                                <input type="checkbox" name="options[]" value="1">
-                                                <label for="checkbox1"></label>
+                                        <input type="checkbox" name="toDelete" value="1" id="deletePhotoCheck3">
+                                        <label for="checkbox1"></label>
                                     </span>
-                                <img class="img-gallery" src="../images/sample-products/talisman.png" alt="">
+                                <img class="img-gallery" alt="" id="showPhoto3">
                             </div>
                         </div>
                     </div>
                     <div class="form-group" id="editProductAddPhotos">
                         <label>Dodaj zdjęcia</label>
                         <div class="custom-file mb-1" id="editProductAddPhoto1">
-                            <input type="file" class="custom-file-input" id="uploadFile1">
+                            <input type="file" class="custom-file-input" id="uploadFile1"
+                                   accept="image/*">
                             <label class="custom-file-label  text-truncate" id="uploadFileLabel1"
                                    for="uploadFile1">Wybierz plik</label>
+                            <input type="hidden" id="uploadFileString1"/>
                         </div>
                         <div class="custom-file mb-1" id="editProductAddPhoto2">
-                            <input type="image" class="custom-file-input" id="uploadFile2" lang="pl-Pl">
-                            <label class="custom-file-label  text-truncate" for="uploadFile2">Wybierz plik</label>
+                            <input type="file" class="custom-file-input" id="uploadFile2" lang="pl-Pl"
+                                   accept="image/*">
+                            <label class="custom-file-label  text-truncate" for="uploadFile2"
+                                id="uploadFileLabel2">Wybierz plik</label>
+                            <input type="hidden" id="uploadFileString2"/>
                         </div>
                         <div class="custom-file" id="editProductAddPhoto3">
-                            <input type="image" class="custom-file-input" id="uploadFile3" lang="pl-Pl">
-                            <label class="custom-file-label  text-truncate" for="uploadFile3">Wybierz plik</label>
+                            <input type="file" class="custom-file-input" id="uploadFile3" lang="pl-Pl"
+                                   accept="image/*">
+                            <label class="custom-file-label  text-truncate" for="uploadFile3"
+                                id="uploadFileLabel3">Wybierz plik</label>
+                            <input type="hidden" id="uploadFileString3"/>
                         </div>
                     </div>
                 </div>
@@ -462,22 +469,28 @@ $('#demo').daterangepicker({
                        break;
                    case 1:
                        $('#editProductModal #editProductAddPhoto3').hide();
-                       $('#editProductModal #editProductDeletePhoto1 .img-gallery').val(productInfo.images.get(0));
+                       document.getElementById('showPhoto1').setAttribute('src', productInfo.images[0]);
+                       $('#editProductModal #editProductDeletePhoto1 #deletePhotoCheck1').val(productInfo.imagesIds[0]);
                        $('#editProductModal #editProductDeletePhoto2').hide();
                        $('#editProductModal #editProductDeletePhoto3').hide();
                        break;
                    case 2:
                        $('#editProductModal #editProductAddPhoto2').hide();
                        $('#editProductModal #editProductAddPhoto3').hide();
-                       $('#editProductModal #editProductDeletePhoto1 .img-gallery').val(productInfo.images.get(0));
-                       $('#editProductModal #editProductDeletePhoto2 .img-gallery').val(productInfo.images.get(1));
+                       document.getElementById('showPhoto1').setAttribute('src', productInfo.images[0]);
+                       $('#editProductModal #editProductDeletePhoto1 #deletePhotoCheck1').val(productInfo.imagesIds[0]);
+                       document.getElementById('showPhoto2').setAttribute('src', productInfo.images[1]);
+                       $('#editProductModal #editProductDeletePhoto2 #deletePhotoCheck2').val(productInfo.imagesIds[1]);
                        $('#editProductModal #editProductDeletePhoto3').hide();
                        break;
                    case 3:
                        $('#editProductModal #editProductAddPhotos').hide();
-                       $('#editProductModal #editProductDeletePhoto1 .img-gallery').val(productInfo.images.get(0));
-                       $('#editProductModal #editProductDeletePhoto2 .img-gallery').val(productInfo.images.get(1));
-                       $('#editProductModal #editProductDeletePhoto3 .img-gallery').val(productInfo.images.get(2));
+                       document.getElementById('showPhoto1').setAttribute('src', productInfo.images[0]);
+                       $('#editProductModal #editProductDeletePhoto1 #deletePhotoCheck1').val(productInfo.imagesIds[0]);
+                       document.getElementById('showPhoto2').setAttribute('src', productInfo.images[1]);
+                       $('#editProductModal #editProductDeletePhoto2 #deletePhotoCheck2').val(productInfo.imagesIds[1]);
+                       document.getElementById('showPhoto3').setAttribute('src', productInfo.images[2]);
+                       $('#editProductModal #editProductDeletePhoto3 #deletePhotoCheck3').val(productInfo.imagesIds[2]);
                        break;
                }
            });
@@ -492,18 +505,28 @@ $('#demo').daterangepicker({
            var category = $('#editProductModal #editProductCategory').val();
            var desc = $('#editProductModal #editProductDescroption').val();
            var coins = $('#editProductModal #editProductPoints').val();
+           var img1 = $('#editProductModal #uploadFileString1').val();
+           var img2 = $('#editProductModal #uploadFileString2').val();
+           var img3 = $('#editProductModal #uploadFileString3').val();
            //var data = [id, name, category, desc];
            data.push(id);
            data.push(name);
            data.push(category);
            data.push(desc);
            data.push(coins);
-           var arrayData = jQuery.makeArray(data);
+           var images = [];
+           images.push(img1);
+           images.push(img2);
+           images.push(img3);
+           var selected = [];
+           $.each($("input[name='toDelete']:checked"), function() {
+               selected.push($(this).val())
+           });
            $('#editProductModal').modal('hide');
            $.ajax ({
                type: 'POST',
                url: '/moje-konto/info-produktu/edycja',
-               data: {info: data},
+               data: {info: data, images: images, toDelete: selected},
                success: function (result) {//On Successful service call
                    console.log(result);
                    location.reload();
@@ -513,35 +536,57 @@ $('#demo').daterangepicker({
     });
 </script>
 
-<!--<script>-->
-<!--    // Add the following code if you want the name of the file appear on select-->
-<!--    $("#uploadFile1").on("change", function() {-->
-<!--        var fileName = $(this).val().split("\\").pop();-->
-<!--        $(this).siblings("#uploadFileLabel1").addClass("selected").html(fileName);-->
-<!--    });-->
-<!--</script>-->
-<!--<script>-->
-<!--    function onFileSelected(event) {-->
-<!--        var selectedFile = event.target.files[0];-->
-<!--        var reader = new FileReader();-->
-
-<!--        var imgtag = document.getElementById("main_image");-->
-<!--        imgtag.title = selectedFile.name;-->
-
-<!--        reader.onload = function(event) {-->
-<!--            imgtag.src = event.target.result;-->
-<!--        };-->
-
-<!--        reader.readAsDataURL(selectedFile);-->
-<!--    }-->
-<!--</script>-->
+<script>
+    // Add the following code if you want the name of the file appear on select
+    $("#uploadFile1").on("change", function(event) {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings("#uploadFileLabel1").addClass("selected").html(fileName);
+        var f = event.target.files[0];
+        var reader = new FileReader();
+        reader.onload = (function (thefile) {
+            return function(e) {
+                var binD = e.target.result;
+                var b64 = window.btoa(binD);
+                document.getElementById('uploadFileString1').value = b64;
+            };
+        })(f);
+        reader.readAsBinaryString(f);
+    });
+    $("#uploadFile2").on("change", function(event) {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings("#uploadFileLabel2").addClass("selected").html(fileName);
+        var f = event.target.files[0];
+        var reader = new FileReader();
+        reader.onload = (function (thefile) {
+            return function(e) {
+                var binD = e.target.result;
+                var b64 = window.btoa(binD);
+                document.getElementById('uploadFileString2').value = b64;
+            };
+        })(f);
+        reader.readAsBinaryString(f);
+    });
+    $("#uploadFile3").on("change", function(event) {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings("#uploadFileLabel3").addClass("selected").html(fileName);
+        var f = event.target.files[0];
+        var reader = new FileReader();
+        reader.onload = (function (thefile) {
+            return function(e) {
+                var binD = e.target.result;
+                var b64 = window.btoa(binD);
+                document.getElementById('uploadFileString3').value = b64;
+            };
+        })(f);
+        reader.readAsBinaryString(f);
+    });
+</script>
 
 <script type="text/javascript" th:inline="javascript">
     $('document').ready(function() {
         var refresh = [[${refreshNeeded}]];
         if (refresh === true) {
             window.location.reload();
-            //TODO: skoro był refresh to znaczy ze cos usunieto, a wiec popup ze usunieto xd
         }
     });
 </script>

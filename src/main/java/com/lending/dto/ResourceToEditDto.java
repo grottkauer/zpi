@@ -11,14 +11,17 @@ public class ResourceToEditDto {
     private String description;
     private int coins;
     private List<String> images;
+    private List<Integer> imagesIds;
 
-    public ResourceToEditDto(int id, String name, int category, String description, int coins, List<String> images) {
+    public ResourceToEditDto(int id, String name, int category, String description, int coins,
+                             List<String> images, List<Integer> imagesIds) {
         this.id = id;
         this.name = name;
         this.category = category;
         this.description = description;
         this.coins = coins;
         this.images = images;
+        this.imagesIds = imagesIds;
     }
 
     public ResourceToEditDto(int id, String name, int category, String description, int coins) {
@@ -28,6 +31,7 @@ public class ResourceToEditDto {
         this.description = description;
         this.coins = coins;
         this.images = new ArrayList<>(3);
+        this.imagesIds = new ArrayList<>(3);
     }
 
     public int getId() {
@@ -76,5 +80,17 @@ public class ResourceToEditDto {
 
     public void setCoins(int coins) {
         this.coins = coins;
+    }
+
+    public List<Integer> getImagesIds() {
+        return imagesIds;
+    }
+
+    public void setImagesIds(List<Integer> imagesIds) {
+        this.imagesIds = imagesIds;
+    }
+
+    public void addImage(int imageId) {
+        this.imagesIds.add(imageId);
     }
 }
