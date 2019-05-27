@@ -27,6 +27,15 @@
     <!-- Custom styles for this template -->
     <link href="../startbootstrap-agency-gh-pages/css/agency.min.css" rel="stylesheet">
 
+    <!-- Date picker range -->
+
+    <script type="text/javascript" src="../../daterangepicker-master/moment.min.js"></script>
+    <script type="text/javascript" src="../../daterangepicker-master/daterangepicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../daterangepicker-master/daterangepicker.css" />
+
+    <!-- Datepicker files -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" rel="stylesheet"/>
+
     <!-- Added css files -->
     <link rel="stylesheet" href="./css/master.css">
     <link rel="stylesheet" href="./css/signin.css">
@@ -206,14 +215,17 @@
             <h2 class="card-title mb-5">Rejestracja</h2>
             <form method="post">
                 <div class="form-group text-left">
-                    <input name="email" type="email" class="form-control" required placeholder="Adres email" >
+                    <input id="email" name="email" type="email" class="form-control" required placeholder="Adres email" >
+                    <span class="alert alert-danger" id="emailMessage" style="display: none;
+                                        padding: 0.25rem 0.55rem;">
+                        </span>
                 </div>
                 <div class="d-flex">
                     <div class="pr-2 flex-fill form-group text-left">
                         <input id="password" name="password" type="password" class="form-control" required placeholder="Hasło">
                         <!-- An element to toggle between password visibility -->
                         <input class="ml-2" type="checkbox" onclick="showPassword()">
-                        <span style="font-weight: bold;">Pokaż nowe hasło</span>
+                        <span style="font-weight: bold;">Pokaż hasło</span>
                         <div id="pswd_info">
                             <h4 class="text-center">Hasło musi posiadać następujące cechy:</h4>
                             <ul class="text-left" style="color: black;">
@@ -243,11 +255,17 @@
                     </div>
                 </div>
                 <div class="form-group text-left">
-                    <input name="birthDate" type="date" class="form-control" required placeholder="Data urodzenia">
+                    <input data-date-format="dd/mm/yyyy" id="demo" class="form-control" required placeholder="Data urodzenia">
+                    <span class="alert alert-danger" id="birthMessage" style="display: none;
+                                        padding: 0.25rem 0.55rem;">
+                        </span>
                 </div>
                 <div class="d-flex">
                     <div class="pr-2 flex-fill form-group text-left">
-                        <input name="zipCode" type="text" class="form-control" required placeholder="Kod pocztowy">
+                        <input id="zipCode" name="zipCode" type="text" class="form-control" required placeholder="Kod pocztowy">
+                        <span class="alert alert-danger" id="zipMessage" style="display: none;
+                                        padding: 0.25rem 0.55rem;">
+                        </span>
                     </div>
                     <div class="pl-2 flex-fill form-group text-left">
                         <input name="city" type="text" class="form-control" required placeholder="Miejscowość">
@@ -281,9 +299,12 @@
             <h2 class="card-title mb-5">Resetowanie hasła</h2>
             <form method="post">
                 <div class="form-group text-left mb-4">
-                    <input name="email" type="email" class="form-control" required placeholder="Adres email" >
+                    <input id="emailReset" name="email" type="email" class="form-control" required placeholder="Adres email" >
+                    <span class="alert alert-danger" id="emailResetMessage" style="display: none;
+                                        padding: 0.25rem 0.55rem;">
+                        </span>
                 </div>
-                <button type="submit" class="btn btn-raised btn-primary btn-block mb-3">Resetuj hasło</button>
+                <button id="resetSubmit" type="submit" class="btn btn-raised btn-primary btn-block mb-3">Resetuj hasło</button>
                 <hr/>
                 <div class="d-flex">
                     <div class="p-2 flex-fill font-weight-light text-muted text-left" style="font-size: 13px">Nie masz konta?</div>
@@ -297,13 +318,37 @@
     </div>
 </div>
 
+
+<script>
+$(document).ready(function () {
+    $("#resetSubmit").attr("disabled", true);
+    $('#emailReset').on('keyup', function () {
+        if ($('#emailReset').val().match( /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/ ) ) {
+            $('#emailResetMessage').css('display', 'none');
+            $("#resetSubmit").attr("disabled", false);
+        } else {
+            $('#emailResetMessage').html('Zły format adresu email').css('display', 'block')
+                .css('background-color', '#f8d7da');
+            $("#resetSubmit").attr("disabled", true);
+        }
+    });
+});
+</script>
 <!-- check new passwords -->
 <script>
+$(document).ready(function () {
+    $("#registerSubmit").attr("disabled", true);
+    var log;
     $('#rep_password').on('keyup', function () {
       if ($('#password').val().length > 0 && $('#rep_password').val().length > 0){
           if ($('#password').val() == $('#rep_password').val()) {
             $('#message').html('Nowe hasła do siebie pasują').css('display', 'none');
-            $("#registerSubmit").attr("disabled", false);
+            if ( $('#email').val().match( /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/ ) &&
+                $('#zipCode').val().match( /^\d{2}-\d{3}$/ )
+                && $('#password').val() == $('#rep_password').val()
+                    ) {
+                        $("#registerSubmit").attr("disabled", false);
+                    }
           }
           else {
             $('#message').html('Nowe hasła są różne').css('display', 'block')
@@ -316,6 +361,81 @@
             $("#registerSubmit").attr("disabled", true);
        }
     });
+
+    $('#email').on('keyup', function () {
+        if ($('#email').val().match( /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/ ) ) {
+            $('#emailMessage').css('display', 'none');
+            /* main condition */
+            var pswd = $('#password').val();
+            if ( $('#email').val().match( /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/ ) &&
+                $('#zipCode').val().match( /^\d{2}-\d{3}$/ )
+                && $('#password').val() == $('#rep_password').val()
+                    ) {
+                        $("#registerSubmit").attr("disabled", false);
+                    }
+        } else {
+            $('#emailMessage').html('Zły format adresu email').css('display', 'block')
+                .css('background-color', '#f8d7da');
+            $("#registerSubmit").attr("disabled", true);
+        }
+    });
+
+    $('#zipCode').on('keyup', function () {
+            var zip = $('#zipCode').val();
+            if ( zip.match( /^\d{2}-\d{3}$/ ) ){
+                $('#zipMessage').css('display', 'none');
+                var pswd = $('#password').val();
+            if ( $('#email').val().match( /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/ ) &&
+                $('#zipCode').val().match( /^\d{2}-\d{3}$/ )
+                && $('#password').val() == $('#rep_password').val()
+                    ) {
+                        $("#registerSubmit").attr("disabled", false);
+                    }
+            } else {
+                $('#zipMessage').html('Zły format kodu pocztowego').css('display', 'block')
+                .css('background-color', '#f8d7da');
+                $("#registerSubmit").attr("disabled", true);
+            }
+    });
+
+    $('#demo').on('keyup', function () {
+            var birth = $('#demo').val();
+            var res = birth.substring(0, 2);
+            var res2 = birth.substring(2, 6);
+            var res3 = birth.substring(6, 10);
+            var text = res3.concat(res2);
+            text = text.concat(res);
+
+            var today = new Date();
+            var dd = today.getDate();
+            if ( dd < 10 )
+            	dd = '0' + dd;
+
+            var mm = today.getMonth()+1;
+
+            if ( mm < 10 )
+            	mm = '0' + mm;
+            var yyyy = today.getFullYear();
+            var today_text = yyyy + "/" + mm + "/" + dd;
+
+            if ( text < today_text ){
+                $('#birthMessage').css('display', 'none');
+                var pswd = $('#password').val();
+            if ( $('#email').val().match( /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/ ) &&
+                $('#zipCode').val().match( /^\d{2}-\d{3}$/ )
+                && $('#password').val() == $('#rep_password').val()
+                    ) {
+                        $("#registerSubmit").attr("disabled", false);
+                    }
+            } else {
+                $('#birthMessage').html('Niepoprawna data').css('display', 'block')
+                .css('background-color', '#f8d7da');
+                $("#registerSubmit").attr("disabled", true);
+            }
+        });
+
+
+ });
 </script>
 
 <!-- check correctness of new password -->
@@ -325,7 +445,7 @@
         $('#password').keyup(function() {
             // keyup code here
             // set password variable
-            var pswd = $(this).val();
+            var pswd = $('#password').val();
 
             //validate the length
             if ( pswd.length < 8 ) {
@@ -396,6 +516,59 @@
 <!-- Custom scripts for this template -->
 <script src="../startbootstrap-agency-gh-pages/js/agency.min.js"></script>
 
+<!-- pignose.calendar js -->
+<script src="../datepicker-popup/js/pignose.calendar.full.min.js"></script>
+<!-- script js -->
+<script src="../datepicker-popup/js/script.js"></script>
+
+<!-- Date picker range -->
+<script type="text/javascript" src="../../daterangepicker-master/moment.min.js"></script>
+<script type="text/javascript" src="../../daterangepicker-master/daterangepicker.js"></script>
+
+<script>
+$('#demo').daterangepicker({
+    "singleDatePicker": true,
+    "showDropdowns": true,
+    "locale": {
+        "format": "DD/MM/YYYY",
+        "separator": " / ",
+        "applyLabel": "",
+        "cancelLabel": "Cancel",
+        "fromLabel": "Od",
+        "toLabel": "Do",
+        "customRangeLabel": "Custom",
+        "weekLabel": "T",
+        "daysOfWeek": [
+            "Nie",
+            "Pon",
+            "Wto",
+            "Śro",
+            "Czw",
+            "Pią",
+            "Sob"
+        ],
+        "monthNames": [
+            "Styczeń",
+            "Luty",
+            "Marzec",
+            "Kwiecień",
+            "Maj",
+            "Czerwiec",
+            "Lipiec",
+            "Sierpień",
+            "Wrzesień",
+            "Październik",
+            "Listopad",
+            "Grudzień"
+        ],
+        "firstDay": 1
+    },
+    "applyButtonClasses": "btn-warning",
+    "cancelClass": "btn-warning"
+}, function(start, end, label) {
+  console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+});
+</script>
 
 </body>
 </html>
