@@ -266,7 +266,7 @@ public class UserPanelController {
         return products();
     }
 
-    @GetMapping(value="/info-produktu/edycja-produktu")
+    @GetMapping(value="/info-produktu/edycja-produktu/")
     @ResponseBody
     public ResourceToEditDto productInfoEdit(Integer id) {
         Resource resource = resourceRepository.getResourceById(id);

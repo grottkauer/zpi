@@ -154,7 +154,7 @@
                                             <a href="#checkBorrowModal" class="edit" data-toggle="modal">
                                                 <i class="fas fa-check"></i>
                                             </a>
-                                            <a class="edit" data-toggle="modal"
+                                            <a class="edit modalEditButton" data-toggle="modal"
                                                th:href="@{/moje-konto/info-produktu/edycja-produktu/(id=${product.getId()})}" id="editButton">
                                                 <i class="fas fa-edit"></i>
                                             </a>
@@ -472,8 +472,8 @@ $(".custom-file-input").on("change", function() {
 
 <!-- edit product popup -->
 <script>
-    $('document').ready(function() {
-        $('#editButton').on('click',function (event) {
+    $(document).ready(function() {
+        $('.modalEditButton').on('click',function (event) {
             event.preventDefault();
             var info = $(this).attr('href');
             $.get(info,function(productInfo,status){
