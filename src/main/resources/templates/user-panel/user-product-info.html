@@ -375,6 +375,14 @@
     </div>
 </div>
 
+<!-- Save data toast -->
+<div class="toast" data-delay="1500">
+    <div class="toast-header">
+        <strong class="mr-auto yellow-text">Poprawnie zmieniono dane.</strong>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+    </div>
+</div>
+
 <!-- Bootstrap core JavaScript-->
 <script src="../user-panel/vendor/jquery/jquery.min.js"></script>
 <script src="../user-panel/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -445,6 +453,9 @@ $('#demo').daterangepicker({
 
 <!-- edit product popup -->
 <script>
+const sleep = (milliseconds) => {
+      return new Promise(resolve => setTimeout(resolve, milliseconds))
+    }
     $('document').ready(function() {
         $('#editButton').on('click',function (event) {
            event.preventDefault();
@@ -505,7 +516,10 @@ $('#demo').daterangepicker({
                data: {info: data},
                success: function (result) {//On Successful service call
                    console.log(result);
-                   location.reload();
+                   $('.toast').toast('show');
+                    sleep(500).then(() => {
+                        location.reload();
+                      })
                }
            });
        });
