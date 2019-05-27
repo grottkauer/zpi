@@ -88,6 +88,9 @@ public class UserPanelController {
     public ModelAndView addProduct() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("user-panel/user-add-product");
+        if (categories == null)
+            initializeCategories();
+        modelAndView.addObject("categories", categories);
         return modelAndView;
     }
 
@@ -251,7 +254,7 @@ public class UserPanelController {
     public ResourceToEditDto productInfoEdit(Integer id) {
         Resource resource = resourceRepository.getResourceById(id);
         return new ResourceToEditDto(id, resource.getName(), resource.getResourceType().getName(),
-                resource.getDescription(), getPhotosSrc(id));
+                resource.getDescription(), resource.getPoints(), getPhotosSrc(id));
     }
 
     @PostMapping(value="/info-produktu/edycja")
@@ -389,10 +392,12 @@ public class UserPanelController {
         String name = info[1];
         ResourceType category = resourceTypeRepository.getCategoryByName(info[2]);
         String desc = info[3];
+        int points = Integer.parseInt(info[4]);
         Resource resourceToEdit = resourceRepository.getResourceById(item);
         resourceToEdit.setName(name);
         resourceToEdit.setResourceType(category);
         resourceToEdit.setDescription(desc);
+        resourceToEdit.setPoints(points);
         resourceRepository.save(resourceToEdit);
     }
 
