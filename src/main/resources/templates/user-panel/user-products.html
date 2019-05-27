@@ -446,6 +446,23 @@
     </div>
 </div>
 
+<!-- Save data toast -->
+<div class="toast" data-delay="1500">
+    <div class="toast-header">
+        <strong class="mr-auto yellow-text">Poprawnie zmieniono dane.</strong>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+    </div>
+</div>
+
+<!-- Save data script-->
+<script>
+$(document).ready(function(){
+  $("#editProductSave").click(function(){
+    $('.toast').toast('show');
+  });
+});
+</script>
+
 <!-- Reading files and filenames -->
 <script>
 // Add the following code if you want the name of the file appear on select
@@ -472,6 +489,9 @@ $(".custom-file-input").on("change", function() {
 
 <!-- edit product popup -->
 <script>
+const sleep = (milliseconds) => {
+      return new Promise(resolve => setTimeout(resolve, milliseconds))
+    }
     $('document').ready(function() {
         $('#editButton').on('click',function (event) {
             event.preventDefault();
@@ -532,7 +552,11 @@ $(".custom-file-input").on("change", function() {
                 data: {info: data},
                 success: function (result) {//On Successful service call
                     console.log(result);
-                    location.reload();
+                    $('.toast').toast('show');
+                    sleep(500).then(() => {
+                        location.reload();
+                      })
+                    //location.reload();
                 }
             });
         });
@@ -540,9 +564,11 @@ $(".custom-file-input").on("change", function() {
 </script>
 
 <script type="text/javascript" th:inline="javascript">
+
     $('document').ready(function() {
         var refresh = [[${refreshNeeded}]];
         if (refresh === true) {
+            $('.toast').toast('show');
             window.location.reload();
             //TODO: skoro był refresh to znaczy ze cos usunieto, a wiec popup ze usunieto xd
         }
