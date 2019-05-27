@@ -79,8 +79,9 @@
                                             <img id="main_image" src="../images/placeholders/image-placeholder.jpg" class="img-fluid mb-1">
                                         </div>
                                         <div class="btn btn-mdb-color btn-rounded">
-                                            <input id="fileInput" type="file" style="display:none;" onchange="onFileSelected(event)" />
-                                            <input type="button" value="Wybierz plik" onclick="document.getElementById('fileInput').click();" />
+                                            <input id="uploadFile1" type="file" style="display:none;" onchange="onFileSelected(event)" accept="image/*" />
+                                            <input type="button" value="Wybierz plik" onclick="document.getElementById('uploadFile1').click();" />
+                                            <input type="hidden" id="uploadFileString1"/>
                                         </div>
                                     </div>
                                 </div>
@@ -150,12 +151,16 @@
                                             <div class="form-group">
                                                 <label>Dodaj kolejne zdjęcia</label>
                                                 <div class="custom-file mb-1">
-                                                    <input type="file" class="custom-file-input" id="addProductPhoto2">
-                                                    <label class="custom-file-label  text-truncate" for="addProductPhoto2">Wybierz plik</label>
+                                                    <input type="file" class="custom-file-input" id="uploadFile2" accept="image/*" >
+                                                    <label class="custom-file-label  text-truncate" for="uploadFile2"
+                                                        id="uploadFileLabel2">Wybierz plik</label>
+                                                    <input type="hidden" id="uploadFileString2"/>
                                                 </div>
                                                 <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="addProductPhoto3" lang="pl-Pl">
-                                                    <label class="custom-file-label  text-truncate" for="addProductPhoto3">Wybierz plik</label>
+                                                    <input type="file" class="custom-file-input" id="uploadFile3" lang="pl-Pl" accept="image/*">
+                                                    <label class="custom-file-label  text-truncate" for="uploadFile3"
+                                                        id="uploadFileLabel3">Wybierz plik</label>
+                                                    <input type="hidden" id="uploadFileString3"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -259,23 +264,73 @@ $(".custom-file-input").on("change", function() {
           var name = $('#addProductForm #addProductName').val();
           var category = $('#addProductForm #addProductCategory').val();
           var desc = $('#addProductForm #addProductDescription').val();
-           var coins = $('#addProductForm #addProductCoins').val();
-          //todo: photos;
+          var coins = $('#addProductForm #addProductCoins').val();
+          var img1 = $('#uploadFileString1').val();
+          var img2 = $('#uploadFileString2').val();
+          var img3 = $('#uploadFileString3').val();
           var data = [];
           data.push(name);
           data.push(category);
           data.push(desc);
           data.push(coins);
+          var images = [];
+          images.push(img1);
+          images.push(img2);
+          images.push(img3);
           $.ajax({
               type: 'POST',
               url: '/moje-konto/dodaj-produkt/dodaj',
-              data: {info: data},
+              data: {info: data, images: images},
               success: function (result) {//On Successful service call
                   console.log(result);
                   location.reload();
               }
           });
        });
+    });
+</script>
+
+<script>
+    // Add the following code if you want the name of the file appear on select
+    $("#uploadFile1").on("change", function(event) {
+        var f = event.target.files[0];
+        var reader = new FileReader();
+        reader.onload = (function (thefile) {
+            return function(e) {
+                var binD = e.target.result;
+                var b64 = window.btoa(binD);
+                document.getElementById('uploadFileString1').value = b64;
+            };
+        })(f);
+        reader.readAsBinaryString(f);
+    });
+    $("#uploadFile2").on("change", function(event) {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings("#uploadFileLabel2").addClass("selected").html(fileName);
+        var f = event.target.files[0];
+        var reader = new FileReader();
+        reader.onload = (function (thefile) {
+            return function(e) {
+                var binD = e.target.result;
+                var b64 = window.btoa(binD);
+                document.getElementById('uploadFileString2').value = b64;
+            };
+        })(f);
+        reader.readAsBinaryString(f);
+    });
+    $("#uploadFile3").on("change", function(event) {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings("#uploadFileLabel3").addClass("selected").html(fileName);
+        var f = event.target.files[0];
+        var reader = new FileReader();
+        reader.onload = (function (thefile) {
+            return function(e) {
+                var binD = e.target.result;
+                var b64 = window.btoa(binD);
+                document.getElementById('uploadFileString3').value = b64;
+            };
+        })(f);
+        reader.readAsBinaryString(f);
     });
 </script>
 

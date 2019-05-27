@@ -94,7 +94,8 @@ public class UserPanelController {
     }
 
     @PostMapping(value="/dodaj-produkt/dodaj")
-    public ModelAndView addProductDone(@RequestParam(value = "info[]") String[] info) {
+    public ModelAndView addProductDone(@RequestParam(value = "info[]") String[] info,
+                                       @RequestParam(value = "images[]", required = false) String[] images) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("user-panel/borrow-panel");
         String name = info[0];
@@ -105,6 +106,7 @@ public class UserPanelController {
         Date date = new Date();
         Resource newResource = new Resource(coins, name, desc, category, owner, date, true, false);
         resourceRepository.save(newResource);
+        addImagesToResource(newResource.getId(), images);
         //todo popup
         return modelAndView;
     }
@@ -210,7 +212,6 @@ public class UserPanelController {
     public ModelAndView editPasswordSubmit(@ModelAttribute UserPasswordInfoDto passwordInfo) throws InterruptedException {
         ModelAndView modelAndView = new ModelAndView();
         String email = getLoggedUserEmail();
-        System.out.println(passwordInfo.getOldPassword());
         if (userRepository.checkIfCredentialsAreCorrect(email, passwordInfo.getOldPassword())) {
             if (passwordInfo.checkIfNewPasswordsMatch()) {
                 if (passwordInfo.checkIfOldAndNewAreDifferent()) {
@@ -437,7 +438,6 @@ public class UserPanelController {
         Image imgToSave;
         Resource resource = resourceRepository.getResourceById(id);
         for (String image : images) {
-            System.out.println(image);
             if (image != null && image.length() != 0 && !image.trim().equals("")) {
                 decodedByte = Base64.getDecoder().decode(image);
                 try {
