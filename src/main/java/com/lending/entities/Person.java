@@ -153,4 +153,8 @@ public class Person extends BaseEntity {
     public void setEthereumAddress(String ethereumAddress) {
         this.ethereumAddress = ethereumAddress;
     }
+
+    public int getId() {
+        return id;
+    }
 }

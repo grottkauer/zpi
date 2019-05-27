@@ -151,5 +151,8 @@ public interface ResourceRepository extends CrudRepository<Resource, Integer> {
     @Query("select r from Resource r where r.id in (:ids)")
     List<Resource> getResourcesByIds(@Param("ids") Integer[] ids);
 
+    @Query("select u.id from Resource r inner join r.owner u where r.id =:id")
+    int getOwnerOfResource(@Param("id") int id);
+
 
 }

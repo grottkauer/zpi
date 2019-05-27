@@ -41,10 +41,7 @@ public class UserPanelController {
 
     @GetMapping(value="")
     public ModelAndView index() {
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("user-panel/borrow-panel");
-        modelAndView.addObject("userName", getUserPseudo());
-        return modelAndView;
+        return getBorrowPanel();
 
     }
 
@@ -162,18 +159,26 @@ public class UserPanelController {
     @DeleteMapping(value="/moje-produkty")
     public ModelAndView productsDeleteItem(@RequestParam int item) {
         Resource resourceToDelete = resourceRepository.getResourceById(item);
-        resourceToDelete.setDeleted(true);
-        resourceRepository.save(resourceToDelete);
-        return getUsersProductView(true);
+        if (resourceToDelete.getOwner().getId() == getLoggedUserId()) {
+            resourceToDelete.setDeleted(true);
+            resourceRepository.save(resourceToDelete);
+            //todo: popup
+            return getUsersProductView(true);
+        }
+        else
+            return getBorrowPanel();
     }
 
     @DeleteMapping(value="/moje-produkty/selected")
     public ModelAndView productsDeleteMultipleItems(@RequestParam(value = "itemsArray[]") Integer[] itemsArray) {
         List<Resource> resourcesToDelete = resourceRepository.getResourcesByIds(itemsArray);
+        if (resourcesToDelete.size() > 0 && resourcesToDelete.get(0).getOwner().getId() != getLoggedUserId())
+            return getBorrowPanel();
         for (Resource r : resourcesToDelete) {
             r.setDeleted(true);
         }
         resourceRepository.saveAll(resourcesToDelete);
+        //todo: popup
         return getUsersProductView(true);
     }
 
@@ -274,6 +279,8 @@ public class UserPanelController {
     @DeleteMapping(value="/info-produktu")
     public ModelAndView productInfoDelete(@RequestParam int item) {
         Resource resourceToDelete = resourceRepository.getResourceById(item);
+        if (resourceToDelete.getOwner().getId() != getLoggedUserId())
+            return getBorrowPanel();
         resourceToDelete.setDeleted(true);
         resourceRepository.save(resourceToDelete);
         //todo: success dialog/popup
@@ -293,6 +300,8 @@ public class UserPanelController {
     public ModelAndView productInfoEditDone(@RequestParam(value = "info[]") String[] info,
                                             @RequestParam(value = "images[]", required = false) String[] images,
                                             @RequestParam(value = "toDelete[]", required = false) Integer[] toDelete) {
+        if (resourceRepository.getOwnerOfResource(Integer.parseInt(info[0])) != getLoggedUserId())
+            return getBorrowPanel();
         editResource(info);
         addImagesToResource(Integer.parseInt(info[0]),images);
         removeImagesFromResource(toDelete);
@@ -304,6 +313,8 @@ public class UserPanelController {
     public ModelAndView productEditDone(@RequestParam(value = "info[]") String[] info,
                                         @RequestParam(value = "images[]", required = false) String[] images,
                                         @RequestParam(value = "toDelete[]", required = false) Integer[] toDelete) {
+        if (resourceRepository.getOwnerOfResource(Integer.parseInt(info[0])) != getLoggedUserId())
+            return getBorrowPanel();
         editResource(info);
         addImagesToResource(Integer.parseInt(info[0]),images);
         removeImagesFromResource(toDelete);
@@ -315,6 +326,8 @@ public class UserPanelController {
     public ModelAndView productToBorrowClicked(@RequestParam(value = "item") int item,
                                                @RequestParam(value = "checked") boolean checked) {
         Resource resource = resourceRepository.getResourceById(item);
+        if (resource.getOwner().getId() != getLoggedUserId())
+            return getBorrowPanel();
         resource.setCanBeBorrowed(checked);
         resourceRepository.save(resource);
         //todo: popup
@@ -480,6 +493,13 @@ public class UserPanelController {
     private String getUserPseudo() {
         int id = getLoggedUserId();
         return userRepository.getUserFirstName(id);
+    }
+
+    private ModelAndView getBorrowPanel() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("user-panel/borrow-panel");
+        modelAndView.addObject("userName", getUserPseudo());
+        return modelAndView;
     }
 
 }
