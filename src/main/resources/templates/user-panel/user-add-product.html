@@ -79,7 +79,7 @@
                                             <img id="main_image" src="../images/placeholders/image-placeholder.jpg" class="img-fluid mb-1">
                                         </div>
                                         <div class="btn btn-mdb-color btn-rounded">
-                                            <input id="fileInput" type="file" style="display:none;" onchange="onFileSelected(event)" id="addProductPhoto1"/>
+                                            <input id="fileInput" type="file" style="display:none;" onchange="onFileSelected(event)" />
                                             <input type="button" value="Wybierz plik" onclick="document.getElementById('fileInput').click();" />
                                         </div>
                                     </div>
@@ -97,28 +97,28 @@
                                                 <select name="productCategory" class="form-control" id="addProductCategory">
                                                     <div th:each="cat:${categories}">
                                                         <optgroup th:label="${cat.getHigherLevelType().getName()}"
-                                                                  th:value="${cat.getHigherLevelType().getName()}">
+                                                                  th:value="${cat.getHigherLevelType().getId()}">
                                                         </optgroup>
                                                         <div th:each="sub1:${cat.getSubcategories()}">
                                                             <option th:if="${sub1.getSubcategories().size() == 0}"
-                                                                    th:value="${sub1.getHigherLevelType().getName()}"
+                                                                    th:value="${sub1.getHigherLevelType().getId()}"
                                                                     th:label="${'---->' + sub1.getHigherLevelType().getName()}"
                                                             ></option>
                                                             <optgroup th:if="${sub1.getSubcategories().size() != 0}"
-                                                                      th:value="${sub1.getHigherLevelType().getName()}"
+                                                                      th:value="${sub1.getHigherLevelType().getId()}"
                                                                       th:label="${'---->' + sub1.getHigherLevelType().getName()}"
                                                             ></optgroup>
                                                             <div th:each="sub2:${sub1.getSubcategories()}">
                                                                 <option th:if="${sub2.getSubcategories().size() == 0}"
-                                                                        th:value="${sub2.getHigherLevelType().getName()}"
+                                                                        th:value="${sub2.getHigherLevelType().getId()}"
                                                                         th:label="${'-------->' + sub2.getHigherLevelType().getName()}"
                                                                 ></option>
                                                                 <optgroup th:if="${sub2.getSubcategories().size() != 0}"
-                                                                          th:value="${sub2.getHigherLevelType().getName()}"
+                                                                          th:value="${sub2.getHigherLevelType().getId()}"
                                                                           th:label="${'-------->' + sub2.getHigherLevelType().getName()}"
                                                                 ></optgroup>
                                                                 <div th:each="sub3:${sub2.getSubcategories()}">
-                                                                    <option th:value="${sub3.getHigherLevelType().getName()}"
+                                                                    <option th:value="${sub3.getHigherLevelType().getId()}"
                                                                             th:label="${'------------>' + sub3.getHigherLevelType().getName()}"
                                                                     ></option>
                                                                 </div>
@@ -142,7 +142,7 @@
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label>Opis produktu</label>
+                                                <label for="addProductDescription">Opis produktu</label>
                                                 <textarea class="form-control" id="addProductDescription"></textarea>
                                             </div>
                                         </div>
@@ -268,10 +268,11 @@ $(".custom-file-input").on("change", function() {
           data.push(coins);
           $.ajax({
               type: 'POST',
-              url: '',
+              url: '/moje-konto/dodaj-produkt/dodaj',
               data: {info: data},
               success: function (result) {//On Successful service call
                   console.log(result);
+                  location.reload();
               }
           });
        });

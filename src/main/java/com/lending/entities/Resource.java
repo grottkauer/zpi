@@ -55,6 +55,7 @@ public class Resource extends BaseEntity {
                     Date addDate, boolean canBeBorrowed, boolean isDeleted) {
         this.points = points;
         this.name = name;
+        this.description = description;
         this.resourceType = resourceType;
         this.owner = owner;
         this.addDate = addDate;

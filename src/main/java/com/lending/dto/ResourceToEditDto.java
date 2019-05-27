@@ -7,12 +7,12 @@ public class ResourceToEditDto {
 
     private int id;
     private String name;
-    private String category;
+    private int category;
     private String description;
     private int coins;
     private List<String> images;
 
-    public ResourceToEditDto(int id, String name, String category, String description, int coins, List<String> images) {
+    public ResourceToEditDto(int id, String name, int category, String description, int coins, List<String> images) {
         this.id = id;
         this.name = name;
         this.category = category;
@@ -21,7 +21,7 @@ public class ResourceToEditDto {
         this.images = images;
     }
 
-    public ResourceToEditDto(int id, String name, String category, String description, int coins) {
+    public ResourceToEditDto(int id, String name, int category, String description, int coins) {
         this.id = id;
         this.name = name;
         this.category = category;
@@ -42,11 +42,11 @@ public class ResourceToEditDto {
         this.name = name;
     }
 
-    public String getCategory() {
+    public int getCategory() {
         return category;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(int category) {
         this.category = category;
     }
 

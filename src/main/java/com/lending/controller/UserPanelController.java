@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.sql.Blob;
 import java.util.ArrayList;
 import java.util.Base64;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -98,6 +99,15 @@ public class UserPanelController {
     public ModelAndView addProductDone(@RequestParam(value = "info[]") String[] info) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("user-panel/borrow-panel");
+        String name = info[0];
+        ResourceType category = resourceTypeRepository.getCategoryById(Integer.parseInt(info[1])).getHigherLevelType();
+        String desc = info[2];
+        int coins = Integer.parseInt(info[3]);
+        Person owner = userRepository.getUserById(getLoggedUserId());
+        Date date = new Date();
+        Resource newResource = new Resource(coins, name, desc, category, owner, date, true, false);
+        resourceRepository.save(newResource);
+        //todo popup
         return modelAndView;
     }
 
@@ -260,7 +270,7 @@ public class UserPanelController {
     @ResponseBody
     public ResourceToEditDto productInfoEdit(Integer id) {
         Resource resource = resourceRepository.getResourceById(id);
-        return new ResourceToEditDto(id, resource.getName(), resource.getResourceType().getName(),
+        return new ResourceToEditDto(id, resource.getName(), resource.getResourceType().getId(),
                 resource.getDescription(), resource.getPoints(), getPhotosSrc(id));
     }
 
@@ -397,7 +407,7 @@ public class UserPanelController {
     private void editResource(String[] info) {
         int item = Integer.parseInt(info[0]);
         String name = info[1];
-        ResourceType category = resourceTypeRepository.getCategoryByName(info[2]);
+        ResourceType category = resourceTypeRepository.getCategoryById(Integer.parseInt(info[2])).getHigherLevelType();
         String desc = info[3];
         int points = Integer.parseInt(info[4]);
         Resource resourceToEdit = resourceRepository.getResourceById(item);
