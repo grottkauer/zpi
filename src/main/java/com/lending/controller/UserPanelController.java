@@ -295,6 +295,16 @@ public class UserPanelController {
         return getUsersProductView(true);
     }
 
+    @PostMapping(value = "/moje-produkty/do-wypozyczenia")
+    public ModelAndView productToBorrowClicked(@RequestParam(value = "item") int item,
+                                               @RequestParam(value = "checked") boolean checked) {
+        Resource resource = resourceRepository.getResourceById(item);
+        resource.setCanBeBorrowed(checked);
+        resourceRepository.save(resource);
+        //todo: popup
+        return getUsersProductView(false);
+    }
+
     @GetMapping(value="/info-wypozyczonego-produktu")
     public ModelAndView productInfoBorrowed(@RequestParam int item) {
         ModelAndView modelAndView = initializeModelAndViewForProductDetails(item);

@@ -125,8 +125,9 @@
                                     <tr class="pointer-row" th:each="product:${ProductsList}">
                                         <td class="text-center">
                                             <span class="custom-checkbox">
-                                                <input type="checkbox" id="checkbox1" name="product" th:value="${product.getId()}">
-                                                <label for="checkbox1"></label>
+                                                <input type="checkbox" id="checkbox1" name="product"
+                                                       th:value="${product.getId()}">
+                                                <label for="checkbox1" ></label>
                                             </span>
                                         </td>
                                         <td th:text="${product.getProductName()}" th:class="pointer-cell"
@@ -144,7 +145,10 @@
                                         <td class="text-center">
                                             <span class="custom-checkbox">
                                                 <input type="checkbox" id="checkbox30" name="options[]" value="1"
-                                                    th:checked="${product.isCanBeBorrowed()}">
+                                                    th:checked="${product.isCanBeBorrowed()}"
+                                                       style="cursor: pointer"
+                                                       th:id="${product.getId()}"
+                                                       th:attr="onchange='checkBoxSelected('+${product.getId()}+')'">
                                                 <label for="checkbox1"></label>
                                             </span>
                                         </td>
@@ -703,6 +707,22 @@ $('#demo').daterangepicker({
 }, function(start, end, label) {
   console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
 });
+</script>
+
+<!-- 'do wypozyczenia' checkbox -->
+<script>
+    function checkBoxSelected(id) {
+        var checkbox = document.getElementById(id);
+        var sel = !!checkbox.checked;
+        $.ajax({
+            type: 'POST',
+            url: "/moje-konto/moje-produkty/do-wypozyczenia",
+            data: {item: id, checked: sel},
+            success: function(data) {
+                location.reload();
+            }
+        });
+    }
 </script>
 
 </body>
