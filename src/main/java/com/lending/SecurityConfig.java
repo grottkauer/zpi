@@ -39,6 +39,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/images/**",
                         "/h2-console",
                         "/h2-console/**",
+                        "/daterangepicker-master/**",
+                        "/datepicker-popup/**",
                         "/webjars/**").permitAll()
                 .antMatchers("/user/**").hasRole("USER")
                 .anyRequest().authenticated()

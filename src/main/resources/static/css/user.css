@@ -364,3 +364,14 @@
     .modalCheckBox {
 
     }
+
+    .buy-coins-button {
+        position: absolute;
+        color: green;
+        font-size: 22px;
+        margin-left: 30%;
+    }
+
+    .buy-coins-button:hover {
+        color: #fed136;
+    }

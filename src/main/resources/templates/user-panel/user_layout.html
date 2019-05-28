@@ -157,6 +157,9 @@ $(document).ready(function(){
 </script>
     <script>
         function deleteSingleProduct(id) {
+        const sleep = (milliseconds) => {
+          return new Promise(resolve => setTimeout(resolve, milliseconds))
+        }
             $('#deleteProductModal').modal();
             $('#confirm-delete-item').on('click', function() {
                 $('#deleteProductModal').modal('hide');
@@ -167,7 +170,11 @@ $(document).ready(function(){
                     data: {item: id},
                     dataType: 'text',
                     success: function(data) {
-                        location.reload();
+                        $('.toast').toast('show');
+                        sleep(500).then(() => {
+                            location.reload();
+                          })
+                        //location.reload();
                     }
                 });
 
@@ -176,6 +183,9 @@ $(document).ready(function(){
     </script>
     <script>
         function deleteSeletedProducts() {
+            const sleep = (milliseconds) => {
+              return new Promise(resolve => setTimeout(resolve, milliseconds))
+            }
             var selected = [];
             $.each($("input[name='product']:checked"), function() {
                 selected.push($(this).val())
@@ -189,7 +199,11 @@ $(document).ready(function(){
                     url: "/moje-konto/moje-produkty/selected",
                     data: {itemsArray: selected},
                     success: function(data) {
-                        location.reload();
+                        $('.toast').toast('show');
+                        sleep(500).then(() => {
+                            location.reload();
+                          })
+                        //location.reload();
                     }
                 });
 
@@ -502,6 +516,15 @@ $(document).ready(function(){
         </li>
     </ul>
 </nav>
+
+<!-- Save data toast -->
+<div class="toast" data-delay="1500">
+    <div class="toast-header">
+        <strong class="mr-auto yellow-text">Poprawnie zmieniono dane.</strong>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+    </div>
+</div>
+
 <!-- Sticky Footer -->
 <footer th:fragment="foot" class="sticky-footer">
     <div class="container my-auto">

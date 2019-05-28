@@ -252,7 +252,7 @@
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Anuluj</button>
                 <form action="#" th:action="@{/moje-konto/info-produktu(item=${item.getId()})}" th:method="delete" >
                     <input type="hidden" name="_method" value="delete" />
-                    <button class="btn btn-primary" type="submit"
+                    <button id="deleteProduct" class="btn btn-primary" type="submit"
                         >Potwierdź</button>
                 </form>
 
@@ -383,6 +383,23 @@
     </div>
 </div>
 
+<!-- Save data toast -->
+<div class="toast" data-delay="1500">
+    <div class="toast-header">
+        <strong class="mr-auto yellow-text">Poprawnie zmieniono dane.</strong>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+    </div>
+</div>
+
+<!-- Save data script-->
+<script>
+$(document).ready(function(){
+  $("#deleteProduct").click(function(){
+    $('.toast').toast('show');
+  });
+});
+</script>
+
 <!-- Bootstrap core JavaScript-->
 <script src="../user-panel/vendor/jquery/jquery.min.js"></script>
 <script src="../user-panel/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -453,6 +470,9 @@ $('#demo').daterangepicker({
 
 <!-- edit product popup -->
 <script>
+const sleep = (milliseconds) => {
+      return new Promise(resolve => setTimeout(resolve, milliseconds))
+    }
     $('document').ready(function() {
         $('#editButton').on('click',function (event) {
            event.preventDefault();
@@ -529,7 +549,11 @@ $('#demo').daterangepicker({
                data: {info: data, images: images, toDelete: selected},
                success: function (result) {//On Successful service call
                    console.log(result);
-                   location.reload();
+                   $('.toast').toast('show');
+                    sleep(500).then(() => {
+                        location.reload();
+                      })
+                    //location.reload();
                }
            });
        });

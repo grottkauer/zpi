@@ -459,8 +459,19 @@
     </div>
 </div>
 
+<!-- Save data toast -->
+<div class="toast" data-delay="1500">
+    <div class="toast-header">
+        <strong class="mr-auto yellow-text">Poprawnie zmieniono dane.</strong>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+    </div>
+</div>
+
 <!-- edit product popup -->
 <script>
+const sleep = (milliseconds) => {
+      return new Promise(resolve => setTimeout(resolve, milliseconds))
+    }
     $('document').ready(function() {
         $('.modalEditButton').on('click',function (event) {
             event.preventDefault();
@@ -537,7 +548,11 @@
                 data: {info: data, images: images, toDelete: selected},
                 success: function (result) {//On Successful service call
                     console.log(result);
-                    location.reload();
+                    $('.toast').toast('show');
+                    sleep(500).then(() => {
+                        location.reload();
+                      })
+                    //location.reload();
                 }
             });
         });
@@ -631,7 +646,6 @@
         var refresh = [[${refreshNeeded}]];
         if (refresh === true) {
             window.location.reload();
-            //TODO: skoro był refresh to znaczy ze cos usunieto, a wiec popup ze usunieto xd
         }
     });
 </script>
@@ -711,15 +725,23 @@ $('#demo').daterangepicker({
 
 <!-- 'do wypozyczenia' checkbox -->
 <script>
+
     function checkBoxSelected(id) {
         var checkbox = document.getElementById(id);
         var sel = !!checkbox.checked;
+        const sleep = (milliseconds) => {
+          return new Promise(resolve => setTimeout(resolve, milliseconds))
+        }
         $.ajax({
             type: 'POST',
             url: "/moje-konto/moje-produkty/do-wypozyczenia",
             data: {item: id, checked: sel},
             success: function(data) {
-                location.reload();
+            $('.toast').toast('show');
+                    sleep(500).then(() => {
+                        location.reload();
+                      })
+                //location.reload();
             }
         });
     }

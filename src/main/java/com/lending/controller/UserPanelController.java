@@ -277,13 +277,13 @@ public class UserPanelController {
     }
 
     @DeleteMapping(value="/info-produktu")
-    public ModelAndView productInfoDelete(@RequestParam int item) {
+    public ModelAndView productInfoDelete(@RequestParam int item) throws InterruptedException {
         Resource resourceToDelete = resourceRepository.getResourceById(item);
         if (resourceToDelete.getOwner().getId() != getLoggedUserId())
             return getBorrowPanel();
         resourceToDelete.setDeleted(true);
         resourceRepository.save(resourceToDelete);
-        //todo: success dialog/popup
+        Thread.sleep(500);
         return products();
     }
 
