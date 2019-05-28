@@ -55,6 +55,7 @@ public class HomeController {
         String street = data[7];
         String nrHouse = data[8];
         String nrFlat = data[9];
+        System.out.println(data.length);
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("login");

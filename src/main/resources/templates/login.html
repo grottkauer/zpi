@@ -215,14 +215,14 @@
             <h2 class="card-title mb-5">Rejestracja</h2>
             <form method="post">
                 <div class="form-group text-left">
-                    <input id="email" name="email" type="email" class="form-control" required placeholder="Adres email*" >
+                    <input id="email" name="email" type="email" class="form-control" required placeholder="Adres email" >
                     <span class="alert alert-danger" id="emailMessage" style="display: none;
                                         padding: 0.25rem 0.55rem;">
                         </span>
                 </div>
                 <div class="d-flex">
                     <div class="pr-2 flex-fill form-group text-left">
-                        <input id="password" name="password" type="password" class="form-control" required placeholder="Hasło*">
+                        <input id="password" name="password" type="password" class="form-control" required placeholder="Hasło">
                         <!-- An element to toggle between password visibility -->
                         <input class="ml-2" type="checkbox" onclick="showPassword()">
                         <span style="font-weight: bold;">Pokaż hasło</span>
@@ -238,7 +238,7 @@
                     </div>
 
                     <div class="pl-2 flex-fill form-group text-left">
-                        <input id="rep_password" name="repeatPassword" type="password" class="form-control" required placeholder="Powtórz hasło*">
+                        <input id="rep_password" name="repeatPassword" type="password" class="form-control" required placeholder="Powtórz hasło">
                         <span class="alert alert-danger" id="message" style="display: none;
                                         padding: 0.25rem 0.55rem;">
                         </span>
@@ -247,44 +247,44 @@
                 </div>
                 <div class="d-flex">
                     <div class="pr-2 flex-fill form-group text-left">
-                        <input id="firstName" name="firstName" type="text" class="form-control" required placeholder="Imię*">
+                        <input id="firstName" name="firstName" type="text" class="form-control" required placeholder="Imię">
                     </div>
                     <div class="pl-2 flex-fill form-group text-left">
-                        <input id="lastName" name="lastName" type="text" class="form-control" required placeholder="Nazwisko*">
+                        <input id="lastName" name="lastName" type="text" class="form-control" required placeholder="Nazwisko">
                     </div>
                 </div>
                 <div class="form-group text-left">
-                    <input data-date-format="dd/mm/yyyy" id="demo" class="form-control" required placeholder="Data urodzenia*">
+                    <input data-date-format="dd/mm/yyyy" id="birthDate" class="form-control" required placeholder="Data urodzenia">
                     <span class="alert alert-danger" id="birthMessage" style="display: none;
                                         padding: 0.25rem 0.55rem;">
                         </span>
                 </div>
                 <div class="d-flex">
                     <div class="pr-2 flex-fill form-group text-left">
-                        <input id="zipCode" name="zipCode" type="text" class="form-control" required placeholder="Kod pocztowy*">
+                        <input id="zipCode" name="zipCode" type="text" class="form-control" required placeholder="Kod pocztowy">
                         <span class="alert alert-danger" id="zipMessage" style="display: none;
                                         padding: 0.25rem 0.55rem;">
                         </span>
                     </div>
                     <!-- todo locality must be mandatory (form can be submitted now without this value - button is enabled)-->
                     <div class="pl-2 flex-fill form-group text-left">
-                        <input id="city" name="city" type="text" class="form-control" required placeholder="Miejscowość*">
+                        <input id="city" name="city" type="text" class="form-control" required placeholder="Miejscowość">
                     </div>
                 </div>
                 <div class="d-flex">
                     <div class="pr-2 form-group text-left" style="flex: 1 0 0">
-                        <input id="street" name="street" type="text" class="form-control" placeholder="Ulica">
+                        <input id="street" name="street" type="text" class="form-control" required placeholder="Ulica">
                     </div>
                     <div class="pl-2 d-flex" style="flex: 1 0 0">
                         <div class="flex-fill form-group text-left">
-                            <input id="homeNr" name="homeNr" type="text" class="form-control" placeholder="Nr">
+                            <input id="homeNr" name="homeNr" type="text" class="form-control" required placeholder="Nr">
                         </div>
                         <div class="pl-2 flex-fill form-group text-left">
-                            <input id="flatNr" name="flatNr" type="text" class="form-control" placeholder="Lokal">
+                            <input id="flatNr" name="flatNr" type="text" class="form-control" required placeholder="Lokal">
                         </div>
                     </div>
                 </div>
-                <button id="registerSubmit" type="submit" class="btn btn-raised btn-primary btn-block mb-3"
+                <button id="registerSubmit" class="btn btn-raised btn-primary btn-block mb-3"
                     >Zarejestruj</button>
                 <hr/>
                 <div class="d-flex">
@@ -319,22 +319,6 @@
     </div>
 </div>
 
-
-<!-- Register Correct toast -->
-<div class="correctRegister" data-delay="1500">
-    <div class="toast-header">
-        <strong class="mr-auto yellow-text">Poprawnie zarejestrowano konto.</strong>
-        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
-    </div>
-</div>
-
-<!-- Register Wrong toast -->
-<div class="wrongRegister" data-delay="1500">
-    <div class="toast-header">
-        <strong class="mr-auto bg-danger">Nie udało się zarejestrować konta.</strong>
-        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
-    </div>
-</div>
 
 <script>
 $(document).ready(function () {
@@ -521,17 +505,12 @@ $(document).ready(function () {
 
 <!-- submitting the form --->
 <script>
-const sleep = (milliseconds) => {
-      return new Promise(resolve => setTimeout(resolve, milliseconds))
-    }
-    $(document).ready(function () {
-       $('#register #registerSubmit').on('click', function (event) {
-           event.preventDefault();
+    $(document).on('click', '#registerSubmit', function submitData() {
            var email = $('#register #email').val();
            var password = $('#register #password').val();
            var firstName = $('#register #firstName').val();
            var lastName = $('#register #lastName').val();
-           var birthDate = $('#register #demo').val();
+           var birthDate = $('#register #birthDate').val();
            var zipCode = $('#register #zipCode').val();
            var locality = $('#register #city').val();
            var street = $('#register #street').val();
@@ -550,21 +529,17 @@ const sleep = (milliseconds) => {
            data.push(nrFlat);
            $.ajax({
               type: 'POST',
-              url: '',
+              url: 'rejestruj',
               data: {data: data},
               success: function(result) {
                   //todo: popup
-                  $('.correctRegister').toast('show');
-                    /*sleep(500).then(() => {
-                        location.reload();
-                      })*/
               },
               error: function(result) {
-                    $('.wrongRegister').toast('show');
+
               }
            });
-       })
-    });
+       });
+    //});
 </script>
 
 <!-- Bootstrap core JavaScript -->
@@ -591,7 +566,7 @@ const sleep = (milliseconds) => {
 <script type="text/javascript" src="../../daterangepicker-master/daterangepicker.js"></script>
 
 <script>
-$('#demo').daterangepicker({
+$('#birthDate').daterangepicker({
     "singleDatePicker": true,
     "showDropdowns": true,
     "locale": {
