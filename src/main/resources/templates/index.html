@@ -168,8 +168,8 @@ The markup will have a list with images and the titles-->
         <!-- screens -->
         <div class="container-screens">
             <!--<div class="button" onclick="shiftLeft()"><img src="https://image.ibb.co/mRsEb7/left_arrow.png" alt=""></div>-->
-            <div class="cards-wrapper">
-                <ul class="cards__container">
+            <div class="cards-wrapper w-100">
+                <ul class="cards__container w-100">
                     <li class="box" style="background-image: url('../images/screenshots/screen1.png');
                     background-repeat: no-repeat;
                     background-size:100% 100%;
@@ -188,13 +188,13 @@ The markup will have a list with images and the titles-->
                     background-position: 50% 50%;">
 
                     </li>
-                    <li class="box" style="background-image: url('../images/screenshots/screen4.png');
+                    <li class="box media--hide" style="background-image: url('../images/screenshots/screen4.png');
                     background-repeat: no-repeat;
                     background-size:100% 100%;
                     background-position: 50% 50%;">
 
                     </li>
-                    <li class="box" style="background-image: url('../images/screenshots/screen5.png');
+                    <li class="box media--hide" style="background-image: url('../images/screenshots/screen5.png');
                     background-repeat: no-repeat;
                     background-size:100% 100%;
                     background-position: 50% 50%;">
@@ -539,7 +539,7 @@ The markup will have a list with images and the titles-->
 
 <script>
     window.setInterval(function(){
-      shiftRight();
+      shiftLeft();
     }, 4000);
 </script>
 <!-- Bootstrap core JavaScript -->

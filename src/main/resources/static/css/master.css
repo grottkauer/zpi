@@ -393,7 +393,51 @@
 
 @media (max-width: 560px) {
     .box {
-        width: 12rem;
-        height: 18rem;
+        width: 10rem;
+        height: 16rem;
+        margin: -1.5rem;
+    }
+    .box:nth-child(1) {
+      left: 5%;
+      transform: scale(0.85);
+    }
+    .box:nth-child(2) {
+      left: -5%;
+      transform: scale(1);
+    }
+    .box:nth-child(3) {
+      left: -15%;
+      transform: scale(0.85);
+      z-index: -2;
+    }
+    .media--hide {
+        display: none;
+    }
+
+    @keyframes moveToP3Left {
+        from {
+            transform: scale(1) translateX(100%);
+        }
+        to {
+            transform: scale(0.85) translateX(0);
+        }
+    }
+
+    @keyframes moveToP2Left {
+        from {
+            transform: scale(0.85) translateX(100%);
+        }
+        to {
+            transform: scale(1) translateX(0);
+        }
+    }
+
+    @keyframes moveToP1Left {
+        from {
+            transform: scale(0.85) translateX(100%);
+        }
+        to {
+            transform: scale(0.75) translateX(0);
+        }
     }
 }
