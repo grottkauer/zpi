@@ -73,30 +73,48 @@
                             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                                 <ol class="carousel-indicators">
                                     <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active">
-                                        <img src="../images/sample-products/no_image.png" alt=""
+                                        <img th:if="${photos.size() > 0 && photos.get(0) != null}"
+                                             th:src="${photos.get(0)}" alt=""
+                                             style="width: 60px; height: 60px;">
+                                        <img th:if="${photos.size() == 0 || photos.get(0) == null}"
+                                             src="../images/sample-products/no_image.png" alt=""
                                              style="width: 60px; height: 60px;">
                                     </li>
                                     <li data-target="#carouselExampleIndicators" data-slide-to="1">
-                                        <img src="../images/sample-products/no_image.png" alt=""
+                                        <img th:if="${photos.size() > 1 && photos.get(1) != null}"
+                                             th:src="${photos.get(1)}" alt=""
+                                             style="width: 60px; height: 60px;">
+                                        <img th:if="${photos.size() <= 1 || photos.get(1) == null}"
+                                             src="../images/sample-products/no_image.png" alt=""
                                              style="width: 60px; height: 60px;">
                                     </li>
                                     <li data-target="#carouselExampleIndicators" data-slide-to="2">
-                                        <img src="../images/sample-products/no_image.png" alt=""
+                                        <img th:if="${photos.size() > 2 && photos.get(2) != null}"
+                                             th:src="${photos.get(2)}" alt=""
+                                             style="width: 60px; height: 60px;">
+                                        <img th:if="${photos.size() <= 2 || photos.get(2) == null}"
+                                             src="../images/sample-products/no_image.png" alt=""
                                              style="width: 60px; height: 60px;">
                                     </li>
                                 </ol>
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <img th:if="${photos.size() > 0 && photos.get(0) != null}" class="d-block w-100" th:src="${photos.get(0)}" alt="First slide">
-                                        <img th:if="${photos.size() == 0 || photos.get(0)== null}" class="d-block w-100" src="../images/sample-products/no_image.png" alt="First slide">
+                                        <img th:if="${photos.size() > 0 && photos.get(0) != null}" class="d-block w-100 img-carousel" th:src="${photos.get(0)}" alt="First slide"
+                                            >
+                                        <img th:if="${photos.size() == 0 || photos.get(0)== null}" class="d-block w-100 img-carousel" src="../images/sample-products/no_image.png" alt="First slide"
+                                             >
                                     </div>
                                     <div class="carousel-item">
-                                        <img th:if="${photos.size() > 1 && photos.get(1) != null}" class="d-block w-100" th:src="${photos.get(1)}" alt="First slide">
-                                        <img th:if="${photos.size() <= 1 || photos.get(1)== null}" class="d-block w-100" src="../images/sample-products/no_image.png" alt="First slide">
+                                        <img th:if="${photos.size() > 1 && photos.get(1) != null}" class="d-block w-100 img-carousel" th:src="${photos.get(1)}" alt="First slide"
+                                             >
+                                        <img th:if="${photos.size() <= 1 || photos.get(1)== null}" class="d-block w-100 img-carousel" src="../images/sample-products/no_image.png" alt="First slide"
+                                             >
                                     </div>
                                     <div class="carousel-item">
-                                        <img th:if="${photos.size() > 2 && photos.get(2) != null}" class="d-block w-100" th:src="${photos.get(2)}" alt="First slide">
-                                        <img th:if="${photos.size() <= 2 || photos.get(2)== null}" class="d-block w-100" src="../images/sample-products/no_image.png" alt="First slide">
+                                        <img th:if="${photos.size() > 2 && photos.get(2) != null}" class="d-block w-100 img-carousel" th:src="${photos.get(2)}" alt="First slide"
+                                             >
+                                        <img th:if="${photos.size() <= 2 || photos.get(2)== null}" class="d-block w-100 img-carousel" src="../images/sample-products/no_image.png" alt="First slide"
+                                             >
                                     </div>
                                 </div>
                             </div>
