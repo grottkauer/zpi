@@ -93,7 +93,10 @@
 
                             </div>
                             <div class="card_area pb-3">
-                                <a class="main_btn" href="wypozycz">Wypożycz</a>
+                                <a class="main_btn" href="wypozycz">Wypożycz
+                                    <!-- todo uncomment line below when someone has no enough money -->
+                                <a class="main_btn"
+                                   data-toggle="modal" data-target="#notEnoughMoney">Wypożycz</a>
                                 <a class="icon_btn pointer-cell" data-toggle="modal" data-target="#buyCoinsModal"
                                     style="background-color: #fed136;">
                                     <i id="buyCoins"
@@ -431,6 +434,58 @@
     <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
     </a>
+
+    <!-- Not Enough Money Modal-->
+    <div class="modal fade" id="notEnoughMoney" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Nie masz wystarczająco środków na koncie.</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h5 class="modal-title">Wybierz jedną z opcji.</h5>
+                    <div class="row">
+                        <div class="p-2 col-lg-6 pointer-cell" onclick="window.location='#';">
+                            <div class="card text-white bg-warning o-hidden h-100">
+                                <div class="card-body">
+                                    <div class="card-body-icon">
+                                        <i class="fas fa-fw fa-archive"></i>
+                                    </div>
+                                    <div class="mr-5">Wróć do przeglądania produktów</div>
+                                </div>
+                                <a class="card-footer text-white clearfix small z-1" href="#">
+                                    <span class="float-left">Zobacz więcej</span>
+                                    <span class="float-right">
+                              <i class="fas fa-angle-right"></i>
+                            </span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="p-2 col-lg-6 pointer-cell" onclick="window.location='#';">
+                            <div class="card text-white bg-success o-hidden h-100">
+                                <div class="card-body">
+                                    <div class="card-body-icon">
+                                        <i class="fas fa-fw fa-shopping-basket"></i>
+                                    </div>
+                                    <div class="mr-5">Dokup Borrow Coins</div>
+                                </div>
+                                <a class="card-footer text-white clearfix small z-1" href="#">
+                                    <span class="float-left">Zobacz więcej</span>
+                                    <span class="float-right">
+                              <i class="fas fa-angle-right"></i>
+                            </span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Buy Coins Modal-->
     <div class="modal fade" id="buyCoinsModal" tabindex="-1" role="dialog" aria-hidden="true">
