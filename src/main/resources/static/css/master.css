@@ -170,6 +170,8 @@
     height: 25rem;
 }
 
+
+
 .box {
 /*     margin: -1.5rem; */
     width: 15rem;
@@ -386,5 +388,12 @@
     }
     to {
         transform: scale(0.75) translateX(0);
+    }
+}
+
+@media (max-width: 560px) {
+    .box {
+        width: 12rem;
+        height: 18rem;
     }
 }
