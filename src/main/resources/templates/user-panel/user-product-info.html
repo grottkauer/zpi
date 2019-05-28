@@ -500,9 +500,14 @@ $('#demo').daterangepicker({
 
 <!-- edit product popup -->
 <script>
-const sleep = (milliseconds) =;> {
-      return new Promise(resolve => setTimeout(resolve, milliseconds);)
-    }
+// const sleep = (milliseconds) => {
+//       return new Promise(resolve => setTimeout(resolve, milliseconds);)
+//     }
+    const sleep = function(miliseconds) {
+        return new Promise(function(resolve) {
+            setTimeout(resolve,miliseconds);
+        });
+    };
     $('document').ready(function() {
         $('#editButton').on('click',function (event) {
            event.preventDefault();
