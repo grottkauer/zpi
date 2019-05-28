@@ -3,11 +3,11 @@ package com.lending.controller;
 import com.lending.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Controller
 @RequestMapping(value = {""})
@@ -37,24 +37,30 @@ public class HomeController {
         return modelAndView;
     }
 
-//    @RequestMapping(value = "zaloguj", method = RequestMethod.POST)
-//    public String processLogIn(@RequestParam String email, @RequestParam String password)
-//    {
-//        boolean wasUserFound = false;
-//        int userId = Integer.MIN_VALUE;
-//        if (userRepository.checkIfUserExists(email)) {
-//            wasUserFound = userRepository.checkIfCredentialsAreCorrect(email, password);
-//            if (wasUserFound)
-//                userId = userRepository.getUserIdByEmail(email);
-//            // else show that password is incorrect
-//        }
-//        // else show that user was not found
-//
-//        // add user id as parameter
-//        if (wasUserFound) {
-//            // Redirect to /user-panel
-//            return "redirect:/moje-konto";
-//        }
-//        return "redirect:/zaloguj";
-//    }
+    @PostMapping(value = "rejestruj")
+    public ModelAndView register(@RequestParam(value = "data[]") String[] data) {
+        String email = data[0];
+        String password = data[1];
+        String firstName = data[2];
+        String lastName = data[3];
+        Date birthDate = new Date();
+        try {
+            birthDate = new SimpleDateFormat("dd/MM/yyyy").parse(data[4]);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        String zipCode = data[5];
+        String locality = data[6];
+        String street = data[7];
+        String nrHouse = data[8];
+        String nrFlat = data[9];
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("login");
+        return modelAndView;
+    }
+
+
+
 }

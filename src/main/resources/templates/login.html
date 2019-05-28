@@ -233,7 +233,6 @@
                                 <li id="capital" class="invalid">Co najmniej <strong>jedną wielką literę</strong></li>
                                 <li id="number" class="invalid">Co najmniej <strong>jedną cyfrę</strong></li>
                                 <li id="length" class="invalid">Co najmniej <strong>8 znaków</strong></li>
-                                <li id="old" class="valid">Być inne od <strong>starego hasła</strong></li>
                             </ul>
                         </div>
                     </div>
@@ -248,14 +247,15 @@
                 </div>
                 <div class="d-flex">
                     <div class="pr-2 flex-fill form-group text-left">
-                        <input name="firstName" type="text" class="form-control" required placeholder="Imię">
+                        <input id="firstName" name="firstName" type="text" class="form-control" required placeholder="Imię">
                     </div>
                     <div class="pl-2 flex-fill form-group text-left">
-                        <input name="lastName" type="text" class="form-control" required placeholder="Nazwisko">
+                        <input id="lastName" name="lastName" type="text" class="form-control" required placeholder="Nazwisko">
                     </div>
                 </div>
                 <div class="form-group text-left">
-                    <input data-date-format="dd/mm/yyyy" id="demo" class="form-control" required placeholder="Data urodzenia">
+                    <!-- todo datepicker -->
+                    <input data-date-format="dd/mm/yyyy" id="birthDate" class="form-control" required placeholder="Data urodzenia">
                     <span class="alert alert-danger" id="birthMessage" style="display: none;
                                         padding: 0.25rem 0.55rem;">
                         </span>
@@ -267,24 +267,26 @@
                                         padding: 0.25rem 0.55rem;">
                         </span>
                     </div>
+                    <!-- todo locality must be mandatory (form can be submitted now without this value - button is enabled)-->
                     <div class="pl-2 flex-fill form-group text-left">
-                        <input name="city" type="text" class="form-control" required placeholder="Miejscowość">
+                        <input id="city" name="city" type="text" class="form-control" required placeholder="Miejscowość">
                     </div>
                 </div>
                 <div class="d-flex">
                     <div class="pr-2 form-group text-left" style="flex: 1 0 0">
-                        <input name="street" type="text" class="form-control" required placeholder="Ulica">
+                        <input id="street" name="street" type="text" class="form-control" required placeholder="Ulica">
                     </div>
                     <div class="pl-2 d-flex" style="flex: 1 0 0">
                         <div class="flex-fill form-group text-left">
-                            <input name="homeNr" type="text" class="form-control" required placeholder="Nr">
+                            <input id="homeNr" name="homeNr" type="text" class="form-control" required placeholder="Nr">
                         </div>
                         <div class="pl-2 flex-fill form-group text-left">
-                            <input name="flatNr" type="text" class="form-control" required placeholder="Lokal">
+                            <input id="flatNr" name="flatNr" type="text" class="form-control" required placeholder="Lokal">
                         </div>
                     </div>
                 </div>
-                <button id="registerSubmit" type="submit" class="btn btn-raised btn-primary btn-block mb-3">Zarejestruj</button>
+                <button id="registerSubmit" type="submit" class="btn btn-raised btn-primary btn-block mb-3"
+                    >Zarejestruj</button>
                 <hr/>
                 <div class="d-flex">
                     <div class="p-2 flex-fill font-weight-light text-muted text-left" style="font-size: 13px">Masz już konto?</div>
@@ -398,8 +400,8 @@ $(document).ready(function () {
             }
     });
 
-    $('#demo').on('keyup', function () {
-            var birth = $('#demo').val();
+    $('#birthDate').on('keyup', function () {
+            var birth = $('#birthDate').val();
             var res = birth.substring(0, 2);
             var res2 = birth.substring(2, 6);
             var res3 = birth.substring(6, 10);
@@ -500,6 +502,47 @@ $(document).ready(function () {
             x.type = "password";
           }
         }
+</script>
+
+<!-- submitting the form --->
+<script>
+    $(document).ready(function () {
+       $('#register #registerSubmit').on('click', function (event) {
+           event.preventDefault();
+           var email = $('#register #email').val();
+           var password = $('#register #password').val();
+           var firstName = $('#register #firstName').val();
+           var lastName = $('#register #lastName').val();
+           var birthDate = $('#register #birthDate').val();
+           var zipCode = $('#register #zipCode').val();
+           var locality = $('#register #city').val();
+           var street = $('#register #street').val();
+           var nrHouse = $('#register #homeNr').val();
+           var nrFlat = $('#register #flatNr').val();
+           var data = [];
+           data.push(email);
+           data.push(password);
+           data.push(firstName);
+           data.push(lastName);
+           data.push(birthDate);
+           data.push(zipCode);
+           data.push(locality);
+           data.push(street);
+           data.push(nrHouse);
+           data.push(nrFlat);
+           $.ajax({
+              type: 'POST',
+              url: '',
+              data: {data: data},
+              success: function(result) {
+                  //todo: popup
+              },
+              error: function(result) {
+
+              }
+           });
+       })
+    });
 </script>
 
 <!-- Bootstrap core JavaScript -->
