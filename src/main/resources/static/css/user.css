@@ -383,5 +383,14 @@
         color: #fed136;
     }
 
-
+    .coins-fixed-toast{
+        	position: fixed;
+            top: 0;
+        }
+      	.coins-toast{
+        	width: 15%;
+        }
+        .coin-img{
+        	width: 10%;
+        }
 
