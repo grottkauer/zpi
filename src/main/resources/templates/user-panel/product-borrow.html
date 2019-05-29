@@ -19,6 +19,7 @@
                 <div class="card cardRegistry text-center">
                     <div class="card-body text-center">
 
+                            <input type="hidden" id="productId" th:value="${item.getId()}">
                             <div class="d-lg-flex justify-content-around">
                                 <div class="input-group mr-3 input-higher">
                                     <div class="input-group-prepend">
@@ -26,12 +27,12 @@
                                     </div>
                                     <input data-date-format="dd/mm/yyyy" id="demo" type="text" class="form-control" required placeholder="Data spotkania">
                                 </div>
-                                <div class="input-group input-higher">
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">Godzina spotkania</span>
-                                    </div>
-                                    <input type="text" class="form-control" required placeholder="Godzina spotkania">
-                                </div>
+<!--                                <div class="input-group input-higher">-->
+<!--                                    <div class="input-group-prepend">-->
+<!--                                        <span class="input-group-text">Godzina spotkania</span>-->
+<!--                                    </div>-->
+<!--                                    <input type="text" class="form-control" required placeholder="Godzina spotkania">-->
+<!--                                </div>-->
                             </div>
                             <div class="d-lg-flex justify-content-around mt-3 text-left">
                                 <div id="mapid" class="col-lg-6" style="height: 400px;" onclick="onMapClick();">
@@ -63,7 +64,6 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <!-- todo set data of product -->
                         <tr>
                             <td>
                                 <div class="row">
@@ -102,9 +102,10 @@
                         <tr class="out_button_area">
                             <td>
                                 <div class="checkout_btn_inner text-right">
-                                    <!-- todo go back to product details -->
-                                    <a class="gray_btn mb-2" href="szczegoly?item=4">Wróć do produktu</a>
-                                    <input type="submit" class="main_btn" value="Dokonaj wypożyczenia">
+                                    <a class="gray_btn mb-2" href=""
+                                       onclick="function goBack() {window.history.back();}">Wróć do produktu</a>
+                                    <i class="main_btn" href="" onclick="doTheBorrow();">Dokonaj wypożyczenia</i>
+<!--                                    <input type="submit" class="main_btn" value="Dokonaj wypożyczenia">-->
                                 </div>
                             </td>
                         </tr>
@@ -201,6 +202,23 @@
 <!-- Date picker range -->
 <script type="text/javascript" src="../../daterangepicker-master/moment.min.js"></script>
 <script type="text/javascript" src="../../daterangepicker-master/daterangepicker.js"></script>
+
+<!-- do tthe borrow withous confirm - one big form is needed-->
+<script>
+    function doTheBorrow() {
+        var mDate = $('#demo').val();
+        var mPlace = $('#addr').val();
+        var item = $('#productId').val();
+        $.ajax({
+            data: {item: item, mDate: mDate, mPlace: mPlace},
+            url: '/moje-konto/dokonaj-wypozyczenia',
+            method: 'POST',
+            success: function(result) {
+                window.location.href="/moje-konto";
+            }
+        });
+    }
+</script>
 
 <script>
 $('#demo').daterangepicker({

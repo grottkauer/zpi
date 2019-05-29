@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface UserRepository extends CrudRepository<Person, Integer>, UserRepositoryCustom {
+public interface UserRepository extends CrudRepository<Person, Integer> {
 
     @Query("select u from Person u where u.email=:email")
     Person findByEmail(@Param("email") String email);

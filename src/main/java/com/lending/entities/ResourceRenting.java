@@ -50,6 +50,15 @@ public class ResourceRenting extends BaseEntity {
         this.status = status;
     }
 
+    public ResourceRenting(Person recipent, Resource resource, Date addDate, Date realisationDate, Date giveBackDate, RentingStatus status) {
+        this.recipent = recipent;
+        this.resource = resource;
+        this.orderDate = addDate;
+        this.borrowDate = realisationDate;
+        this.giveBackDate = giveBackDate;
+        this.status = status;
+    }
+
     public Person getRecipent() {
         return recipent;
     }
