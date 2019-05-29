@@ -32,10 +32,10 @@
 							<option id="bcUpBtn" value="4a">Rosnąco BC</option>
                             <option id="bcDownBtn" value="8a">Malejąco BC</option>
 						</select>
-						<select class="show">
-							<option value="1">Show 12</option>
-							<option value="2">Show 14</option>
-							<option value="4">Show 16</option>
+						<select id="showing-categories" class="show">
+							<option value="1">Pokaż 10</option>
+							<option value="2">Pokaż 15</option>
+							<option value="4">Pokaż 20</option>
 						</select>
 					</div>
 					<div class="right_page ml-auto">
@@ -77,7 +77,8 @@
 						<div class="col-lg-3 col-md-3 col-sm-6 test"
                              th:data-name="${product.getName()}"
                                 th:data-price="${product.getPoints()}"
-                                    th:each="product,iter :${availableResources}">
+                                    th:each="product,iter :${availableResources}"
+							style="display: none;">
 							<div class="f_p_item">
 								<div class="f_p_img">
 									<a th:href="@{szczegoly(item=${product.getId()})}">
@@ -93,7 +94,7 @@
 										<a class="addFavourites" href="#">
 											<i class="lnr lnr-heart"></i>
 										</a>
-										<a href="wypozycz">
+										<a th:href="@{wypozycz(item=${product.getId()})}">
 											<i class="lnr lnr-cart"></i>
 										</a>
 									</div>
@@ -329,6 +330,8 @@ $(document).ready(function(){
         return String.prototype.localeCompare.call($(a).data('name').toLowerCase(), $(b).data('name').toLowerCase());
         })
     .appendTo( $wrapper );
+
+	$('div.test:lt(10)').show();
 </script>
 
 <!-- sorting divs -->
@@ -381,6 +384,34 @@ $(document).ready(function(){
 
 });
 
+</script>
+
+<!-- showing n divs -->
+<script>
+$(document).ready(function(){
+
+    $("#showing-categories").change(function(){
+
+        var sortingMethod = $("#showing-categories").val();
+
+        if(sortingMethod == '1')
+        {
+            $("div.test").slice(0,9).show();
+            $("div.test").slice(10,20).hide();
+        }
+        else if (sortingMethod == '2')
+        {
+            $("div.test").slice(0,14).show();
+            $("div.test").slice(15,20).hide();
+        }
+        else if(sortingMethod == '4')
+        {
+            $('div.test:lt(20)').show();
+        }
+
+    });
+
+});
 </script>
 
 	<!-- Optional JavaScript -->
