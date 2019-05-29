@@ -11,13 +11,14 @@
     </div>
 
     <!--================Cart Area =================-->
-    <section class="cart_area">
+    <form method="post">
+        <section class="cart_area">
         <div class="container">
             <div class="cart_inner">
 
                 <div class="card cardRegistry text-center">
                     <div class="card-body text-center">
-                        <form method="post">
+
                             <div class="d-lg-flex justify-content-around">
                                 <div class="input-group mr-3 input-higher">
                                     <div class="input-group-prepend">
@@ -25,7 +26,12 @@
                                     </div>
                                     <input data-date-format="dd/mm/yyyy" id="demo" type="text" class="form-control" required placeholder="Data spotkania">
                                 </div>
-                                <div class="input-group"></div>
+                                <div class="input-group input-higher">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">Godzina spotkania</span>
+                                    </div>
+                                    <input type="text" class="form-control" required placeholder="Godzina spotkania">
+                                </div>
                             </div>
                             <div class="d-lg-flex justify-content-around mt-3 text-left">
                                 <div id="mapid" class="col-lg-6" style="height: 400px;" onclick="onMapClick();">
@@ -45,7 +51,7 @@
                                     <button type="button" class="btn btn-primary mt-2" onclick="addr_search();">Szukaj</button>
                                 </div>
                             </div>
-                        </form>
+
                     </div>
                 </div>
 
@@ -54,34 +60,35 @@
                         <thead>
                         <tr>
                             <th scope="col">Produkt</th>
-                            <th scope="col"></th>
                         </tr>
                         </thead>
                         <tbody>
                         <!-- todo set data of product -->
                         <tr>
-                            <td class="w-25">
-                                <div class="media">
-                                    <div class="d-flex">
-<!--                                         todo smaller image!!!!! -->
-                                        <img th:if="${photos.size() > 0 && photos.get(0) != null}"
-                                             th:src="${photos.get(0)}" alt="">
-                                        <img th:if="${photos.size() == 0 || photos.get(0) == null}"
-                                             src="../images/sample-products/no_image.png" alt="">
+                            <td>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="media">
+                                            <div class="d-flex">
+                                                <img th:if="${photos.size() > 0 && photos.get(0) != null}"
+                                                     th:src="${photos.get(0)}" alt="">
+                                                <img th:if="${photos.size() == 0 || photos.get(0) == null}"
+                                                     src="../images/sample-products/no_image.png" alt=""
+                                                     style="width: 200px; height: 200px;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="media-body mt-3">
+                                            <h4 th:text="${item.getName()}"></h4>
+                                            <p th:text="${item.getDescription()}"></p>
+                                        </div>
                                     </div>
                                 </div>
-                            </td>
-                            <td>
-                                <div class="media-body">
-                                    <h4 th:text="${item.getName()}"></h4>
-                                    <p th:text="${item.getDescription()}"></p>
-                                </div>
+
                             </td>
                         </tr>
                         <tr>
-                            <td>
-
-                            </td>
                             <td>
                                 <div class="d-flex justify-content-end">
                                     <h5 class="mr-2">Koszt BC*</h5>
@@ -94,13 +101,10 @@
                         </tr>
                         <tr class="out_button_area">
                             <td>
-
-                            </td>
-                            <td>
                                 <div class="checkout_btn_inner text-right">
                                     <!-- todo go back to product details -->
                                     <a class="gray_btn mb-2" href="szczegoly?item=4">Wróć do produktu</a>
-                                    <a class="main_btn" href="potwierdzenie-zamowienia">Dokonaj wypożyczenia</a>
+                                    <input type="submit" class="main_btn" value="Dokonaj wypożyczenia">
                                 </div>
                             </td>
                         </tr>
@@ -111,6 +115,7 @@
             </div>
         </div>
     </section>
+    </form>
     <!--================End Cart Area =================-->
 
 

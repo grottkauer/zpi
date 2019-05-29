@@ -46,7 +46,7 @@ Table of Content:
       -ms-flex: 0 0 100% !important;
       flex: 0 0 100% !important; }
     .gray_btn, .main_btn{
-        width: 100%;
+        width: 60%;
         text-align: center;
     }}
     @media (min-width: 481px) and (max-width: 720px) {
