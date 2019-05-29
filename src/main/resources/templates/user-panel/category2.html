@@ -15,9 +15,6 @@
 
 </head> -->
 
-
-
-
 	<div class="card-header text-center">
 		<h1 class="text-uppercase">Panel wypożyczeń</h1>
 		<h4 class="section-subheading text-muted">Znajdź i wybierz towary, które chcesz wypożyczyć...</h4>
@@ -29,10 +26,11 @@
 			<div class="row flex-row-reverse">
 				<div class="product_top_bar">
 					<div class="left_dorp">
-						<select class="sorting">
-							<option value="1">Default sorting</option>
-							<option value="2">Default sorting 01</option>
-							<option value="4">Default sorting 02</option>
+						<select id="sorting-categories" class="sorting">
+							<option id="alfUpBtn" value="1">Alfabetycznie A-Z</option>
+							<option id="alfDownBtn" value="2">Alfabetycznie Z-A</option>
+							<option id="bcUpBtn" value="4a">Rosnąco BC</option>
+                            <option id="bcDownBtn" value="8a">Malejąco BC</option>
 						</select>
 						<select class="show">
 							<option value="1">Show 12</option>
@@ -75,8 +73,11 @@
 				<div class="col-lg-9">
 
 
-					<div class="latest_product_inner row">
-						<div class="col-lg-3 col-md-3 col-sm-6" th:each="product,iter :${availableResources}">
+					<div class="latest_product_inner row testWrapper">
+						<div class="col-lg-3 col-md-3 col-sm-6 test"
+                             th:data-name="${product.getName()}"
+                                th:data-price="${product.getPoints()}"
+                                    th:each="product,iter :${availableResources}">
 							<div class="f_p_item">
 								<div class="f_p_img">
 									<a th:href="@{szczegoly(item=${product.getId()})}">
@@ -101,7 +102,7 @@
 									<a th:href="@{szczegoly(item=${product.getId()})}">
 										<h4 th:text="${product.getName()}"></h4>
 										<div class="d-flex justify-content-center">
-											<h5 th:text="${product.getPoints()}"></h5>
+											<h5 th:class="borrow-coins" th:text="${product.getPoints()}"></h5>
 											<h5 class="ml-1"> Borrow Coins</h5>
 										</div>
 									</a>
@@ -321,6 +322,66 @@ $(document).ready(function(){
 });
 </script>
 
+<script>
+    var $wrapper = $('.testWrapper');
+
+    $wrapper.find('.test').sort(function (a, b) {
+        return String.prototype.localeCompare.call($(a).data('name').toLowerCase(), $(b).data('name').toLowerCase());
+        })
+    .appendTo( $wrapper );
+</script>
+
+<!-- sorting divs -->
+<script>
+
+$(document).ready(function(){
+
+    $("#sorting-categories").change(function(){
+
+        var sortingMethod = $(this).val();
+
+        if(sortingMethod == '1')
+        {
+            var $wrapper = $('.testWrapper');
+
+            $wrapper.find('.test').sort(function (a, b) {
+                return String.prototype.localeCompare.call($(a).data('name').toLowerCase(), $(b).data('name').toLowerCase());
+            })
+            .appendTo( $wrapper );
+        }
+        else if (sortingMethod == '2')
+        {
+            var $wrapper = $('.testWrapper');
+
+            $wrapper.find('.test').sort(function (a, b) {
+                return String.prototype.localeCompare.call($(b).data('name').toLowerCase(), $(a).data('name').toLowerCase());
+            })
+            .appendTo( $wrapper );
+        }
+        else if(sortingMethod == '4a')
+        {
+            var $wrapper = $('.testWrapper');
+
+            $wrapper.find('.test').sort(function (a, b) {
+                return +a.dataset.price - +b.dataset.price;
+            })
+            .appendTo( $wrapper );
+        }
+        else if(sortingMethod == '8a')
+        {
+            var $wrapper = $('.testWrapper');
+
+            $wrapper.find('.test').sort(function (a, b) {
+                return +b.dataset.price - +a.dataset.price;
+            })
+            .appendTo( $wrapper );
+        }
+
+    });
+
+});
+
+</script>
 
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
