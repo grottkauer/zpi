@@ -111,12 +111,12 @@
 
                             </div>
                             <div class="card_area pb-3">
-                                <a class="main_btn" href="wypozycz">Wypożycz
+                                <a th:if="${userCoins} >= ${item.getPoints()}" class="main_btn" href="wypozycz" th:href="@{wypozycz(item=${item.getId()})}">Wypożycz</a>
                                     <!-- todo uncomment line below when someone has no enough money -->
-                                <a class="main_btn"
+                                <a class="main_btn" th:if="${userCoins} < ${item.getPoints()}"
                                    data-toggle="modal" data-target="#notEnoughMoney">Wypożycz</a>
                                 <a class="icon_btn pointer-cell" data-toggle="modal" data-target="#buyCoinsModal"
-                                    style="background-color: #fed136;">
+                                    style="background-color: #fed136;" th:if="${userCoins} < ${item.getPoints()}">
                                     <i id="buyCoins"
                                        class="fas fa-plus-circle" style="color: green; font-size: 18px;"></i>
                                 </a>
@@ -560,9 +560,8 @@
 <div class="d-flex justify-content-center coins-fixed-toast w-100">
     <div class="toast coins-toast" data-autohide="false">
         <div class="toast-header">
-            <!-- todo set account coins -->
             <strong class="mr-auto text-primary">Stan konta: </strong>
-            <span style="font-weight: bold;"> 20 </span>
+            <span style="font-weight: bold;" th:text="${userCoins}"></span>
             <img class="coin-img ml-1" src="https://image.flaticon.com/icons/svg/217/217853.svg"/>
         </div>
     </div>

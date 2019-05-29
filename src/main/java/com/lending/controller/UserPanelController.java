@@ -267,6 +267,7 @@ public class UserPanelController {
         }
         modelAndView.addObject("availableResources", availableResources);
         modelAndView.addObject("images", images);
+        modelAndView.addObject("userCoins", userRepository.getUserCoins(getLoggedUserId()));
         modelAndView.setViewName("user-panel/category2");
         return modelAndView;
     }
@@ -347,11 +348,12 @@ public class UserPanelController {
         ModelAndView modelAndView = initializeModelAndViewForProductDetails(item);
         modelAndView.setViewName("user-panel/product-details");
         modelAndView.addObject("userName", getUserPseudo());
+        modelAndView.addObject("userCoins", userRepository.getUserCoins(getLoggedUserId()));
         return modelAndView;
     }
 
     @GetMapping(value="/wypozycz")
-    public ModelAndView productBorrow() {
+    public ModelAndView productBorrow(@RequestParam int item) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("user-panel/product-borrow");
         modelAndView.addObject("userName", getUserPseudo());

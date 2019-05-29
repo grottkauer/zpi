@@ -68,5 +68,8 @@ public interface UserRepository extends CrudRepository<Person, Integer>, UserRep
     @Query("select u.firstName from Person u where u.id =:id")
     String getUserFirstName(@Param("id") int id);
 
+    @Query("select u.wallet from Person u where u.id=:id")
+    int getUserCoins(@Param("id") int id);
+
 
 }

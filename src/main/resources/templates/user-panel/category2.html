@@ -308,9 +308,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <div class="d-flex justify-content-center coins-fixed-toast w-100">
 	<div class="toast coins-toast" data-autohide="false">
 		<div class="toast-header">
-			<!-- todo set account coins -->
 			<strong class="mr-auto text-primary">Stan konta: </strong>
-			<span style="font-weight: bold;"> 20 </span>
+			<span style="font-weight: bold;" th:text="${userCoins}"></span>
 			<img class="coin-img ml-1" src="https://image.flaticon.com/icons/svg/217/217853.svg"/>
 		</div>
 	</div>

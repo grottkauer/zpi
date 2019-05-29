@@ -35,6 +35,9 @@ public class Person extends BaseEntity {
     @Column
     private Date recallDate;
 
+    @Column
+    private long wallet;
+
     @Column(nullable = false)
     private String ethereumAddress;
 
@@ -64,6 +67,7 @@ public class Person extends BaseEntity {
         this.birthDate = birthDate;
         this.recallDate = recallDate;
         this.address = address;
+        this.wallet = 0;
     }
 
     public String getPassword() {
@@ -128,6 +132,25 @@ public class Person extends BaseEntity {
 
     public void setRecallDate(Date recallDate) {
         this.recallDate = recallDate;
+    }
+
+    public long getWallet() {
+        return wallet;
+    }
+
+    public void setWallet(long wallet) {
+        this.wallet = wallet;
+    }
+
+    public void addToWallet(int coins) {
+        this.wallet += (long) coins;
+    }
+
+    public void removeFromWallet(int coins) {
+        if (this.wallet > coins)
+            this.wallet -= (long) coins;
+        else
+            this.wallet = 0;
     }
 
     @Override
