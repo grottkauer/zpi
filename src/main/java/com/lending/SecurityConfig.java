@@ -42,6 +42,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/daterangepicker-master/**",
                         "/datepicker-popup/**",
                         "/screens/**",
+                        "/sm/**",
                         "/webjars/**").permitAll()
                 .antMatchers("/user/**").hasRole("USER")
                 .anyRequest().authenticated()

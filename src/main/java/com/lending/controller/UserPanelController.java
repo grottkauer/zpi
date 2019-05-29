@@ -37,6 +37,9 @@ public class UserPanelController {
     @Autowired
     ImageRepository imageRepository;
 
+    @Autowired
+    ResourceRentingRepository resourceRentingRepository;
+
     private List<CategoriesDto> categories = null;
 
     @GetMapping(value="")
@@ -360,6 +363,22 @@ public class UserPanelController {
         if (userRepository.getUserCoins(getLoggedUserId()) < resourceRepository.getPriceOfResource(item))
             return productDetails(item);
         return modelAndView;
+    }
+
+    @PostMapping(value="/dokonaj-wypozyczenia")
+    public ModelAndView doTheBorrow(@RequestParam(value = "item") int item,
+                              @RequestParam(value = "mDate") Date mDate,
+                              @RequestParam(value = "mPlace") String mPlace) {
+        System.out.println(mPlace);
+//        Person recipent = userRepository.getUserById(getLoggedUserId());
+//        Resource resource = resourceRepository.getResourceById(item);
+//        Date addDate = new Date();
+//        RentingStatus status = RentingStatus.Utworzone;
+//        ResourceRenting renting = new ResourceRenting(recipent,resource,addDate,null,null,status);
+//        resourceRentingRepository.save(renting);
+        //Address address = new Address();
+        //Meeting meeting = new Meeting();
+        return getBorrowPanel();
     }
 
     @GetMapping(value="/potwierdzenie-zamowienia")
