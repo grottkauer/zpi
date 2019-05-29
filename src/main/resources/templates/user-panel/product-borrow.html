@@ -63,13 +63,18 @@
                             <td class="w-25">
                                 <div class="media">
                                     <div class="d-flex">
-                                        <img src="../images/single-product/cart-1.jpg" alt="">
+<!--                                         todo smaller image!!!!! -->
+                                        <img th:if="${photos.size() > 0 && photos.get(0) != null}"
+                                             th:src="${photos.get(0)}" alt="">
+                                        <img th:if="${photos.size() == 0 || photos.get(0) == null}"
+                                             src="../images/sample-products/no_image.png" alt="">
                                     </div>
                                 </div>
                             </td>
                             <td>
                                 <div class="media-body">
-                                    <p>Minimalistic shop for multipurpose use</p>
+                                    <h4 th:text="${item.getName()}"></h4>
+                                    <p th:text="${item.getDescription()}"></p>
                                 </div>
                             </td>
                         </tr>
@@ -80,7 +85,7 @@
                             <td>
                                 <div class="d-flex justify-content-end">
                                     <h5 class="mr-2">Koszt BC*</h5>
-                                    <h5>4.0</h5>
+                                    <h5 th:text="${item.getPoints()}"></h5>
                                 </div>
                                 <div class="text-right font-italic">
                                     <small>BC - Borrow Coins</small>

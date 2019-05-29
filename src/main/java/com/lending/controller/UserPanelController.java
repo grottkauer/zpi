@@ -354,9 +354,11 @@ public class UserPanelController {
 
     @GetMapping(value="/wypozycz")
     public ModelAndView productBorrow(@RequestParam int item) {
-        ModelAndView modelAndView = new ModelAndView();
+        ModelAndView modelAndView = initializeModelAndViewForProductDetails(item);
         modelAndView.setViewName("user-panel/product-borrow");
         modelAndView.addObject("userName", getUserPseudo());
+        if (userRepository.getUserCoins(getLoggedUserId()) < resourceRepository.getPriceOfResource(item))
+            return productDetails(item);
         return modelAndView;
     }
 
