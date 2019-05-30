@@ -27,13 +27,6 @@ Wypo¿yczone produkty:
 Zrobiæ coœ z modalem Gratulacje, Z³o¿ono zamówienie, ¿e ma siê odpalaæ tylko wtedy
 gdy z³o¿ono zamówienie.
 
-Zmieniæ t³o z g³ównej.
-
-Panel szukania:
-	- poprawiæ paginacjê
-	- naprawiæ paski z tymi rzeczami (g³ównie mobilnie)
-	- naprawiæ stan konta (mobilki)
-
 Baza:
 	- hashowanie hase³
 	- dodanie obrazków

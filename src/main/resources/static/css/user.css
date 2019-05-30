@@ -13,6 +13,17 @@
     margin: 4% 4%;
 }
 
+.coins-fixed-toast{
+        	position: fixed;
+            top: 0;
+        }
+      	.coins-toast{
+        	width: 15%;
+        }
+        .coin-img{
+        	width: 10%;
+        }
+
 #bg-borrow {
   background-image: url("../images/backgrounds/things.jpg");
   background-attachment: fixed;
@@ -35,6 +46,11 @@
 
   .img-carousel {
     height: 300px;
+  }
+
+  .coins-toast {
+    width: 45%;
+    left: auto;
   }
 }
 
@@ -383,21 +399,16 @@
         color: #fed136;
     }
 
-    .coins-fixed-toast{
-        	position: fixed;
-            top: 0;
-        }
-      	.coins-toast{
-        	width: 15%;
-        }
-        .coin-img{
-        	width: 10%;
-        }
+
 
         .page {
           display: none;
         }
         .page-active {
           display: block;
+        }
+        #pagination-categories li a.current,
+         #pagination-categories-down li a.current{
+            background-color: #fed136;
         }
 

@@ -329,6 +329,8 @@
 	.product_top_bar {
 		display: block;
 		clear: inherit;
+		width: 100%;
+        margin-left: 15px;
 	}
 	.product_top_bar .left_dorp{
 		width: 100%;
@@ -350,6 +352,9 @@
 		display: block;
 		margin-top: 60px;
 		overflow: hidden;
+	}
+	.cat_page #pagination-categories {
+	    width: 81%;
 	}
 	.cat_page .pagination li {
 		display: inline-block;
