@@ -765,18 +765,20 @@ $('#demo').daterangepicker({
     function checkBoxSelected(id) {
         var checkbox = document.getElementById(id);
         var sel = !!checkbox.checked;
-        const sleep = (milliseconds) =;> {
-          return new Promise(resolve => setTimeout(resolve, milliseconds);)
-        }
+        const sleep = function (milliseconds) {
+          return new Promise(function(resolve) {
+              setTimeout(resolve, milliseconds);
+          });
+        };
         $.ajax({
             type: 'POST',
             url: "/moje-konto/moje-produkty/do-wypozyczenia",
             data: {item: id, checked: sel},
             success: function(data) {
             $('.toast').toast('show');
-                    sleep(500).then(() => {
+                    sleep(500).then(function() {
                         location.reload();
-                      })
+                      });
                 //location.reload();
             }
         });
