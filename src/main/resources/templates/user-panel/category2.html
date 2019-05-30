@@ -33,39 +33,40 @@
                             <option id="bcDownBtn" value="8a">Malejąco BC</option>
 						</select>
 						<select id="showing-categories" class="show">
-							<option value="1">Pokaż 10</option>
-							<option value="2">Pokaż 15</option>
-							<option value="4">Pokaż 20</option>
+							<option value="1">Pokaż 8</option>
+							<option value="2">Pokaż 12</option>
+							<option value="4">Pokaż 16</option>
 						</select>
 					</div>
 					<div class="right_page ml-auto">
 						<nav class="cat_page" aria-label="Page navigation example">
-							<ul class="pagination">
-								<li class="page-item">
-									<a class="page-link" href="#">
-										<i class="fa fa-long-arrow-alt-left" aria-hidden="true"></i>
-									</a>
-								</li>
-								<li class="page-item active">
-									<a class="page-link" href="#">1</a>
-								</li>
-								<li class="page-item">
-									<a class="page-link" href="#">2</a>
-								</li>
-								<li class="page-item">
-									<a class="page-link" href="#">3</a>
-								</li>
-								<li class="page-item blank">
-									<a class="page-link" href="#">...</a>
-								</li>
-								<li class="page-item">
-									<a class="page-link" href="#">6</a>
-								</li>
-								<li class="page-item">
-									<a class="page-link" href="#">
-										<i class="fa fa-long-arrow-alt-right" aria-hidden="true"></i>
-									</a>
-								</li>
+							<!--<ul id="pagination-demo" class="pagination-lg pull-right"></ul>-->
+							<ul id="pagination-categories" class="pagination">
+								<!--<li class="page-item">-->
+									<!--<a class="page-link" href="#">-->
+										<!--<i class="fa fa-long-arrow-alt-left" aria-hidden="true"></i>-->
+									<!--</a>-->
+								<!--</li>-->
+								<!--<li class="page-item active">-->
+									<!--<a class="page-link" href="#">1</a>-->
+								<!--</li>-->
+								<!--<li class="page-item">-->
+									<!--<a class="page-link" href="#">2</a>-->
+								<!--</li>-->
+								<!--<li class="page-item">-->
+									<!--<a class="page-link" href="#">3</a>-->
+								<!--</li>-->
+								<!--<li class="page-item blank">-->
+									<!--<a class="page-link" href="#">...</a>-->
+								<!--</li>-->
+								<!--<li class="page-item">-->
+									<!--<a class="page-link" href="#">6</a>-->
+								<!--</li>-->
+								<!--<li class="page-item">-->
+									<!--<a class="page-link" href="#">-->
+										<!--<i class="fa fa-long-arrow-alt-right" aria-hidden="true"></i>-->
+									<!--</a>-->
+								<!--</li>-->
 							</ul>
 						</nav>
 					</div>
@@ -205,34 +206,10 @@
 			</div>
 
 			<div class="row">
-				<!-- todo set number of pages -->
+				<!-- set number of pages -->
 				<nav class="cat_page mx-auto" aria-label="Page navigation example">
-					<ul class="pagination">
-						<li class="page-item">
-							<a class="page-link" href="#">
-								<i class="fa fa-chevron-left" aria-hidden="true"></i>
-							</a>
-						</li>
-						<li class="page-item active">
-							<a class="page-link" href="#">01</a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" href="#">02</a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" href="#">03</a>
-						</li>
-						<li class="page-item blank">
-							<a class="page-link" href="#">...</a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" href="#">09</a>
-						</li>
-						<li class="page-item">
-							<a class="page-link" href="#">
-								<i class="fa fa-chevron-right" aria-hidden="true"></i>
-							</a>
-						</li>
+					<ul id="pagination-categories-down" class="pagination">
+
 					</ul>
 				</nav>
 			</div>
@@ -323,6 +300,68 @@ $(document).ready(function(){
 });
 </script>
 
+<!-- pagination -->
+<script>
+	function pagination(itemsSize)
+	{
+		pageSize = itemsSize;
+
+			var pageCount =  $(".test").length / pageSize;
+
+			 for(var i = 0 ; i<pageCount;i++){
+
+			   $("#pagination-categories").append('<li class="page-item"><a class="page-link" href="#">'+(i+1)+'</a></li> ');
+			 }
+				$("#pagination-categories li").first().find("a").addClass("current")
+			showPage = function(page) {
+				$(".test").hide();
+				$(".test").each(function(n) {
+					if (n >= pageSize * (page - 1) && n < pageSize * page)
+						$(this).show();
+				});
+			}
+
+			showPage(1);
+
+			$("#pagination-categories li a").click(function() {
+				$("#pagination-categories li a").removeClass("current");
+				$(this).addClass("current");
+				showPage(parseInt($(this).text()))
+			});
+	}
+</script>
+
+<!-- pagination down -->
+<script>
+	function paginationDown(itemsSize)
+	{
+		pageSize = itemsSize;
+
+			var pageCount =  $(".test").length / pageSize;
+
+			 for(var i = 0 ; i<pageCount;i++){
+
+			   $("#pagination-categories-down").append('<li class="page-item"><a class="page-link" href="#">'+(i+1)+'</a></li> ');
+			 }
+				$("#pagination-categories-down li").first().find("a").addClass("current")
+			showPage = function(page) {
+				$(".test").hide();
+				$(".test").each(function(n) {
+					if (n >= pageSize * (page - 1) && n < pageSize * page)
+						$(this).show();
+				});
+			}
+
+			showPage(1);
+
+			$("#pagination-categories-down li a").click(function() {
+				$("#pagination-categories-down li a").removeClass("current");
+				$(this).addClass("current");
+				showPage(parseInt($(this).text()))
+			});
+	}
+</script>
+
 <script>
     var $wrapper = $('.testWrapper');
 
@@ -331,8 +370,12 @@ $(document).ready(function(){
         })
     .appendTo( $wrapper );
 
-	$('div.test:lt(10)').show();
+	pagination(8);
+
+	paginationDown(8);
 </script>
+
+
 
 <!-- sorting divs -->
 <script>
@@ -396,17 +439,43 @@ $(document).ready(function(){
 
         if(sortingMethod == '1')
         {
-            $("div.test").slice(0,9).show();
-            $("div.test").slice(10,20).hide();
+            var myNode = document.getElementById("pagination-categories");
+				while (myNode.firstChild) {
+					myNode.removeChild(myNode.firstChild);
+			}
+			myNode = document.getElementById("pagination-categories-down");
+				while (myNode.firstChild) {
+					myNode.removeChild(myNode.firstChild);
+			}
+            pagination(8);
+            paginationDown(8);
         }
         else if (sortingMethod == '2')
         {
-            $("div.test").slice(0,14).show();
-            $("div.test").slice(15,20).hide();
+        	var myNode = document.getElementById("pagination-categories");
+				while (myNode.firstChild) {
+					myNode.removeChild(myNode.firstChild);
+			}
+			myNode = document.getElementById("pagination-categories-down");
+				while (myNode.firstChild) {
+					myNode.removeChild(myNode.firstChild);
+			}
+        	//$("#pagination-categories").removeClass();
+            pagination(12);
+            paginationDown(12);
         }
         else if(sortingMethod == '4')
         {
-            $('div.test:lt(20)').show();
+            var myNode = document.getElementById("pagination-categories");
+				while (myNode.firstChild) {
+					myNode.removeChild(myNode.firstChild);
+			}
+			myNode = document.getElementById("pagination-categories-down");
+				while (myNode.firstChild) {
+					myNode.removeChild(myNode.firstChild);
+			}
+            pagination(16);
+            paginationDown(16);
         }
 
     });
