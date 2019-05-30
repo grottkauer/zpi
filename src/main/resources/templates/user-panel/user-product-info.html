@@ -177,8 +177,20 @@
                                     </div>
                                     <!-- todo checkBorrowModal show only when status is Zamowiony or Wypozyczony -->
                                     <div class="col-md-6">
-                                        <a id="borrow-lend-button" href="#checkBorrowModal" class="btn table-btn mb-2" data-toggle="modal"
+                                        <a th:if="${item.getStatus() == T(com.lending.entities.RentingStatus).Utworzone ||
+                                         item.getStatus() == T(com.lending.entities.RentingStatus).Zrealizowane}"
+                                           id="borrow-lend-button" class="btn table-btn mb-2"
+                                           th:attr="onclick='confirmBorrow()'"
                                            style="width: 100%;">
+                                            <i class="fas fa-check"></i>
+                                            <span>Potwierdź oddanie/wypożyczenie</span>
+                                        </a>
+<!--                                        todo change color when disabled-->
+<!--                                        todo fix appereance of button (looks like disabled when enebled)-->
+                                        <a th:if="${item.getStatus() != T(com.lending.entities.RentingStatus).Utworzone &&
+                                         item.getStatus() != T(com.lending.entities.RentingStatus).Zrealizowane}"
+                                           class="btn table-btn mb-2" data-toggle="modal" disabled="true"
+                                           style="width: 100%; cursor: default;">
                                             <i class="fas fa-check"></i>
                                             <span>Potwierdź oddanie/wypożyczenie</span>
                                         </a>
@@ -236,10 +248,8 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <!-- todo if status is Zamowiony -->
-                <h5 class="modal-title">Chcesz potwierdzić wypożyczenie produktu?</h5>
-                <!-- todo if status is Wypozyczony -->
-                <!--<h5 class="modal-title">Chcesz potwierdzić oddanie produktu?</h5>-->
+                <h5 id="confirmBorrowTitle" class="modal-title">Chcesz potwierdzić wypożyczenie produktu?</h5>
+                <h5 id="confirmReturnTitle" class="modal-title">Chcesz potwierdzić oddanie produktu?</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -258,9 +268,8 @@
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Anuluj</button>
-                    <!-- todo uncomment this line and delete below when post supported -->
                     <!--<input class="btn btn-primary" type="submit" value="Potwierdź">-->
-                    <button class="btn btn-primary" type="button" data-dismiss="modal">Potwierdź</button>
+                    <button id="confirmDateBtn" class="btn btn-primary" type="button" data-dismiss="modal">Potwierdź</button>
                 </div>
             </form>
         </div>
@@ -428,6 +437,39 @@ $(document).ready(function(){
     $('.toast').toast('show');
   });
 });
+</script>
+
+<!-- handle check button modal -->
+<script th:inline="javascript">
+    function confirmBorrow() {
+        var status =[[${item.getStatus()}]];
+        var id = [[${item.getId()}]];
+        if (status == 'Utworzone') {
+            $('#confirmBorrowTitle').show();
+            $('#confirmReturnTitle').hide();
+        }
+        else {
+            $('#confirmBorrowTitle').hide();
+            $('#confirmReturnTitle').show();
+        }
+        $('#checkBorrowModal').modal();
+        $('#confirmDateBtn').on('click', function (event) {
+            event.preventDefault();
+            var date = $('#demo').val();
+            $('#checkBorrowModal').modal('hide');
+            $('#confirmBorrowTitle').show();
+            $('#confirmReturnTitle').show();
+            $.ajax({
+                method: 'POST',
+                data: {item: id, mDate: date},
+                url: '/moje-konto/moje-produkty/potwierdz',
+                success: function(data) {
+                    window.location.reload();
+                    //todo popup
+                }
+            });
+        });
+    }
 </script>
 
 <!-- Bootstrap core JavaScript-->

@@ -191,7 +191,6 @@ public class UserPanelController {
     @PostMapping(value="/moje-produkty/potwierdz")
     public ModelAndView productsConfirm(@RequestParam(value = "item") int item,
                                         @RequestParam(value = "mDate") Date mDate) {
-        System.out.println("--------------TUTAJ----------------");
         Resource resource = resourceRepository.getResourceById(item);
         ResourceRenting renting = resourceRentingRepository.getLatestRentingOfResource(item);
         if (renting.getStatus().equals(RentingStatus.Utworzone)) {
@@ -402,6 +401,7 @@ public class UserPanelController {
                 meetingAddress.getNrHouse(), meetingAddress.getZipCode()))
             addressRepository.save(meetingAddress);
 
+        //todo get coins from wallet
         Meeting meeting = new Meeting(meetingAddress, mDate, renting);
         meetingRepository.save(meeting);
 
