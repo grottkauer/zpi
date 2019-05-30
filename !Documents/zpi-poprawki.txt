@@ -1,13 +1,50 @@
 Moje dane -> Moje produkty -> Poka¿ produkty:
-	- zrobiæ coœ z tym buttonem "Usuñ"
+	- zrobiæ coœ z tym buttonem "Usuñ zaznaczone"
 	- usun¹æ filtry z pierwszego i ostatniego
-	- zmieniæ wygl¹d buttonów akcji
+	- zmieniæ disable/enable buttona check na display none/block
+(albo show/hide - jquery)
 
-Polskie znaki
+Dodawanie i edycja produktu (front i back):
+	- termin oddania produktu
+	- info o domyœlnym nie przeznaczeniu do wypo¿yczenia (w bazie
+zmieniæ domyœlnie na false)
+
+Polskie znaki (sprawdziæ, czy wszêdzie)
+
+Odnoœniki/linki (sprawdziæ, czy wszêdzie)
 
 Powiadomienia:
 	- w wersji mobilnej poprawiæ szerokoœæ treœci powiadomienia 
 (tego w panelu)
-	- naprawiæ mapke w modalu edytuj¹cym
+	- zrobiæ w backendzie
 
-Sidebar mobilny
+Sidebar mobilny (nie pamiêtam o co chodzi xd - tu Ola coœ mówi³aœ
+kiedyœ a ja zapomnia³em albo mhmm robi³em xd)
+
+Wypo¿yczone produkty:
+	- status wypo¿yczenia dodaæ
+
+Zrobiæ coœ z modalem Gratulacje, Z³o¿ono zamówienie, ¿e ma siê odpalaæ tylko wtedy
+gdy z³o¿ono zamówienie.
+
+Zmieniæ t³o z g³ównej.
+
+Panel szukania:
+	- poprawiæ paginacjê
+	- naprawiæ paski z tymi rzeczami (g³ównie mobilnie)
+	- naprawiæ stan konta (mobilki)
+
+Baza:
+	- hashowanie hase³
+	- dodanie obrazków
+
+G³ówna:
+	- zak³adka z u¿ytymi technologiami
+
+Dashboard:
+	- naprawiæ logo usera bez tekstu obok (jedyny taki panel :D)
+
+Backend:
+	- dorobiæ oddawanie produktu
+	- dorobiæ powiadomienia
+	- dorobiæ moje punkty
