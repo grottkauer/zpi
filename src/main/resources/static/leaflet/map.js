@@ -1,5 +1,11 @@
 var mymap = L.map('mapid').setView([51.109, 17.0333300], 13);
 var marker;
+var name;
+var nameOfLoc;
+var locality;
+var street;
+var nrHouse;
+var zipCode;
 
 	L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
 		maxZoom: 18,
@@ -14,9 +20,13 @@ var marker;
 	var popup = L.popup();
 
 	function onMapClick(e) {
-	$.getJSON('https://nominatim.openstreetmap.org/reverse?format=json&lat=' + e.latlng.lat + '&lon=' + e.latlng.lng, function(data) {
+	$.getJSON('https://nominatim.openstreetmap.org/reverse?format=json&&addressdetails=1&lat=' + e.latlng.lat + '&lon=' + e.latlng.lng, function(data) {
 
                 name = data.display_name;
+                locality = data.address.city;
+                street = data.address.road;
+                nrHouse = data.address.house_number;
+                zipCode = data.address.postcode;
 
                 if (name == "") {
                     name = "Błąd";
@@ -24,6 +34,11 @@ var marker;
             });
 
             $('#addr').val(name);
+            $('#nameOfLoc').val(nameOfLoc);
+            $('#locality').val(locality);
+            $('#street').val(street);
+            $('#nrHouse').val(nrHouse);
+            $('#zipCode').val(zipCode);
 
             marker.setLatLng(e.latlng)
             		.bindPopup(name).openPopup();

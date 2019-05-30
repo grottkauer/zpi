@@ -48,6 +48,10 @@
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">Miejsce spotkania</span>
                                     </div>
+                                    <input type="hidden" id="locality">
+                                    <input type="hidden" id="street" value="">
+                                    <input type="hidden" id="nrHouse">
+                                    <input type="hidden" id="zipCode">
                                     <input type="text" class="form-control w-100" name="addr" value="" id="addr" size="10" required/>
                                     <button type="button" class="btn btn-primary mt-2" onclick="addr_search();">Szukaj</button>
                                 </div>
@@ -207,10 +211,20 @@
 <script>
     function doTheBorrow() {
         var mDate = $('#demo').val();
-        var mPlace = $('#addr').val();
         var item = $('#productId').val();
+
+        var locality = $('#locality').val();
+        var street = $('#street').val();
+        var nrHouse = $('#nrHouse').val();
+        var zipCode = $('#zipCode').val();
+        var address = [];
+        address.push(locality);
+        address.push(street);
+        address.push(nrHouse);
+        address.push(zipCode);
+
         $.ajax({
-            data: {item: item, mDate: mDate, mPlace: mPlace},
+            data: {item: item, mDate: mDate, address: address},
             url: '/moje-konto/dokonaj-wypozyczenia',
             method: 'POST',
             success: function(result) {

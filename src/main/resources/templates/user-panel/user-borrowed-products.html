@@ -110,12 +110,14 @@
                                         <td class="pointer-cell" th:onclick="|window.location.href='/moje-konto/info-wypozyczonego-produktu?item=${product.getId()}'|"
                                             th:text="${product.getCategoryName()}">
                                         </td>
+                                        <!--                                        todo: przewidywana data oddania a nie dodania -->
                                         <td class="pointer-cell" th:onclick="|window.location.href='/moje-konto/info-wypozyczonego-produktu?item=${product.getId()}'|"
-                                            th:text="${#dates.format(product.getAddDate(), 'dd/MM/yyyy')}">
+                                            th:text="${#dates.format(product.getAddDate(), 'dd/MM/yyyy')}" >
                                         </td>
                                         <td class="pointer-cell"
                                             th:onclick="|window.location.href='/moje-konto/info-wypozyczonego-produktu?item=${product.getId()}'|">TAK</td>
                                         <td>
+                                            <!--                                        todo: kolumna ze statusem-->
                                             <a href="#giveBackModal" class="btn table-btn" data-toggle="modal">
                                                 <i class="fas fa-exchange-alt"></i>
                                                 <span>Oddaj produkt</span>

@@ -109,7 +109,7 @@ public interface ResourceRepository extends CrudRepository<Resource, Integer> {
             "left join hl1.higherLevel hl2 \n" +
             "left join hl2.higherLevel hl3 \n" +
             "where u.id=:id \n" +
-            "and rr.status = com.lending.entities.RentingStatus.Zrealizowane")
+            "and rr.status <> com.lending.entities.RentingStatus.Oddane")
     List<UsersProductDto> getProductsBorrowedByUser(@Param("id") int id);
 
     @Query("select new com.lending.dto.UsersProductDto (r.id, r.name, \n" +
@@ -156,6 +156,4 @@ public interface ResourceRepository extends CrudRepository<Resource, Integer> {
 
     @Query("select r.points from Resource r where r.id=:id")
     int getPriceOfResource(@Param("id") int id);
-
-
 }

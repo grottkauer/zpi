@@ -40,6 +40,9 @@ public class UserPanelController {
     @Autowired
     ResourceRentingRepository resourceRentingRepository;
 
+    @Autowired
+    MeetingRepository meetingRepository;
+
     private List<CategoriesDto> categories = null;
 
     @GetMapping(value="")
@@ -182,6 +185,24 @@ public class UserPanelController {
         }
         resourceRepository.saveAll(resourcesToDelete);
         //todo: popup
+        return getUsersProductView(true);
+    }
+
+    @PostMapping(value="/moje-produkty/potwierdz")
+    public ModelAndView productsConfirm(@RequestParam(value = "item") int item,
+                                        @RequestParam(value = "mDate") Date mDate) {
+        System.out.println("--------------TUTAJ----------------");
+        Resource resource = resourceRepository.getResourceById(item);
+        ResourceRenting renting = resourceRentingRepository.getLatestRentingOfResource(item);
+        if (renting.getStatus().equals(RentingStatus.Utworzone)) {
+            renting.setStatus(RentingStatus.Zrealizowane);
+            renting.setBorrowDate(mDate);
+        }
+        else if (renting.getStatus().equals(RentingStatus.Zrealizowane)) {
+            renting.setStatus(RentingStatus.Oddane);
+            renting.setGiveBackDate(mDate);
+        }
+        resourceRentingRepository.save(renting);
         return getUsersProductView(true);
     }
 
@@ -368,16 +389,22 @@ public class UserPanelController {
     @PostMapping(value="/dokonaj-wypozyczenia")
     public ModelAndView doTheBorrow(@RequestParam(value = "item") int item,
                               @RequestParam(value = "mDate") Date mDate,
-                              @RequestParam(value = "mPlace") String mPlace) {
-        System.out.println(mPlace);
-//        Person recipent = userRepository.getUserById(getLoggedUserId());
-//        Resource resource = resourceRepository.getResourceById(item);
-//        Date addDate = new Date();
-//        RentingStatus status = RentingStatus.Utworzone;
-//        ResourceRenting renting = new ResourceRenting(recipent,resource,addDate,null,null,status);
-//        resourceRentingRepository.save(renting);
-        //Address address = new Address();
-        //Meeting meeting = new Meeting();
+                              @RequestParam(value = "address[]") String[] address) {
+
+        Person recipent = userRepository.getUserById(getLoggedUserId());
+        Resource resource = resourceRepository.getResourceById(item);
+        Date addDate = new Date();
+        RentingStatus status = RentingStatus.Utworzone;
+        ResourceRenting renting = new ResourceRenting(recipent,resource,addDate,null,null,status);
+        resourceRentingRepository.save(renting);
+        Address meetingAddress = new Address(address[0], address[1], address[2], null, address[3]);
+        if (!addressRepository.checkIfExists(meetingAddress.getLocality(), meetingAddress.getStreet(),
+                meetingAddress.getNrHouse(), meetingAddress.getZipCode()))
+            addressRepository.save(meetingAddress);
+
+        Meeting meeting = new Meeting(meetingAddress, mDate, renting);
+        meetingRepository.save(meeting);
+
         return getBorrowPanel();
     }
 

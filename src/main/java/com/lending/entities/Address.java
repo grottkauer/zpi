@@ -78,4 +78,5 @@ public class Address extends BaseEntity {
     public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
     }
+
 }

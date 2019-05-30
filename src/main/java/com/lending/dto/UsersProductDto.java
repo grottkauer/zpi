@@ -12,15 +12,17 @@ public class UsersProductDto {
     private Date addDate;
     private RentingStatus status;
     private boolean canBeBorrowed;
+    private boolean canBeChecked;
 
     public UsersProductDto(int id, String productName, String categoryName, Date addDate,
-                           RentingStatus status, boolean canBeBorrowed) {
+                           RentingStatus status, boolean canBeBorrowed, boolean canBeChecked) {
         this.id = id;
         this.productName = productName;
         this.categoryName = categoryName;
         this.addDate = addDate;
         this.status = status;
         this.canBeBorrowed = canBeBorrowed;
+        this.canBeChecked = canBeChecked;
     }
 
     public UsersProductDto(int id, String productName, String categoryName, Date addDate) {
@@ -74,5 +76,13 @@ public class UsersProductDto {
 
     public int getId() {
         return id;
+    }
+
+    public boolean isCanBeChecked() {
+        return canBeChecked;
+    }
+
+    public void setCanBeChecked(boolean canBeChecked) {
+        this.canBeChecked = canBeChecked;
     }
 }

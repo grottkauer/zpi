@@ -153,9 +153,15 @@
                                             </span>
                                         </td>
                                         <td class="text-center">
-                                            <!-- todo checkBorrowModal show only when status is Zamowiony or Wypozyczony -->
+                                            <!-- todo change color of "check" when disabled -->
                                             <!-- todo handle check modal (db)-->
-                                            <a href="#checkBorrowModal" class="edit" data-toggle="modal">
+                                            <a style="cursor: pointer;" class="edit"
+                                               th:if="${product.isCanBeChecked()} == true"
+                                                th:attr="onclick='confirmBorrow('+${product.getId()}+',\''+${product.getStatus()}+'\')'">
+                                                <i class="fas fa-check"></i>
+                                            </a>
+                                            <a class="edit" data-toggle="modal" disabled="true"
+                                               th:if="${product.isCanBeChecked()} == false">
                                                 <i class="fas fa-check"></i>
                                             </a>
                                             <a class="edit modalEditButton" data-toggle="modal"
@@ -427,10 +433,9 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <!-- todo if status is Zamowiony -->
-                <h5 class="modal-title">Chcesz potwierdzić wypożyczenie produktu?</h5>
-                <!-- todo if status is Wypozyczony -->
-                <!--<h5 class="modal-title">Chcesz potwierdzić oddanie produktu?</h5>-->
+                <h5 id="confirmBorrowTitle" class="modal-title">Chcesz potwierdzić wypożyczenie produktu?</h5>
+                <h5 id="confirmReturnTitle" class="modal-title">Chcesz potwierdzić oddanie produktu?</h5>
+                <input type="hidden" id="meetingProductId">
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
@@ -452,7 +457,7 @@
                     <!-- todo uncomment this line and delete below when post supported -->
                     <!-- todo set new renting status, new notification with giveback -->
                     <!--<input class="btn btn-primary" type="submit" value="Potwierdź">-->
-                    <button class="btn btn-primary" type="button" data-dismiss="modal">Potwierdź</button>
+                    <button class="btn btn-primary" id="confirmDateBtn" type="button" data-dismiss="modal">Potwierdź</button>
                 </div>
             </form>
         </div>
@@ -469,9 +474,12 @@
 
 <!-- edit product popup -->
 <script>
-const sleep = (milliseconds) => {
-      return new Promise(resolve => setTimeout(resolve, milliseconds))
-    }
+const sleep = function(milliseconds) {
+      return new Promise(function(resolve){
+          setTimeout(resolve, milliseconds);
+
+      });
+    };
     $('document').ready(function() {
         $('.modalEditButton').on('click',function (event) {
             event.preventDefault();
@@ -549,9 +557,9 @@ const sleep = (milliseconds) => {
                 success: function (result) {//On Successful service call
                     console.log(result);
                     $('.toast').toast('show');
-                    sleep(500).then(() => {
+                    sleep(500).then(function() {
                         location.reload();
-                      })
+                      });
                     //location.reload();
                 }
             });
@@ -640,6 +648,36 @@ const sleep = (milliseconds) => {
     }
 </script>
 
+<!-- handle check button modal -->
+<script>
+    function confirmBorrow(id,status) {
+        if (status == 'Utworzone') {
+            $('#confirmBorrowTitle').show();
+            $('#confirmReturnTitle').hide();
+        }
+        else {
+            $('#confirmBorrowTitle').hide();
+            $('#confirmReturnTitle').show();
+        }
+        $('#checkBorrowModal').modal();
+        $('#confirmDateBtn').on('click', function (event) {
+            event.preventDefault();
+            var date = $('#demo').val();
+            $('#checkBorrowModal').modal('hide');
+            $('#confirmBorrowTitle').show();
+            $('#confirmReturnTitle').show();
+            $.ajax({
+               method: 'POST',
+               data: {item: id, mDate: date},
+               url: '/moje-konto/moje-produkty/potwierdz',
+               success: function(data) {
+                    window.location.reload();
+                    //todo popup
+               }
+            });
+        });
+    }
+</script>
 
 <script type="text/javascript" th:inline="javascript">
     $('document').ready(function() {
@@ -729,8 +767,8 @@ $('#demo').daterangepicker({
     function checkBoxSelected(id) {
         var checkbox = document.getElementById(id);
         var sel = !!checkbox.checked;
-        const sleep = (milliseconds) => {
-          return new Promise(resolve => setTimeout(resolve, milliseconds))
+        const sleep = (milliseconds) =;> {
+          return new Promise(resolve => setTimeout(resolve, milliseconds);)
         }
         $.ajax({
             type: 'POST',

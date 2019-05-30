@@ -39,7 +39,11 @@ public interface UserRepository extends CrudRepository<Person, Integer> {
             "rt.name), r.addDate, \n" +
             "(select rr2.status from ResourceRenting rr2 where rr2.orderDate = \n" +
             "(select max(rr3.orderDate) from ResourceRenting rr3 where rr3.resource = r.id) \n" +
-            "and rr2.resource = r.id), r.canBeBorrowed) \n" +
+            "and rr2.resource = r.id), r.canBeBorrowed, \n" +
+            "case when (select rr2.status from ResourceRenting rr2 where rr2.orderDate = \n" +
+            "(select max(rr3.orderDate) from ResourceRenting rr3 where rr3.resource = r.id) \n" +
+            "and rr2.resource = r.id) in (com.lending.entities.RentingStatus.Utworzone, \n" +
+            "com.lending.entities.RentingStatus.Zrealizowane) then true else false end)\n" +
             "from Person u \n" +
             "inner join u.owningResources r \n" +
             "inner join r.resourceType rt \n" +

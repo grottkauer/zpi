@@ -6,4 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface MeetingRepository extends CrudRepository<Meeting, Integer> {
+
+
+
 }
