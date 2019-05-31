@@ -29,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers(
                         "/", "/kontakt",
-                        "../js/**",
+                        "../js/**", "/service-worker.js",
                         "/manifest.json",
                         "/css/**",
                         "/startbootstrap-agency-gh-pages/vendor/**",
@@ -42,7 +42,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/daterangepicker-master/**",
                         "/datepicker-popup/**",
                         "/screens/**",
-                        "/sm/**",
+                        "/sm/**","/service-worker.js",
                         "/webjars/**").permitAll()
                 .antMatchers("/user/**").hasRole("USER")
                 .anyRequest().authenticated()
