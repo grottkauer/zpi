@@ -54,6 +54,20 @@
   }
 }
 
+@media (min-width: 500px) and (max-width: 700px) {
+    .to-borrow {
+        margin-bottom: 33px;
+      }
+}
+@media (min-width: 800px) {
+    .delete-selected {
+        position: absolute;
+        left: 230px;
+        z-index: 2;
+      }
+}
+
+
 @media (max-width: 1200px) {
 #borrow-lend-button {
     padding: 15px 0;
