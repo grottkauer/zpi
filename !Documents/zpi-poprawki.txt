@@ -1,13 +1,11 @@
 Moje dane -> Moje produkty -> Poka¿ produkty:
 	- usun¹æ filtry z pierwszego i ostatniego
-	- zmieniæ disable/enable buttona check na display none/block
-(albo show/hide - jquery)
 
 Product borrow:
 	- dodaæ godzinê spotkania (backend)
 	- dodaæ przekierowanie do potwierdzenia zamówienia
 
-Dodawanie (back) i edycja produktu (front i back):
+Dodawanie (back) i edycja produktu (back):
 	- termin oddania produktu
 	- checkbox o wyborze do wypo¿yczenia
 	- info o domyœlnym nie przeznaczeniu do wypo¿yczenia (w bazie
@@ -26,7 +24,7 @@ Sidebar mobilny (nie pamiêtam o co chodzi xd - tu Ola coœ mówi³aœ
 kiedyœ a ja zapomnia³em albo mhmm robi³em xd)
 
 Wypo¿yczone produkty:
-	- status wypo¿yczenia dodaæ
+	- status wypo¿yczenia dodaæ (backend)
 
 Zrobiæ coœ z modalem Gratulacje, Z³o¿ono zamówienie, ¿e ma siê odpalaæ tylko wtedy
 gdy z³o¿ono zamówienie. Podobnie z zakomentowanym modalem o oddaniu

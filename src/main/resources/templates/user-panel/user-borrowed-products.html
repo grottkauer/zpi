@@ -87,6 +87,7 @@
                                     <th>Kategoria</th>
                                     <th>Data Dodania</th>
                                     <th>Czy wypozyczony</th>
+                                    <th>Status</th>
                                     <th>Akcja</th>
                                 </tr>
                                 </thead>
@@ -97,6 +98,7 @@
                                     <th>Kategoria</th>
                                     <th>Data Dodania</th>
                                     <th>Czy wypozyczony</th>
+                                    <th>Status</th>
                                     <th>Akcja</th>
                                 </tr>
                                 </tfoot>
@@ -116,6 +118,8 @@
                                         </td>
                                         <td class="pointer-cell"
                                             th:onclick="|window.location.href='/moje-konto/info-wypozyczonego-produktu?item=${product.getId()}'|">TAK</td>
+                                        <td class="pointer-cell"
+                                            th:onclick="|window.location.href='/moje-konto/info-wypozyczonego-produktu?item=${product.getId()}'|">-</td>
                                         <td>
                                             <!--                                        todo: kolumna ze statusem-->
                                             <a href="#giveBackModal" class="btn table-btn" data-toggle="modal">
