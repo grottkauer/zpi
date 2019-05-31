@@ -143,6 +143,29 @@
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <div class="form-group">
+                                                <label>Liczba dni na oddanie produktu<span>*</span></label>
+                                                <input name="productDaysGiveBack" type="number" class="form-control" required
+                                                       data-validation-required-message="Proszę podać liczbę dni."
+                                                       id="daysToGiveBack">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="w-100 to-borrow">Do wypożyczenia</label>
+                                                <div class="w-100 text-left">
+                                                    <input data-toggle="tooltip" data-placement="bottom"
+                                                           title="Kliknij, aby Twój produkt mógł od razu zostać wystawiony na giełdę wypożyczeń"
+                                                           type="checkbox" id="checkbox1" name="product" value="21" style="height: 37px; width: 37px;">
+                                                </div>
+                                                <span class="w-100 text-danger small text-justify">Domyślnie przedmiot nie będzie wystawiony do wypożyczenia.</span>
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
                                                 <label for="addProductDescription">Opis produktu</label>
                                                 <textarea class="form-control" id="addProductDescription"></textarea>
                                             </div>
@@ -232,6 +255,12 @@
 <!-- Demo scripts for this page-->
 <script src="../user-panel/js/demo/datatables-demo.js"></script>
 <script src="../user-panel/js/demo/chart-area-demo.js"></script>
+
+<script>
+$(document).ready(function(){
+  $('[data-toggle="tooltip"]').tooltip();
+});
+</script>
 
 <script>
 // Add the following code if you want the name of the file appear on select

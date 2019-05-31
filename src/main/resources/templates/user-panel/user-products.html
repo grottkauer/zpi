@@ -81,8 +81,8 @@
                     <div class="card mb-3">
                         <div class="card-body">
                             <div class="table-responsive">
-                                <div class="mb-2">
-                                    <a onclick="deleteSeletedProducts()" class="btn btn-danger" 
+                                <div class="mb-2 w-100 text-center">
+                                    <a onclick="deleteSeletedProducts()" class="btn btn-danger delete-selected"
                                         style="cursor:pointer;">
                                         <i class="fas fa-trash-alt"></i>
                                         <span>Usuń zaznaczone</span>
@@ -160,7 +160,7 @@
                                                 th:attr="onclick='confirmBorrow('+${product.getId()}+',\''+${product.getStatus()}+'\')'">
                                                 <i class="fas fa-check"></i>
                                             </a>
-                                            <a class="edit" data-toggle="modal" disabled="true"
+                                            <a class="edit" data-toggle="modal" style="display: none;"
                                                th:if="${product.isCanBeChecked()} == false">
                                                 <i class="fas fa-check"></i>
                                             </a>
@@ -343,6 +343,26 @@
                         <input name="productCoins" type="number" class="form-control" required placeholder="Cena Borrow Coins"
                                id="editProductPoints">
                     </div>
+
+                    <div class="form-group">
+                        <label>Liczba dni na oddanie produktu<span>*</span></label>
+                        <input name="productDaysGiveBack" type="number" class="form-control" required
+                               data-validation-required-message="Proszę podać liczbę dni."
+                               id="daysToGiveBack">
+                    </div>
+
+                    <div class="form-group">
+
+                        <div class="d-flex align-items-center w-100">
+                            <label class="to-borrow mr-auto">Do wypożyczenia:</label>
+                            <input data-toggle="tooltip" data-placement="bottom"
+                                   title="Kliknij, aby Twój produkt mógł od razu zostać wystawiony na giełdę wypożyczeń"
+                                   type="checkbox" id="checkbox2" name="product" value="21" style="height: 20px; width: 20px;">
+                        </div>
+                        <span class="w-100 text-danger small text-justify">Domyślnie przedmiot nie będzie wystawiony do wypożyczenia.</span>
+
+                    </div>
+
                     <div class="form-group text-left">
                         <label>Opis:</label>
                         <textarea class="form-control" id="editProductDescroption" placeholder="Opis"></textarea>

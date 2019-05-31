@@ -32,7 +32,7 @@
 							<option id="bcUpBtn" value="4a">Rosnąco BC</option>
                             <option id="bcDownBtn" value="8a">Malejąco BC</option>
 						</select>
-						<select id="showing-categories" class="show">
+						<select id="showing-categories" class="show mr-3">
 							<option value="1">Pokaż 8</option>
 							<option value="2">Pokaż 12</option>
 							<option value="4">Pokaż 16</option>
@@ -308,11 +308,14 @@ $(document).ready(function(){
 
 			var pageCount =  $(".test").length / pageSize;
 
+			$("#pagination-categories").append('<li class="page-item prev-item"><a class="page-link" href="#"><i class="fa fa-long-arrow-alt-left" aria-hidden="true"></i></a></li> ');
 			 for(var i = 0 ; i<pageCount;i++){
 
-			   $("#pagination-categories").append('<li class="page-item"><a class="page-link" href="#">'+(i+1)+'</a></li> ');
+			   $("#pagination-categories").append('<li class="page-item number-item"><a class="page-link" href="#">'+(i+1)+'</a></li> ');
 			 }
-				$("#pagination-categories li").first().find("a").addClass("current")
+			 $("#pagination-categories").append('<li class="page-item next-item"><a class="page-link" href="#"><i class="fa fa-long-arrow-alt-right" aria-hidden="true"></i></a></li> ');
+				$("#pagination-categories .number-item").first().find("a").addClass("current")
+
 			showPage = function(page) {
 				$(".test").hide();
 				$(".test").each(function(n) {
@@ -323,10 +326,39 @@ $(document).ready(function(){
 
 			showPage(1);
 
-			$("#pagination-categories li a").click(function() {
-				$("#pagination-categories li a").removeClass("current");
+			$("#pagination-categories .number-item a").click(function() {
+				$("#pagination-categories .number-item a").removeClass("current");
 				$(this).addClass("current");
+
+				$("#pagination-categories-down .number-item a").removeClass("current");
+				$('#pagination-categories-down .number-item a:contains("'+($(this).text())+'")').addClass("current");
+
 				showPage(parseInt($(this).text()))
+			});
+
+			$("#pagination-categories .next-item a").click(function() {
+				//$("#pagination-categories").append('<li class="page-item number-item"><a class="page-link" href="#">'+($("#pagination-categories .number-item .current").closest(".number-item").next().text())+'</a></li> ');
+				if ( $("#pagination-categories .number-item .current").closest(".number-item").next().text() != "" ) {
+					$("#pagination-categories .number-item .current").closest(".number-item").next().find("a").addClass("current");
+					$("#pagination-categories .number-item a").first().removeClass("current");
+
+					$("#pagination-categories-down .number-item .current").closest(".number-item").next().find("a").addClass("current");
+					$("#pagination-categories-down .number-item a").first().removeClass("current");
+
+					showPage(parseInt($("#pagination-categories .number-item .current").text()))
+				}
+			});
+
+			$("#pagination-categories .prev-item a").click(function() {
+				if ( $("#pagination-categories .number-item .current").closest(".number-item").prev().text() != "" ) {
+					$("#pagination-categories .number-item .current").closest(".number-item").prev().find("a").addClass("current");
+					$("#pagination-categories .number-item a").last().removeClass("current");
+
+					$("#pagination-categories-down .number-item .current").closest(".number-item").prev().find("a").addClass("current");
+					$("#pagination-categories-down .number-item a").last().removeClass("current");
+
+					showPage(parseInt($("#pagination-categories .number-item .current").text()))
+				}
 			});
 	}
 </script>
@@ -339,11 +371,14 @@ $(document).ready(function(){
 
 			var pageCount =  $(".test").length / pageSize;
 
+			$("#pagination-categories-down").append('<li class="page-item prev-item"><a class="page-link" href="#"><i class="fa fa-long-arrow-alt-left" aria-hidden="true"></i></a></li> ');
 			 for(var i = 0 ; i<pageCount;i++){
 
-			   $("#pagination-categories-down").append('<li class="page-item"><a class="page-link" href="#">'+(i+1)+'</a></li> ');
+			   $("#pagination-categories-down").append('<li class="page-item number-item"><a class="page-link" href="#">'+(i+1)+'</a></li> ');
 			 }
-				$("#pagination-categories-down li").first().find("a").addClass("current")
+			 $("#pagination-categories-down").append('<li class="page-item next-item"><a class="page-link" href="#"><i class="fa fa-long-arrow-alt-right" aria-hidden="true"></i></a></li> ');
+				$("#pagination-categories-down .number-item").first().find("a").addClass("current")
+
 			showPage = function(page) {
 				$(".test").hide();
 				$(".test").each(function(n) {
@@ -354,10 +389,45 @@ $(document).ready(function(){
 
 			showPage(1);
 
-			$("#pagination-categories-down li a").click(function() {
-				$("#pagination-categories-down li a").removeClass("current");
+			$("#pagination-categories-down .number-item a").click(function() {
+				// current pages pagination down
+				$("#pagination-categories-down .number-item a").removeClass("current");
 				$(this).addClass("current");
+
+				// current pages pagination up
+				$("#pagination-categories .number-item a").removeClass("current");
+				$('#pagination-categories .number-item a:contains("'+($(this).text())+'")').addClass("current");
+
+				// show page
 				showPage(parseInt($(this).text()))
+			});
+
+			$("#pagination-categories-down .next-item a").click(function() {
+				//$("#pagination-categories-down").append('<li class="page-item number-item"><a class="page-link" href="#">'+($("#pagination-categories .number-item .current").closest(".number-item").next().text())+'</a></li> ');
+				if ( $("#pagination-categories-down .number-item .current").closest(".number-item").next().text() != "" ) {
+					// current pages pagination down
+					$("#pagination-categories-down .number-item .current").closest(".number-item").next().find("a").addClass("current");
+					$("#pagination-categories-down .number-item a").first().removeClass("current");
+
+					// current pages pagination up
+					$("#pagination-categories .number-item .current").closest(".number-item").next().find("a").addClass("current");
+					$("#pagination-categories .number-item a").first().removeClass("current");
+
+					// show page
+					showPage(parseInt($("#pagination-categories-down .number-item .current").text()))
+				}
+			});
+
+			$("#pagination-categories-down .prev-item a").click(function() {
+				if ( $("#pagination-categories-down .number-item .current").closest(".number-item").prev().text() != "" ) {
+					$("#pagination-categories-down .number-item .current").closest(".number-item").prev().find("a").addClass("current");
+					$("#pagination-categories-down .number-item a").last().removeClass("current");
+
+					$("#pagination-categories .number-item .current").closest(".number-item").prev().find("a").addClass("current");
+					$("#pagination-categories .number-item a").last().removeClass("current");
+
+					showPage(parseInt($("#pagination-categories-down .number-item .current").text()))
+				}
 			});
 	}
 </script>
