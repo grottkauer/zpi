@@ -1,11 +1,15 @@
 Moje dane -> Moje produkty -> Poka¿ produkty:
-	- zrobiæ coœ z tym buttonem "Usuñ zaznaczone"
 	- usun¹æ filtry z pierwszego i ostatniego
 	- zmieniæ disable/enable buttona check na display none/block
 (albo show/hide - jquery)
 
-Dodawanie i edycja produktu (front i back):
+Product borrow:
+	- dodaæ godzinê spotkania (backend)
+	- dodaæ przekierowanie do potwierdzenia zamówienia
+
+Dodawanie (back) i edycja produktu (front i back):
 	- termin oddania produktu
+	- checkbox o wyborze do wypo¿yczenia
 	- info o domyœlnym nie przeznaczeniu do wypo¿yczenia (w bazie
 zmieniæ domyœlnie na false)
 
@@ -25,7 +29,7 @@ Wypo¿yczone produkty:
 	- status wypo¿yczenia dodaæ
 
 Zrobiæ coœ z modalem Gratulacje, Z³o¿ono zamówienie, ¿e ma siê odpalaæ tylko wtedy
-gdy z³o¿ono zamówienie.
+gdy z³o¿ono zamówienie. Podobnie z zakomentowanym modalem o oddaniu
 
 Baza:
 	- hashowanie hase³
@@ -41,3 +45,4 @@ Backend:
 	- dorobiæ oddawanie produktu
 	- dorobiæ powiadomienia
 	- dorobiæ moje punkty
+	- dorobiæ potwierdzenie zamówienia
