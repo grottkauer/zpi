@@ -3,7 +3,7 @@ var cacheName = 'bm-page';
      '/service-worker.js',
      '/',
      '/zaloguj',
-     '/kontakt',
+     '/kontakt', '/error', '/colorlib-error-404-12/css/style.css', '/colorlib-error-404-12/img/emoji.png',
      '/startbootstrap-agency-gh-pages/vendor/bootstrap/css/bootstrap.min.css',
      '/startbootstrap-agency-gh-pages/vendor/fontawesome-free/css/all.min.css',
      '/startbootstrap-agency-gh-pages/css/agency.min.css',

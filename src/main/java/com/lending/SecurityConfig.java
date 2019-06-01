@@ -28,7 +28,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers(
-                        "/", "/kontakt",
+                        "/", "/kontakt", "/error", "/colorlib-error-404-12/**",
                         "../js/**", "/service-worker.js",
                         "/manifest.json",
                         "/css/**",
