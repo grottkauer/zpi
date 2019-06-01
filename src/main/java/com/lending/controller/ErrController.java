@@ -27,7 +27,7 @@ public class ErrController implements ErrorController {
             }
         }
         else
-            modelAndView.setViewName("error/404");
+            modelAndView.setViewName("error/offline");
         return modelAndView;
     }
 

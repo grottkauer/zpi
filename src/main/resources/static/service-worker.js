@@ -1,4 +1,7 @@
 var cacheName = 'bm-page';
+
+const offlineUrl = '/error/500.html'
+
    var filesToCache = [
      '/service-worker.js',
      '/',
@@ -71,10 +74,18 @@ var cacheName = 'bm-page';
    self.addEventListener('activate',  event => {
      event.waitUntil(self.clients.claim());
    });
-   self.addEventListener('fetch', event => {
+   self.addEventListener('fetch', function(event) {
      event.respondWith(
-       caches.match(event.request, {ignoreSearch:true}).then(response => {
+       // Try the cache
+       caches.match(event.request).then(function(response) {
+         // Fall back to network
          return response || fetch(event.request);
+       }).catch(function() {
+         // If both fail, show a generic fallback:
+         return caches.match('/error');
+         // However, in reality you'd have many different
+         // fallbacks, depending on URL & headers.
+         // Eg, a fallback silhouette image for avatars.
        })
      );
    });
