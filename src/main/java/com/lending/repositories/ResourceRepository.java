@@ -100,7 +100,9 @@ public interface ResourceRepository extends CrudRepository<Resource, Integer> {
             "case when hl2.name is not null then concat(hl2.name,' - ') else '' end, \n" +
             "case when hl1.name is not null then concat(hl1.name,' - ') else '' end, \n" +
             "rt.name), \n" +
-            "rr.borrowDate) \n" +
+            "rr.borrowDate, (select rr2.status from ResourceRenting rr2 where rr2.orderDate = \n" +
+            "(select max(rr3.orderDate) from ResourceRenting rr3 where rr3.resource = r.id) \n" +
+            "and rr2.resource = r.id)) \n" +
             "from Resource r \n" +
             "inner join r.rentings rr \n" +
             "inner join r.resourceType rt \n" +

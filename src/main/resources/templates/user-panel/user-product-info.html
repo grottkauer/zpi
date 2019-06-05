@@ -148,6 +148,7 @@
                                                 </div>
                                             </div>
                                             <div th:case="${T(com.lending.entities.RentingStatus).Utworzone}">Zamówiony</div>
+                                            <div th:case="${T(com.lending.entities.RentingStatus).DoOddania}">Do oddania</div>
                                             <div th:case="*">Dostępny</div>
                                         </div>
                                     </div>
@@ -175,21 +176,19 @@
                                             <span>Edytuj produkt</span>
                                         </a>
                                     </div>
-                                    <!-- todo checkBorrowModal show only when status is Zamowiony or Wypozyczony -->
+                                    <!-- todo: fix color of button -->
                                     <div class="col-md-6">
                                         <a th:if="${item.getStatus() == T(com.lending.entities.RentingStatus).Utworzone ||
-                                         item.getStatus() == T(com.lending.entities.RentingStatus).Zrealizowane}"
+                                         item.getStatus() == T(com.lending.entities.RentingStatus).DoOddania}"
                                            id="borrow-lend-button" class="btn table-btn mb-2"
                                            th:attr="onclick='confirmBorrow()'"
                                            style="width: 100%;">
                                             <i class="fas fa-check"></i>
                                             <span>Potwierdź oddanie/wypożyczenie</span>
                                         </a>
-<!--                                        todo change color when disabled-->
-<!--                                        todo fix appereance of button (looks like disabled when enebled)-->
                                         <a th:if="${item.getStatus() != T(com.lending.entities.RentingStatus).Utworzone &&
-                                         item.getStatus() != T(com.lending.entities.RentingStatus).Zrealizowane}"
-                                           class="btn table-btn mb-2" data-toggle="modal" disabled="true"
+                                         item.getStatus() != T(com.lending.entities.RentingStatus).DoOddania}"
+                                           class="btn table-btn mb-2" data-toggle="modal" hidden
                                            style="width: 100%; cursor: default;">
                                             <i class="fas fa-check"></i>
                                             <span>Potwierdź oddanie/wypożyczenie</span>

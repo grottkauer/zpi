@@ -147,6 +147,7 @@
                                                 </div>
                                             </div>
                                             <div th:case="${T(com.lending.entities.RentingStatus).Utworzone}">Zamówiony</div>
+                                            <div th:case="${T(com.lending.entities.RentingStatus).DoOddania}">Do oddania</div>
                                             <div th:case="*">Dostępny</div>
                                         </div>
                                     </div>
@@ -168,7 +169,15 @@
                                         <a class="btn table-btn mb-2" href="wypozyczone-produkty" style="width: 100%;">Wróć do wypożyczonych</a>
                                     </div>
                                     <div class="col-md-6">
-                                        <a href="#giveBackModal" class="btn table-btn" data-toggle="modal" style="width: 100%;">
+                                        <a th:if="${item.getStatus() == T(com.lending.entities.RentingStatus).Zrealizowane}"
+                                                th:attr="onclick='giveBack('+${item.getId()}+')'"
+                                                class="btn table-btn" data-toggle="modal" style="width: 100%;">
+                                            <i class="fas fa-exchange-alt"></i>
+                                            <span>Oddaj produkt</span>
+                                        </a>
+                                        <a th:if="${item.getStatus() != T(com.lending.entities.RentingStatus).Zrealizowane}"
+                                           th:attr="onclick='giveBack('+${item.getId()}+')'" hidden
+                                           class="btn table-btn" data-toggle="modal" style="width: 100%;">
                                             <i class="fas fa-exchange-alt"></i>
                                             <span>Oddaj produkt</span>
                                         </a>
@@ -541,23 +550,42 @@
                     <div class="mb-3">
                         Wybierz termin i miejsce spotkania w celu oddania produktu:
                     </div>
-                    <div class="input-group-sm mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text giveback-prepend">Data spotkania</span>
+                    <div class="d-lg-flex justify-content-around">
+                        <div class="input-group mr-3 input-higher">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Data spotkania</span>
+                            </div>
+                            <input data-date-format="dd/mm/yyyy" id="demo" type="text" class="form-control w-100" required placeholder="Data spotkania">
                         </div>
-                        <input data-date-format="dd/mm/yyyy" id="demo" class="form-control" required placeholder="Data spotkania">
+                        <div class="input-group"></div>
                     </div>
-                    <div class="input-group-sm">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text giveback-prepend">Miejsce spotkania</span>
+                    <div class="d-lg-flex justify-content-around mt-3 text-left">
+                        <div id="mapid" class="col-lg-12" style="height: 400px;">
                         </div>
-                        <input name="meetingAddress" type="text" class="form-control" required placeholder="Adres spotkania">
+                    </div>
+
+                    <div class="col-sm-12 mt-3">
+                        <h4>Wynik wyszukiwań (wybierz miejsce, w którym chcesz się spotkać):</h4>
+                        <div id="results"></div>
+                    </div>
+
+                    <div id="search">
+                        <div id="search-box" class="input-group mt-3 mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">Miejsce spotkania</span>
+                            </div>
+                            <input type="text" class="form-control w-100" name="addr" value="" id="addr" size="10" required/>
+                            <button type="button" class="btn btn-primary mt-2" onclick="addr_search();">Szukaj</button>
+                        </div>
                     </div>
                 </div>
+                <input type="hidden" id="nameOfLoc"/>
+                <input type="hidden" id="locality"/>
+                <input type="hidden" id="street"/>
+                <input type="hidden" id="nrHouse"/>
+                <input type="hidden" id="zipCode"/>
                 <div class="modal-footer">
-                    <!-- todo uncomment this line and delete below when post supported -->
-                    <!--<input class="btn btn-primary" type="submit" value="Potwierdź">-->
-                    <button class="btn btn-primary" type="button" data-dismiss="modal">Potwierdź</button>
+                    <button id="giveBackButton" class="btn btn-primary" type="button" data-dismiss="modal">Potwierdź</button>
                 </div>
             </form>
         </div>
@@ -630,6 +658,34 @@ $('#demo').daterangepicker({
 }, function(start, end, label) {
   console.log('New date range selected: ' + start.format('YYYY-MM-DD') + ' to ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
 });
+</script>
+
+<script>
+    function giveBack(itemId) {
+        $('#giveBackModal').modal();
+        $('#giveBackButton').on('click', function (event) {
+            event.preventDefault();
+            var mDate = $('#demo').val();
+
+            var locality = $('#locality').val();
+            var street = $('#street').val();
+            var nrHouse = $('#nrHouse').val();
+            var zipCode = $('#zipCode').val();
+            var address = [];
+            address.push(locality);
+            address.push(street);
+            address.push(nrHouse);
+            address.push(zipCode);
+            $.ajax({
+                data: {item: itemId, mDate: mDate, address: address},
+                url: '/moje-konto/wypozyczone-produkty/oddaj',
+                method: 'POST',
+                success: function(result) {
+                    window.location.href="/moje-konto/wypozyczone-produkty";
+                }
+            });
+        });
+    }
 </script>
 
 </body>

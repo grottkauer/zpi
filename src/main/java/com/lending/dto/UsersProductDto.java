@@ -25,6 +25,16 @@ public class UsersProductDto {
         this.canBeChecked = canBeChecked;
     }
 
+    public UsersProductDto(int id, String productName, String categoryName, Date addDate,
+                           RentingStatus status) {
+        this.id = id;
+        this.productName = productName;
+        this.categoryName = categoryName;
+        this.addDate = addDate;
+        this.status = status;
+        this.canBeBorrowed = false;
+    }
+
     public UsersProductDto(int id, String productName, String categoryName, Date addDate) {
         this.id = id;
         this.productName = productName;

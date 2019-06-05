@@ -140,6 +140,7 @@
                                             th:onclick="|window.location.href='/moje-konto/info-produktu?item=${product.getId()}'|">
                                             <div th:case="${T(com.lending.entities.RentingStatus).Zrealizowane}">Wypożyczony</div>
                                             <div th:case="${T(com.lending.entities.RentingStatus).Utworzone}">Zamówiony</div>
+                                            <div th:case="${T(com.lending.entities.RentingStatus).DoOddania}">Do oddania</div>
                                             <div th:case="*">-</div>
                                         </td>
                                         <td class="text-center">

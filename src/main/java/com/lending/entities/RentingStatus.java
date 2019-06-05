@@ -1,7 +1,7 @@
 package com.lending.entities;
 
 public enum RentingStatus {
-    Utworzone(0), Zrealizowane(1), Oddane(2), Inne(3);
+    Utworzone(0), Zrealizowane(1), DoOddania(2), Oddane(3), Inne(4);
 
     private final int value;
 
@@ -16,8 +16,10 @@ public enum RentingStatus {
             case 1:
                 return Zrealizowane;
             case 2:
-                return Oddane;
+                return DoOddania;
             case 3:
+                return Oddane;
+            case 4:
                 return Inne;
         }
         return null;

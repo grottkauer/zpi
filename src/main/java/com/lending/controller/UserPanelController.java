@@ -157,6 +157,25 @@ public class UserPanelController {
         return modelAndView;
     }
 
+    @PostMapping(value="/wypozyczone-produkty/oddaj")
+    public ModelAndView giveBackBorrowed(@RequestParam(value = "item") int item,
+                                         @RequestParam(value = "mDate") Date mDate,
+                                         @RequestParam(value = "address[]", required = false) String[] address) {
+        ModelAndView modelAndView = borrowedProduct();
+        RentingStatus status = RentingStatus.DoOddania;
+        ResourceRenting renting = resourceRentingRepository.getLatestRentingOfResource(item);
+        renting.setStatus(status);
+        resourceRentingRepository.save(renting);
+        Address meetingAddress = new Address(address[0], address[1], address[2], null, address[3]);
+        /*if (!addressRepository.checkIfExists(meetingAddress.getLocality(), meetingAddress.getStreet(),
+                meetingAddress.getNrHouse(), meetingAddress.getZipCode()))*/
+            addressRepository.save(meetingAddress);
+
+        Meeting meeting = new Meeting(meetingAddress, mDate, renting);
+        meetingRepository.save(meeting);
+        return modelAndView;
+    }
+
     @RequestMapping(value="/moje-produkty", method = RequestMethod.GET)
     public ModelAndView products() {
         return getUsersProductView(false);
@@ -200,7 +219,7 @@ public class UserPanelController {
             u.addToWallet(resource.getPoints());
             userRepository.save(u);
         }
-        else if (renting.getStatus().equals(RentingStatus.Zrealizowane)) {
+        else if (renting.getStatus().equals(RentingStatus.DoOddania)) {
             renting.setStatus(RentingStatus.Oddane);
             renting.setGiveBackDate(mDate);
         }

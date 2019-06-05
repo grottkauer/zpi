@@ -86,7 +86,6 @@
                                     <th>Nazwa Produktu</th>
                                     <th>Kategoria</th>
                                     <th>Data Dodania</th>
-                                    <th>Czy wypozyczony</th>
                                     <th>Status</th>
                                     <th>Akcja</th>
                                 </tr>
@@ -97,7 +96,6 @@
                                     <th>Nazwa Produktu</th>
                                     <th>Kategoria</th>
                                     <th>Data Dodania</th>
-                                    <th>Czy wypozyczony</th>
                                     <th>Status</th>
                                     <th>Akcja</th>
                                 </tr>
@@ -116,13 +114,17 @@
                                         <td class="pointer-cell" th:onclick="|window.location.href='/moje-konto/info-wypozyczonego-produktu?item=${product.getId()}'|"
                                             th:text="${#dates.format(product.getAddDate(), 'dd/MM/yyyy')}" >
                                         </td>
-                                        <td class="pointer-cell"
-                                            th:onclick="|window.location.href='/moje-konto/info-wypozyczonego-produktu?item=${product.getId()}'|">TAK</td>
-                                        <td class="pointer-cell"
-                                            th:onclick="|window.location.href='/moje-konto/info-wypozyczonego-produktu?item=${product.getId()}'|">-</td>
+                                        <td class="pointer-cell" th:switch="${product.getStatus()}"
+                                            th:onclick="|window.location.href='/moje-konto/info-wypozyczonego-produktu?item=${product.getId()}'|">
+                                            <div th:case="${T(com.lending.entities.RentingStatus).Zrealizowane}">Wypożyczony</div>
+                                            <div th:case="${T(com.lending.entities.RentingStatus).Utworzone}">Zamówiony</div>
+                                            <div th:case="${T(com.lending.entities.RentingStatus).DoOddania}">Do oddania</div>
+                                            <div th:case="*">-</div>
+                                        </td>
                                         <td>
-                                            <!--                                        todo: kolumna ze statusem-->
-                                            <a href="#giveBackModal" class="btn table-btn" data-toggle="modal">
+                                            <a class="btn table-btn" data-toggle="modal" style="cursor: pointer;"
+                                               th:if="${product.getStatus() == T(com.lending.entities.RentingStatus).Zrealizowane}"
+                                               th:attr="onclick='giveBack('+${product.getId()}+')'">
                                                 <i class="fas fa-exchange-alt"></i>
                                                 <span>Oddaj produkt</span>
                                             </a>
@@ -145,7 +147,6 @@
                                     <th>Nazwa Produktu</th>
                                     <th>Kategoria</th>
                                     <th>Data Dodania</th>
-                                    <th>Czy wypozyczony</th>
                                 </tr>
                                 </thead>
                                 <tfoot class="thead-agency">
@@ -154,7 +155,6 @@
                                     <th>Nazwa Produktu</th>
                                     <th>Kategoria</th>
                                     <th>Data Dodania</th>
-                                    <th>Czy wypozyczony</th>
                                 </tr>
                                 </tfoot>
                                 <tbody>
@@ -163,7 +163,6 @@
                                     <td th:text="${product.getProductName()}"></td>
                                     <td th:text="${product.getCategoryName()}"></td>
                                     <td th:text="${#dates.format(product.getAddDate(), 'dd/MM/yyyy')}"></td>
-                                    <td>TAK</td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -254,10 +253,13 @@
                         </div>
                     </div>
                 </div>
+                <input type="hidden" id="nameOfLoc"/>
+                <input type="hidden" id="locality"/>
+                <input type="hidden" id="street"/>
+                <input type="hidden" id="nrHouse"/>
+                <input type="hidden" id="zipCode"/>
                 <div class="modal-footer">
-                    <!-- todo uncomment this line and delete below when post supported -->
-                    <!--<input class="btn btn-primary" type="submit" value="Potwierdź">-->
-                    <button class="btn btn-primary" type="button" data-dismiss="modal">Potwierdź</button>
+                    <button id="giveBackButton" class="btn btn-primary" type="button" data-dismiss="modal">Potwierdź</button>
                 </div>
             </form>
         </div>
@@ -332,6 +334,35 @@ $('#demo').daterangepicker({
 });
 </script>
 <script src="../../leaflet/map_modal.js"></script>
+
+<script>
+    function giveBack(itemId) {
+        $('#giveBackModal').modal();
+        $('#giveBackButton').on('click', function (event) {
+            event.preventDefault();
+            var mDate = $('#demo').val();
+
+            var locality = $('#locality').val();
+            var street = $('#street').val();
+            var nrHouse = $('#nrHouse').val();
+            var zipCode = $('#zipCode').val();
+            var address = [];
+            address.push(locality);
+            address.push(street);
+            address.push(nrHouse);
+            address.push(zipCode);
+            $.ajax({
+                data: {item: itemId, mDate: mDate, address: address},
+                url: '/moje-konto/wypozyczone-produkty/oddaj',
+                method: 'POST',
+                success: function(result) {
+                    window.location.href="/moje-konto/wypozyczone-produkty";
+                }
+            });
+        });
+    }
+</script>
+
 </body>
 
 </html>
