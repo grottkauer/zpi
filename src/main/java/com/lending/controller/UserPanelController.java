@@ -196,6 +196,9 @@ public class UserPanelController {
         if (renting.getStatus().equals(RentingStatus.Utworzone)) {
             renting.setStatus(RentingStatus.Zrealizowane);
             renting.setBorrowDate(mDate);
+            Person u = userRepository.getUserById(getLoggedUserId());
+            u.addToWallet(resource.getPoints());
+            userRepository.save(u);
         }
         else if (renting.getStatus().equals(RentingStatus.Zrealizowane)) {
             renting.setStatus(RentingStatus.Oddane);
@@ -401,7 +404,9 @@ public class UserPanelController {
                 meetingAddress.getNrHouse(), meetingAddress.getZipCode()))
             addressRepository.save(meetingAddress);
 
-        //todo get coins from wallet
+        recipent.removeFromWallet(resource.getPoints());
+        userRepository.save(recipent);
+
         Meeting meeting = new Meeting(meetingAddress, mDate, renting);
         meetingRepository.save(meeting);
 
