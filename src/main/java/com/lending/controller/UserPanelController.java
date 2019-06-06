@@ -69,9 +69,11 @@ public class UserPanelController {
     }
 
     @GetMapping(value="/panel")
-    public String panel(Model model) {
-
-        return "user-panel/user-panel";
+    public ModelAndView panel() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.addObject("userName", getUserPseudo());
+        modelAndView.setViewName("user-panel/user-panel");
+        return modelAndView;
     }
 
     @GetMapping(value="/moje-statystyki")

@@ -1,16 +1,9 @@
 Moje dane -> Moje produkty -> Poka¿ produkty:
 	- usun¹æ filtry z pierwszego i ostatniego
 
-Mój nick -> Wypo¿yczenia
-	- ¿eby dzia³a³o
-
 Product borrow:
 	- dodaæ godzinê spotkania (backend)
-	- dodaæ przekierowanie do potwierdzenia zamówienia //obejdzie sie xd
 	- bug: czasami klikanie w DOKONAJ WYPO¯YCZENIA nie przekierowywuje na g³ówn¹, ale wypo¿yczenie jest robione!
-
-Info produktu (ja -> moje produkty -> produkt):
-	- przycisk potwierdz oddanie/wypozyczenie psuje sie kolor tekstu
 
 Info wypozyczonego produktu (ja -> wypozyczone -> produkt):
 	- nie dziala mapka na modalu "oddaj produkt"
@@ -33,19 +26,12 @@ Powiadomienia:
 Sidebar mobilny (nie pamiêtam o co chodzi xd - tu Ola coœ mówi³aœ
 kiedyœ a ja zapomnia³em albo mhmm robi³em xd)
 
-
 Zrobiæ coœ z modalem Gratulacje, Z³o¿ono zamówienie, ¿e ma siê odpalaæ tylko wtedy
 gdy z³o¿ono zamówienie. Podobnie z zakomentowanym modalem o oddaniu
 
 Baza:
 	- hashowanie hase³
 	- dodanie obrazków
-
-G³ówna:
-	- zak³adka z u¿ytymi technologiami
-
-Dashboard:
-	- naprawiæ logo usera bez tekstu obok (jedyny taki panel :D)
 
 Backend:
 	- dorobiæ powiadomienia
